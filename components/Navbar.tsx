@@ -1,74 +1,83 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { ShoppingBag, Menu, X } from 'lucide-react'
 
-const links = [
-  { label: 'VISÃO', href: '#visao' },
-  { label: 'LIVROS', href: '#livros' },
-  { label: 'YOUTUBE', href: '#youtube' },
-  { label: 'CONTATO', href: '#contato' },
-]
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
+import { navLinks, site } from '@/lib/site'
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', fn)
-    return () => window.removeEventListener('scroll', fn)
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-      scrolled ? 'bg-dark/95 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
-    }`}>
-      <nav className="max-w-7xl mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between gap-8">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-ivory/85 backdrop-blur-md border-b border-linen'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container-prose flex items-center justify-between h-20 md:h-24">
+        <Link
+          href="/"
+          className="flex items-baseline gap-2 leading-none"
+          aria-label={`${site.name} — Home`}
+        >
+          <span className="font-serif text-xl md:text-2xl text-ink">
+            {site.name.split(' ')[0]}
+          </span>
+          <span className="font-serif italic text-xl md:text-2xl text-gold">
+            {site.name.split(' ').slice(1).join(' ')}
+          </span>
+        </Link>
 
-        {/* Logo */}
-        <a href="#inicio" className="flex flex-col leading-none select-none">
-          <span className="font-bebas text-2xl text-cream tracking-widest">ALTOMIR</span>
-          <span className="font-bebas text-2xl text-gold tracking-[0.35em] -mt-1">RANGEL</span>
-        </a>
-
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-10">
-          {links.map(l => (
-            <li key={l.href}>
-              <a href={l.href} className="font-inter text-[11px] font-semibold tracking-[0.2em] text-cream/60 hover:text-gold transition-colors duration-200">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
-          <a href="#livros" className="btn-gold text-[11px] px-6 py-3">
-            ADQUIRIR LIVROS
-          </a>
-        </div>
-
-        {/* Mobile toggle */}
-        <button className="md:hidden text-cream/70 hover:text-gold transition-colors" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-dark-100 border-t border-white/5 px-6 py-6 flex flex-col gap-5">
-          {links.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="font-inter text-sm font-semibold tracking-[0.18em] text-cream/60 hover:text-gold transition-colors py-1 border-b border-white/5">
+        <nav className="hidden md:flex items-center gap-10">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-[0.7rem] tracking-[0.28em] uppercase text-ink-muted hover:text-ink transition-colors duration-300"
+            >
               {l.label}
             </a>
           ))}
-          <a href="#livros" onClick={() => setOpen(false)} className="btn-gold text-center text-[11px] mt-2">
-            ADQUIRIR LIVROS
-          </a>
-        </div>
-      )}
+        </nav>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden p-2 text-ink"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+        >
+          {open ? <X size={22} strokeWidth={1.4} /> : <Menu size={22} strokeWidth={1.4} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden bg-ivory border-t border-linen transition-[max-height] duration-500 ${
+          open ? 'max-h-[520px]' : 'max-h-0'
+        }`}
+      >
+        <nav className="container-prose py-10 flex flex-col gap-6">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="text-sm tracking-[0.24em] uppercase text-ink"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </header>
   )
 }

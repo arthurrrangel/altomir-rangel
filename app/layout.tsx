@@ -1,17 +1,19 @@
 import type { Metadata } from 'next'
-import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Cormorant_Garamond, Playfair_Display } from 'next/font/google'
 import './globals.css'
-
-const bebas = Bebas_Neue({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-bebas',
-  display: 'swap',
-})
+import { site } from '@/lib/site'
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
@@ -23,23 +25,73 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Altomir Rangel — Pregador, Autor e Empresário',
-  description:
-    'Empresário e servo voluntário do Reino de Deus. Autor de livros cristãos, pregador em igrejas e criador de conteúdo no YouTube. Conheça a missão de Altomir Rangel.',
-  keywords: ['Altomir Rangel', 'pregador', 'livros cristãos', 'YouTube cristão', 'Palavra de Deus', 'empresário cristão'],
-  openGraph: {
-    title: 'Altomir Rangel',
-    description: 'Pregador, Autor e Empresário a serviço do Reino de Deus.',
-    type: 'website',
-    locale: 'pt_BR',
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — ${site.tagline}`,
+    template: `%s — ${site.name}`,
   },
-  robots: { index: true, follow: true },
+  description: site.description,
+  keywords: [
+    'Altomir Rangel',
+    'pregador cristão',
+    'livros cristãos',
+    'YouTube cristão',
+    'Palavra de Deus',
+    'empresário cristão',
+    'Ministério Transforme Seu Mundo',
+    'O Propósito da Prosperidade',
+  ],
+  authors: [{ name: site.name }],
+  creator: site.name,
+  openGraph: {
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: { canonical: site.url },
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  sameAs: [site.youtubeUrl, `https://instagram.com/${site.instagram}`],
+  jobTitle: site.tagline,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+    <html
+      lang={site.locale}
+      className={`${inter.variable} ${cormorant.variable} ${playfair.variable}`}
+    >
+      <body>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          />
+      </body>
     </html>
   )
 }
