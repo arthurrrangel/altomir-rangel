@@ -1,167 +1,131 @@
 'use client'
-
 import { useEffect, useRef } from 'react'
-import { Youtube, Play, ExternalLink } from 'lucide-react'
+import { Play, Youtube, ExternalLink } from 'lucide-react'
 
-// Placeholder videos — replace video IDs with real ones from the channel
+// Substitua os IDs pelos vídeos reais do canal
 const videos = [
-  {
-    id: 'VIDEO_ID_1',
-    title: 'Pregação: Título do Vídeo 1',
-    description: 'Mensagem poderosa sobre a Palavra de Deus.',
-    duration: '45:00',
-  },
-  {
-    id: 'VIDEO_ID_2',
-    title: 'Ensinamento: Título do Vídeo 2',
-    description: 'Reflexão bíblica para edificar sua fé.',
-    duration: '32:00',
-  },
-  {
-    id: 'VIDEO_ID_3',
-    title: 'Mensagem: Título do Vídeo 3',
-    description: 'A Palavra de Deus transformando vidas.',
-    duration: '58:00',
-  },
+  { id: 'VIDEO_ID_1', title: 'Pregação: Como Ouvir a Voz de Deus', duration: '45:12', views: '12K' },
+  { id: 'VIDEO_ID_2', title: 'Ensinamento: Fé que Move Montanhas', duration: '38:45', views: '8K' },
+  { id: 'VIDEO_ID_3', title: 'Mensagem: O Chamado do Empresário Cristão', duration: '52:30', views: '15K' },
+  { id: 'VIDEO_ID_4', title: 'Pregação: Propósito de Vida em Deus', duration: '41:00', views: '9K' },
+  { id: 'VIDEO_ID_5', title: 'Ensinamento: Família e Fé', duration: '29:15', views: '6K' },
+  { id: 'VIDEO_ID_6', title: 'Mensagem: Vencendo com Integridade', duration: '35:50', views: '11K' },
 ]
 
-function VideoCard({ video }: { video: (typeof videos)[0] }) {
-  const thumbUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`
-  const videoUrl = `https://www.youtube.com/watch?v=${video.id}`
-
+function VideoCard({ v }: { v: typeof videos[0] }) {
+  const thumb = `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`
+  const url = `https://www.youtube.com/watch?v=${v.id}`
   return (
-    <a
-      href={videoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="reveal group flex flex-col bg-navy-800/40 border border-white/5 hover:border-gold-500/25 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
-    >
+    <a href={url} target="_blank" rel="noopener noreferrer"
+      className="reveal group flex flex-col bg-dark-200 border border-white/5 hover:border-gold/25 transition-all duration-300 overflow-hidden">
       {/* Thumbnail */}
-      <div className="relative h-44 bg-navy-800 overflow-hidden">
-        {/* YouTube thumbnail — shown if VIDEO_ID is real */}
-        <img
-          src={thumbUrl}
-          alt={video.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          onError={(e) => {
-            // Fallback if thumb doesn't load
-            ;(e.target as HTMLImageElement).style.display = 'none'
-          }}
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-navy-900/40 group-hover:bg-navy-900/20 transition-colors" />
+      <div className="relative aspect-video overflow-hidden bg-dark-300">
+        <img src={thumb} alt={v.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-90"
+          onError={e => { (e.target as HTMLImageElement).style.opacity = '0' }} />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-dark/50 group-hover:bg-dark/30 transition-colors" />
         {/* Play button */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-12 h-12 rounded-full bg-gold-500/90 group-hover:bg-gold-400 flex items-center justify-center shadow-lg shadow-gold-500/30 transition-all duration-200 group-hover:scale-110">
-            <Play size={18} className="text-navy-900 fill-navy-900 ml-0.5" />
+          <div className="w-14 h-14 rounded-full bg-gold/90 group-hover:bg-gold flex items-center justify-center shadow-xl shadow-gold/20 group-hover:scale-110 transition-all duration-300">
+            <Play size={20} className="text-dark fill-dark ml-1" />
           </div>
         </div>
-        {/* Duration badge */}
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white/80 text-[10px] px-1.5 py-0.5 rounded font-mono">
-          {video.duration}
+        {/* Duration */}
+        <div className="absolute bottom-2 right-2 bg-dark/80 px-2 py-0.5">
+          <span className="font-inter text-[10px] text-cream/70 font-mono">{v.duration}</span>
+        </div>
+        {/* Views */}
+        <div className="absolute top-2 left-2 bg-dark/80 px-2 py-0.5">
+          <span className="font-inter text-[10px] text-cream/50">{v.views} views</span>
         </div>
       </div>
-
-      {/* Info */}
-      <div className="p-4 flex flex-col gap-1.5">
-        <h3 className="font-semibold text-cream-50 text-sm leading-snug group-hover:text-gold-400 transition-colors line-clamp-2">
-          {video.title}
+      {/* Title */}
+      <div className="p-4 flex-1 flex flex-col justify-between gap-2">
+        <h3 className="font-inter text-[13px] font-semibold text-cream/80 group-hover:text-gold transition-colors leading-snug line-clamp-2">
+          {v.title}
         </h3>
-        <p className="text-cream-100/40 text-xs leading-relaxed line-clamp-2">
-          {video.description}
-        </p>
-        <span className="text-gold-500/60 text-xs mt-1 flex items-center gap-1">
-          <Youtube size={11} />
-          Altomir Rangel
-        </span>
+        <div className="flex items-center gap-1.5">
+          <Youtube size={11} className="text-red-500" />
+          <span className="font-inter text-[10px] text-cream/30 tracking-wide">Altomir Rangel</span>
+        </div>
       </div>
     </a>
   )
 }
 
-export default function YouTube() {
-  const sectionRef = useRef<HTMLElement>(null)
+export default function YouTubeSection() {
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 100)
-            })
-          }
-        })
-      },
-      { threshold: 0.05 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.reveal').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 80)
+          })
+        }
+      })
+    }, { threshold: 0.05 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
   }, [])
 
   return (
-    <section id="youtube" ref={sectionRef} className="relative py-28 px-6 bg-[#070c18]">
-      {/* Red glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-80 bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="youtube" ref={ref} className="relative py-28 md:py-36 bg-dark-100 overflow-hidden">
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Label */}
-        <div className="reveal flex items-center gap-3 mb-4">
-          <div className="h-px w-10 bg-red-500/50" />
-          <span className="text-red-400 text-xs font-medium tracking-widest uppercase flex items-center gap-1.5">
-            <Youtube size={11} />
-            Canal no YouTube
-          </span>
-        </div>
+      {/* Red glow subtle */}
+      <div className="absolute top-0 right-0 w-[600px] h-[400px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at top right, rgba(220,38,38,0.04) 0%, transparent 70%)' }} />
 
-        {/* Heading */}
-        <div className="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-cream-50">
-            Assista os <span className="text-gold-400">Ensinamentos</span>
-          </h2>
-          <a
-            href="https://www.youtube.com/@altomirrangel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-red-400 hover:text-red-300 border border-red-500/30 hover:border-red-400/50 px-4 py-2 rounded-full transition-all self-start md:self-auto"
-          >
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <div className="reveal flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-red-600" />
+              <span className="font-inter text-[11px] font-semibold tracking-[0.3em] text-red-500 uppercase flex items-center gap-1.5">
+                <Youtube size={11} /> Canal no YouTube
+              </span>
+            </div>
+            <h2 className="reveal font-bebas text-[clamp(48px,7vw,90px)] leading-none text-cream">
+              ASSISTA OS<br /><span className="text-gold">ENSINAMENTOS</span>
+            </h2>
+          </div>
+          <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
+            className="reveal btn-outline self-start md:self-end flex items-center gap-2">
             <Youtube size={14} />
-            Ver canal completo
+            VER CANAL COMPLETO
             <ExternalLink size={12} />
           </a>
         </div>
 
         {/* Channel banner */}
-        <div className="reveal mb-10 bg-gradient-to-r from-red-950/40 via-navy-800/40 to-navy-900/40 border border-red-500/10 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-600/60 to-red-900/60 flex items-center justify-center flex-shrink-0 border border-red-500/20">
-            <Youtube size={28} className="text-red-400" />
+        <div className="reveal mb-12 flex flex-col sm:flex-row items-center gap-6 p-8 border border-red-900/30 bg-red-950/10">
+          <div className="w-16 h-16 rounded-full bg-red-600/20 border border-red-500/30 flex items-center justify-center flex-shrink-0">
+            <Youtube size={28} className="text-red-500" />
           </div>
           <div className="flex-1 text-center sm:text-left">
-            <h3 className="font-playfair text-xl font-bold text-cream-50">@altomirrangel</h3>
-            <p className="text-cream-100/50 text-sm mt-0.5">
-              Pregações, ensinamentos bíblicos e mensagens de fé — conteúdo gratuito para edificar sua vida.
+            <h3 className="font-bebas text-2xl text-cream tracking-wide">@ALTOMIRRANGEL</h3>
+            <p className="font-inter text-cream/40 text-sm mt-1">
+              Pregações, ensinamentos bíblicos e mensagens de fé — conteúdo gratuito para edificar sua vida e família.
             </p>
           </div>
-          <a
-            href="https://www.youtube.com/@altomirrangel"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 bg-red-600 hover:bg-red-500 text-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all duration-200 flex items-center gap-2"
-          >
+          <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
+            className="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-6 py-3 transition-colors">
             <Youtube size={14} />
-            Se Inscrever
+            SE INSCREVER
           </a>
         </div>
 
-        {/* Videos Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {videos.map((video) => (
-            <VideoCard key={video.id} video={video} />
-          ))}
+        {/* Videos grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          {videos.map(v => <VideoCard key={v.id} v={v} />)}
         </div>
 
-        <p className="reveal text-center text-cream-100/25 text-xs mt-10">
-          Substitua os VIDEO_ID_* nos dados acima pelos IDs reais dos vídeos do canal
+        <p className="reveal text-center font-inter text-[10px] text-cream/15 tracking-[0.2em] uppercase mt-10">
+          Substitua os VIDEO_ID pelos IDs reais dos seus vídeos · Ex: youtube.com/watch?v=<strong>VIDEO_ID</strong>
         </p>
       </div>
     </section>

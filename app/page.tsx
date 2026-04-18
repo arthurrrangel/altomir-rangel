@@ -1,8 +1,10 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import Marquee from '@/components/Marquee'
 import About from '@/components/About'
 import Books from '@/components/Books'
-import YouTube from '@/components/YouTube'
+import YouTubeSection from '@/components/YouTube'
+import Invite from '@/components/Invite'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -11,9 +13,11 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Marquee />
       <About />
       <Books />
-      <YouTube />
+      <YouTubeSection />
+      <Invite />
       <Contact />
       <Footer />
     </main>

@@ -1,96 +1,71 @@
 'use client'
-
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { ShoppingBag, Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { label: 'Início', href: '#inicio' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Livros', href: '#livros' },
-  { label: 'YouTube', href: '#youtube' },
-  { label: 'Contato', href: '#contato' },
+const links = [
+  { label: 'VISÃO', href: '#visao' },
+  { label: 'LIVROS', href: '#livros' },
+  { label: 'YOUTUBE', href: '#youtube' },
+  { label: 'CONTATO', href: '#contato' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', fn)
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0a0f1e]/95 backdrop-blur-md shadow-lg shadow-black/40 border-b border-gold-500/10'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      scrolled ? 'bg-dark/95 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-6 md:px-10 h-[72px] flex items-center justify-between gap-8">
+
         {/* Logo */}
-        <a href="#inicio" className="flex flex-col leading-tight">
-          <span className="font-playfair text-xl font-bold text-gold-400 tracking-wide">
-            Altomir Rangel
-          </span>
-          <span className="text-xs text-cream-200/50 tracking-widest uppercase">
-            Pregador · Autor
-          </span>
+        <a href="#inicio" className="flex flex-col leading-none select-none">
+          <span className="font-bebas text-2xl text-cream tracking-widest">ALTOMIR</span>
+          <span className="font-bebas text-2xl text-gold tracking-[0.35em] -mt-1">RANGEL</span>
         </a>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-cream-100/70 hover:text-gold-400 transition-colors duration-200 tracking-wide"
-              >
-                {link.label}
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-10">
+          {links.map(l => (
+            <li key={l.href}>
+              <a href={l.href} className="font-inter text-[11px] font-semibold tracking-[0.2em] text-cream/60 hover:text-gold transition-colors duration-200">
+                {l.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* CTA Button Desktop */}
-        <a
-          href="#livros"
-          className="hidden md:inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-900 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 shadow-md shadow-gold-500/20"
-        >
-          Adquira os Livros
-        </a>
+        {/* CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href="#livros" className="btn-gold text-[11px] px-6 py-3">
+            ADQUIRIR LIVROS
+          </a>
+        </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-cream-100/80 hover:text-gold-400 transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        {/* Mobile toggle */}
+        <button className="md:hidden text-cream/70 hover:text-gold transition-colors" onClick={() => setOpen(!open)}>
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-navy-900/98 backdrop-blur-md border-t border-gold-500/10 px-6 py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-cream-100/80 hover:text-gold-400 transition-colors py-1 text-base border-b border-white/5"
-            >
-              {link.label}
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden bg-dark-100 border-t border-white/5 px-6 py-6 flex flex-col gap-5">
+          {links.map(l => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+              className="font-inter text-sm font-semibold tracking-[0.18em] text-cream/60 hover:text-gold transition-colors py-1 border-b border-white/5">
+              {l.label}
             </a>
           ))}
-          <a
-            href="#livros"
-            onClick={() => setMenuOpen(false)}
-            className="mt-2 text-center bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold px-5 py-2.5 rounded-full transition-all"
-          >
-            Adquira os Livros
+          <a href="#livros" onClick={() => setOpen(false)} className="btn-gold text-center text-[11px] mt-2">
+            ADQUIRIR LIVROS
           </a>
         </div>
       )}

@@ -1,163 +1,160 @@
 'use client'
-
 import { useEffect, useRef } from 'react'
-import { ShoppingCart, BookOpen, Star } from 'lucide-react'
+import { ShoppingCart, Star } from 'lucide-react'
 
 const books = [
   {
     id: 1,
     title: 'Título do Livro 1',
-    subtitle: 'Subtítulo ou tema principal',
-    description:
-      'Uma obra que transforma vidas ao apresentar os princípios bíblicos de forma clara e aplicável ao cotidiano do leitor cristão.',
-    pages: '180 págs.',
-    format: 'Livro Físico',
-    buyLink: '#',
-    color: 'from-[#1a2a1a] to-[#0f1a0f]',
-    accent: '#4a8f4a',
+    subtitle: 'Subtítulo',
+    desc: 'Uma obra que transforma vidas ao apresentar os princípios bíblicos de forma clara e aplicável ao cotidiano.',
+    pages: '180 págs',
+    spine: '#2a1f0a',
+    cover: 'linear-gradient(160deg, #2a1f0a 0%, #1a1305 100%)',
+    accent: '#E8B84B',
+    link: '#',
   },
   {
     id: 2,
     title: 'Título do Livro 2',
-    subtitle: 'Subtítulo ou tema principal',
-    description:
-      'Uma jornada profunda pela Palavra de Deus, escrita para edificar famílias, líderes e todos que buscam crescer espiritualmente.',
-    pages: '220 págs.',
-    format: 'Livro Físico',
-    buyLink: '#',
-    color: 'from-[#1a1a2a] to-[#0f0f1a]',
-    accent: '#5a5abf',
+    subtitle: 'Subtítulo',
+    desc: 'Jornada profunda pela Palavra de Deus, escrita para edificar famílias, líderes e todos que buscam crescer.',
+    pages: '220 págs',
+    spine: '#0f1a2a',
+    cover: 'linear-gradient(160deg, #0f1a2a 0%, #081015 100%)',
+    accent: '#7BAFD4',
+    link: '#',
   },
   {
     id: 3,
     title: 'Título do Livro 3',
-    subtitle: 'Subtítulo ou tema principal',
-    description:
-      'Reflexões poderosas sobre fé, propósito e o chamado de Deus na vida de empresários e líderes do século 21.',
-    pages: '160 págs.',
-    format: 'Livro Físico',
-    buyLink: '#',
-    color: 'from-[#2a1a10] to-[#1a0f08]',
-    accent: '#c97a30',
+    subtitle: 'Subtítulo',
+    desc: 'Reflexões sobre fé, propósito e o chamado de Deus na vida de empresários e líderes do século 21.',
+    pages: '160 págs',
+    spine: '#1a0f0a',
+    cover: 'linear-gradient(160deg, #1a100a 0%, #120a05 100%)',
+    accent: '#E07050',
+    link: '#',
   },
 ]
 
-function Stars({ count = 5 }: { count?: number }) {
+function BookCard({ book, index }: { book: typeof books[0]; index: number }) {
   return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={11} className="fill-gold-400 text-gold-400" />
-      ))}
-    </div>
+    <article className="reveal group flex flex-col bg-dark-200 border border-white/5 hover:border-gold/30 transition-all duration-500 overflow-hidden">
+
+      {/* Book cover */}
+      <div className="relative h-64 overflow-hidden" style={{ background: book.cover }}>
+        {/* Shine effect */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+          style={{ background: 'linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%)' }} />
+        {/* Spine shadow */}
+        <div className="absolute left-0 top-0 bottom-0 w-4"
+          style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0.5), transparent)' }} />
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col justify-between p-6">
+          <div className="flex flex-col gap-2">
+            <div className="w-8 h-px" style={{ background: book.accent }} />
+            <h3 className="font-bebas text-3xl text-cream leading-tight">{book.title}</h3>
+            <p className="font-inter text-[11px] tracking-[0.15em] uppercase" style={{ color: book.accent }}>{book.subtitle}</p>
+          </div>
+          <div>
+            <p className="font-playfair italic text-sm text-cream/30">Altomir Rangel</p>
+          </div>
+        </div>
+        {/* Page count badge */}
+        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-2 py-0.5">
+          <span className="font-inter text-[10px] text-cream/40 tracking-[0.15em]">{book.pages}</span>
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="flex flex-col flex-1 p-6 gap-4">
+        {/* Stars */}
+        <div className="flex gap-0.5">
+          {[...Array(5)].map((_, i) => <Star key={i} size={11} className="fill-gold text-gold" />)}
+        </div>
+
+        <p className="font-inter text-cream/50 text-[13px] leading-relaxed flex-1">{book.desc}</p>
+
+        <a href={book.link} className="btn-gold w-full justify-center text-[11px] gap-2 mt-auto">
+          <ShoppingCart size={13} />
+          ADQUIRIR LIVRO
+        </a>
+      </div>
+    </article>
   )
 }
 
 export default function Books() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el, i) => {
-              setTimeout(() => el.classList.add('visible'), i * 100)
-            })
-          }
-        })
-      },
-      { threshold: 0.05 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.reveal').forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 120)
+          })
+        }
+      })
+    }, { threshold: 0.05 })
+    if (ref.current) obs.observe(ref.current)
+    return () => obs.disconnect()
   }, [])
 
   return (
-    <section id="livros" ref={sectionRef} className="relative py-28 px-6 bg-navy-900">
-      {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/4 rounded-full blur-3xl pointer-events-none" />
+    <section id="livros" ref={ref} className="relative py-28 md:py-36 bg-dark overflow-hidden">
 
-      <div className="relative max-w-6xl mx-auto">
-        {/* Label */}
-        <div className="reveal flex items-center gap-3 mb-4">
-          <div className="h-px w-10 bg-gold-500/50" />
-          <span className="text-gold-500 text-xs font-medium tracking-widest uppercase">
-            Publicações
-          </span>
-        </div>
+      {/* Gold glow background */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(197,151,63,0.05) 0%, transparent 100%)' }} />
 
-        {/* Heading */}
-        <div className="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-cream-50">
-            Livros do <span className="text-gold-400">Altomir</span>
-          </h2>
-          <p className="text-cream-100/50 text-sm max-w-xs leading-relaxed">
-            Obras que edificam, inspiram e transformam à luz da Palavra de Deus.
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <div className="reveal flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-gold" />
+              <span className="font-inter text-[11px] font-semibold tracking-[0.3em] text-gold uppercase">Publicações</span>
+            </div>
+            <h2 className="reveal font-bebas text-[clamp(48px,7vw,90px)] leading-none text-cream">
+              LIVROS QUE<br /><span className="text-gold">TRANSFORMAM VIDAS</span>
+            </h2>
+          </div>
+          <p className="reveal font-inter text-cream/40 text-sm max-w-xs leading-relaxed text-right hidden md:block">
+            Obras escritas à luz da Palavra de Deus para edificar, instruir e transformar.
           </p>
         </div>
 
-        {/* Books Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {books.map((book) => (
-            <article
-              key={book.id}
-              className="reveal group flex flex-col bg-navy-800/40 border border-white/5 hover:border-gold-500/25 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
-            >
-              {/* Book cover mock */}
-              <div
-                className={`relative h-52 bg-gradient-to-br ${book.color} flex items-center justify-center overflow-hidden`}
-              >
-                {/* Decorative lines */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-4 left-4 right-4 h-px bg-white/20" />
-                  <div className="absolute bottom-4 left-4 right-4 h-px bg-white/20" />
-                  <div className="absolute top-4 bottom-4 left-4 w-px bg-white/20" />
-                  <div className="absolute top-4 bottom-4 right-4 w-px bg-white/20" />
-                </div>
-                <div className="flex flex-col items-center text-center px-6 gap-2">
-                  <BookOpen size={36} style={{ color: book.accent }} className="opacity-60" />
-                  <span className="font-playfair font-bold text-lg text-white/80 leading-tight">
-                    {book.title}
-                  </span>
-                  <span className="text-xs text-white/40 italic">{book.subtitle}</span>
-                  <span className="text-xs font-semibold mt-1" style={{ color: book.accent }}>
-                    Altomir Rangel
-                  </span>
-                </div>
-                {/* Format badge */}
-                <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-sm text-white/60 text-[10px] px-2 py-0.5 rounded-full border border-white/10">
-                  {book.format}
-                </div>
-              </div>
-
-              {/* Book info */}
-              <div className="flex flex-col flex-1 p-5 gap-3">
-                <div className="flex items-center justify-between">
-                  <Stars />
-                  <span className="text-cream-100/30 text-xs">{book.pages}</span>
-                </div>
-                <h3 className="font-playfair font-bold text-cream-50 text-lg leading-tight">
-                  {book.title}
-                </h3>
-                <p className="text-cream-100/50 text-sm leading-relaxed flex-1">
-                  {book.description}
-                </p>
-                <a
-                  href={book.buyLink}
-                  className="mt-2 flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md shadow-gold-500/15 group-hover:shadow-gold-500/30"
-                >
-                  <ShoppingCart size={14} />
-                  Adquirir Livro
-                </a>
-              </div>
-            </article>
-          ))}
+        {/* Grid */}
+        <div className="grid md:grid-cols-3 gap-px bg-white/5">
+          {books.map((book, i) => <BookCard key={book.id} book={book} index={i} />)}
         </div>
 
-        {/* Note */}
-        <p className="reveal text-center text-cream-100/30 text-xs mt-10">
-          Livros físicos enviados para todo o Brasil · Preencha o formulário de contato para encomendar
-        </p>
+        {/* Bottom note */}
+        <div className="reveal mt-10 flex items-center justify-center gap-4">
+          <div className="h-px flex-1 bg-white/5" />
+          <p className="font-inter text-cream/25 text-xs tracking-[0.2em] uppercase whitespace-nowrap">
+            Livros físicos · Enviamos para todo o Brasil
+          </p>
+          <div className="h-px flex-1 bg-white/5" />
+        </div>
+
+        {/* Full-width CTA banner */}
+        <div className="reveal mt-16 bg-dark-200 border border-gold/15 p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <h3 className="font-bebas text-4xl md:text-5xl text-cream leading-tight">
+              COMBO COMPLETO<br /><span className="text-gold">DE LIVROS</span>
+            </h3>
+            <p className="font-inter text-cream/45 text-sm mt-2 leading-relaxed">
+              Adquira todos os livros do Altomir Rangel com condições especiais.
+            </p>
+          </div>
+          <a href="#contato" className="btn-gold whitespace-nowrap flex-shrink-0">
+            SOLICITAR COMBO →
+          </a>
+        </div>
       </div>
     </section>
   )

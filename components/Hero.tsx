@@ -1,131 +1,101 @@
 'use client'
-
 import { useEffect, useRef } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-    setTimeout(() => {
-      el.querySelectorAll('.hero-reveal').forEach((node, i) => {
-        setTimeout(() => {
-          ;(node as HTMLElement).style.opacity = '1'
-          ;(node as HTMLElement).style.transform = 'translateY(0)'
-        }, i * 180)
-      })
-    }, 100)
+    const els = ref.current?.querySelectorAll('.h-reveal')
+    els?.forEach((el, i) => {
+      setTimeout(() => {
+        (el as HTMLElement).style.opacity = '1'
+        ;(el as HTMLElement).style.transform = 'translateY(0) translateX(0)'
+      }, 200 + i * 150)
+    })
   }, [])
 
   return (
-    <section
-      id="inicio"
-      ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-[#0d1525]" />
+    <section id="inicio" ref={ref}
+      className="relative min-h-screen flex items-end overflow-hidden bg-dark noise"
+      style={{ background: 'linear-gradient(135deg, #0C0C0C 0%, #111108 100%)' }}>
 
-      {/* Decorative circles */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-gold-500/5 pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-gold-500/8 pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-gold-500/3 blur-3xl pointer-events-none" />
-
-      {/* Glow from bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-48 bg-gradient-to-t from-gold-500/5 to-transparent pointer-events-none" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-32 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-        {/* Photo placeholder */}
-        <div
-          className="hero-reveal flex-shrink-0"
-          style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-        >
-          <div className="relative w-52 h-52 md:w-72 md:h-72">
-            {/* Outer glow ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold-500/40 to-gold-700/20 blur-xl scale-110" />
-            {/* Photo circle */}
-            <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gold-500/40 shadow-2xl shadow-gold-500/10">
-              {/* Placeholder — replace src with real photo */}
-              <div className="w-full h-full bg-gradient-to-br from-navy-700 to-navy-800 flex items-center justify-center">
-                <span className="font-playfair text-5xl text-gold-500/60 select-none">AR</span>
-              </div>
-            </div>
+      {/* Background photo — replace with real Altomir photo */}
+      <div className="absolute inset-0">
+        {/* Gradient overlay left → right (text readable on left, photo visible right) */}
+        <div className="absolute inset-0 z-10"
+          style={{ background: 'linear-gradient(100deg, #0C0C0C 35%, rgba(12,12,12,0.7) 60%, rgba(12,12,12,0.2) 100%)' }} />
+        {/* Photo placeholder — swap for <Image src="/altomir.jpg" ... /> */}
+        <div className="absolute right-0 top-0 h-full w-[65%]"
+          style={{ background: 'linear-gradient(160deg, #1a1708 0%, #0C0C0C 100%)' }}>
+          {/* Placeholder silhouette */}
+          <div className="absolute inset-0 flex items-end justify-center overflow-hidden">
+            <div className="w-[380px] h-[580px] rounded-t-full opacity-10"
+              style={{ background: 'radial-gradient(ellipse at center, #C5973F 0%, transparent 70%)' }} />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center opacity-5">
+            <span className="font-bebas text-[20vw] text-gold select-none">AR</span>
           </div>
         </div>
+      </div>
 
-        {/* Text */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-5">
-          {/* Badge */}
-          <div
-            className="hero-reveal inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/25 rounded-full px-4 py-1.5"
-            style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
-            <span className="text-gold-400 text-xs font-medium tracking-widest uppercase">
-              Empresário · Pregador · Autor
-            </span>
+      {/* Gold vertical accent line */}
+      <div className="absolute left-[calc(50%-2px)] top-0 h-32 w-px bg-gradient-to-b from-gold to-transparent opacity-30 z-20 hidden xl:block" />
+
+      {/* Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-10 pb-24 pt-36 w-full">
+        <div className="max-w-3xl">
+
+          {/* Eyebrow */}
+          <div className="h-reveal" style={{ opacity: 0, transform: 'translateY(20px)', transition: 'all 0.8s cubic-bezier(.16,1,.3,1)' }}>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="h-px w-8 bg-gold" />
+              <span className="font-inter text-[11px] font-semibold tracking-[0.3em] text-gold uppercase">
+                Empresário · Pregador · Autor
+              </span>
+            </div>
           </div>
 
-          {/* Name */}
-          <h1
-            className="hero-reveal font-playfair text-5xl md:text-6xl lg:text-7xl font-bold text-cream-50 leading-tight"
-            style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-          >
-            Altomir{' '}
-            <span className="text-gold-400 gold-glow">Rangel</span>
-          </h1>
+          {/* Main title — HUGE like Vinicius Iracet */}
+          <div className="h-reveal" style={{ opacity: 0, transform: 'translateY(30px)', transition: 'all 0.8s cubic-bezier(.16,1,.3,1)' }}>
+            <h1 className="font-bebas leading-none tracking-wide">
+              <span className="block text-[clamp(80px,14vw,180px)] text-cream">PREGANDO</span>
+              <span className="block text-[clamp(80px,14vw,180px)] text-gold" style={{ WebkitTextStroke: '2px #C5973F', color: 'transparent' }}>
+                A PALAVRA
+              </span>
+              <span className="block text-[clamp(80px,14vw,180px)] text-cream">DE DEUS</span>
+            </h1>
+          </div>
 
-          {/* Tagline */}
-          <p
-            className="hero-reveal font-playfair italic text-xl md:text-2xl text-cream-100/60 max-w-lg"
-            style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-          >
-            &ldquo;Levando a Palavra de Deus com fé, propósito e amor.&rdquo;
-          </p>
-
-          {/* Description */}
-          <p
-            className="hero-reveal text-cream-100/55 text-base leading-relaxed max-w-lg"
-            style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-          >
-            Empresário de sucesso que dedica sua vida voluntariamente ao Reino de Deus, pregando a
-            Palavra em igrejas, compartilhando conhecimento em livros e alcançando vidas pelo YouTube.
-          </p>
+          {/* Subtitle */}
+          <div className="h-reveal mt-6" style={{ opacity: 0, transform: 'translateY(20px)', transition: 'all 0.8s cubic-bezier(.16,1,.3,1)' }}>
+            <p className="font-inter text-cream/50 text-base leading-relaxed max-w-md">
+              Empresário de sucesso que dedica sua vida ao serviço voluntário do Reino de Deus —
+              pregando nas igrejas, escrevendo livros e alcançando vidas pelo YouTube.
+            </p>
+          </div>
 
           {/* CTAs */}
-          <div
-            className="hero-reveal flex flex-col sm:flex-row gap-4 mt-2"
-            style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease, transform 0.8s ease' }}
-          >
-            <a
-              href="#livros"
-              className="bg-gold-500 hover:bg-gold-400 text-navy-900 font-semibold px-7 py-3.5 rounded-full transition-all duration-200 shadow-lg shadow-gold-500/25 text-sm tracking-wide"
-            >
-              Conheça os Livros
+          <div className="h-reveal mt-10 flex flex-wrap gap-4" style={{ opacity: 0, transform: 'translateY(20px)', transition: 'all 0.8s cubic-bezier(.16,1,.3,1)' }}>
+            <a href="#livros" className="btn-gold">
+              CONHEÇA OS LIVROS
             </a>
-            <a
-              href="https://www.youtube.com/@altomirrangel"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gold-500/40 hover:border-gold-400 text-gold-400 hover:bg-gold-500/10 font-semibold px-7 py-3.5 rounded-full transition-all duration-200 text-sm tracking-wide"
-            >
-              Canal no YouTube →
+            <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer" className="btn-outline">
+              CANAL NO YOUTUBE →
             </a>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <a
-        href="#sobre"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold-500/50 hover:text-gold-400 transition-colors animate-bounce"
-        aria-label="Rolar para baixo"
-      >
-        <ChevronDown size={28} />
+      <a href="#visao" className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-cream/25 hover:text-gold transition-colors">
+        <span className="font-inter text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <ArrowDown size={14} className="animate-bounce" />
       </a>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 inset-x-0 h-32 z-10"
+        style={{ background: 'linear-gradient(to top, #0C0C0C, transparent)' }} />
     </section>
   )
 }
