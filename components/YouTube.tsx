@@ -12,7 +12,8 @@ const videos = [
   { id: 'VIDEO_ID_6', title: 'Mensagem: Vencendo com Integridade', duration: '35:50', views: '11K' },
 ]
 
-function VideoCard({ v }: { v: typeof videos[0] }) {
+type Video = { id: string; title: string; duration: string; views: string }
+function VideoCard({ v }: { v: Video }) {
   const thumb = `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`
   const url = `https://www.youtube.com/watch?v=${v.id}`
   return (
