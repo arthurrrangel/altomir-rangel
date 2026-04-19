@@ -37,8 +37,6 @@ export default function Hero() {
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.06) 0%, transparent 70%)'}} />
 
-      {/* Grid lines */}
-      <div className="absolute top-0 left-[10%] w-px h-full bg-white/4 hidden lg:block" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pt-24 pb-16">
@@ -91,13 +89,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-        <div className="w-px h-10 bg-gradient-to-b from-transparent to-[#C5973F]/50" />
-        <span className="font-inter text-[9px] text-white/20 tracking-[0.3em] uppercase">scroll</span>
-      </div>
-    </section>
+      </div></section>
   )
 }
