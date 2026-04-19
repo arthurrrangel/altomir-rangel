@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Cormorant_Garamond, Playfair_Display } from 'next/font/google'
 import './globals.css'
+import Script from 'next/script'
 import { site } from '@/lib/site'
 
 const inter = Inter({
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body>
         {children}
+        <Script defer data-domain="altomir-rangel.vercel.app" src="https://plausible.io/js/script.js" strategy="afterInteractive" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

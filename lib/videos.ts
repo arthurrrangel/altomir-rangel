@@ -1,6 +1,4 @@
-// Vídeos em destaque — cole aqui os IDs do YouTube e o título.
-// Para pegar o ID: na URL https://www.youtube.com/watch?v=ABC123 → o ID é "ABC123".
-
+// Vídeos em destaque — IDs reais do canal youtube.com/c/AltomirRangelCunha
 export type Video = {
   id: string
   title: string
@@ -8,7 +6,13 @@ export type Video = {
 }
 
 export const videos: Video[] = [
-  { id: 'dQw4w9WgXcQ', title: 'Pregação — Substitua pelo ID real', category: 'Pregação' },
-  { id: 'dQw4w9WgXcQ', title: 'Testemunho — Substitua pelo ID real', category: 'Testemunho' },
-  { id: 'dQw4w9WgXcQ', title: 'Estudo bíblico — Substitua pelo ID real', category: 'Estudo' },
+  { id: 'a6HIxoWKaAc', title: 'Vivendo no Comum ou Andando sobre as Águas?', category: 'Pregação' },
+  { id: 'H7tFovSJNWg', title: 'Você É a Solução', category: 'Mensagem' },
+  { id: 'OaLaEbtfbgE', title: 'Permita Sua Melhor Versão Sair', category: 'Ensinamento' },
+  { id: 'nQWZO4f-puY', title: 'Arma Secreta: Paciência — Pt. 1', category: 'Série' },
+  { id: 'iXam10B3S8o', title: 'Quebrando o Fardo da Ansiedade', category: 'Pregação' },
+  { id: 'A9ai_R_Qrls', title: 'O Poder Está na Família', category: 'Família' },
+  { id: 'FmzpZY_3Jhk', title: 'Quem Tem Sua Atenção Tem Seu Futuro', category: 'Ensinamento' },
+  { id: 'TBwVqjsMeP8', title: 'Voltando Forte — Pt. 1', category: 'Pregação' },
+  { id: '40fNjWh1ruA', title: 'Testemunho Forte', category: 'Testemunho' },
 ]
