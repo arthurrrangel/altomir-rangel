@@ -1,99 +1,70 @@
-import Link from 'next/link'
-import { site, navLinks } from '@/lib/site'
+import { Youtube, Mail } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="bg-ivory border-t border-linen pt-24 pb-12">
-      <div className="container-prose">
-        <div className="grid md:grid-cols-12 gap-12">
-          <div className="md:col-span-6">
-            <Link href="/" className="flex items-baseline gap-2 leading-none">
-              <span className="font-serif text-2xl md:text-3xl text-ink">
-                {site.name.split(' ')[0]}
-              </span>
-              <span className="font-serif italic text-2xl md:text-3xl text-gold">
-                {site.name.split(' ').slice(1).join(' ')}
-              </span>
-            </Link>
+    <footer className="relative bg-black border-t border-white/6">
+      {/* Gold top accent */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C5973F] to-transparent" />
 
-            <p className="body-serif mt-6 text-lg text-ink-muted max-w-md">
-              {site.description}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-16">
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
+
+          {/* Brand */}
+          <div className="flex flex-col gap-4">
+            <div>
+              <span className="font-bebas text-3xl text-white tracking-widest block">ALTOMIR</span>
+              <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
+            </div>
+            <p className="font-inter text-white/30 text-xs leading-relaxed">
+              Empresario, pregador voluntario e autor de livros cristaos. Mais de 20 anos a servico do Reino de Deus.
             </p>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="text-[0.65rem] tracking-[0.32em] uppercase text-ink-soft">
-              Navegar
-            </p>
-            <ul className="mt-5 space-y-3">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className="text-ink-muted hover:text-ink transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          {/* Links */}
+          <div className="flex flex-col gap-3">
+            <span className="label text-[9px] mb-1">Navegacao</span>
+            {[
+              { href: '#visao', label: 'Visao & Proposito' },
+              { href: '#livros', label: 'Livros' },
+              { href: '#youtube', label: 'YouTube' },
+              { href: '#contato', label: 'Contato' },
+            ].map(l => (
+              <a key={l.href} href={l.href}
+                className="font-inter text-xs text-white/35 hover:text-[#C5973F] transition-colors tracking-wide">
+                {l.label}
+              </a>
+            ))}
           </div>
 
-          <div className="md:col-span-3">
-            <p className="text-[0.65rem] tracking-[0.32em] uppercase text-ink-soft">
-              Acompanhe
-            </p>
-            <ul className="mt-5 space-y-3">
-              <li>
-                <a
-                  href={site.youtubeUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className="text-ink-muted hover:text-ink transition-colors"
-                >
-                  YouTube
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://instagram.com/${site.instagram}`}
-                  target="_blank"
-                  rel="noopener"
-                  className="text-ink-muted hover:text-ink transition-colors"
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener"
-                  className="text-ink-muted hover:text-ink transition-colors"
-                >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-ink-muted hover:text-ink transition-colors"
-                >
-                  E-mail
-                </a>
-              </li>
-            </ul>
+          {/* Contact */}
+          <div className="flex flex-col gap-4">
+            <span className="label text-[9px] mb-1">Contato</span>
+            <a href="mailto:contato@altomirrangel.com.br"
+              className="flex items-center gap-3 text-white/35 hover:text-[#C5973F] transition-colors">
+              <Mail size={13} className="text-[#C5973F] flex-shrink-0" />
+              <span className="font-inter text-xs">contato@altomirrangel.com.br</span>
+            </a>
+            <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 text-white/35 hover:text-red-400 transition-colors">
+              <Youtube size={13} className="text-red-400 flex-shrink-0" />
+              <span className="font-inter text-xs">@altomirrangel</span>
+            </a>
+            <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer"
+              className="mt-2 btn-gold text-[10px] py-2.5 px-4 self-start">
+              Falar no WhatsApp
+            </a>
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-linen flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-xs text-ink-soft">
-            © {year} {site.name}. {site.ministry}.
-          </p>
-          <p className="text-xs text-ink-soft italic font-serif">
-            "Que todo o meu ser louve o Senhor." — Salmos 103:1
-          </p>
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="font-inter text-[10px] text-white/20 tracking-wide">
+            &copy; {year} Altomir Rangel. Todos os direitos reservados.
+          </span>
+          <span className="font-inter text-[10px] text-white/15 tracking-wide">
+            Feito com fe e proposito
+          </span>
         </div>
       </div>
     </footer>

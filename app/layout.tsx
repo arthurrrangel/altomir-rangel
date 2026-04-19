@@ -1,98 +1,31 @@
 import type { Metadata } from 'next'
-import { Inter, Cormorant_Garamond, Playfair_Display } from 'next/font/google'
-import './globals.css'
+import { Bebas_Neue, Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
-import { site } from '@/lib/site'
+import './globals.css'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-  style: ['normal', 'italic'],
-})
+const bebas = Bebas_Neue({ weight: '400', subsets: ['latin'], variable: '--font-bebas', display: 'swap' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap', style: ['normal', 'italic'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s — ${site.name}`,
-  },
-  description: site.description,
-  keywords: [
-    'Altomir Rangel',
-    'pregador cristão',
-    'livros cristãos',
-    'YouTube cristão',
-    'Palavra de Deus',
-    'empresário cristão',
-    'Ministério Transforme Seu Mundo',
-    'O Propósito da Prosperidade',
-  ],
-  authors: [{ name: site.name }],
-  creator: site.name,
+  title: 'Altomir Rangel — Pregador, Autor e Empresario',
+  description: 'Empresario e servo voluntario do Reino de Deus. Autor de livros cristaos, pregador em igrejas e criador de conteudo no YouTube.',
+  keywords: ['Altomir Rangel', 'pregador', 'livros cristaos', 'YouTube cristao', 'Palavra de Deus', 'empresario cristao'],
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
-    url: site.url,
-    siteName: site.name,
-    locale: 'pt_BR',
+    title: 'Altomir Rangel',
+    description: 'Pregador, Autor e Empresario a servico do Reino de Deus.',
     type: 'website',
+    locale: 'pt_BR',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: { canonical: site.url },
-}
-
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: site.name,
-  description: site.description,
-  url: site.url,
-  sameAs: [site.youtubeUrl, `https://instagram.com/${site.instagram}`],
-  jobTitle: site.tagline,
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang={site.locale}
-      className={`${inter.variable} ${cormorant.variable} ${playfair.variable}`}
-    >
+    <html lang="pt-BR" className={`${bebas.variable} ${inter.variable} ${playfair.variable}`}>
       <body>
         {children}
         <Script defer data-domain="altomir-rangel.vercel.app" src="https://plausible.io/js/script.js" strategy="afterInteractive" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-          />
       </body>
     </html>
   )

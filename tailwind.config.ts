@@ -10,29 +10,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Paleta "pura" — luz, respiro, serenidade
-        ivory: '#FBF9F4',       // fundo principal
-        cream: '#F4F1EA',       // fundo alternativo de seção
-        linen: '#EBE6DB',       // divisor suave
-        gold: {
-          DEFAULT: '#A78547',   // dourado sóbrio, terroso
-          light: '#C9A86A',
-          dark: '#7A6032',
-          soft: '#E9DCC1',
-        },
-        ink: {
-          DEFAULT: '#1F1F1F',   // texto principal (grafite)
-          muted: '#5A5A5A',     // texto secundário
-          soft: '#8A8A8A',      // captions, labels
-        },
+        gold: { DEFAULT: '#C5973F', dim: 'rgba(197,151,63,0.15)' },
+        dark: { DEFAULT: '#0A0A0F', 2: '#0F0F17', 3: '#141420' },
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
-      },
-      maxWidth: {
-        '8xl': '88rem',
+        bebas: ['var(--font-bebas)', 'Bebas Neue', 'sans-serif'],
+        inter: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        playfair: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
       },
     },
   },
