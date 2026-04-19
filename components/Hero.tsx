@@ -24,7 +24,7 @@ export default function Hero() {
           alt="Altomir Rangel"
           fill
           priority
-          className="object-cover object-top"
+          className="object-cover" style={{objectPosition: "50% 10%"}}
           sizes="(max-width: 768px) 100vw, 55vw"
         />
         {/* Gradient masks to blend with dark bg */}

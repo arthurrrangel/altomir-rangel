@@ -38,7 +38,7 @@ export default function About() {
                 src="/altomir.png"
                 alt="Altomir Rangel"
                 fill
-                className="object-cover object-top"
+                className="object-cover" style={{objectPosition: "50% 8%"}}
                 sizes="(max-width: 768px) 100vw, 400px"
               />
               <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 55%, #0F0F17 100%)'}} />
