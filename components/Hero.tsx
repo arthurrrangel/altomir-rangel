@@ -8,8 +8,11 @@ export default function Hero() {
 
   useEffect(() => {
     const t = setTimeout(() => {
-      ref.current?.querySelectorAll('.h-reveal').forEach((el, i) =>
-        setTimeout(() => el.classList.add('h-visible'), i * 130))
+      ref.current?.querySelectorAll<HTMLElement>('.h-reveal').forEach((el, i) =>
+        setTimeout(() => {
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+        }, i * 130))
     }, 100)
     return () => clearTimeout(t)
   }, [])
