@@ -1,10 +1,11 @@
-'use client'
+"use client"
 import { useEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
+
   useEffect(() => {
     const t = setTimeout(() => {
       ref.current?.querySelectorAll('.h-reveal').forEach((el, i) =>
@@ -16,7 +17,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
 
-      {/* ── MOBILE: foto proeminente no topo ── */}
+      {/* MOBILE: foto proeminente no topo */}
       <div className="relative md:hidden w-full" style={{height: '78vh'}}>
         <Image
           src="/altomir.png"
@@ -32,20 +33,7 @@ export default function Hero() {
         }} />
       </div>
 
-      {/* MOBILE: Stats logo abaixo da foto */}
-      <div className="md:hidden relative z-10 flex justify-center gap-8 py-5 bg-[#0A0A0F]">
-        {[
-          { n: '20+', l: 'Anos pregando' },
-          { n: '500+', l: 'Igrejas visitadas' },
-          { n: '4', l: 'Livros publicados' },
-        ].map(s => (
-          <div key={s.n} className="flex flex-col gap-1 items-center">
-            <span className="font-bebas text-3xl text-[#C5973F] leading-none">{s.n}</span>
-            <span className="font-inter text-[9px] text-white/30 uppercase tracking-widest text-center">{s.l}</span>
-          </div>
-        ))}
-      </div>
-      {/* ── DESKTOP: foto lado direito (absolute) ── */}
+      {/* DESKTOP: foto lado direito */}
       <div className="hidden md:block absolute right-0 top-0 w-[55%] h-full z-0">
         <Image
           src="/altomir.png"
@@ -61,13 +49,13 @@ export default function Hero() {
         <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
       </div>
 
-      {/* Subtle gold glow — desktop only */}
+      {/* Subtle gold glow desktop only */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none hidden md:block"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.06) 0%, transparent 70%)'}} />
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-        <div className="pt-4 pb-10 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
+        <div className="pt-6 pb-12 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
 
           {/* Label */}
           <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
@@ -91,7 +79,7 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="h-reveal flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 mb-12"
+          <div className="h-reveal flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
             <a href="#visao" className="btn-gold w-full sm:w-auto justify-center">
               Conhecer o Ministério <ArrowRight size={14} />
@@ -101,7 +89,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Stats */}
+          {/* Stats desktop only */}
           <div className="h-reveal pt-8 hidden md:flex md:justify-start md:gap-8"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.52s, transform 0.7s ease 0.52s'}}>
             {[
@@ -118,7 +106,6 @@ export default function Hero() {
 
         </div>
       </div>
-
     </section>
   )
 }

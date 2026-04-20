@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useRef } from 'react'
 import { ExternalLink, BookOpen } from 'lucide-react'
+import Image from 'next/image'
 import { books } from '@/lib/books'
 
 export default function Books() {
@@ -20,12 +21,10 @@ export default function Books() {
 
   return (
     <section id="livros" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
-
       <div className="absolute top-0 right-1/4 w-[400px] h-[400px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.04) 0%, transparent 70%)'}} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
@@ -42,27 +41,27 @@ export default function Books() {
           </a>
         </div>
 
-        {/* Books grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-          {books.map((book, i) => (
+        {/* Books grid — 1 col mobile, 3 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {books.map((book) => (
             <div key={book.slug} className="reveal-left group flex flex-col bg-[#0F0F17] border border-white/6 hover:border-[#C5973F]/40 transition-all duration-500">
-
               {/* Cover */}
-              <div className="relative aspect-[3/4] overflow-hidden bg-[#141420] flex items-center justify-center">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-bebas text-8xl text-[#C5973F]/8 select-none">{i + 1}</span>
-                </div>
-                <div className="relative z-10 text-center px-6">
-                  <span className="font-bebas text-white/80 text-lg leading-tight block">{book.title}</span>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17] to-transparent opacity-60" />
+              <div className="relative aspect-[3/4] overflow-hidden bg-[#141420]">
+                <Image
+                  src={book.cover}
+                  alt={book.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17]/60 to-transparent" />
               </div>
 
               {/* Info */}
               <div className="p-5 flex flex-col gap-3 flex-1">
                 <h3 className="font-bebas text-xl text-white leading-tight group-hover:text-[#C5973F] transition-colors">{book.title}</h3>
-                {book.description && (
-                  <p className="font-inter text-white/40 text-xs leading-relaxed line-clamp-3">{book.description}</p>
+                {book.synopsis && (
+                  <p className="font-inter text-white/40 text-xs leading-relaxed line-clamp-3">{book.synopsis}</p>
                 )}
                 <div className="mt-auto pt-3">
                   {book.buyUrl ? (

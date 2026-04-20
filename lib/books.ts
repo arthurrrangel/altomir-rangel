@@ -1,19 +1,18 @@
 // Livros de Altomir Rangel — adicione/edite aqui e a home + páginas individuais se atualizam sozinhas.
-
 export type Book = {
   slug: string
   title: string
   subtitle?: string
-  cover: string           // caminho em /public ou URL absoluta
+  cover: string
   pages?: number
   year?: number
   publisher?: string
   isbn?: string
-  synopsis: string        // parágrafo curto para cards
-  description: string[]   // parágrafos longos para a página do livro
-  highlights?: string[]   // bullets de "o que você vai aprender"
+  synopsis: string
+  description: string[]
+  highlights?: string[]
   chapters?: string[]
-  buyUrl: string          // link principal de compra (Amazon, etc.)
+  buyUrl: string
   buyOptions?: { label: string; url: string }[]
   featured?: boolean
 }
@@ -27,7 +26,7 @@ export const books: Book[] = [
     pages: 192,
     year: 2004,
     publisher: 'ADHONEP',
-    isbn: '9788574220314',
+    isbn: '9786500740042',
     synopsis:
       'Uma leitura bíblica e prática sobre a prosperidade como meio de servir ao Reino — não como fim em si mesma.',
     description: [
@@ -38,7 +37,6 @@ export const books: Book[] = [
       'A diferença entre riqueza bíblica e mentalidade de escassez',
       'Princípios de mordomia aplicáveis ao dia a dia',
       'Como o trabalho se transforma em adoração',
-      'Estudos de caso de empresários cristãos',
     ],
     buyUrl:
       'https://www.amazon.com.br/Prop%C3%B3sito-Prosperidade-Altomir-Rangel-Cunha/dp/8574220310',
@@ -61,6 +59,7 @@ export const books: Book[] = [
     cover: '/books/da-religiao-a-realidade.jpg',
     pages: 180,
     publisher: 'ADHONEP',
+    isbn: '9786500740035',
     synopsis:
       'Uma caminhada profunda pela Palavra de Deus, escrita para edificar famílias, líderes e todos que buscam crescer na fé.',
     description: [
@@ -83,44 +82,24 @@ export const books: Book[] = [
     featured: true,
   },
   {
-    slug: 'bem-vindo-ao-novo-voce',
-    title: 'Bem-Vindo ao Novo Você',
-    subtitle: 'Reflexões sobre fé, propósito e chamado',
-    cover: '/books/bem-vindo-ao-novo-voce.jpg',
-    pages: 210,
+    slug: 'vitamine-se-2026',
+    title: 'Vitamine-se 2026',
+    subtitle: 'O devocional que encontra você onde você está',
+    cover: '/books/vitamine-se.jpg',
+    year: 2026,
     synopsis:
-      'Reflexões sobre fé, propósito e o chamado de Deus na vida de empresários, líderes e homens e mulheres do século 21.',
+      '366 devocionais autorais — uma jornada diária construída ao longo de quase 30 anos de ensino sobre a mentalidade do Reino de Deus.',
     description: [
-      'Um livro sobre começos: o instante em que decidimos render tudo a Cristo e aceitar a identidade que Ele nos deu.',
-      'Altomir escreve com a sobriedade de quem viveu o mundo corporativo em alto nível e a leveza de quem descobriu que, no Reino, a nova criação é o que verdadeiramente importa.',
+      'Há dias em que acordamos ansiosos. Outros, cansados. Alguns, sem direção. E existem dias em que simplesmente precisamos de uma palavra viva, clara, bíblica e prática, que nos alinhe ao que Deus está fazendo.',
+      'Vitamine-se 2026 nasce desse lugar. Com 366 devocionais autorais do Pr. Altomir Rangel, cada dia traz uma frase de impacto, um versículo, um insight profundo e uma oração direcionada.',
     ],
     highlights: [
-      'O que significa ser uma nova criação',
-      'Renovação da mente no dia a dia',
-      'Passos concretos para começar de novo com Deus',
+      'Frase de impacto + versículo + insight profundo + oração direcionada por dia',
+      'Construído ao longo de quase 30 anos de ensino bíblico',
+      'Simples. Prático. Profundo. Transformador.',
     ],
-    buyUrl:
-      'https://www.goodreads.com/author/show/21046891.Altomir_Rangel',
+    buyUrl: 'https://wa.me/5521999999999?text=Quero%20encomendar%20o%20Vitamine-se%202026',
     featured: true,
-  },
-  {
-    slug: 'feijao-com-arroz',
-    title: 'Feijão com Arroz',
-    subtitle: 'Verdades simples da fé cristã',
-    cover: '/books/feijao-com-arroz.jpg',
-    synopsis:
-      'Verdades bíblicas básicas — o "feijão com arroz" da fé cristã — escritas com clareza para todas as idades.',
-    description: [
-      'Há verdades que parecem óbvias, mas sustentam a vida toda. Neste livro, Altomir Rangel apresenta os fundamentos da fé como um prato simples que nutre de verdade.',
-      'Ideal para novos convertidos, discipulado, ou qualquer cristão que queira relembrar o essencial.',
-    ],
-    highlights: [
-      'Fé, graça e arrependimento explicados com simplicidade',
-      'Pequenos hábitos espirituais com grande impacto',
-      'Textos curtos, perfeitos para devocional diário',
-    ],
-    buyUrl:
-      'https://www.goodreads.com/author/show/21046891.Altomir_Rangel',
   },
 ]
 
