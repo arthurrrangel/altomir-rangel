@@ -17,15 +17,15 @@ export const hero = {
 // ── SOBRE / VISÃO ────────────────────────────────────────────────────────────
 export const about = {
   label: 'Visão & Propósito',
-  headline1: 'ENSINAR AS PESSOAS A',
-  headlineGold: 'OUVIR DEUS',
-  headline2: 'É O NOSSO PROPÓSITO',
+  headline1: 'A FÉ DECLARA.',
+  headlineGold: 'O REINO',
+  headline2: 'SE MANIFESTA.',
   bio1:
-    'Altomir Rangel dedica sua vida a pregar a Palavra de Deus. De cidade em cidade, de igreja em igreja — chegando onde a mensagem precisa chegar, com a Bíblia na mão e o coração disponível.',
+    'Altomir Rangel é marido, pai de três filhos e avô. Pregador e autor de livros cristãos, percorre o Brasil de igreja em igreja levando a Palavra do Reino de Deus a quem precisa ouvir — com a Bíblia na mão e o coração disponível.',
   bio2:
-    'Pelos livros, pelo YouTube e pelas pregações, milhares de vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
+    'Pelos livros, pelo YouTube e pelas pregações, vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
   quote:
-    '"O maior negócio que fiz na vida foi me entregar ao serviço de Deus."',
+    '"O chamado de Deus na minha vida é pregar a Palavra do Reino onde ela precisar chegar."',
   quoteAuthor: '— Altomir Rangel',
 }
 

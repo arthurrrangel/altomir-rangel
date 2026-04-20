@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { about } from '@/lib/content'
 
 export default function About() {
   const ref = useRef<HTMLElement>(null)
@@ -39,31 +40,26 @@ export default function About() {
           {/* Texto — label agora dentro da coluna, alinhado ao topo */}
           <div className="flex flex-col gap-8">
             <div className="reveal flex items-center justify-center lg:justify-start">
-              <span className="label">Visão &amp; Propósito</span>
+              <span className="label">{about.label}</span>
             </div>
             <div className="reveal">
               <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white text-center lg:text-left">
-                <span className="lg:hidden">ENSINAR AS<br />PESSOAS A<br /><span className="text-[#C5973F]">OUVIR DEUS</span></span><span className="hidden lg:inline">ENSINAR AS PESSOAS<br />A <span className="text-[#C5973F]">OUVIR DEUS</span><br />É O NOSSO<br />PROPÓSITO</span>
+                {about.headline1}<br /><span className="text-[#C5973F]">{about.headlineGold}</span><br />{about.headline2}
               </h2>
             </div>
             <div className="reveal flex flex-col gap-4">
               <p className="font-inter text-white/50 leading-loose text-[15px] text-center lg:text-left">
-                Altomir Rangel é um empresário brasileiro que encontrou em Deus o seu maior propósito.
-                Voluntário no Reino de Deus há mais de 20 anos, já pregou em mais de 500 igrejas
-                em todo o Brasil — sem nenhum interesse financeiro, movido pela fé e pelo amor as pessoas.
+                {about.bio1}
               </p>
               <p className="font-inter text-white/50 leading-loose text-[15px] text-center lg:text-left">
-                Com uma trajetória marcada pelo equilíbrio entre os negócios e a vida espiritual,
-                Altomir demonstra que é possível ser bem-sucedido no mundo corporativo sem abrir
-                mão dos valores cristãos. Autor de 4 livros e criador de conteúdo no YouTube,
-                milhares de vidas já foram transformadas pela sua mensagem.
+                {about.bio2}
               </p>
             </div>
             <div className="reveal lg:border-l-2 border-[#C5973F] lg:pl-6 py-2 text-center lg:text-left">
               <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
-               &ldquo;O maior negócio que fiz na vida foi me entregar ao serviço de Deus.&rdquo;
+                {about.quote}
               </p>
-              <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">— Altomir Rangel</span>
+              <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
             </div>
             <div className="reveal flex justify-center lg:justify-start">
               <a href="#contato" className="btn-gold">
