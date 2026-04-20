@@ -36,25 +36,31 @@ export default function Navbar() {
         <a href="#contato" className="max-md:!hidden md:inline-flex btn-gold text-[10px] py-2.5 px-5">
           Falar Conosco
         </a>
-        <button onClick={() => setOpen(!open)} className="md:hidden flex flex-col gap-1.5 p-2">
-          <span className={`block w-6 h-0.5 bg-white transition-all ${open ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-6 h-0.5 bg-white transition-all ${open ? 'opacity-0' : ''}`} />
-          <span className={`block w-4 h-0.5 bg-white transition-all ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`} />
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+          className="md:hidden flex flex-col gap-1.5 p-2 min-h-[44px] min-w-[44px] items-center justify-center">
+          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center ${open ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
+          <span className={`block w-5 h-0.5 bg-white transition-all duration-300 origin-center ${open ? '-rotate-45 -translate-y-2 w-6' : ''}`} />
         </button>
       </div>
-      {open && (
-        <div className="md:hidden bg-[#0A0A0F] border-t border-white/5 px-6 py-6 flex flex-col gap-5">
+
+      {/* Mobile menu — animated */}
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-[#0A0A0F]/98 backdrop-blur-md border-t border-white/5 px-6 py-6 flex flex-col gap-1">
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="font-inter text-sm font-semibold tracking-[0.3em] uppercase text-white/60 hover:text-[#C5973F] transition-colors">
+              className="font-inter text-[13px] font-semibold tracking-[0.25em] uppercase text-white/60 hover:text-[#C5973F] transition-colors py-3 border-b border-white/5 last:border-0">
               {l.label}
             </a>
           ))}
-          <a href="#contato" onClick={() => setOpen(false)} className="btn-gold text-center text-[11px]">
+          <a href="#contato" onClick={() => setOpen(false)}
+            className="btn-gold text-center text-[11px] mt-4 justify-center">
             Falar Conosco
           </a>
         </div>
-      )}
+      </div>
     </header>
   )
 }

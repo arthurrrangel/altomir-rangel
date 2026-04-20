@@ -67,45 +67,44 @@ export default function Contribute() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
-        <div className="reveal flex items-center justify-center mb-4">
+        <div className="reveal flex items-center mb-3">
           <span className="label">Depoimentos</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white text-center mb-16">
+        <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white mb-10 md:mb-16">
           VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
         </h2>
 
-        {/* Testimonials */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+        {/* Testimonials — mobile mostra 3, desktop 6 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-12 md:mb-20">
           {testimonials.map((t, i) => (
-            <div key={i} className="reveal-left flex flex-col gap-4 border border-white/6 bg-[#0A0A0F] p-6 hover:border-[#C5973F]/25 transition-colors duration-300">
-              <span className="font-playfair text-5xl text-[#C5973F]/30 leading-none select-none">"</span>
-              <p className="font-inter text-white/50 text-[14px] leading-loose flex-1">{t.text}</p>
+            <div key={i}
+              className={`reveal-left flex flex-col gap-3 border border-white/6 bg-[#0A0A0F] p-5 hover:border-[#C5973F]/25 transition-colors duration-300 ${i >= 3 ? 'hidden sm:flex' : ''}`}>
+              <span className="font-playfair text-4xl text-[#C5973F]/30 leading-none select-none">"</span>
+              <p className="font-inter text-white/50 text-[13px] sm:text-[14px] leading-loose flex-1">{t.text}</p>
               <div className="pt-2 border-t border-white/5">
-                <p className="font-inter text-[13px] font-semibold text-white">{t.name}</p>
-                <p className="font-inter text-[10px] text-white/25 tracking-[0.2em] uppercase mt-0.5">{t.city}</p>
+                <p className="font-inter text-[12px] font-semibold text-white">{t.name}</p>
+                <p className="font-inter text-[9px] text-white/25 tracking-[0.2em] uppercase mt-0.5">{t.city}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* PIX */}
-        <div className="reveal max-w-md mx-auto flex flex-col items-center gap-5 text-center">
+        <div className="reveal flex flex-col gap-4 border border-[#C5973F]/25 bg-[#C5973F]/4 px-6 py-8 sm:px-8 sm:py-8 sm:max-w-md sm:mx-auto">
           <p className="font-inter text-white/35 text-[13px] tracking-wide leading-relaxed">
             Se este canal tem sido edificação e renovação para você —
           </p>
-          <div className="w-full border border-[#C5973F]/25 bg-[#C5973F]/4 px-8 py-7 flex flex-col items-center gap-4">
-            <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#C5973F]/70 uppercase">Contribuir via PIX</span>
-            <span className="font-bebas text-xl text-white tracking-widest">{PIX_KEY}</span>
-            <button
-              onClick={copyPix}
-              className="flex items-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] text-black font-inter text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-3 transition-colors duration-200"
-            >
-              {copied
-                ? <><Check size={12} /> CHAVE COPIADA!</>
-                : <><Copy size={12} /> COPIAR CHAVE PIX</>
-              }
-            </button>
-          </div>
+          <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#C5973F]/70 uppercase">Contribuir via PIX</span>
+          <span className="font-bebas text-lg sm:text-xl text-white tracking-widest break-all">{PIX_KEY}</span>
+          <button
+            onClick={copyPix}
+            className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] text-black font-inter text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-4 transition-colors duration-200 min-h-[48px]"
+          >
+            {copied
+              ? <><Check size={12} /> CHAVE COPIADA!</>
+              : <><Copy size={12} /> COPIAR CHAVE PIX</>
+            }
+          </button>
         </div>
 
       </div>

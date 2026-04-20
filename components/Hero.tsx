@@ -21,8 +21,8 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
 
-      {/* MOBILE: foto proeminente no topo */}
-      <div className="relative md:hidden w-full" style={{height: '78vh'}}>
+      {/* MOBILE: foto no topo */}
+      <div className="relative md:hidden w-full" style={{height: '72vh'}}>
         <Image
           src="/altomir.png"
           alt="Altomir Rangel"
@@ -33,7 +33,7 @@ export default function Hero() {
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 12%, transparent 50%, #0A0A0F 100%)'
+          background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 10%, transparent 45%, #0A0A0F 100%)'
         }} />
       </div>
 
@@ -59,9 +59,9 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-        <div className="pt-6 pb-12 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
+        <div className="pt-4 pb-12 md:pt-24 md:pb-16 md:max-w-2xl md:mx-0">
 
-          {/* Label (só exibe se tiver texto) */}
+          {/* Label */}
           {hero.label && (
             <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
               style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
@@ -70,7 +70,7 @@ export default function Hero() {
           )}
 
           {/* Headline */}
-          <h1 className="h-reveal font-bebas text-[clamp(40px,11vw,128px)] leading-[0.88] text-white mb-6"
+          <h1 className="h-reveal font-bebas text-[clamp(42px,11vw,128px)] leading-[0.88] text-white mb-5 text-center md:text-left"
             style={{opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
             {hero.headline1}
             {hero.headline2 && <><br />{hero.headline2}</>}
@@ -78,22 +78,21 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="h-reveal font-inter text-white/45 text-[15px] leading-relaxed max-w-xs mx-auto md:mx-0 mb-8"
+          <p className="h-reveal font-inter text-white/50 text-[14px] leading-relaxed mb-8 text-center md:text-left md:max-w-sm"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
             {hero.subtitle}
           </p>
 
           {/* CTAs */}
-          <div className="h-reveal flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3"
+          <div className="h-reveal flex flex-col sm:flex-row gap-3 md:justify-start"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
-            <a href="#visao" className="btn-gold w-full sm:w-auto justify-center">
+            <a href="#visao" className="btn-gold w-full sm:w-auto justify-center min-h-[48px]">
               {hero.ctaPrimary} <ArrowRight size={14} />
             </a>
-            <a href="#livros" className="btn-outline w-full sm:w-auto justify-center">
+            <a href="#livros" className="btn-outline w-full sm:w-auto justify-center min-h-[48px]">
               {hero.ctaSecondary}
             </a>
           </div>
-
 
         </div>
       </div>
