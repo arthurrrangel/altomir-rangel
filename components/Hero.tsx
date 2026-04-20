@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { hero } from '@/lib/content'
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -63,49 +64,34 @@ export default function Hero() {
           {/* Label */}
           <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
             style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
-            <span className="label">Empresário · Pregador · Autor</span>
+            <span className="label">{hero.label}</span>
           </div>
 
           {/* Headline */}
           <h1 className="h-reveal font-bebas text-[clamp(40px,11vw,128px)] leading-[0.88] text-white mb-6"
             style={{opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
-            ENSINAR AS<br />
-            PESSOAS A<br />
-            <span className="text-[#C5973F]">OUVIR DEUS</span>
+            {hero.headline1}<br />
+            {hero.headline2}<br />
+            <span className="text-[#C5973F]">{hero.headlineGold}</span>
           </h1>
 
           {/* Subtitle */}
           <p className="h-reveal font-inter text-white/45 text-[15px] leading-relaxed max-w-xs mx-auto md:mx-0 mb-8"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
-            Empresário brasileiro, pregador voluntário e autor de livros cristãos.
-            Mais de 20 anos levando a Palavra de Deus a igrejas em todo o Brasil.
+            {hero.subtitle}
           </p>
 
           {/* CTAs */}
           <div className="h-reveal flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
             <a href="#visao" className="btn-gold w-full sm:w-auto justify-center">
-              Conhecer o Ministério <ArrowRight size={14} />
+              {hero.ctaPrimary} <ArrowRight size={14} />
             </a>
             <a href="#livros" className="btn-outline w-full sm:w-auto justify-center">
-              Ver os Livros
+              {hero.ctaSecondary}
             </a>
           </div>
 
-          {/* Stats desktop only */}
-          <div className="h-reveal pt-8 hidden md:flex md:justify-start md:gap-8"
-            style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.52s, transform 0.7s ease 0.52s'}}>
-            {[
-              { n: '20+', l: 'Anos pregando' },
-              { n: '500+', l: 'Igrejas visitadas' },
-              { n: '4', l: 'Livros publicados' },
-            ].map(s => (
-              <div key={s.n} className="flex flex-col gap-1 items-center md:items-start">
-                <span className="font-bebas text-4xl text-[#C5973F] leading-none">{s.n}</span>
-                <span className="font-inter text-[10px] text-white/30 uppercase tracking-widest">{s.l}</span>
-              </div>
-            ))}
-          </div>
 
         </div>
       </div>
