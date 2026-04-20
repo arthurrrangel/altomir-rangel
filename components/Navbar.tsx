@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="bg-[#0A0A0F]/98 backdrop-blur-md border-t border-white/5 px-6 py-6 flex flex-col gap-1">
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="font-inter text-[13px] font-semibold tracking-[0.25em] uppercase text-white/60 hover:text-[#C5973F] transition-colors py-3 border-b border-white/5 last:border-0">
+              className="font-inter text-[13px] font-semibold tracking-[0.25em] uppercase text-white/60 hover:text-[#C5973F] transition-colors py-3 border-b border-white/5 last:border-0 text-center">
               {l.label}
             </a>
           ))}

@@ -92,7 +92,7 @@ export default function YouTubeSection() {
                   </div>
                 </div>
               </div>
-              <div className="p-3 sm:p-4 flex flex-col gap-1 sm:gap-2 justify-center">
+              <div className="p-3 sm:p-4 flex flex-col gap-1 sm:gap-2 justify-center text-center sm:text-left">
                 <span className="label text-[8px] sm:text-[9px]">{v.category}</span>
                 <h3 className="font-inter text-[12px] sm:text-[13px] font-semibold text-white/70 group-hover:text-white transition-colors leading-snug line-clamp-2">{v.title}</h3>
               </div>

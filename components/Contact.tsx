@@ -62,7 +62,7 @@ export default function Contact() {
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
               <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Pregação</h4>
-              <p className="font-inter text-white/35 text-xs leading-relaxed">
+              <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
                 O Altomir atende convites para ministrar em igrejas e conferências cristãs.
                 Selecione &quot;Convite para Pregação&quot; no formulário ao lado.
               </p>
@@ -74,7 +74,7 @@ export default function Contact() {
             <div className="reveal-right grid sm:grid-cols-2 gap-4 sm:gap-5">
               {['Nome', 'Email'].map(p => (
                 <div key={p} className="flex flex-col gap-2">
-                  <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase">{p}</label>
+                  <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">{p}</label>
                   <input type={p === 'Email' ? 'email' : 'text'} required
                     placeholder={p === 'Nome' ? 'Seu nome completo' : 'seu@email.com'}
                     className="input-dark min-h-[48px]" />
@@ -82,7 +82,7 @@ export default function Contact() {
               ))}
             </div>
             <div className="reveal-right flex flex-col gap-2">
-              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase">Assunto</label>
+              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Assunto</label>
               <select value={subject} onChange={e => setSubject(e.target.value)}
                 className="input-dark appearance-none cursor-pointer text-white/50 min-h-[48px]">
                 <option value="">Selecione o assunto</option>
@@ -94,7 +94,7 @@ export default function Contact() {
               </select>
             </div>
             <div className="reveal-right flex flex-col gap-2">
-              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase">Mensagem</label>
+              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Mensagem</label>
               <textarea required rows={5} placeholder="Escreva sua mensagem..."
                 className="input-dark resize-none" />
             </div>

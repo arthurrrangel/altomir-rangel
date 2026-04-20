@@ -39,17 +39,17 @@ export default function Footer() {
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
             <span className="label text-[9px] mb-1">Contato</span>
             <a href="mailto:contato@altomirrangel.com.br"
-              className="flex items-center gap-3 text-white/35 hover:text-[#C5973F] transition-colors min-h-[36px]">
+              className="flex items-center justify-center md:justify-start gap-3 text-white/35 hover:text-[#C5973F] transition-colors min-h-[36px]">
               <Mail size={13} className="text-[#C5973F] flex-shrink-0" />
               <span className="font-inter text-xs">contato@altomirrangel.com.br</span>
             </a>
             <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 text-white/35 hover:text-red-400 transition-colors min-h-[36px]">
+              className="flex items-center justify-center md:justify-start gap-3 text-white/35 hover:text-red-400 transition-colors min-h-[36px]">
               <Youtube size={13} className="text-red-400 flex-shrink-0" />
               <span className="font-inter text-xs">@altomirrangel</span>
             </a>
             <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer"
-              className="mt-1 btn-gold text-[10px] py-3 px-4 self-start min-h-[44px]">
+              className="mt-1 btn-gold text-[10px] py-3 px-4 self-center md:self-start min-h-[44px]">
               Falar no WhatsApp
             </a>
           </div>
