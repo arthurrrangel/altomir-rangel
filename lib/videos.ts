@@ -4,17 +4,15 @@ export type Video = {
   category?: string
 }
 
-// Ordenados: mais recentes primeiro
+// Ordenados: mais recentes primeiro — atualizados via vidiq
 export const videos: Video[] = [
-  // ── Recentes ──────────────────────────────────────────────────────────────
-  { id: 'PIMWrO-nw0U', title: 'O Ingrediente Secreto que Falta na Sua Fé',   category: 'Novo' },
-  { id: '43-bGX4MfGg', title: 'Pare de Sofrer Calado',                        category: 'Pregação' },
-  { id: 'FVwvjO6AuNo', title: 'Por que Sua Mente Controla Seu Destino?',       category: 'Ensinamento' },
-  // ── Destaques anteriores ──────────────────────────────────────────────────
-  { id: 'a6HIxoWKaAc', title: 'Vivendo no Comum ou Andando sobre as Águas?',  category: 'Pregação' },
-  { id: 'H7tFovSJNWg', title: 'Você É a Solução',                              category: 'Mensagem' },
-  { id: 'iXam10B3S8o', title: 'Quebrando o Fardo da Ansiedade',               category: 'Pregação' },
-  { id: 'A9ai_R_Qrls', title: 'O Poder Está na Família',                      category: 'Família' },
-  { id: 'FmzpZY_3Jhk', title: 'Quem Tem Sua Atenção Tem Seu Futuro',          category: 'Ensinamento' },
-  { id: 'nQWZO4f-puY', title: 'Arma Secreta: Paciência',                      category: 'Série' },
+  { id: 'PIMWrO-nw0U', title: 'O Ingrediente Secreto que Falta na Sua Fé',    category: 'Novo' },
+  { id: 'C5Oi7Q_5nIY', title: '5 Sinais de uma Pessoa Falsa',                  category: 'Ao Vivo' },
+  { id: 'MoM39WKTCyk', title: 'Milagre Existe, Mas Nem Todos Conseguem: Sabe Por Quê?', category: 'Ao Vivo' },
+  { id: 'if0yejl0bMc', title: 'Manifestando Milagre: A Verdade sobre Posicionamento', category: 'Ao Vivo' },
+  { id: '43-bGX4MfGg', title: 'Pare de Sofrer Calado',                         category: 'Pregação' },
+  { id: 'JPaMe4aLQcI', title: 'Fé, Política e Crise',                          category: 'Ao Vivo' },
+  { id: 'j1rYS5reC54', title: 'Honra que Transforma',                          category: 'Ao Vivo' },
+  { id: 'kWG1mXX2GK8', title: 'Estamos Vendo o Começo do Fim?',                category: 'Profecia' },
+  { id: 'FVwvjO6AuNo', title: 'Por que Sua Mente Controla Seu Destino?',        category: 'Ensinamento' },
 ]
