@@ -72,9 +72,9 @@ export default function Hero() {
           {/* Headline */}
           <h1 className="h-reveal font-bebas text-[clamp(40px,11vw,128px)] leading-[0.88] text-white mb-6"
             style={{opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
-            {hero.headline1}<br />
-            {hero.headline2}<br />
-            <span className="text-[#C5973F]">{hero.headlineGold}</span>
+            {hero.headline1}
+            {hero.headline2 && <><br />{hero.headline2}</>}
+            <br /><span className="text-[#C5973F]">{hero.headlineGold}</span>
           </h1>
 
           {/* Subtitle */}
