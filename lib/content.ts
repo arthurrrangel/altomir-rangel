@@ -5,9 +5,9 @@
 // ── HERO (tela inicial) ──────────────────────────────────────────────────────
 export const hero = {
   label: '',                          // deixar vazio para não exibir o label
-  headline1: 'PREGANDO A',
-  headline2: 'PALAVRA',
-  headlineGold: 'QUE TRANSFORMA',
+  headline1: 'PALAVRA',
+  headline2: 'DE FÉ,',
+  headlineGold: 'REINO DE DEUS',
   subtitle:
     'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir — movido por um chamado que não tem preço.',
   ctaPrimary: 'Conhecer o Ministério',
