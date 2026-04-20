@@ -40,7 +40,7 @@ export default function YouTubeSection() {
                 <Youtube size={11} /> Canal no YouTube
               </span>
             </div>
-            <h2 className="reveal font-bebas text-[clamp(48px,7vw,96px)] leading-none text-white">
+            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
               ASSISTA OS<br /><span className="text-[#C5973F]">ENSINAMENTOS</span>
             </h2>
           </div>
@@ -67,9 +67,9 @@ export default function YouTubeSection() {
                   <Play size={28} className="text-black fill-black ml-1" />
                 </div>
               </div>
-              <div className="absolute left-8 bottom-8">
+              <div className="absolute left-4 sm:left-8 bottom-4 sm:bottom-8">
                 <span className="label mb-2 block">{featured.category}</span>
-                <h3 className="font-bebas text-3xl md:text-5xl text-white leading-tight max-w-lg">{featured.title}</h3>
+                <h3 className="font-bebas text-lg sm:text-3xl md:text-5xl text-white leading-tight max-w-lg">{featured.title}</h3>
               </div>
             </div>
           </a>
@@ -102,13 +102,13 @@ export default function YouTubeSection() {
         </div>
 
         {/* Subscribe CTA */}
-        <div className="reveal mt-10 flex flex-col sm:flex-row items-center gap-6 p-7 border border-red-500/15 bg-red-500/5">
+        <div className="reveal mt-10 flex flex-col sm:flex-row items-center gap-5 sm:gap-6 p-5 sm:p-7 border border-red-500/15 bg-red-500/5">
           <div className="w-14 h-14 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
             <Youtube size={24} className="text-red-400" />
           </div>
           <div className="flex-1 text-center sm:text-left">
             <h3 className="font-bebas text-2xl text-white">@ALTOMIRRANGEL</h3>
-            <p className="font-inter text-white/35 text-sm">Pregacoes e ensinamentos biblicos — conteudo gratuito para edificar sua vida.</p>
+            <p className="font-inter text-white/35 text-sm">Pregações e ensinamentos bíblicos — conteúdo gratuito para edificar sua vida.</p>
           </div>
           <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
             className="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-6 py-3 transition-colors">

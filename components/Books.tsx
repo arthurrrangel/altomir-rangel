@@ -35,7 +35,7 @@ export default function Books() {
               <div className="h-px w-8 bg-[#C5973F]" />
               <span className="label">Biblioteca Crista</span>
             </div>
-            <h2 className="reveal font-bebas text-[clamp(48px,7vw,96px)] leading-none text-white">
+            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
               LIVROS QUE<br /><span className="text-[#C5973F]">TRANSFORMAM</span>
             </h2>
           </div>
@@ -46,7 +46,7 @@ export default function Books() {
         </div>
 
         {/* Books grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
           {books.map((book, i) => (
             <div key={book.slug} className="reveal-left group flex flex-col bg-[#0F0F17] border border-white/6 hover:border-[#C5973F]/40 transition-all duration-500">
 
@@ -86,7 +86,7 @@ export default function Books() {
         </div>
 
         {/* CTA strip */}
-        <div className="reveal mt-16 border border-[#C5973F]/20 bg-[#C5973F]/5 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="reveal mt-16 border border-[#C5973F]/20 bg-[#C5973F]/5 p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="font-bebas text-2xl text-white">QUER ENCOMENDAR UM LIVRO?</p>
             <p className="font-inter text-white/40 text-sm mt-1">Entre em contato direto com nossa equipe.</p>

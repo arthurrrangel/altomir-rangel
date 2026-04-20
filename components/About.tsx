@@ -24,7 +24,7 @@ export default function About() {
 
           {/* Foto — coluna inteira, alinhada ao topo */}
           <div className="reveal-left">
-            <div className="relative w-full overflow-hidden" style={{aspectRatio: '3/4'}}>
+            <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[3/4]">
               <Image
                 src="/altomir.png"
                 alt="Altomir Rangel"
@@ -44,7 +44,7 @@ export default function About() {
               <span className="label">Visão &amp; Propósito</span>
             </div>
             <div className="reveal">
-              <h2 className="font-bebas text-[clamp(42px,6vw,80px)] leading-[0.9] text-white">
+              <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white">
                 ENSINAR AS PESSOAS<br />
                 A <span className="text-[#C5973F]">OUVIR DEUS</span><br />
                 É O NOSSO<br />PROPÓSITO

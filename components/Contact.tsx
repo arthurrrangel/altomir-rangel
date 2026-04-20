@@ -40,7 +40,7 @@ export default function Contact() {
           <div className="h-px w-8 bg-[#C5973F]" />
           <span className="label">Entre em Contato</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(48px,7vw,90px)] leading-none text-white mb-14">
+        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-14">
           VAMOS CAMINHAR<br /><span className="text-[#C5973F]">JUNTOS</span>
         </h2>
 
@@ -49,7 +49,7 @@ export default function Contact() {
           {/* Left info */}
           <div className="lg:col-span-2 flex flex-col gap-8">
             <p className="reveal-left font-inter text-white/40 text-[15px] leading-loose">
-              Quer encomendar um livro, convidar o Altomir para pregar, ou tem alguma duvida?
+              Quer encomendar um livro, convidar o Altomir para pregar, ou tem alguma dúvida?
               Preencha o formulario e nossa equipe entra em contato em breve.
             </p>
 
@@ -76,9 +76,9 @@ export default function Contact() {
 
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-5">
-              <h4 className="font-bebas text-xl text-white mb-2">Convite para Pregacao</h4>
+              <h4 className="font-bebas text-xl text-white mb-2">Convite para Pregação</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed">
-                O Altomir atende convites para ministrar em igrejas e conferencias cristas de forma
+                O Altomir atende convites para ministrar em igrejas e conferências cristãs de forma
                 voluntaria. Selecione "Convite para Pregacao" no formulario abaixo.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function Contact() {
                 className="input-dark appearance-none cursor-pointer text-white/50">
                 <option value="">Selecione o assunto</option>
                 <option value="livro">Pedido de Livro</option>
-                <option value="convite">Convite para Pregacao</option>
+                <option value="convite">Convite para Pregação</option>
                 <option value="parceria">Parceria</option>
                 <option value="testemunho">Compartilhar Testemunho</option>
                 <option value="outro">Outro</option>

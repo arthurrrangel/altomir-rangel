@@ -31,6 +31,7 @@ export default function Hero() {
         <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #0A0A0F 0%, #0A0A0F 15%, rgba(10,10,15,0.7) 45%, rgba(10,10,15,0.1) 100%)'}} />
         <div className="absolute inset-0" style={{background: 'linear-gradient(to top, #0A0A0F 0%, transparent 30%)'}} />
         <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
+        <div className="absolute inset-0 md:hidden" style={{background: 'rgba(10,10,15,0.55)'}} />
       </div>
 
       {/* Subtle gold glow behind text */}
@@ -49,7 +50,7 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="h-reveal font-bebas text-[clamp(64px,10vw,128px)] leading-[0.88] text-white mb-6"
+          <h1 className="h-reveal font-bebas text-[clamp(40px,11vw,128px)] leading-[0.88] text-white mb-6"
             style={{opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
             ENSINAR AS<br />
             PESSOAS A<br />
@@ -57,14 +58,14 @@ export default function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="h-reveal font-inter text-white/45 text-[15px] leading-relaxed max-w-sm mb-10"
+          <p className="h-reveal font-inter text-white/45 text-[15px] leading-relaxed max-w-sm mb-8"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
             Empresário brasileiro, pregador voluntário e autor de livros cristãos.
             Mais de 20 anos levando a Palavra de Deus a igrejas em todo o Brasil.
           </p>
 
           {/* CTAs */}
-          <div className="h-reveal flex flex-wrap items-center gap-4 mb-16"
+          <div className="h-reveal flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-14"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
             <a href="#visao" className="btn-gold">
               Conhecer o Ministério <ArrowRight size={14} />

@@ -17,15 +17,15 @@ export default function Footer() {
               <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
             </div>
             <p className="font-inter text-white/30 text-xs leading-relaxed">
-              Empresario, pregador voluntario e autor de livros cristaos. Mais de 20 anos a servico do Reino de Deus.
+              Empresário, pregador voluntário e autor de livros cristãos. Mais de 20 anos a serviço do Reino de Deus.
             </p>
           </div>
 
           {/* Links */}
           <div className="flex flex-col gap-3">
-            <span className="label text-[9px] mb-1">Navegacao</span>
+            <span className="label text-[9px] mb-1">Navegação</span>
             {[
-              { href: '#visao', label: 'Visao & Proposito' },
+              { href: '#visao', label: 'Visão &amp; Propósito' },
               { href: '#livros', label: 'Livros' },
               { href: '#youtube', label: 'YouTube' },
               { href: '#contato', label: 'Contato' },
@@ -63,7 +63,7 @@ export default function Footer() {
             &copy; {year} Altomir Rangel. Todos os direitos reservados.
           </span>
           <span className="font-inter text-[10px] text-white/15 tracking-wide">
-            Feito com fe e proposito
+            Feito com fé e propósito
           </span>
         </div>
       </div>
