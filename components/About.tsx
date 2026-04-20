@@ -17,7 +17,7 @@ export default function About() {
   }, [])
 
   return (
-    <section id="visao" ref={ref} className="relative py-28 md:py-40 overflow-hidden bg-[#0F0F17]">
+    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-start">
 
@@ -43,9 +43,7 @@ export default function About() {
             </div>
             <div className="reveal">
               <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white text-center lg:text-left">
-                ENSINAR AS PESSOAS<br />
-                A <span className="text-[#C5973F]">OUVIR DEUS</span><br />
-                É O NOSSO<br />PROPÓSITO
+                <span className="lg:hidden">ENSINAR AS<br />PESSOAS A<br /><span className="text-[#C5973F]">OUVIR DEUS</span></span><span className="hidden lg:inline">ENSINAR AS PESSOAS<br />A <span className="text-[#C5973F]">OUVIR DEUS</span><br />É O NOSSO<br />PROPÓSITO</span>
               </h2>
             </div>
             <div className="reveal flex flex-col gap-4">

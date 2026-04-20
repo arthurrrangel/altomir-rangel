@@ -32,6 +32,19 @@ export default function Hero() {
         }} />
       </div>
 
+      {/* MOBILE: Stats logo abaixo da foto */}
+      <div className="md:hidden relative z-10 flex justify-center gap-8 py-5 bg-[#0A0A0F]">
+        {[
+          { n: '20+', l: 'Anos pregando' },
+          { n: '500+', l: 'Igrejas visitadas' },
+          { n: '4', l: 'Livros publicados' },
+        ].map(s => (
+          <div key={s.n} className="flex flex-col gap-1 items-center">
+            <span className="font-bebas text-3xl text-[#C5973F] leading-none">{s.n}</span>
+            <span className="font-inter text-[9px] text-white/30 uppercase tracking-widest text-center">{s.l}</span>
+          </div>
+        ))}
+      </div>
       {/* ── DESKTOP: foto lado direito (absolute) ── */}
       <div className="hidden md:block absolute right-0 top-0 w-[55%] h-full z-0">
         <Image
@@ -54,7 +67,7 @@ export default function Hero() {
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-        <div className="pt-2 pb-16 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
+        <div className="pt-4 pb-10 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
 
           {/* Label */}
           <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
@@ -89,7 +102,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="h-reveal pt-8 flex justify-center md:justify-start gap-10 md:gap-8"
+          <div className="h-reveal pt-8 hidden md:flex md:justify-start md:gap-8"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.52s, transform 0.7s ease 0.52s'}}>
             {[
               { n: '20+', l: 'Anos pregando' },
