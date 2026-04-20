@@ -19,10 +19,10 @@ export default function About() {
   return (
     <section id="visao" ref={ref} className="relative py-28 md:py-40 overflow-hidden bg-[#0F0F17]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-start">
 
           {/* Foto — coluna inteira, alinhada ao topo */}
-          <div className="reveal-left">
+          <div className="reveal-left hidden lg:block">
             <div className="relative w-full overflow-hidden aspect-[3/4] max-w-sm mx-auto lg:max-w-none lg:aspect-[3/4]">
               <Image
                 src="/altomir.png"
