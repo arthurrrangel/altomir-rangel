@@ -39,24 +39,24 @@ export default function About() {
 
           {/* Texto — label agora dentro da coluna, alinhado ao topo */}
           <div className="flex flex-col gap-8">
-            <div className="reveal flex items-center gap-3">
+            <div className="reveal flex items-center gap-3 justify-center lg:justify-start">
               <div className="h-px w-8 bg-[#C5973F]" />
               <span className="label">Visão &amp; Propósito</span>
             </div>
             <div className="reveal">
-              <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white">
+              <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white text-center lg:text-left">
                 ENSINAR AS PESSOAS<br />
                 A <span className="text-[#C5973F]">OUVIR DEUS</span><br />
                 É O NOSSO<br />PROPÓSITO
               </h2>
             </div>
             <div className="reveal flex flex-col gap-4">
-              <p className="font-inter text-white/50 leading-loose text-[15px]">
+              <p className="font-inter text-white/50 leading-loose text-[15px] text-center lg:text-left">
                 Altomir Rangel é um empresário brasileiro que encontrou em Deus o seu maior propósito.
                 Voluntário no Reino de Deus há mais de 20 anos, já pregou em mais de 500 igrejas
                 em todo o Brasil — sem nenhum interesse financeiro, movido pela fé e pelo amor as pessoas.
               </p>
-              <p className="font-inter text-white/50 leading-loose text-[15px]">
+              <p className="font-inter text-white/50 leading-loose text-[15px] text-center lg:text-left">
                 Com uma trajetória marcada pelo equilíbrio entre os negócios e a vida espiritual,
                 Altomir demonstra que é possível ser bem-sucedido no mundo corporativo sem abrir
                 mão dos valores cristãos. Autor de 4 livros e criador de conteúdo no YouTube,
@@ -70,7 +70,7 @@ export default function About() {
               <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block">— Altomir Rangel</span>
             </div>
             <div className="reveal">
-              <a href="#contato" className="btn-gold">
+              <a href="#contato" className="btn-gold self-center lg:self-start">
                 Convidar para Pregar &rarr;
               </a>
             </div>
