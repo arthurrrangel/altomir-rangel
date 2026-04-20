@@ -7,9 +7,9 @@ export const hero = {
   label: '',                          // deixar vazio para não exibir o label
   headline1: 'PREGANDO A',
   headline2: 'PALAVRA',
-  headlineGold: 'HÁ MAIS DE 20 ANOS',
+  headlineGold: 'QUE TRANSFORMA',
   subtitle:
-    'Pregador voluntário, autor de livros cristãos e criador de conteúdo no YouTube. Já ministrou em mais de 500 igrejas por todo o Brasil — movido pelo chamado de Deus e pelo amor às pessoas.',
+    'Pregador, autor de livros cristãos e criador de conteúdo no YouTube. Levando a Palavra de Deus a igrejas por todo o Brasil — movido pelo chamado e pelo amor às pessoas.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -21,9 +21,9 @@ export const about = {
   headlineGold: 'OUVIR DEUS',
   headline2: 'É O NOSSO PROPÓSITO',
   bio1:
-    'Altomir Rangel é pregador voluntário há mais de 20 anos. Já ministrou em mais de 500 igrejas em todo o Brasil — sem nenhum interesse financeiro, movido pelo chamado de Deus e pelo amor às pessoas.',
+    'Altomir Rangel é pregador e autor de livros cristãos. Percorre igrejas por todo o Brasil movido pelo chamado de Deus e pelo amor às pessoas — sem interesse financeiro.',
   bio2:
-    'Autor de livros cristãos e criador de conteúdo no YouTube, Altomir leva a Palavra de Deus a milhares de vidas todos os dias — de forma gratuita, sustentada pela fé e pelo apoio de quem acredita nessa mensagem.',
+    'Criador de conteúdo no YouTube, Altomir leva a Palavra de Deus a milhares de vidas todos os dias — de forma gratuita, sustentada pela fé e pelo apoio de quem acredita nessa mensagem.',
   quote:
     '"O maior negócio que fiz na vida foi me entregar ao serviço de Deus."',
   quoteAuthor: '— Altomir Rangel',
