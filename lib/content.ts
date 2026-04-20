@@ -21,7 +21,7 @@ export const about = {
   headlineGold: 'O REINO',
   headline2: 'SE MANIFESTA.',
   bio1:
-    'Altomir Rangel é marido, pai de três filhos e avô. Pregador e autor de livros cristãos, percorre o Brasil de igreja em igreja levando a Palavra do Reino de Deus a quem precisa ouvir — com a Bíblia na mão e o coração disponível.',
+    'Altomir Rangel é marido, pai de três filhos e avô. Empresário e Administrador por profissão e Pregador e autor de livros de fé por propósito, percorre o Brasil levando a Palavra do Reino de Deus a quem precisa ouvir.',
   bio2:
     'Pelos livros, pelo YouTube e pelas pregações, vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
   quote:
