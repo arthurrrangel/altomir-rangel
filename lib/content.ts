@@ -4,12 +4,12 @@
 
 // ── HERO (tela inicial) ──────────────────────────────────────────────────────
 export const hero = {
-  label: 'Empresário · Pregador · Autor',
-  headline1: 'ENSINAR AS',
-  headline2: 'PESSOAS A',
-  headlineGold: 'OUVIR DEUS',
+  label: '',                          // deixar vazio para não exibir o label
+  headline1: 'PREGANDO A',
+  headline2: 'PALAVRA',
+  headlineGold: 'HÁ MAIS DE 20 ANOS',
   subtitle:
-    'Empresário brasileiro, pregador voluntário e autor de livros cristãos. Mais de 20 anos levando a Palavra de Deus a igrejas em todo o Brasil.',
+    'Pregador voluntário, autor de livros cristãos e criador de conteúdo no YouTube. Já ministrou em mais de 500 igrejas por todo o Brasil — movido pelo chamado de Deus e pelo amor às pessoas.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -21,9 +21,9 @@ export const about = {
   headlineGold: 'OUVIR DEUS',
   headline2: 'É O NOSSO PROPÓSITO',
   bio1:
-    'Altomir Rangel é um empresário brasileiro que encontrou em Deus o seu maior propósito. Voluntário no Reino de Deus há mais de 20 anos, já pregou em mais de 500 igrejas em todo o Brasil — sem nenhum interesse financeiro, movido pela fé e pelo amor as pessoas.',
+    'Altomir Rangel é pregador voluntário há mais de 20 anos. Já ministrou em mais de 500 igrejas em todo o Brasil — sem nenhum interesse financeiro, movido pelo chamado de Deus e pelo amor às pessoas.',
   bio2:
-    'Com uma trajetória marcada pelo equilíbrio entre os negócios e a vida espiritual, Altomir demonstra que é possível ser bem-sucedido no mundo corporativo sem abrir mão dos valores cristãos. Autor de 4 livros e criador de conteúdo no YouTube, milhares de vidas já foram transformadas pela sua mensagem.',
+    'Autor de livros cristãos e criador de conteúdo no YouTube, Altomir leva a Palavra de Deus a milhares de vidas todos os dias — de forma gratuita, sustentada pela fé e pelo apoio de quem acredita nessa mensagem.',
   quote:
     '"O maior negócio que fiz na vida foi me entregar ao serviço de Deus."',
   quoteAuthor: '— Altomir Rangel',

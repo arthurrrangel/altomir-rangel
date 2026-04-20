@@ -61,11 +61,13 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
         <div className="pt-6 pb-12 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
 
-          {/* Label */}
-          <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
-            style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
-            <span className="label">{hero.label}</span>
-          </div>
+          {/* Label (só exibe se tiver texto) */}
+          {hero.label && (
+            <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
+              style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
+              <span className="label">{hero.label}</span>
+            </div>
+          )}
 
           {/* Headline */}
           <h1 className="h-reveal font-bebas text-[clamp(40px,11vw,128px)] leading-[0.88] text-white mb-6"
