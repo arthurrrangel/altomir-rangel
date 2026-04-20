@@ -25,11 +25,11 @@ export default function About() {
           {/* Foto — preenche altura natural da coluna */}
           <div className="reveal-left hidden lg:block relative min-h-[500px]">
             <Image
-              src="/altomir.png"
+              src="/altomir-portrait.jpg"
               alt="Altomir Rangel"
               fill
               className="object-cover"
-              style={{objectPosition: '38% 20%'}}
+              style={{objectPosition: 'center top'}}
               sizes="50vw"
             />
             <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
