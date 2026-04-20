@@ -112,6 +112,13 @@ body::before {
 /* ── Section divider ── */
 .divider { height: 1px; background: rgba(197,151,63,0.2); }
 
+/* ── Mobile: reduz animações pesadas ── */
+@media (max-width: 768px) {
+  .reveal { transform: translateY(18px); }
+  .reveal-left { transform: translateX(-16px); }
+  .reveal-right { transform: translateX(16px); }
+}
+
 /* ── Form inputs ── */
 .input-dark {
   width: 100%;

@@ -21,8 +21,8 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
 
-      {/* MOBILE: foto no topo */}
-      <div className="relative md:hidden w-full" style={{height: '72vh'}}>
+      {/* MOBILE: foto no topo — altura reduzida para CTAs ficarem visíveis */}
+      <div className="relative md:hidden w-full" style={{height: '56vh', minHeight: '280px'}}>
         <Image
           src="/altomir.png"
           alt="Altomir Rangel"
@@ -33,7 +33,7 @@ export default function Hero() {
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 10%, transparent 45%, #0A0A0F 100%)'
+          background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 12%, transparent 40%, #0A0A0F 100%)'
         }} />
       </div>
 
@@ -53,43 +53,47 @@ export default function Hero() {
         <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
       </div>
 
-      {/* Subtle gold glow desktop only */}
+      {/* Gold glow desktop */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none hidden md:block"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.06) 0%, transparent 70%)'}} />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-        <div className="pt-4 pb-12 md:pt-24 md:pb-16 md:max-w-2xl md:mx-0">
+        <div className="pt-2 pb-10 md:pt-24 md:pb-16 md:max-w-2xl md:mx-0">
 
-          {/* Label */}
           {hero.label && (
-            <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
+            <div className="h-reveal opacity-0 flex items-center mb-4 md:mb-6"
               style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
               <span className="label">{hero.label}</span>
             </div>
           )}
 
-          {/* Headline */}
-          <h1 className="h-reveal font-bebas text-[clamp(42px,11vw,128px)] leading-[0.88] text-white mb-5 text-center md:text-left"
-            style={{opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
+          {/* Headline — menor no mobile para caber na tela */}
+          <h1 className="h-reveal font-bebas leading-[0.88] text-white mb-4 md:mb-6"
+            style={{
+              fontSize: 'clamp(36px, 10vw, 128px)',
+              opacity: 0,
+              transform: 'translateY(24px)',
+              transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'
+            }}>
             {hero.headline1}
             {hero.headline2 && <><br />{hero.headline2}</>}
             <br /><span className="text-[#C5973F]">{hero.headlineGold}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="h-reveal font-inter text-white/50 text-[14px] leading-relaxed mb-8 text-center md:text-left md:max-w-sm"
+          <p className="h-reveal font-inter text-white/50 text-[13px] md:text-[15px] leading-relaxed mb-6 md:mb-8 md:max-w-sm"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
             {hero.subtitle}
           </p>
 
           {/* CTAs */}
-          <div className="h-reveal flex flex-col sm:flex-row gap-3 md:justify-start"
+          <div className="h-reveal flex flex-col sm:flex-row gap-3"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
-            <a href="#visao" className="btn-gold w-full sm:w-auto justify-center min-h-[48px]">
+            <a href="#visao" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
               {hero.ctaPrimary} <ArrowRight size={14} />
             </a>
-            <a href="#livros" className="btn-outline w-full sm:w-auto justify-center min-h-[48px]">
+            <a href="#livros" className="btn-outline w-full sm:w-auto justify-center min-h-[50px]">
               {hero.ctaSecondary}
             </a>
           </div>

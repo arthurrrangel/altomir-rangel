@@ -7,6 +7,14 @@ import Contribute from '@/components/Contribute'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
+function SectionDivider() {
+  return (
+    <div className="px-6 md:px-10 max-w-7xl mx-auto">
+      <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <>
@@ -14,9 +22,13 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <SectionDivider />
         <Books />
+        <SectionDivider />
         <YouTubeSection />
+        <SectionDivider />
         <Contribute />
+        <SectionDivider />
         <Contact />
       </main>
       <Footer />

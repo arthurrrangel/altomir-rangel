@@ -18,7 +18,11 @@ export default function About() {
   }, [])
 
   return (
-    <section id="visao" ref={ref} className="relative py-16 md:py-40 overflow-hidden bg-[#0F0F17]">
+    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
+
+      {/* Linha dourada decorativa mobile */}
+      <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5973F]/40 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-stretch">
 
@@ -36,36 +40,49 @@ export default function About() {
           </div>
 
           {/* Texto */}
-          <div className="flex flex-col gap-6 lg:gap-8">
-            <div className="reveal flex items-center">
+          <div className="flex flex-col gap-5 lg:gap-8">
+
+            {/* Label */}
+            <div className="reveal flex items-center gap-3">
+              <div className="hidden lg:block w-8 h-px bg-[#C5973F]" />
               <span className="label">{about.label}</span>
             </div>
+
+            {/* Headline */}
             <div className="reveal">
-              <h2 className="font-bebas text-[clamp(34px,8vw,80px)] leading-[0.9] text-white">
-                {about.headline1}<br /><span className="text-[#C5973F]">{about.headlineGold}</span>
+              <h2 className="font-bebas leading-[0.9] text-white" style={{fontSize: 'clamp(36px, 9vw, 80px)'}}>
+                {about.headline1}<br />
+                <span className="text-[#C5973F]">{about.headlineGold}</span>
                 {about.headline2 ? <><br />{about.headline2}</> : null}
               </h2>
             </div>
+
+            {/* Linha dourada mobile sob headline */}
+            <div className="reveal lg:hidden h-px w-12 bg-[#C5973F]" />
+
+            {/* Bio */}
             <div className="reveal flex flex-col gap-4">
-              <p className="font-inter text-white/50 leading-loose text-[15px]">
+              <p className="font-inter text-white/55 leading-relaxed text-[15px]">
                 {about.bio1}
               </p>
-              <p className="font-inter text-white/50 leading-loose text-[15px]">
+              <p className="font-inter text-white/55 leading-relaxed text-[15px]">
                 {about.bio2}
               </p>
             </div>
+
             {about.quote && (
-              <div className="reveal lg:border-l-2 border-[#C5973F] lg:pl-6 py-2">
-                <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
+              <div className="reveal border-l-2 border-[#C5973F] pl-5 py-1">
+                <p className="font-playfair italic text-xl text-white/70 leading-relaxed">
                   {about.quote}
                 </p>
                 {about.quoteAuthor && (
-                  <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
+                  <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block">{about.quoteAuthor}</span>
                 )}
               </div>
             )}
+
             <div className="reveal">
-              <a href="#contato" className="btn-gold w-full sm:w-auto justify-center">
+              <a href="#contato" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
                 Convidar para Pregar &rarr;
               </a>
             </div>
