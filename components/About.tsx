@@ -29,7 +29,7 @@ export default function About() {
                 alt="Altomir Rangel"
                 fill
                 className="object-cover"
-                style={{objectPosition: '50% 12%'}}
+                style={{objectPosition: '37% 12%'}}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
