@@ -17,11 +17,11 @@ export const hero = {
 // ── SOBRE / VISÃO ────────────────────────────────────────────────────────────
 export const about = {
   label: 'Visão & Propósito',
-  headline1: 'A FÉ DECLARA.',
-  headlineGold: 'O REINO',
-  headline2: 'SE MANIFESTA.',
+  headline1: 'PROFISSÃO',
+  headlineGold: 'E PROPÓSITO.',
+  headline2: '',
   bio1:
-    'Altomir Rangel é marido, pai de três filhos e avô. Empresário e Administrador por profissão e Pregador e autor de livros de fé por propósito, percorre o Brasil levando a Palavra do Reino de Deus a quem precisa ouvir.',
+    'Altomir Rangel é marido, pai de três filhos e avô. Empresário por profissão, pregador e autor de livros de fé por propósito — percorre o Brasil levando a Palavra do Reino de Deus a quem precisa ouvir.',
   bio2:
     'Pelos livros, pelo YouTube e pelas pregações, vidas são transformadas todos os dias — pessoas que encontraram direção, cura, fé e esperança através dessa mensagem. Esse ministério existe porque há quem acredite que a Palavra do Reino ainda tem muito chão para percorrer.',
   quote: '',
