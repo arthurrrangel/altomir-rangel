@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef } from 'react'
-import { Play, Youtube, ExternalLink } from 'lucide-react'
+import { Play, Youtube } from 'lucide-react'
 import { videos } from '@/lib/videos'
 
 export default function YouTubeSection() {
@@ -10,7 +10,7 @@ export default function YouTubeSection() {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting)
-          e.target.querySelectorAll('.reveal').forEach((el, i) =>
+          e.target.querySelectorAll('.reveal,.reveal-left').forEach((el, i) =>
             setTimeout(() => el.classList.add('visible'), i * 80))
       })
     }, { threshold: 0.05 })
@@ -18,102 +18,137 @@ export default function YouTubeSection() {
     return () => obs.disconnect()
   }, [])
 
-  const featured = videos.slice(0, 1)[0]
+  const featured = videos[0]
   const rest = videos.slice(1, 7)
 
   return (
     <section id="youtube" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
 
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
-        style={{background: 'radial-gradient(ellipse at top left, rgba(220,38,38,0.04) 0%, transparent 65%)'}} />
+      {/* Background glow */}
+      <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"
+        style={{background:'radial-gradient(ellipse at top left,rgba(220,38,38,0.05) 0%,transparent 65%)'}} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">
           <div className="text-center md:text-left">
-            <div className="reveal flex items-center justify-center md:justify-start mb-3">
-              <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase flex items-center gap-1.5">
-                <Youtube size={11} /> Canal no YouTube
+            <div className="reveal flex items-center justify-center md:justify-start gap-2 mb-3">
+              <Youtube size={12} className="text-red-500" />
+              <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase">
+                Canal no YouTube
               </span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
-              ASSISTA OS<br /><span className="text-[#C5973F]">ENSINAMENTOS</span>
+              PREGAÇÕES QUE<br /><span className="text-[#C5973F]">EDIFICAM</span>
             </h2>
           </div>
-          <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-            className="reveal btn-outline self-center md:self-end flex items-center gap-2 min-h-[48px]">
-            <Youtube size={14} /> Ver Canal <ExternalLink size={12} />
+
+          {/* Subscribe button — header */}
+          <a href="https://www.youtube.com/@altomirrangel?sub_confirmation=1" target="_blank" rel="noopener noreferrer"
+            className="reveal flex-shrink-0 self-center md:self-end flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 active:scale-95 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-6 py-3.5 transition-all duration-200 min-h-[48px] shadow-[0_6px_24px_rgba(220,38,38,0.30)] hover:shadow-[0_8px_32px_rgba(220,38,38,0.45)]">
+            <Youtube size={14} /> SE INSCREVER
           </a>
         </div>
 
-        {/* Featured video */}
+        {/* Featured video — cinematic */}
         {featured && (
           <a href={`https://www.youtube.com/watch?v=${featured.id}`} target="_blank" rel="noopener noreferrer"
-            className="reveal group block mb-4 relative overflow-hidden border border-white/6 hover:border-[#C5973F]/30 transition-colors">
+            className="reveal group block mb-5 relative overflow-hidden border border-white/6 hover:border-red-500/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(220,38,38,0.10)]">
             <div className="relative aspect-video bg-[#141420] overflow-hidden">
               <img
                 src={`https://img.youtube.com/vi/${featured.id}/maxresdefault.jpg`}
                 alt={featured.title}
-                className="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
+                className="w-full h-full object-cover opacity-55 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700"
                 onError={e => { (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${featured.id}/hqdefault.jpg` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F17]/80 to-transparent" />
+              {/* Gradient left */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F17] via-[#0F0F17]/50 to-transparent" />
+              {/* Gradient bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17]/60 to-transparent" />
+
+              {/* Play button — centered */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#C5973F]/90 group-hover:bg-[#C5973F] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                  <Play size={20} className="text-black fill-black ml-1 sm:hidden" />
-                  <Play size={28} className="text-black fill-black ml-1 hidden sm:block" />
+                <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-red-600/90 group-hover:bg-red-500 flex items-center justify-center shadow-[0_0_40px_rgba(220,38,38,0.5)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.7)] group-hover:scale-110 transition-all duration-300">
+                  <Play size={22} className="text-white fill-white ml-1.5 sm:hidden" />
+                  <Play size={32} className="text-white fill-white ml-2 hidden sm:block" />
                 </div>
               </div>
-              <div className="absolute left-4 sm:left-8 bottom-4 sm:bottom-8 pr-4">
-                <span className="label mb-2 block text-[9px] sm:text-[11px]">{featured.category}</span>
-                <h3 className="font-bebas text-base sm:text-3xl md:text-4xl text-white leading-tight max-w-[240px] sm:max-w-lg">{featured.title}</h3>
+
+              {/* Info — bottom left */}
+              <div className="absolute left-5 sm:left-8 bottom-5 sm:bottom-8 pr-4">
+                <span className="inline-flex items-center gap-1.5 font-inter text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#C5973F] uppercase mb-2 sm:mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5973F] inline-block" />
+                  {featured.category} · Em Destaque
+                </span>
+                <h3 className="font-bebas text-xl sm:text-4xl md:text-5xl text-white leading-tight max-w-[260px] sm:max-w-xl drop-shadow-lg">
+                  {featured.title}
+                </h3>
+                <p className="font-inter text-[11px] sm:text-[12px] text-white/40 mt-2 flex items-center gap-1.5">
+                  <Youtube size={10} className="text-red-400" /> youtube.com/@altomirrangel
+                </p>
               </div>
             </div>
           </a>
         )}
 
-        {/* Videos grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {rest.map(v => (
-            <a key={v.id} href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener noreferrer"
-              className="reveal group flex flex-row sm:flex-col bg-[#141420] border border-white/5 hover:border-[#C5973F]/25 hover:bg-[#16162A] transition-all duration-300 overflow-hidden">
-              <div className="relative w-28 sm:w-full aspect-video sm:aspect-video overflow-hidden bg-[#0F0F17] flex-shrink-0">
+        {/* Grid — 6 videos */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6">
+          {rest.map((v, i) => (
+            <a key={v.id}
+              href={`https://www.youtube.com/watch?v=${v.id}`}
+              target="_blank" rel="noopener noreferrer"
+              className="reveal-left group flex flex-col bg-[#141420] border border-white/5 hover:border-red-500/20 hover:bg-[#18181f] transition-all duration-300 overflow-hidden hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+
+              {/* Thumbnail */}
+              <div className="relative aspect-video overflow-hidden bg-[#0F0F17]">
                 <img
                   src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`}
                   alt={v.title}
-                  className="w-full h-full object-cover opacity-50 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-55 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
                   onError={e => { (e.target as HTMLImageElement).style.opacity = '0' }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+
+                {/* Play */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-[#C5973F]/80 group-hover:bg-[#C5973F] flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                    <Play size={11} className="text-black fill-black ml-0.5 sm:hidden" />
-                    <Play size={16} className="text-black fill-black ml-0.5 hidden sm:block" />
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-red-600/80 group-hover:bg-red-500 flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg">
+                    <Play size={12} className="text-white fill-white ml-0.5 sm:hidden" />
+                    <Play size={14} className="text-white fill-white ml-0.5 hidden sm:block" />
                   </div>
                 </div>
+
+                {/* Category tag */}
+                <span className="absolute top-2 left-2 font-inter text-[8px] font-bold tracking-[0.2em] text-[#C5973F] uppercase bg-black/60 px-1.5 py-0.5">
+                  {v.category}
+                </span>
               </div>
-              <div className="p-3 sm:p-4 flex flex-col gap-1 sm:gap-2 justify-center text-center sm:text-left">
-                <span className="label text-[8px] sm:text-[9px]">{v.category}</span>
-                <h3 className="font-inter text-[12px] sm:text-[13px] font-semibold text-white/70 group-hover:text-white transition-colors leading-snug line-clamp-2">{v.title}</h3>
+
+              {/* Title */}
+              <div className="p-3 sm:p-4">
+                <h3 className="font-inter text-[11px] sm:text-[13px] font-semibold text-white/65 group-hover:text-white transition-colors leading-snug line-clamp-2 text-center sm:text-left">
+                  {v.title}
+                </h3>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Subscribe CTA */}
-        <div className="reveal mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-7 border border-red-500/15 bg-red-500/5">
-          <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
-            <Youtube size={20} className="text-red-400" />
+        {/* Footer CTA */}
+        <div className="reveal flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-6 sm:p-8 border border-red-500/15 bg-gradient-to-r from-red-500/6 to-transparent">
+          <div className="w-14 h-14 rounded-full bg-red-600/15 border border-red-500/20 flex items-center justify-center flex-shrink-0">
+            <Youtube size={24} className="text-red-400" />
           </div>
           <div className="flex-1 text-center sm:text-left">
-            <h3 className="font-bebas text-xl sm:text-2xl text-white">@ALTOMIRRANGEL</h3>
-            <p className="font-inter text-white/35 text-xs sm:text-sm">Pregações e ensinamentos bíblicos — conteúdo gratuito para edificar sua vida.</p>
+            <h3 className="font-bebas text-2xl sm:text-3xl text-white mb-0.5">NOVO VÍDEO TODA SEMANA</h3>
+            <p className="font-inter text-white/35 text-sm">Pregações e ensinamentos bíblicos gratuitos para edificar sua fé.</p>
           </div>
-          <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-6 py-3 transition-colors w-full sm:w-auto justify-center min-h-[48px]">
-            <Youtube size={14} /> SE INSCREVER
+          <a href="https://www.youtube.com/@altomirrangel?sub_confirmation=1" target="_blank" rel="noopener noreferrer"
+            className="flex-shrink-0 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 active:scale-95 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-7 py-4 transition-all duration-200 w-full sm:w-auto min-h-[52px] shadow-[0_6px_24px_rgba(220,38,38,0.30)] hover:shadow-[0_10px_36px_rgba(220,38,38,0.45)]">
+            <Youtube size={14} /> SE INSCREVER AGORA
           </a>
         </div>
+
       </div>
     </section>
   )
