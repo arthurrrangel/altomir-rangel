@@ -58,6 +58,10 @@ body::before {
 .reveal-right { transform: translateX(30px); }
 .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
+/* Hero Reveal */
+.h-reveal.h-visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+
 /* ── Buttons ── */
 .btn-gold {
   display: inline-flex;
