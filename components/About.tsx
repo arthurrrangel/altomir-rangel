@@ -23,13 +23,13 @@ export default function About() {
 
           {/* Foto — coluna inteira, alinhada ao topo */}
           <div className="reveal-left">
-            <div className="relative w-full overflow-hidden aspect-[3/4] max-w-xs mx-auto w-full lg:max-w-none lg:aspect-[3/4]">
+            <div className="relative w-full overflow-hidden aspect-[3/4] max-w-sm mx-auto lg:max-w-none lg:aspect-[3/4]">
               <Image
                 src="/altomir.png"
                 alt="Altomir Rangel"
                 fill
                 className="object-cover"
-                style={{objectPosition: '55% 15%'}}
+                style={{objectPosition: '50% 12%'}}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
@@ -61,14 +61,14 @@ export default function About() {
                 milhares de vidas já foram transformadas pela sua mensagem.
               </p>
             </div>
-            <div className="reveal border-l-2 border-[#C5973F] pl-6 py-2">
-              <p className="font-playfair italic text-xl text-white/70 leading-relaxed">
+            <div className="reveal lg:border-l-2 border-[#C5973F] lg:pl-6 py-2 text-center lg:text-left">
+              <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
                &ldquo;O maior negócio que fiz na vida foi me entregar ao serviço de Deus.&rdquo;
               </p>
-              <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block">— Altomir Rangel</span>
+              <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">— Altomir Rangel</span>
             </div>
-            <div className="reveal">
-              <a href="#contato" className="btn-gold self-center lg:self-start">
+            <div className="reveal flex justify-center lg:justify-start">
+              <a href="#contato" className="btn-gold">
                 Convidar para Pregar &rarr;
               </a>
             </div>

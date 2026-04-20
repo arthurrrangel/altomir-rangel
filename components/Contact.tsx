@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState, FormEvent } from 'react'
-import { Send, Mail, MapPin, Youtube } from 'lucide-react'
+import { Send } from 'lucide-react'
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null)
@@ -27,60 +27,32 @@ export default function Contact() {
 
   return (
     <section id="contato" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
-
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.05) 0%, transparent 65%)'}}>
       </div>
-
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-
         {/* Header */}
-        <div className="reveal flex items-center mb-4 justify-center md:justify-start">
+        <div className="reveal flex items-center mb-4">
           <span className="label">Entre em Contato</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white text-center md:text-left mb-14">
+        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-14">
           VAMOS CAMINHAR<br /><span className="text-[#C5973F]">JUNTOS</span>
         </h2>
-
         <div className="grid lg:grid-cols-5 gap-14">
-
           {/* Left info */}
-          <div className="lg:col-span-2 flex flex-col gap-8 items-center lg:items-start">
-            <p className="reveal-left font-inter text-white/40 text-[15px] leading-loose text-center md:text-left">
+          <div className="lg:col-span-2 flex flex-col gap-8">
+            <p className="reveal-left font-inter text-white/40 text-[15px] leading-loose">
               Quer encomendar um livro, convidar o Altomir para pregar, ou tem alguma dúvida?
-              Preencha o formulario e nossa equipe entra em contato em breve.
+              Preencha o formulário e nossa equipe entra em contato em breve.
             </p>
-
-            <div className="reveal-left flex flex-col gap-3">
-              {[
-                { icon: Mail, text: 'contato@altomirrangel.com.br' },
-                { icon: MapPin, text: 'Brasil' },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-4 text-white/40 text-sm justify-center lg:justify-start">
-                  <div className="w-9 h-9 border border-white/10 bg-white/3 flex items-center justify-center flex-shrink-0">
-                    <Icon size={14} className="text-[#C5973F]" />
-                  </div>
-                  <span className="font-inter">{text}</span>
-                </div>
-              ))}
-              <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-4 text-white/40 hover:text-red-400 text-sm transition-colors justify-center lg:justify-start">
-                <div className="w-9 h-9 border border-red-500/20 bg-red-500/5 flex items-center justify-center flex-shrink-0">
-                  <Youtube size={14} className="text-red-400" />
-                </div>
-                <span className="font-inter">@altomirrangel</span>
-              </a>
-            </div>
-
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-5">
               <h4 className="font-bebas text-xl text-white mb-2">Convite para Pregação</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed">
                 O Altomir atende convites para ministrar em igrejas e conferências cristãs de forma
-                voluntária. Selecione "Convite para Pregação" no formulário abaixo.
+                voluntária. Selecione &quot;Convite para Pregação&quot; no formulário ao lado.
               </p>
             </div>
-
             {/* WhatsApp */}
             <a href="https://wa.me/5521999999999?text=Ola! Tenho interesse nos livros do Altomir Rangel."
               target="_blank" rel="noopener noreferrer"
@@ -104,7 +76,6 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-
             <div className="reveal-right flex flex-col gap-2">
               <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase">Assunto</label>
               <select value={subject} onChange={e => setSubject(e.target.value)}
@@ -117,13 +88,11 @@ export default function Contact() {
                 <option value="outro">Outro</option>
               </select>
             </div>
-
             <div className="reveal-right flex flex-col gap-2">
               <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase">Mensagem</label>
               <textarea required rows={6} placeholder="Escreva sua mensagem..."
                 className="input-dark resize-none" />
             </div>
-
             <div className="reveal-right">
               <button type="submit" className="btn-gold w-full justify-center gap-2 text-[11px] py-4">
                 {sent ? '✓ MENSAGEM ENVIADA!' : <><Send size={13} /> ENVIAR MENSAGEM</>}

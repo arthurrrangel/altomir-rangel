@@ -17,14 +17,14 @@ export default function Hero() {
     <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
 
       {/* ── MOBILE: foto proeminente no topo ── */}
-      <div className="relative md:hidden w-full" style={{height: '68vh'}}>
+      <div className="relative md:hidden w-full" style={{height: '78vh'}}>
         <Image
           src="/altomir.png"
           alt="Altomir Rangel"
           fill
           priority
           className="object-cover"
-          style={{objectPosition: '48% 10%'}}
+          style={{objectPosition: '55% 8%'}}
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{

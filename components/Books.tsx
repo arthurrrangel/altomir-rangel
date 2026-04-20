@@ -82,7 +82,7 @@ export default function Books() {
 
         {/* CTA strip */}
         <div className="reveal mt-16 border border-[#C5973F]/20 bg-[#C5973F]/5 p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
+          <div className="text-center sm:text-left">
             <p className="font-bebas text-2xl text-white">QUER ENCOMENDAR UM LIVRO?</p>
             <p className="font-inter text-white/40 text-sm mt-1">Entre em contato direto com nossa equipe.</p>
           </div>
