@@ -23,7 +23,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 items-center md:items-start">
             <span className="label text-[9px] mb-1">Navegação</span>
             {[
-              { href: '#visao', label: 'Visão &amp; Propósito' },
+              { href: '#visao', label: 'Visão & Propósito' },
               { href: '#livros', label: 'Livros' },
               { href: '#youtube', label: 'YouTube' },
               { href: '#contato', label: 'Contato' },
