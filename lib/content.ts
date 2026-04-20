@@ -9,7 +9,7 @@ export const hero = {
   headline2: 'PALAVRA',
   headlineGold: 'QUE TRANSFORMA',
   subtitle:
-    'Pregador, autor de livros cristãos e criador de conteúdo no YouTube. Levando a Palavra de Deus a igrejas por todo o Brasil — movido pelo chamado e pelo amor às pessoas.',
+    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir — movido por um chamado que não tem preço.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -21,9 +21,9 @@ export const about = {
   headlineGold: 'OUVIR DEUS',
   headline2: 'É O NOSSO PROPÓSITO',
   bio1:
-    'Altomir Rangel é pregador e autor de livros cristãos. Percorre igrejas por todo o Brasil movido pelo chamado de Deus e pelo amor às pessoas — sem interesse financeiro.',
+    'Altomir Rangel dedica sua vida a pregar a Palavra de Deus. De cidade em cidade, de igreja em igreja — chegando onde a mensagem precisa chegar, com a Bíblia na mão e o coração disponível.',
   bio2:
-    'Criador de conteúdo no YouTube, Altomir leva a Palavra de Deus a milhares de vidas todos os dias — de forma gratuita, sustentada pela fé e pelo apoio de quem acredita nessa mensagem.',
+    'Pelos livros, pelo YouTube e pelas pregações, milhares de vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
   quote:
     '"O maior negócio que fiz na vida foi me entregar ao serviço de Deus."',
   quoteAuthor: '— Altomir Rangel',
