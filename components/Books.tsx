@@ -20,7 +20,7 @@ export default function Books() {
   }, [])
 
   return (
-    <section id="livros" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
+    <section id="livros" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0A0A0F]">
       <div className="absolute top-0 right-1/4 w-[400px] h-[400px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.04) 0%, transparent 70%)'}} />
 
@@ -41,8 +41,8 @@ export default function Books() {
           </a>
         </div>
 
-        {/* Books grid — 1 col mobile, 3 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Books grid — 2 col mobile, 3 col desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {books.map((book) => (
             <div key={book.slug} className="reveal-left group flex flex-col bg-[#0F0F17] border border-white/6 hover:border-[#C5973F]/40 transition-all duration-500">
               {/* Cover */}

@@ -26,7 +26,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contato" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
+    <section id="contato" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0A0A0F]">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.05) 0%, transparent 65%)'}}>
       </div>
@@ -58,8 +58,8 @@ export default function Contact() {
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-5">
               <h4 className="font-bebas text-xl text-white mb-2">Convite para Pregação</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed">
-                O Altomir atende convites para ministrar em igrejas e conferências cristãs de forma
-                voluntária. Selecione &quot;Convite para Pregação&quot; no formulário ao lado.
+                O Altomir atende convites para ministrar em igrejas e conferências cristãs.
+                Selecione &quot;Convite para Pregação&quot; no formulário ao lado.
               </p>
             </div>
           </div>

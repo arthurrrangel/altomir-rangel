@@ -60,7 +60,7 @@ export default function Contribute() {
   }
 
   return (
-    <section ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0F0F17]">
+    <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.04) 0%, transparent 70%)'}} />
 

@@ -9,18 +9,18 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
 
           {/* Brand */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 text-center md:text-left items-center md:items-start">
             <div>
               <span className="font-bebas text-3xl text-white tracking-widest block">ALTOMIR</span>
               <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
             </div>
-            <p className="font-inter text-white/30 text-xs leading-relaxed">
-              Empresário, pregador voluntário e autor de livros cristãos. Mais de 20 anos a serviço do Reino de Deus.
+            <p className="font-inter text-white/30 text-xs leading-relaxed max-w-[260px]">
+              Pregador e autor de livros cristãos. Empresário por profissão, servindo ao Reino por propósito.
             </p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 items-center md:items-start">
             <span className="label text-[9px] mb-1">Navegação</span>
             {[
               { href: '#visao', label: 'Visão & Propósito' },
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center md:items-start">
             <span className="label text-[9px] mb-1">Contato</span>
             <a href="mailto:contato@altomirrangel.com.br"
               className="flex items-center gap-3 text-white/35 hover:text-[#C5973F] transition-colors">

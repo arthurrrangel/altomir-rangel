@@ -22,7 +22,7 @@ export default function YouTubeSection() {
   const rest = videos.slice(1, 7)
 
   return (
-    <section id="youtube" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0F0F17]">
+    <section id="youtube" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
 
       <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse at top left, rgba(220,38,38,0.04) 0%, transparent 65%)'}}>
