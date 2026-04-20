@@ -20,21 +20,19 @@ export default function About() {
   return (
     <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-24 items-stretch">
 
-          {/* Foto — coluna inteira, alinhada ao topo */}
-          <div className="reveal-left hidden lg:block">
-            <div className="relative w-full overflow-hidden aspect-[3/4] max-w-sm mx-auto lg:max-w-none lg:aspect-[3/4]">
-              <Image
-                src="/altomir.png"
-                alt="Altomir Rangel"
-                fill
-                className="object-cover scale-[2] -translate-y-[20%]"
-                style={{objectPosition: '37% 30%', transformOrigin: 'center center'}}
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
-            </div>
+          {/* Foto — preenche altura natural da coluna */}
+          <div className="reveal-left hidden lg:block relative min-h-[500px]">
+            <Image
+              src="/altomir.png"
+              alt="Altomir Rangel"
+              fill
+              className="object-cover"
+              style={{objectPosition: '38% 20%'}}
+              sizes="50vw"
+            />
+            <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
           </div>
 
           {/* Texto — label agora dentro da coluna, alinhado ao topo */}
