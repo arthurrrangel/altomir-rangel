@@ -23,7 +23,7 @@ export const about = {
   bio1:
     'Altomir Rangel é marido, pai de três filhos e avô. Empresário e Administrador por profissão e Pregador e autor de livros de fé por propósito, percorre o Brasil levando a Palavra do Reino de Deus a quem precisa ouvir.',
   bio2:
-    'Pelos livros, pelo YouTube e pelas pregações, vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
+    'Pelos livros, pelo YouTube e pelas pregações, vidas são transformadas todos os dias — pessoas que encontraram direção, cura, fé e esperança através dessa mensagem. Esse ministério existe porque há quem acredite que a Palavra do Reino ainda tem muito chão para percorrer.',
   quote: '',
   quoteAuthor: '',
 }
