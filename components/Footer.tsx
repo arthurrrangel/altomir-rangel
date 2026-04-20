@@ -4,14 +4,12 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="relative bg-black border-t border-white/6">
-      {/* Gold top accent */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C5973F] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16">
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
 
           {/* Brand */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center md:items-start text-center md:text-left">
             <div>
               <span className="font-bebas text-3xl text-white tracking-widest block">ALTOMIR</span>
               <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
@@ -22,7 +20,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 items-center md:items-start">
             <span className="label text-[9px] mb-1">Navegação</span>
             {[
               { href: '#visao', label: 'Visão &amp; Propósito' },
@@ -38,7 +36,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center md:items-start">
             <span className="label text-[9px] mb-1">Contato</span>
             <a href="mailto:contato@altomirrangel.com.br"
               className="flex items-center gap-3 text-white/35 hover:text-[#C5973F] transition-colors">
@@ -51,7 +49,7 @@ export default function Footer() {
               <span className="font-inter text-xs">@altomirrangel</span>
             </a>
             <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer"
-              className="mt-2 btn-gold text-[10px] py-2.5 px-4 self-start">
+              className="mt-2 btn-gold text-[10px] py-2.5 px-4 self-center md:self-start">
               Falar no WhatsApp
             </a>
           </div>

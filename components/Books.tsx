@@ -21,8 +21,6 @@ export default function Books() {
   return (
     <section id="livros" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
 
-      {/* Accent */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/20 to-transparent" />
       <div className="absolute top-0 right-1/4 w-[400px] h-[400px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.04) 0%, transparent 70%)'}} />
 
@@ -31,8 +29,7 @@ export default function Books() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="reveal flex items-center gap-3 mb-4 justify-center md:justify-start">
-              <div className="h-px w-8 bg-[#C5973F]" />
+            <div className="reveal flex items-center mb-4 justify-center md:justify-start">
               <span className="label">Biblioteca Cristã</span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white text-center md:text-left">
@@ -56,9 +53,7 @@ export default function Books() {
                   <span className="font-bebas text-8xl text-[#C5973F]/8 select-none">{i + 1}</span>
                 </div>
                 <div className="relative z-10 text-center px-6">
-                  <div className="w-12 h-px bg-[#C5973F]/40 mx-auto mb-4" />
                   <span className="font-bebas text-white/80 text-lg leading-tight block">{book.title}</span>
-                  <div className="w-12 h-px bg-[#C5973F]/40 mx-auto mt-4" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17] to-transparent opacity-60" />
               </div>
@@ -69,7 +64,7 @@ export default function Books() {
                 {book.description && (
                   <p className="font-inter text-white/40 text-xs leading-relaxed line-clamp-3">{book.description}</p>
                 )}
-                <div className="mt-auto pt-3 border-t border-white/6">
+                <div className="mt-auto pt-3">
                   {book.buyUrl ? (
                     <a href={book.buyUrl} target="_blank" rel="noopener noreferrer"
                       className="flex items-center justify-between text-[#C5973F] hover:text-white transition-colors">

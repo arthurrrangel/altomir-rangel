@@ -57,9 +57,8 @@ export default function Hero() {
         <div className="pt-2 pb-16 md:pt-24 md:pb-16 max-w-2xl mx-auto md:mx-0 text-center md:text-left">
 
           {/* Label */}
-          <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start gap-3 mb-6"
+          <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-6"
             style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
-            <div className="w-8 h-px bg-[#C5973F]" />
             <span className="label">Empresário · Pregador · Autor</span>
           </div>
 
@@ -90,7 +89,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="h-reveal pt-8 border-t border-white/10 flex justify-center md:justify-start gap-10 md:gap-8"
+          <div className="h-reveal pt-8 flex justify-center md:justify-start gap-10 md:gap-8"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.52s, transform 0.7s ease 0.52s'}}>
             {[
               { n: '20+', l: 'Anos pregando' },

@@ -18,7 +18,6 @@ export default function About() {
 
   return (
     <section id="visao" ref={ref} className="relative py-28 md:py-40 overflow-hidden bg-[#0F0F17]">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
@@ -39,8 +38,7 @@ export default function About() {
 
           {/* Texto — label agora dentro da coluna, alinhado ao topo */}
           <div className="flex flex-col gap-8">
-            <div className="reveal flex items-center gap-3 justify-center lg:justify-start">
-              <div className="h-px w-8 bg-[#C5973F]" />
+            <div className="reveal flex items-center justify-center lg:justify-start">
               <span className="label">Visão &amp; Propósito</span>
             </div>
             <div className="reveal">

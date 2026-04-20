@@ -28,7 +28,6 @@ export default function Contact() {
   return (
     <section id="contato" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0A0A0F]">
 
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.05) 0%, transparent 65%)'}}>
       </div>
@@ -36,8 +35,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
-        <div className="reveal flex items-center gap-3 mb-4 justify-center md:justify-start">
-          <div className="h-px w-8 bg-[#C5973F]" />
+        <div className="reveal flex items-center mb-4 justify-center md:justify-start">
           <span className="label">Entre em Contato</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white text-center md:text-left mb-14">
@@ -47,7 +45,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-5 gap-14">
 
           {/* Left info */}
-          <div className="lg:col-span-2 flex flex-col gap-8">
+          <div className="lg:col-span-2 flex flex-col gap-8 items-center lg:items-start">
             <p className="reveal-left font-inter text-white/40 text-[15px] leading-loose text-center md:text-left">
               Quer encomendar um livro, convidar o Altomir para pregar, ou tem alguma dúvida?
               Preencha o formulario e nossa equipe entra em contato em breve.
@@ -58,7 +56,7 @@ export default function Contact() {
                 { icon: Mail, text: 'contato@altomirrangel.com.br' },
                 { icon: MapPin, text: 'Brasil' },
               ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-4 text-white/40 text-sm">
+                <div key={text} className="flex items-center gap-4 text-white/40 text-sm justify-center lg:justify-start">
                   <div className="w-9 h-9 border border-white/10 bg-white/3 flex items-center justify-center flex-shrink-0">
                     <Icon size={14} className="text-[#C5973F]" />
                   </div>
@@ -66,7 +64,7 @@ export default function Contact() {
                 </div>
               ))}
               <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-4 text-white/40 hover:text-red-400 text-sm transition-colors">
+                className="flex items-center gap-4 text-white/40 hover:text-red-400 text-sm transition-colors justify-center lg:justify-start">
                 <div className="w-9 h-9 border border-red-500/20 bg-red-500/5 flex items-center justify-center flex-shrink-0">
                   <Youtube size={14} className="text-red-400" />
                 </div>

@@ -24,7 +24,6 @@ export default function YouTubeSection() {
   return (
     <section id="youtube" ref={ref} className="relative py-28 md:py-36 overflow-hidden bg-[#0F0F17]">
 
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
       <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
         style={{background: 'radial-gradient(ellipse at top left, rgba(220,38,38,0.04) 0%, transparent 65%)'}}>
       </div>
@@ -34,8 +33,7 @@ export default function YouTubeSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <div className="reveal flex items-center gap-3 mb-4 justify-center md:justify-start">
-              <div className="h-px w-8 bg-red-500" />
+            <div className="reveal flex items-center mb-4 justify-center md:justify-start">
               <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase flex items-center gap-1.5">
                 <Youtube size={11} /> Canal no YouTube
               </span>
