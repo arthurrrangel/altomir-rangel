@@ -24,7 +24,7 @@ export default function Hero() {
           fill
           priority
           className="object-cover"
-          style={{objectPosition: '62% 12%'}}
+          style={{objectPosition: '48% 10%'}}
           sizes="100vw"
         />
         <div className="absolute inset-0" style={{

@@ -31,16 +31,16 @@ export default function Books() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="reveal flex items-center gap-3 mb-4">
+            <div className="reveal flex items-center gap-3 mb-4 justify-center md:justify-start">
               <div className="h-px w-8 bg-[#C5973F]" />
-              <span className="label">Biblioteca Crista</span>
+              <span className="label">Biblioteca Cristã</span>
             </div>
-            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
+            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white text-center md:text-left">
               LIVROS QUE<br /><span className="text-[#C5973F]">TRANSFORMAM</span>
             </h2>
           </div>
           <a href="https://www.amazon.com.br/s?k=altomir+rangel" target="_blank" rel="noopener noreferrer"
-            className="reveal btn-outline self-start md:self-end">
+            className="reveal btn-outline self-center md:self-end">
             <BookOpen size={14} /> Ver todos
           </a>
         </div>

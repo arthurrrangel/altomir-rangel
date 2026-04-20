@@ -24,7 +24,7 @@ export default function About() {
 
           {/* Foto — coluna inteira, alinhada ao topo */}
           <div className="reveal-left">
-            <div className="relative w-full overflow-hidden aspect-[4/3] lg:aspect-[3/4]">
+            <div className="relative w-full overflow-hidden aspect-[3/4] max-w-xs mx-auto w-full lg:max-w-none lg:aspect-[3/4]">
               <Image
                 src="/altomir.png"
                 alt="Altomir Rangel"

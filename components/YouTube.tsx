@@ -34,18 +34,18 @@ export default function YouTubeSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <div className="reveal flex items-center gap-3 mb-4">
+            <div className="reveal flex items-center gap-3 mb-4 justify-center md:justify-start">
               <div className="h-px w-8 bg-red-500" />
               <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase flex items-center gap-1.5">
                 <Youtube size={11} /> Canal no YouTube
               </span>
             </div>
-            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
+            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white text-center md:text-left">
               ASSISTA OS<br /><span className="text-[#C5973F]">ENSINAMENTOS</span>
             </h2>
           </div>
           <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-            className="reveal btn-outline self-start md:self-end flex items-center gap-2">
+            className="reveal btn-outline self-center md:self-end flex items-center gap-2">
             <Youtube size={14} /> Ver Canal <ExternalLink size={12} />
           </a>
         </div>

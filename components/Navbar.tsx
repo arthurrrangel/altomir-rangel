@@ -33,7 +33,7 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
-        <a href="#contato" className="hidden md:inline-flex btn-gold text-[10px] py-2.5 px-5">
+        <a href="#contato" className="max-md:!hidden md:inline-flex btn-gold text-[10px] py-2.5 px-5">
           Falar Conosco
         </a>
         <button onClick={() => setOpen(!open)} className="md:hidden flex flex-col gap-1.5 p-2">
