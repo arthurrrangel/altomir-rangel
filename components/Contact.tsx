@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState, FormEvent } from 'react'
-import { Send, Clock, Mail } from 'lucide-react'
+import { Send } from 'lucide-react'
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null)
@@ -34,19 +34,16 @@ export default function Contact() {
 
         {/* Header */}
         <div className="reveal flex items-center justify-center md:justify-start mb-3">
-          <span className="label">Fale com a Gente</span>
+          <span className="label">Contato</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-4 text-center md:text-left">
+        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
           COMO PODEMOS<br /><span className="text-[#C5973F]">SERVIR A VOCÊ?</span>
         </h2>
-        <p className="reveal font-inter text-white/35 text-[15px] leading-relaxed mb-10 md:mb-14 text-center md:text-left max-w-lg md:max-w-none">
-          Seja para adquirir um livro, convidar o Pr. Altomir para ministrar, ou simplesmente dividir o que Deus tem feito em sua vida — estamos aqui.
-        </p>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-14">
 
           {/* Left info */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          <div className="lg:col-span-2 flex flex-col gap-6">
 
             {/* WhatsApp */}
             <a href="https://wa.me/5521999999999?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel."
@@ -58,25 +55,11 @@ export default function Contact() {
               FALAR VIA WHATSAPP
             </a>
 
-            {/* Email */}
-            <a href="mailto:contato@altomirrangel.com.br"
-              className="reveal-left flex items-center justify-center md:justify-start gap-3 bg-white/3 border border-white/8 px-5 py-4 text-white/50 font-inter text-sm hover:text-[#C5973F] hover:border-[#C5973F]/25 transition-colors min-h-[56px]">
-              <Mail size={16} className="text-[#C5973F] flex-shrink-0" />
-              contato@altomirrangel.com.br
-            </a>
-
-            {/* Response time */}
-            <div className="reveal-left flex items-center justify-center md:justify-start gap-2 text-white/20">
-              <Clock size={12} />
-              <span className="font-inter text-[11px] tracking-wide">Respondemos em até 48 horas úteis</span>
-            </div>
-
             {/* Invite card */}
-            <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5 mt-2">
-              <h4 className="font-bebas text-lg sm:text-xl text-white mb-2 text-center md:text-left">Convite para Ministrar</h4>
+            <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
+              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Ministrar</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
-                O Pr. Altomir atende convites para pregações, conferências e retiros cristãos.
-                Informe a data, cidade e o tema no formulário — nossa equipe retorna em breve.
+                Pregações, conferências e retiros cristãos. Informe a data e cidade no formulário.
               </p>
             </div>
           </div>
@@ -85,8 +68,8 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="lg:col-span-3 flex flex-col gap-4 sm:gap-5">
             <div className="reveal-right grid sm:grid-cols-2 gap-4 sm:gap-5">
               <div className="flex flex-col gap-2">
-                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Nome completo</label>
-                <input type="text" required placeholder="Como prefere ser chamado(a)?" className="input-dark min-h-[48px]" />
+                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Nome</label>
+                <input type="text" required placeholder="Seu nome completo" className="input-dark min-h-[48px]" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">E-mail</label>
@@ -94,29 +77,26 @@ export default function Contact() {
               </div>
             </div>
             <div className="reveal-right flex flex-col gap-2">
-              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Como posso ajudar?</label>
+              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Assunto</label>
               <select value={subject} onChange={e => setSubject(e.target.value)}
                 className="input-dark appearance-none cursor-pointer text-white/50 min-h-[48px]">
-                <option value="">Selecione o motivo do contato</option>
+                <option value="">Selecione o assunto</option>
                 <option value="livro">Quero adquirir um livro</option>
-                <option value="convite">Convite para Pregação / Conferência</option>
-                <option value="parceria">Parceria ou Projeto</option>
-                <option value="testemunho">Quero compartilhar um testemunho</option>
-                <option value="outro">Outro assunto</option>
+                <option value="convite">Convite para Pregação</option>
+                <option value="parceria">Parceria</option>
+                <option value="testemunho">Compartilhar Testemunho</option>
+                <option value="outro">Outro</option>
               </select>
             </div>
             <div className="reveal-right flex flex-col gap-2">
               <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Mensagem</label>
-              <textarea required rows={5} placeholder="Conte um pouco mais sobre o que você precisa..."
+              <textarea required rows={4} placeholder="Escreva sua mensagem..."
                 className="input-dark resize-none" />
             </div>
             <div className="reveal-right">
               <button type="submit" className="btn-gold w-full justify-center gap-2 text-[11px] min-h-[52px]">
                 {sent ? '✓ MENSAGEM ENVIADA!' : <><Send size={13} /> ENVIAR MENSAGEM</>}
               </button>
-              <p className="font-inter text-[10px] text-white/20 text-center mt-3">
-                Suas informações são tratadas com total sigilo.
-              </p>
             </div>
           </form>
         </div>
