@@ -29,7 +29,7 @@ export default function Books() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="reveal flex items-center mb-4 justify-center md:justify-start">
-              <span className="label">Biblioteca Cristã</span>
+              <span className="label">Livros do Autor</span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white text-center md:text-left">
               LIVROS QUE<br /><span className="text-[#C5973F]">TRANSFORMAM</span>

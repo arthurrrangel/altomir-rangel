@@ -30,7 +30,7 @@ export const about = {
 
 // ── LIVROS ───────────────────────────────────────────────────────────────────
 export const booksSection = {
-  label: 'Biblioteca Cristã',
+  label: 'Livros do Autor',
   headline1: 'LIVROS QUE',
   headlineGold: 'TRANSFORMAM',
   ctaAll: 'Ver todos',
