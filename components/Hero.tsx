@@ -21,39 +21,24 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
 
-      {/* MOBILE: foto no topo — altura reduzida para CTAs ficarem visíveis */}
+      {/* MOBILE: foto no topo */}
       <div className="relative md:hidden w-full" style={{height: '56vh', minHeight: '280px'}}>
-        <Image
-          src="/altomir.png"
-          alt="Altomir Rangel"
-          fill
-          priority
-          className="object-cover"
-          style={{objectPosition: '37% 8%'}}
-          sizes="100vw"
-        />
+        <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
+          style={{objectPosition: '37% 8%'}} sizes="100vw" />
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 12%, transparent 40%, #0A0A0F 100%)'
         }} />
       </div>
 
-      {/* DESKTOP: foto lado direito */}
+      {/* DESKTOP: foto direita */}
       <div className="hidden md:block absolute right-0 top-0 w-[55%] h-full z-0">
-        <Image
-          src="/altomir.png"
-          alt="Altomir Rangel"
-          fill
-          priority
-          className="object-cover"
-          style={{objectPosition: '50% 10%'}}
-          sizes="55vw"
-        />
+        <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
+          style={{objectPosition: '50% 10%'}} sizes="55vw" />
         <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #0A0A0F 0%, #0A0A0F 15%, rgba(10,10,15,0.7) 45%, rgba(10,10,15,0.1) 100%)'}} />
         <div className="absolute inset-0" style={{background: 'linear-gradient(to top, #0A0A0F 0%, transparent 30%)'}} />
         <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
       </div>
 
-      {/* Gold glow desktop */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none hidden md:block"
         style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.06) 0%, transparent 70%)'}} />
 
@@ -62,33 +47,26 @@ export default function Hero() {
         <div className="pt-2 pb-10 md:pt-24 md:pb-16 md:max-w-2xl md:mx-0">
 
           {hero.label && (
-            <div className="h-reveal opacity-0 flex items-center mb-4 md:mb-6"
+            <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-4 md:mb-6"
               style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
               <span className="label">{hero.label}</span>
             </div>
           )}
 
-          {/* Headline — menor no mobile para caber na tela */}
-          <h1 className="h-reveal font-bebas leading-[0.88] text-white mb-4 md:mb-6"
-            style={{
-              fontSize: 'clamp(36px, 10vw, 128px)',
-              opacity: 0,
-              transform: 'translateY(24px)',
-              transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'
-            }}>
+          <h1 className="h-reveal font-bebas leading-[0.88] text-white mb-4 md:mb-6 text-center md:text-left"
+            style={{fontSize: 'clamp(36px, 10vw, 128px)', opacity: 0, transform: 'translateY(24px)',
+              transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
             {hero.headline1}
             {hero.headline2 && <><br />{hero.headline2}</>}
             <br /><span className="text-[#C5973F]">{hero.headlineGold}</span>
           </h1>
 
-          {/* Subtitle */}
-          <p className="h-reveal font-inter text-white/50 text-[13px] md:text-[15px] leading-relaxed mb-6 md:mb-8 md:max-w-sm"
+          <p className="h-reveal font-inter text-white/50 text-[13px] md:text-[15px] leading-relaxed mb-6 md:mb-8 text-center md:text-left md:max-w-sm"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
             {hero.subtitle}
           </p>
 
-          {/* CTAs */}
-          <div className="h-reveal flex flex-col sm:flex-row gap-3"
+          <div className="h-reveal flex flex-col sm:flex-row gap-3 items-center md:items-start"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
             <a href="#visao" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
               {hero.ctaPrimary} <ArrowRight size={14} />

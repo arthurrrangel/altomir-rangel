@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8 md:gap-8 mb-10 md:mb-12">
 
           {/* Brand */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
             <div>
               <span className="font-bebas text-3xl text-white tracking-widest block">ALTOMIR</span>
               <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex flex-col gap-2.5">
+          <div className="flex flex-col gap-2.5 items-center md:items-start text-center md:text-left">
             <span className="label text-[9px] mb-1">Navegação</span>
             {[
               { href: '#visao', label: 'Visão & Propósito' },
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
             <span className="label text-[9px] mb-1">Contato</span>
             <a href="mailto:contato@altomirrangel.com.br"
               className="flex items-center gap-3 text-white/35 hover:text-[#C5973F] transition-colors min-h-[36px]">
@@ -56,7 +56,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-2 text-center sm:text-left">
           <span className="font-inter text-[10px] text-white/20 tracking-wide">
             &copy; {year} Altomir Rangel. Todos os direitos reservados.
           </span>

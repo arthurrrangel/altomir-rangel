@@ -28,8 +28,8 @@ export default function Books() {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-16">
-          <div>
-            <div className="reveal flex items-center mb-3">
+          <div className="text-center md:text-left">
+            <div className="reveal flex items-center justify-center md:justify-start mb-3">
               <span className="label">Livros do Autor</span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
@@ -37,7 +37,7 @@ export default function Books() {
             </h2>
           </div>
           <a href="https://www.amazon.com.br/s?k=altomir+rangel" target="_blank" rel="noopener noreferrer"
-            className="reveal btn-outline self-start md:self-end min-h-[48px]">
+            className="reveal btn-outline self-center md:self-end min-h-[48px]">
             <BookOpen size={14} /> Ver todos
           </a>
         </div>
@@ -82,8 +82,8 @@ export default function Books() {
         </div>
 
         {/* CTA strip */}
-        <div className="reveal mt-10 md:mt-16 border border-[#C5973F]/20 bg-[#C5973F]/5 p-5 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
-          <div>
+        <div className="reveal mt-10 md:mt-16 border border-[#C5973F]/20 bg-[#C5973F]/5 p-5 sm:p-8 flex flex-col sm:flex-row items-center md:items-center justify-between gap-4 sm:gap-6">
+          <div className="text-center md:text-left">
             <p className="font-bebas text-xl sm:text-2xl text-white">QUER ENCOMENDAR UM LIVRO?</p>
             <p className="font-inter text-white/40 text-sm mt-1">Entre em contato direto com nossa equipe.</p>
           </div>

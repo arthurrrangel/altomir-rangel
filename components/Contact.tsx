@@ -33,10 +33,10 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
-        <div className="reveal flex items-center mb-3">
+        <div className="reveal flex items-center justify-center md:justify-start mb-3">
           <span className="label">Entre em Contato</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-10 md:mb-14">
+        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
           VAMOS CAMINHAR<br /><span className="text-[#C5973F]">JUNTOS</span>
         </h2>
 
@@ -55,13 +55,13 @@ export default function Contact() {
               FALAR VIA WHATSAPP
             </a>
 
-            <p className="reveal-left font-inter text-white/40 text-[14px] leading-loose">
+            <p className="reveal-left font-inter text-white/40 text-[14px] leading-loose text-center md:text-left">
               Quer encomendar um livro, convidar o Altomir para pregar, ou tem alguma dúvida? Preencha o formulário e nossa equipe entra em contato em breve.
             </p>
 
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
-              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5">Convite para Pregação</h4>
+              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Pregação</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed">
                 O Altomir atende convites para ministrar em igrejas e conferências cristãs.
                 Selecione &quot;Convite para Pregação&quot; no formulário ao lado.

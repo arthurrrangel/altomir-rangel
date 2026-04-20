@@ -31,8 +31,8 @@ export default function YouTubeSection() {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">
-          <div>
-            <div className="reveal flex items-center mb-3">
+          <div className="text-center md:text-left">
+            <div className="reveal flex items-center justify-center md:justify-start mb-3">
               <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase flex items-center gap-1.5">
                 <Youtube size={11} /> Canal no YouTube
               </span>
@@ -42,7 +42,7 @@ export default function YouTubeSection() {
             </h2>
           </div>
           <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
-            className="reveal btn-outline self-start md:self-end flex items-center gap-2 min-h-[48px]">
+            className="reveal btn-outline self-center md:self-end flex items-center gap-2 min-h-[48px]">
             <Youtube size={14} /> Ver Canal <ExternalLink size={12} />
           </a>
         </div>
@@ -101,11 +101,11 @@ export default function YouTubeSection() {
         </div>
 
         {/* Subscribe CTA */}
-        <div className="reveal mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-5 sm:p-7 border border-red-500/15 bg-red-500/5">
+        <div className="reveal mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-7 border border-red-500/15 bg-red-500/5">
           <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center flex-shrink-0">
             <Youtube size={20} className="text-red-400" />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 text-center sm:text-left">
             <h3 className="font-bebas text-xl sm:text-2xl text-white">@ALTOMIRRANGEL</h3>
             <p className="font-inter text-white/35 text-xs sm:text-sm">Pregações e ensinamentos bíblicos — conteúdo gratuito para edificar sua vida.</p>
           </div>
