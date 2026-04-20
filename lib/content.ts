@@ -24,9 +24,8 @@ export const about = {
     'Altomir Rangel é marido, pai de três filhos e avô. Empresário e Administrador por profissão e Pregador e autor de livros de fé por propósito, percorre o Brasil levando a Palavra do Reino de Deus a quem precisa ouvir.',
   bio2:
     'Pelos livros, pelo YouTube e pelas pregações, vidas são alcançadas todos os dias. Este ministério é sustentado pela fé e pelo apoio de quem acredita que essa mensagem precisa continuar chegando às pessoas.',
-  quote:
-    '"O chamado de Deus na minha vida é pregar a Palavra do Reino onde ela precisar chegar."',
-  quoteAuthor: '— Altomir Rangel',
+  quote: '',
+  quoteAuthor: '',
 }
 
 // ── LIVROS ───────────────────────────────────────────────────────────────────

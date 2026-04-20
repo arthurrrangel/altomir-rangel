@@ -55,12 +55,16 @@ export default function About() {
                 {about.bio2}
               </p>
             </div>
-            <div className="reveal lg:border-l-2 border-[#C5973F] lg:pl-6 py-2 text-center lg:text-left">
-              <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
-                {about.quote}
-              </p>
-              <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
-            </div>
+            {about.quote && (
+              <div className="reveal lg:border-l-2 border-[#C5973F] lg:pl-6 py-2 text-center lg:text-left">
+                <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
+                  {about.quote}
+                </p>
+                {about.quoteAuthor && (
+                  <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
+                )}
+              </div>
+            )}
             <div className="reveal flex justify-center lg:justify-start">
               <a href="#contato" className="btn-gold">
                 Convidar para Pregar &rarr;
