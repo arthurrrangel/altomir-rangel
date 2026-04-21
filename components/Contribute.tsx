@@ -199,25 +199,26 @@ export default function Contribute() {
           ))}
         </div>
 
-        {/* PIX block — two-column on desktop */}
+        {/* Contribution block */}
         <div className="reveal relative overflow-hidden border border-[#C5973F]/25">
           <div className="absolute inset-0 pointer-events-none"
-            style={{background:'radial-gradient(ellipse at top left,rgba(197,151,63,0.12) 0%,transparent 55%)'}} />
+            style={{background:'radial-gradient(ellipse at top left,rgba(197,151,63,0.10) 0%,transparent 55%)'}} />
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C5973F]/60 via-[#C5973F] to-[#C5973F]/60" />
 
           <div className="relative grid md:grid-cols-2 gap-0">
 
+            {/* Left — mission narrative */}
             <div className="flex flex-col justify-center gap-5 px-8 py-10 md:px-12 md:py-14 border-b md:border-b-0 md:border-r border-white/6">
               <span className="font-inter text-[10px] font-bold tracking-[0.35em] text-[#C5973F] uppercase text-center md:text-left">
-                Semeie neste ministério
+                Faça Parte
               </span>
               <h3 className="font-bebas text-[clamp(26px,4vw,44px)] leading-tight text-white text-center md:text-left">
-                ESTE CONTEÚDO É<br />
-                <span className="text-[#C5973F]">GRATUITO PARA VOCÊ.</span><br />
-                MAS TEM UM CUSTO.
+                SEJA PARTE DO QUE<br />
+                <span className="text-[#C5973F]">DEUS ESTÁ FAZENDO</span><br />
+                ATRAVÉS DESSAS MENSAGENS.
               </h3>
-              <p className="font-inter text-white/45 text-[14px] leading-relaxed text-center md:text-left">
-                Cada pregação, cada vídeo publicado representa horas de dedicação à Palavra. Se você foi edificado, considere ser parte disso — qualquer semente tem valor eterno.
+              <p className="font-inter text-white/50 text-[14px] leading-relaxed text-center md:text-left">
+                Cada vídeo publicado chega a pessoas que talvez nunca tenham entrado numa igreja — pessoas buscando respostas, direção, fé. Quando você contribui, seu nome está nessa história.
               </p>
               <blockquote className="border-l-2 border-[#C5973F]/50 pl-4 hidden md:block">
                 <p className="font-playfair text-[13px] italic text-white/35 leading-relaxed">
@@ -229,7 +230,12 @@ export default function Contribute() {
               </blockquote>
             </div>
 
+            {/* Right — PIX action */}
             <div className="flex flex-col justify-center items-center gap-5 px-8 py-10 md:px-12 md:py-14">
+              <p className="font-inter text-white/35 text-[13px] text-center leading-relaxed">
+                Se as mensagens te alcançaram, você pode fazer o mesmo por outras pessoas. Qualquer valor tem impacto.
+              </p>
+
               <div className="flex gap-2 flex-wrap justify-center">
                 {['R$ 10', 'R$ 25', 'R$ 50', 'R$ 100'].map(v => (
                   <span key={v}
@@ -253,7 +259,7 @@ export default function Contribute() {
                 className="flex items-center justify-center gap-2 w-full bg-[#C5973F] hover:bg-[#d4a84a] active:scale-95 text-black font-inter text-[11px] font-bold tracking-[0.25em] uppercase py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_40px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_50px_rgba(197,151,63,0.50)]">
                 {copied
                   ? <><Check size={14} /> CHAVE COPIADA!</>
-                  : <><Copy size={14} /> COPIAR CHAVE PIX</>}
+                  : <><Copy size={14} /> CONTRIBUIR VIA PIX</>}
               </button>
 
               <p className="font-inter text-[11px] text-white/25 text-center leading-relaxed">
