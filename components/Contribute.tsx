@@ -1,14 +1,9 @@
 "use client"
 import { useEffect, useRef, useState } from 'react'
-import { Copy, Check, Youtube, Star, Users, Play } from 'lucide-react'
+import { Copy, Check, Youtube, Star, Play } from 'lucide-react'
 
 const PIX_KEY = 'riquezanoreino@gmail.com'
 
-const stats = [
-  { value: '+58 mil', label: 'Inscritos' },
-  { value: '+4 mil', label: 'Horas assistidas' },
-  { value: '5 países', label: 'Alcance global' },
-]
 
 const testimonials = [
   {
@@ -134,20 +129,9 @@ export default function Contribute() {
         <div className="reveal flex items-center justify-center md:justify-start mb-3">
           <span className="label">Depoimentos</span>
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-14">
-          <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white text-center md:text-left">
-            VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
-          </h2>
-          {/* Stats strip */}
-          <div className="reveal flex justify-center md:justify-end gap-6 md:gap-8 pb-1">
-            {stats.map(s => (
-              <div key={s.label} className="text-center">
-                <p className="font-bebas text-2xl md:text-3xl text-[#C5973F] leading-none">{s.value}</p>
-                <p className="font-inter text-[9px] text-white/30 tracking-[0.2em] uppercase mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white text-center md:text-left mb-10 md:mb-14">
+          VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
+        </h2>
 
         {/* Featured testimonial — full width */}
         <div className="reveal relative border border-[#C5973F]/20 bg-[#0A0A0F] overflow-hidden mb-4 group hover:border-[#C5973F]/40 transition-colors duration-300">
