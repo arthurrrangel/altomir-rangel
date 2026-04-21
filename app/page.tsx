@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Books from '@/components/Books'
 import YouTubeSection from '@/components/YouTube'
+import BlogPreview from '@/components/BlogPreview'
 import Contribute from '@/components/Contribute'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
@@ -26,6 +27,8 @@ export default function Home() {
         <Books />
         <SectionDivider />
         <YouTubeSection />
+        <SectionDivider />
+        <BlogPreview />
         <SectionDivider />
         <Contribute />
         <SectionDivider />
