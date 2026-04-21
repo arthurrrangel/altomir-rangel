@@ -73,7 +73,7 @@ export default function About() {
 
             <div className="reveal flex justify-center lg:justify-start">
               <a href="#contato" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
-                Convidar para Pregar &rarr;
+                Entre em Contato &rarr;
               </a>
             </div>
           </div>

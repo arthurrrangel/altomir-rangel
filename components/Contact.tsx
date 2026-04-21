@@ -57,7 +57,7 @@ export default function Contact() {
 
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
-              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Ministrar</h4>
+              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Entre em Contato</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
                 Pregações, conferências e retiros cristãos. Informe a data e cidade no formulário.
               </p>
