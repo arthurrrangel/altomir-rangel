@@ -20,8 +20,8 @@ export default function Vision() {
             compartilhado, em cada oração silenciosa de um parceiro.
           </p>
           <p>
-            O que é feito aqui — livros, canal no YouTube, conteúdo
-            nas redes — é entregue de graça. O que sustenta essa obra é a fidelidade de
+            O que é feito aqui: livros, canal no YouTube, conteúdo
+            nas redes, tudo entregue de graça. O que sustenta essa obra é a fidelidade de
             quem Deus coloca para caminhar junto.
           </p>
           <p className="text-ink">

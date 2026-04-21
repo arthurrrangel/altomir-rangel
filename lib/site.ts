@@ -18,7 +18,7 @@ export const site = {
 
   // Endereço ministerial (opcional, usado no rodapé e SEO)
   ministry: 'Ministério Transforme Seu Mundo',
-  city: 'Rio de Janeiro — RJ',
+  city: 'Rio de Janeiro, RJ',
 }
 
 export const stats = [

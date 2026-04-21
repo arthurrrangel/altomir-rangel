@@ -8,7 +8,7 @@ const PIX_KEY = 'riquezanoreino@gmail.com'
 const testimonials = [
   {
     name: 'Carla Mendes',
-    city: 'São Paulo — SP',
+    city: 'São Paulo, SP',
     initials: 'CM',
     featured: true,
     text: 'Assisto os vídeos todo dia no almoço. É meu momento de parar, ouvir a Palavra e organizar a cabeça antes de voltar pro trabalho. Já faz meses que não pulo um dia.',
@@ -17,16 +17,16 @@ const testimonials = [
   },
   {
     name: 'Roberto Faria',
-    city: 'Belo Horizonte — MG',
+    city: 'Belo Horizonte, MG',
     initials: 'RF',
     featured: false,
-    text: 'Todo dia de manhã antes de abrir o computador eu coloco um vídeo do canal. Fé com aplicação prática — é isso que eu precisava. Já indiquei pra minha equipe inteira.',
+    text: 'Todo dia de manhã antes de abrir o computador eu coloco um vídeo do canal. Fé com aplicação prática, é isso que eu precisava. Já indiquei pra minha equipe inteira.',
     videoId: '43-bGX4MfGg',
     videoTitle: 'Pare de Sofrer Calado',
   },
   {
     name: 'Simone Costa',
-    city: 'Recife — PE',
+    city: 'Recife, PE',
     initials: 'SC',
     featured: false,
     text: 'Assisto o ao vivo toda semana com minha irmã. A gente comenta depois, leva pra reunião de célula. Esse sobre a mente foi o que mais gerou discussão no grupo.',
@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     name: 'Marcos Alves',
-    city: 'Goiânia — GO',
+    city: 'Goiânia, GO',
     initials: 'MA',
     featured: false,
     text: 'A gente coloca o canal no domingo à noite depois do jantar. Virou tradição em casa. Esse vídeo sobre honra gerou uma conversa que a gente precisava ter faz tempo.',
@@ -44,7 +44,7 @@ const testimonials = [
   },
   {
     name: 'Patrícia Lima',
-    city: 'Curitiba — PR',
+    city: 'Curitiba, PR',
     initials: 'PL',
     featured: false,
     text: 'Fui indicada por uma amiga e comecei a assistir no caminho do trabalho. Esse vídeo sobre sinais de pessoa falsa me fez repensar alguns relacionamentos. Bem direto, sem rodeios.',
@@ -53,10 +53,10 @@ const testimonials = [
   },
   {
     name: 'André Souza',
-    city: 'Manaus — AM',
+    city: 'Manaus, AM',
     initials: 'AS',
     featured: false,
-    text: 'Assisto o ao vivo toda semana, às vezes duas vezes por semana. Esse sobre milagres ficou comigo por dias — não é o que você ouve em todo lugar. Vale cada minuto.',
+    text: 'Assisto o ao vivo toda semana, às vezes duas vezes por semana. Esse sobre milagres ficou comigo por dias. Não é o que você ouve em todo lugar. Vale cada minuto.',
     videoId: 'MoM39WKTCyk',
     videoTitle: 'Milagre Existe, Mas Nem Todos Conseguem',
   },
@@ -218,7 +218,7 @@ export default function Contribute() {
                 ATRAVÉS DESSAS MENSAGENS.
               </h3>
               <p className="font-inter text-white/50 text-[14px] leading-relaxed text-center md:text-left">
-                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé — pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
+                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé. Pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
               </p>
               <blockquote className="border-l-2 border-[#C5973F]/50 pl-4 hidden md:block">
                 <p className="font-playfair text-[13px] italic text-white/35 leading-relaxed">
@@ -247,7 +247,7 @@ export default function Contribute() {
 
               <div className="w-full border border-[#C5973F]/20 bg-black/50 px-5 py-4 flex flex-col gap-1 text-center">
                 <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#C5973F]/60 uppercase">
-                  Chave PIX — E-mail
+                  Chave PIX (E-mail)
                 </span>
                 <span className="font-inter text-[13px] sm:text-[14px] text-white/70 tracking-wide break-all">
                   {PIX_KEY}

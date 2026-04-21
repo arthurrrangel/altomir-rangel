@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap', style: ['normal', 'italic'] })
 
 export const metadata: Metadata = {
-  title: 'Altomir Rangel — Pregador, Autor e Empresario',
+  title: 'Altomir Rangel | Pregador, Autor e Empresario',
   description: 'Empresario e servo voluntario do Reino de Deus. Autor de livros cristaos e criador de conteudo no YouTube.',
   keywords: ['Altomir Rangel', 'pregador', 'livros cristaos', 'YouTube cristao', 'Palavra de Deus', 'empresario cristao'],
   openGraph: {

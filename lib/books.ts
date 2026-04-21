@@ -28,7 +28,7 @@ export const books: Book[] = [
     publisher: 'ADHONEP',
     isbn: '9786500740042',
     synopsis:
-      'Uma leitura bíblica e prática sobre a prosperidade como meio de servir ao Reino — não como fim em si mesma.',
+      'Uma leitura bíblica e prática sobre a prosperidade como meio de servir ao Reino, não como fim em si mesma.',
     description: [
       'Altomir Rangel compartilha décadas de experiência empresarial e ministerial para ajudar o leitor a redefinir o que significa verdadeiramente prosperar segundo a Palavra de Deus.',
       'Um livro que une os pés no chão da vida financeira com os olhos fixos no propósito eterno.',
@@ -54,7 +54,7 @@ export const books: Book[] = [
     subtitle: 'Aprenda a lidar com você, para lidar com o próximo',
     cover: '/books/bem-vindo-ao-novo-voce.jpg',
     synopsis:
-      'Um convite para o autoconhecimento guiado pela Palavra — porque quem aprende a lidar consigo mesmo transforma tudo ao redor.',
+      'Um convite para o autoconhecimento guiado pela Palavra. Quem aprende a lidar consigo mesmo transforma tudo ao redor.',
     description: [
       'Altomir Rangel mergulha na jornada de autodescoberta à luz das Escrituras, mostrando que crescer espiritualmente começa por dentro.',
       'Com linguagem direta e ensinamento bíblico sólido, este livro desafia o leitor a olhar para si mesmo com honestidade e com a graça de Deus.',

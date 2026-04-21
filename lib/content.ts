@@ -9,7 +9,7 @@ export const hero = {
   headline2: '',
   headlineGold: 'O REINO SE MANIFESTA.',
   subtitle:
-    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir — movido por um chamado que não tem preço.',
+    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir, movido por um chamado que não tem preço.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -48,7 +48,7 @@ export const youtubeSection = {
   headlineGold: 'TRANSFORMAM VIDAS',
   channelHandle: '@altomirrangel',
   channelDescription:
-    'Pregações e ensinamentos bíblicos — conteúdo gratuito para edificar sua vida.',
+    'Pregações e ensinamentos bíblicos, conteúdo gratuito para edificar sua vida.',
   subscribeCta: 'Se Inscrever',
   channelUrl: 'https://www.youtube.com/@altomirrangel',
 }
@@ -58,7 +58,7 @@ export const contributeSection = {
   label: 'Depoimentos',
   headline1: 'VIDAS EDIFICADAS',
   headlineGold: 'E RENOVADAS',
-  pixIntro: 'Se este canal tem sido edificação e renovação para você —',
+  pixIntro: 'Se este canal tem sido edificação e renovação para você,',
   pixLabel: 'Contribuir via PIX',
   pixKey: 'riquezanoreino@gmail.com',
   pixCta: 'COPIAR CHAVE PIX',
