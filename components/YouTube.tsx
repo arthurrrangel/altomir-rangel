@@ -40,7 +40,7 @@ export default function YouTubeSection() {
               </span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
-              PREGAÇÕES QUE<br /><span className="text-[#C5973F]">EDIFICAM</span>
+              VÍDEOS QUE<br /><span className="text-[#C5973F]">EDIFICAM</span>
             </h2>
           </div>
 
@@ -141,7 +141,7 @@ export default function YouTubeSection() {
           </div>
           <div className="flex-1 text-center sm:text-left">
             <h3 className="font-bebas text-2xl sm:text-3xl text-white mb-0.5">NOVO VÍDEO TODA SEMANA</h3>
-            <p className="font-inter text-white/35 text-sm">Pregações e ensinamentos bíblicos gratuitos para edificar sua fé.</p>
+            <p className="font-inter text-white/35 text-sm">Mensagens e ensinamentos bíblicos gratuitos para edificar sua fé.</p>
           </div>
           <a href="https://www.youtube.com/@altomirrangel?sub_confirmation=1" target="_blank" rel="noopener noreferrer"
             className="flex-shrink-0 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 active:scale-95 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-7 py-4 transition-all duration-200 w-full sm:w-auto min-h-[52px] shadow-[0_6px_24px_rgba(220,38,38,0.30)] hover:shadow-[0_10px_36px_rgba(220,38,38,0.45)]">
