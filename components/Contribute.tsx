@@ -218,7 +218,7 @@ export default function Contribute() {
                 ATRAVÉS DESSAS MENSAGENS.
               </h3>
               <p className="font-inter text-white/50 text-[14px] leading-relaxed text-center md:text-left">
-                Cada vídeo publicado chega a pessoas que talvez nunca tenham entrado numa igreja — pessoas buscando respostas, direção, fé. Quando você contribui, seu nome está nessa história.
+                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé — pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
               </p>
               <blockquote className="border-l-2 border-[#C5973F]/50 pl-4 hidden md:block">
                 <p className="font-playfair text-[13px] italic text-white/35 leading-relaxed">

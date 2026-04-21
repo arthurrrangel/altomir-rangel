@@ -9,7 +9,7 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfa
 
 export const metadata: Metadata = {
   title: 'Altomir Rangel — Pregador, Autor e Empresario',
-  description: 'Empresario e servo voluntario do Reino de Deus. Autor de livros cristaos, pregador em igrejas e criador de conteudo no YouTube.',
+  description: 'Empresario e servo voluntario do Reino de Deus. Autor de livros cristaos e criador de conteudo no YouTube.',
   keywords: ['Altomir Rangel', 'pregador', 'livros cristaos', 'YouTube cristao', 'Palavra de Deus', 'empresario cristao'],
   openGraph: {
     title: 'Altomir Rangel',

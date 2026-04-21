@@ -5,7 +5,7 @@ export const site = {
   shortName: 'Altomir Rangel',
   tagline: 'Pregador, Autor e Empresário',
   description:
-    'Empresário e servo voluntário do Reino de Deus. Autor de livros cristãos, pregador em igrejas e criador de conteúdo no YouTube.',
+    'Empresário e servo voluntário do Reino de Deus. Autor de livros cristãos e criador de conteúdo no YouTube.',
   url: 'https://altomir-rangel.vercel.app',
   locale: 'pt-BR',
 
@@ -23,7 +23,7 @@ export const site = {
 
 export const stats = [
   { value: '20+', label: 'Anos pregando' },
-  { value: '500+', label: 'Igrejas visitadas' },
+  { value: '500+', label: 'Eventos realizados' },
   { value: 'Milhares', label: 'Vidas tocadas' },
   { value: 'Brasil', label: 'Alcance nacional' },
 ]
