@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --gold: #C5973F;
-  --gold-dim: rgba(197,151,63,0.15);
-  --dark: #0A0A0F;
-  --dark-2: #0F0F17;
-  --dark-3: #141420;
+  /* Brand palette */
+  --gold: #FFC84E;
+  --gold-dim: rgba(255,200,78,0.15);
+  --blue: #066BB7;
+  --blue-dim: rgba(6,107,183,0.15);
+  --orange: #F1640D;
+  --teal: #072A37;
+  /* Darks */
+  --dark: #080E11;
+  --dark-2: #0D1518;
+  --dark-3: #121C20;
   --white: #FFFFFF;
   --white-60: rgba(255,255,255,0.6);
   --white-30: rgba(255,255,255,0.3);
@@ -19,7 +25,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--dark);
+  background-color: #080E11;
   color: var(--white);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +46,7 @@ body::before {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: rgba(197,151,63,0.3); }
+::-webkit-scrollbar-thumb { background: rgba(255,200,78,0.35); }
 ::selection { background: var(--gold); color: #000; }
 
 /* ── Reveal ── */
@@ -110,7 +116,7 @@ body::before {
 }
 
 /* ── Section divider ── */
-.divider { height: 1px; background: rgba(197,151,63,0.2); }
+.divider { height: 1px; background: rgba(255,200,78,0.2); }
 
 /* ── Mobile: reduz animações pesadas ── */
 @media (max-width: 768px) {
@@ -166,11 +172,11 @@ body::before {
   font-weight: 600;
 }
 .prose-blog em {
-  color: rgba(197,151,63,0.8);
+  color: rgba(255,200,78,0.8);
   font-style: italic;
 }
 .prose-blog blockquote {
-  border-left: 2px solid rgba(197,151,63,0.5);
+  border-left: 2px solid rgba(255,200,78,0.5);
   padding-left: 1.25rem;
   margin: 1.5rem 0;
 }
@@ -195,6 +201,6 @@ body::before {
   margin: 2.5rem 0;
 }
 .prose-blog a {
-  color: #C5973F;
+  color: #FFC84E;
   text-decoration: underline;
 }

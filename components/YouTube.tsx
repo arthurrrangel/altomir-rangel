@@ -22,7 +22,7 @@ export default function YouTubeSection() {
   const rest = videos.slice(1, 7)
 
   return (
-    <section id="youtube" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
+    <section id="youtube" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0D1518]">
 
       {/* Background glow */}
       <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"
@@ -40,7 +40,7 @@ export default function YouTubeSection() {
               </span>
             </div>
             <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
-              VÍDEOS QUE<br /><span className="text-[#C5973F]">EDIFICAM</span>
+              VÍDEOS QUE<br /><span className="text-[#FFC84E]">EDIFICAM</span>
             </h2>
           </div>
 
@@ -55,7 +55,7 @@ export default function YouTubeSection() {
         {featured && (
           <a href={`https://www.youtube.com/watch?v=${featured.id}`} target="_blank" rel="noopener noreferrer"
             className="reveal group block mb-5 relative overflow-hidden border border-white/6 hover:border-red-500/30 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(220,38,38,0.10)]">
-            <div className="relative aspect-video bg-[#141420] overflow-hidden">
+            <div className="relative aspect-video bg-[#121C20] overflow-hidden">
               <img
                 src={`https://img.youtube.com/vi/${featured.id}/maxresdefault.jpg`}
                 alt={featured.title}
@@ -63,9 +63,9 @@ export default function YouTubeSection() {
                 onError={e => { (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${featured.id}/hqdefault.jpg` }}
               />
               {/* Gradient left */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F17] via-[#0F0F17]/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0D1518] via-[#0D1518]/50 to-transparent" />
               {/* Gradient bottom */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F17]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1518]/60 to-transparent" />
 
               {/* Play button — centered */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -77,8 +77,8 @@ export default function YouTubeSection() {
 
               {/* Info — bottom left */}
               <div className="absolute left-5 sm:left-8 bottom-5 sm:bottom-8 pr-4">
-                <span className="inline-flex items-center gap-1.5 font-inter text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#C5973F] uppercase mb-2 sm:mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5973F] inline-block" />
+                <span className="inline-flex items-center gap-1.5 font-inter text-[9px] sm:text-[10px] font-bold tracking-[0.25em] text-[#FFC84E] uppercase mb-2 sm:mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFC84E] inline-block" />
                   {featured.category} · Em Destaque
                 </span>
                 <h3 className="font-bebas text-xl sm:text-4xl md:text-5xl text-white leading-tight max-w-[260px] sm:max-w-xl drop-shadow-lg">
@@ -98,10 +98,10 @@ export default function YouTubeSection() {
             <a key={v.id}
               href={`https://www.youtube.com/watch?v=${v.id}`}
               target="_blank" rel="noopener noreferrer"
-              className="reveal-left group flex flex-col bg-[#141420] border border-white/5 hover:border-red-500/20 hover:bg-[#18181f] transition-all duration-300 overflow-hidden hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+              className="reveal-left group flex flex-col bg-[#121C20] border border-white/5 hover:border-red-500/20 hover:bg-[#131e22] transition-all duration-300 overflow-hidden hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
 
               {/* Thumbnail */}
-              <div className="relative aspect-video overflow-hidden bg-[#0F0F17]">
+              <div className="relative aspect-video overflow-hidden bg-[#0D1518]">
                 <img
                   src={`https://img.youtube.com/vi/${v.id}/hqdefault.jpg`}
                   alt={v.title}
@@ -119,7 +119,7 @@ export default function YouTubeSection() {
                 </div>
 
                 {/* Category tag */}
-                <span className="absolute top-2 left-2 font-inter text-[8px] font-bold tracking-[0.2em] text-[#C5973F] uppercase bg-black/60 px-1.5 py-0.5">
+                <span className="absolute top-2 left-2 font-inter text-[8px] font-bold tracking-[0.2em] text-[#FFC84E] uppercase bg-black/60 px-1.5 py-0.5">
                   {v.category}
                 </span>
               </div>

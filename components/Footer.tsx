@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
             <div>
               <span className="font-bebas text-3xl text-white tracking-widest block">ALTOMIR</span>
-              <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.5em] uppercase">RANGEL</span>
+              <span className="font-inter text-[9px] text-[#FFC84E] tracking-[0.5em] uppercase">RANGEL</span>
             </div>
             <p className="font-inter text-white/30 text-xs leading-relaxed max-w-[260px]">
               Pregador e autor de livros cristãos. Empresário por profissão, servindo ao Reino por propósito.
@@ -29,7 +29,7 @@ export default function Footer() {
               { href: '#contato', label: 'Contato' },
             ].map(l => (
               <a key={l.href} href={l.href}
-                className="font-inter text-xs text-white/35 hover:text-[#C5973F] transition-colors tracking-wide py-0.5">
+                className="font-inter text-xs text-white/35 hover:text-[#FFC84E] transition-colors tracking-wide py-0.5">
                 {l.label}
               </a>
             ))}
@@ -39,8 +39,8 @@ export default function Footer() {
           <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
             <span className="label text-[9px] mb-1">Contato</span>
             <a href="mailto:contato@altomirrangel.com.br"
-              className="flex items-center justify-center md:justify-start gap-3 text-white/35 hover:text-[#C5973F] transition-colors min-h-[36px]">
-              <Mail size={13} className="text-[#C5973F] flex-shrink-0" />
+              className="flex items-center justify-center md:justify-start gap-3 text-white/35 hover:text-[#FFC84E] transition-colors min-h-[36px]">
+              <Mail size={13} className="text-[#FFC84E] flex-shrink-0" />
               <span className="font-inter text-xs">contato@altomirrangel.com.br</span>
             </a>
             <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"

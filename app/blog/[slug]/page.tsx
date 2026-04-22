@@ -19,18 +19,18 @@ export default async function PostPage({ params }: { params: { slug: string } })
   if (!post) notFound()
 
   return (
-    <main className="min-h-screen bg-[#0A0A0F] pt-28 md:pt-36 pb-24">
+    <main className="min-h-screen bg-[#080E11] pt-28 md:pt-36 pb-24">
       <div className="max-w-2xl mx-auto px-6 md:px-10">
 
         {/* Back */}
         <Link href="/blog"
-          className="inline-flex items-center gap-2 font-inter text-[11px] text-white/30 hover:text-[#C5973F] tracking-[0.15em] uppercase transition-colors mb-10">
+          className="inline-flex items-center gap-2 font-inter text-[11px] text-white/30 hover:text-[#FFC84E] tracking-[0.15em] uppercase transition-colors mb-10">
           <ArrowLeft size={12} /> Todos os artigos
         </Link>
 
         {/* Meta */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="font-inter text-[9px] font-bold tracking-[0.2em] text-[#C5973F]/70 uppercase flex items-center gap-1">
+          <span className="font-inter text-[9px] font-bold tracking-[0.2em] text-[#FFC84E]/70 uppercase flex items-center gap-1">
             <Tag size={8} /> {post.category}
           </span>
           <span className="font-inter text-[9px] text-white/20 flex items-center gap-1">
@@ -45,7 +45,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
         </h1>
 
         {/* Excerpt */}
-        <p className="font-inter text-white/50 text-[16px] leading-relaxed border-l-2 border-[#C5973F]/40 pl-5 mb-10">
+        <p className="font-inter text-white/50 text-[16px] leading-relaxed border-l-2 border-[#FFC84E]/40 pl-5 mb-10">
           {post.excerpt}
         </p>
 
@@ -86,11 +86,11 @@ export default async function PostPage({ params }: { params: { slug: string } })
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-white/6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/blog"
-            className="font-inter text-[11px] text-white/30 hover:text-[#C5973F] tracking-[0.15em] uppercase transition-colors flex items-center gap-2">
+            className="font-inter text-[11px] text-white/30 hover:text-[#FFC84E] tracking-[0.15em] uppercase transition-colors flex items-center gap-2">
             <ArrowLeft size={12} /> Voltar ao blog
           </Link>
           <Link href="/#contato"
-            className="font-inter text-[11px] font-bold tracking-[0.2em] text-[#C5973F] uppercase hover:underline">
+            className="font-inter text-[11px] font-bold tracking-[0.2em] text-[#FFC84E] uppercase hover:underline">
             Entrar em contato →
           </Link>
         </div>

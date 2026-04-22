@@ -11,19 +11,19 @@ export default function BlogPage() {
   const posts = getAllPosts()
 
   return (
-    <main className="min-h-screen bg-[#0A0A0F] pt-28 md:pt-36 pb-24">
+    <main className="min-h-screen bg-[#080E11] pt-28 md:pt-36 pb-24">
       <div className="max-w-4xl mx-auto px-6 md:px-10">
 
         {/* Header */}
         <div className="mb-12 md:mb-16 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-            <BookOpen size={12} className="text-[#C5973F]" />
-            <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-[#C5973F] uppercase">
+            <BookOpen size={12} className="text-[#FFC84E]" />
+            <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-[#FFC84E] uppercase">
               Blog
             </span>
           </div>
           <h1 className="font-bebas text-[clamp(42px,9vw,96px)] leading-none text-white">
-            REFLEXÕES<br /><span className="text-[#C5973F]">E ENSINAMENTOS</span>
+            REFLEXÕES<br /><span className="text-[#FFC84E]">E ENSINAMENTOS</span>
           </h1>
           <p className="font-inter text-white/40 text-[15px] mt-4 max-w-xl mx-auto md:mx-0">
             Artigos sobre fé, propósito e vida prática à luz da Palavra.
@@ -37,17 +37,17 @@ export default function BlogPage() {
           <div className="flex flex-col gap-px border border-white/6">
             {posts.map((post, i) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}
-                className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 bg-[#0F0F17] hover:bg-[#141420] border-b border-white/5 last:border-b-0 p-6 sm:p-8 transition-colors duration-200">
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 bg-[#0D1518] hover:bg-[#121C20] border-b border-white/5 last:border-b-0 p-6 sm:p-8 transition-colors duration-200">
 
                 {/* Number */}
-                <span className="hidden sm:block font-bebas text-3xl text-white/10 group-hover:text-[#C5973F]/30 transition-colors w-8 flex-shrink-0 text-right">
+                <span className="hidden sm:block font-bebas text-3xl text-white/10 group-hover:text-[#FFC84E]/30 transition-colors w-8 flex-shrink-0 text-right">
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="font-inter text-[9px] font-bold tracking-[0.2em] text-[#C5973F]/70 uppercase flex items-center gap-1">
+                    <span className="font-inter text-[9px] font-bold tracking-[0.2em] text-[#FFC84E]/70 uppercase flex items-center gap-1">
                       <Tag size={8} /> {post.category}
                     </span>
                     <span className="font-inter text-[9px] text-white/20 flex items-center gap-1">
@@ -55,7 +55,7 @@ export default function BlogPage() {
                       {new Date(post.date + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
                     </span>
                   </div>
-                  <h2 className="font-bebas text-xl sm:text-2xl text-white group-hover:text-[#C5973F] transition-colors leading-tight mb-1">
+                  <h2 className="font-bebas text-xl sm:text-2xl text-white group-hover:text-[#FFC84E] transition-colors leading-tight mb-1">
                     {post.title}
                   </h2>
                   <p className="font-inter text-white/35 text-[13px] leading-relaxed line-clamp-2">
@@ -64,7 +64,7 @@ export default function BlogPage() {
                 </div>
 
                 {/* Arrow */}
-                <span className="font-inter text-white/20 group-hover:text-[#C5973F] transition-colors text-lg flex-shrink-0 hidden sm:block">
+                <span className="font-inter text-white/20 group-hover:text-[#FFC84E] transition-colors text-lg flex-shrink-0 hidden sm:block">
                   →
                 </span>
               </Link>

@@ -119,9 +119,9 @@ export default function Contribute() {
   const rest = testimonials.slice(1)
 
   return (
-    <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
+    <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0D1518]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] pointer-events-none"
-        style={{background:'radial-gradient(ellipse,rgba(197,151,63,0.06) 0%,transparent 70%)'}} />
+        style={{background:'radial-gradient(ellipse,rgba(255,200,78,0.06) 0%,transparent 70%)'}} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
@@ -130,30 +130,30 @@ export default function Contribute() {
           <span className="label">Depoimentos</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white text-center md:text-left mb-10 md:mb-14">
-          VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
+          VIDAS EDIFICADAS<br /><span className="text-[#FFC84E]">E RENOVADAS</span>
         </h2>
 
         {/* Featured testimonial — full width */}
-        <div className="reveal relative border border-[#C5973F]/20 bg-[#0A0A0F] overflow-hidden mb-4 group hover:border-[#C5973F]/40 transition-colors duration-300">
+        <div className="reveal relative border border-[#FFC84E]/20 bg-[#080E11] overflow-hidden mb-4 group hover:border-[#FFC84E]/40 transition-colors duration-300">
           {/* Gold accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#C5973F]/80 via-[#C5973F] to-[#C5973F]/80" />
+          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#FFC84E]/80 via-[#FFC84E] to-[#FFC84E]/80" />
           <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{background:'radial-gradient(ellipse at left,rgba(197,151,63,0.05) 0%,transparent 60%)'}} />
+            style={{background:'radial-gradient(ellipse at left,rgba(255,200,78,0.05) 0%,transparent 60%)'}} />
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 p-6 sm:p-8 pl-8 sm:pl-10">
             {/* Left: quote */}
             <div className="flex-1 flex flex-col gap-4">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
-                  <Star key={s} size={12} className="fill-[#C5973F] text-[#C5973F]" />
+                  <Star key={s} size={12} className="fill-[#FFC84E] text-[#FFC84E]" />
                 ))}
               </div>
               <p className="font-playfair text-[17px] sm:text-[20px] italic text-white/75 leading-relaxed">
                 "{featured.text}"
               </p>
               <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/5">
-                <div className="w-9 h-9 rounded-full bg-[#C5973F]/15 border border-[#C5973F]/25 flex items-center justify-center flex-shrink-0">
-                  <span className="font-inter text-[11px] font-bold text-[#C5973F]/80">{featured.initials}</span>
+                <div className="w-9 h-9 rounded-full bg-[#FFC84E]/15 border border-[#FFC84E]/25 flex items-center justify-center flex-shrink-0">
+                  <span className="font-inter text-[11px] font-bold text-[#FFC84E]/80">{featured.initials}</span>
                 </div>
                 <div>
                   <p className="font-inter text-[13px] font-semibold text-white">{featured.name}</p>
@@ -172,11 +172,11 @@ export default function Contribute() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 md:mb-24">
           {rest.map((t, i) => (
             <div key={i}
-              className={`reveal-left flex flex-col gap-4 border border-white/6 bg-[#0A0A0F] p-5 hover:border-[#C5973F]/25 hover:bg-[#0d0d14] transition-all duration-300 group ${i >= 2 ? 'hidden sm:flex' : ''}`}>
+              className={`reveal-left flex flex-col gap-4 border border-white/6 bg-[#080E11] p-5 hover:border-[#FFC84E]/25 hover:bg-[#0d1518] transition-all duration-300 group ${i >= 2 ? 'hidden sm:flex' : ''}`}>
 
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
-                  <Star key={s} size={10} className="fill-[#C5973F] text-[#C5973F]" />
+                  <Star key={s} size={10} className="fill-[#FFC84E] text-[#FFC84E]" />
                 ))}
               </div>
 
@@ -187,8 +187,8 @@ export default function Contribute() {
               <VideoRef videoId={t.videoId} videoTitle={t.videoTitle} />
 
               <div className="flex items-center gap-3 pt-1 border-t border-white/5">
-                <div className="w-8 h-8 rounded-full bg-[#C5973F]/10 border border-[#C5973F]/15 flex items-center justify-center flex-shrink-0">
-                  <span className="font-inter text-[10px] font-bold text-[#C5973F]/60">{t.initials}</span>
+                <div className="w-8 h-8 rounded-full bg-[#FFC84E]/10 border border-[#FFC84E]/15 flex items-center justify-center flex-shrink-0">
+                  <span className="font-inter text-[10px] font-bold text-[#FFC84E]/60">{t.initials}</span>
                 </div>
                 <div>
                   <p className="font-inter text-[12px] font-semibold text-white">{t.name}</p>
@@ -200,27 +200,27 @@ export default function Contribute() {
         </div>
 
         {/* Contribution block */}
-        <div className="reveal relative overflow-hidden border border-[#C5973F]/25">
+        <div className="reveal relative overflow-hidden border border-[#FFC84E]/25">
           <div className="absolute inset-0 pointer-events-none"
-            style={{background:'radial-gradient(ellipse at top left,rgba(197,151,63,0.10) 0%,transparent 55%)'}} />
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C5973F]/60 via-[#C5973F] to-[#C5973F]/60" />
+            style={{background:'radial-gradient(ellipse at top left,rgba(255,200,78,0.10) 0%,transparent 55%)'}} />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#FFC84E]/60 via-[#FFC84E] to-[#FFC84E]/60" />
 
           <div className="relative grid md:grid-cols-2 gap-0">
 
             {/* Left — mission narrative */}
             <div className="flex flex-col justify-center gap-5 px-8 py-10 md:px-12 md:py-14 border-b md:border-b-0 md:border-r border-white/6">
-              <span className="font-inter text-[10px] font-bold tracking-[0.35em] text-[#C5973F] uppercase text-center md:text-left">
+              <span className="font-inter text-[10px] font-bold tracking-[0.35em] text-[#FFC84E] uppercase text-center md:text-left">
                 Faça Parte
               </span>
               <h3 className="font-bebas text-[clamp(26px,4vw,44px)] leading-tight text-white text-center md:text-left">
                 SEJA PARTE DO QUE<br />
-                <span className="text-[#C5973F]">DEUS ESTÁ FAZENDO</span><br />
+                <span className="text-[#FFC84E]">DEUS ESTÁ FAZENDO</span><br />
                 ATRAVÉS DESSAS MENSAGENS.
               </h3>
               <p className="font-inter text-white/50 text-[14px] leading-relaxed text-center md:text-left">
                 Cada vídeo publicado chega a pessoas buscando respostas, direção e fé. Pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
               </p>
-              <blockquote className="border-l-2 border-[#C5973F]/50 pl-4 hidden md:block">
+              <blockquote className="border-l-2 border-[#FFC84E]/50 pl-4 hidden md:block">
                 <p className="font-playfair text-[13px] italic text-white/35 leading-relaxed">
                   "Aquele que semeia com generosidade, com generosidade também colherá."
                 </p>
@@ -245,8 +245,8 @@ export default function Contribute() {
                 ))}
               </div>
 
-              <div className="w-full border border-[#C5973F]/20 bg-black/50 px-5 py-4 flex flex-col gap-1 text-center">
-                <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#C5973F]/60 uppercase">
+              <div className="w-full border border-[#FFC84E]/20 bg-black/50 px-5 py-4 flex flex-col gap-1 text-center">
+                <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#FFC84E]/60 uppercase">
                   Chave PIX (E-mail)
                 </span>
                 <span className="font-inter text-[13px] sm:text-[14px] text-white/70 tracking-wide break-all">
@@ -256,7 +256,7 @@ export default function Contribute() {
 
               <button
                 onClick={copyPix}
-                className="flex items-center justify-center gap-2 w-full bg-[#C5973F] hover:bg-[#d4a84a] active:scale-95 text-black font-inter text-[11px] font-bold tracking-[0.25em] uppercase py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_40px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_50px_rgba(197,151,63,0.50)]">
+                className="flex items-center justify-center gap-2 w-full bg-[#FFC84E] hover:bg-[#d4a84a] active:scale-95 text-black font-inter text-[11px] font-bold tracking-[0.25em] uppercase py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_40px_rgba(255,200,78,0.35)] hover:shadow-[0_12px_50px_rgba(255,200,78,0.50)]">
                 {copied
                   ? <><Check size={14} /> CHAVE COPIADA!</>
                   : <><Copy size={14} /> CONTRIBUIR VIA PIX</>}

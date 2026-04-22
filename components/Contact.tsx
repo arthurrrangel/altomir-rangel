@@ -26,9 +26,9 @@ export default function Contact() {
   }
 
   return (
-    <section id="contato" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0A0A0F]">
+    <section id="contato" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#080E11]">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.05) 0%, transparent 65%)'}}>
+        style={{background: 'radial-gradient(ellipse at bottom right, rgba(255,200,78,0.05) 0%, transparent 65%)'}}>
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
@@ -37,7 +37,7 @@ export default function Contact() {
           <span className="label">Contato</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
-          COMO PODEMOS<br /><span className="text-[#C5973F]">SERVIR A VOCÊ?</span>
+          COMO PODEMOS<br /><span className="text-[#FFC84E]">SERVIR A VOCÊ?</span>
         </h2>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-14">
@@ -56,7 +56,7 @@ export default function Contact() {
             </a>
 
             {/* Invite card */}
-            <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
+            <div className="reveal-left border-l-2 border-[#FFC84E] bg-white/3 p-4 sm:p-5">
               <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Entre em Contato</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
                 Pregações, conferências e retiros cristãos. Informe a data e cidade no formulário.
