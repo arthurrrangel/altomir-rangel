@@ -20,7 +20,7 @@ const testimonials = [
     city: 'Belo Horizonte, MG',
     initials: 'RF',
     featured: false,
-    text: 'Sou bem cético, não me identifico com pregador choroso. O Altomir fala diferente, parece um cara conversando com você. O vídeo Pare de Sofrer Calado me pegou porque eu tava guardando coisas que pesavam faz anos. Mandei pro meu irmão sem falar nada. Ele me ligou na mesma noite.',
+    text: 'Sou bem cético, não me identifico com pregador choroso. O Altomir fala diferente, parece um cara conversando com você de igual pra igual. O vídeo Pare de Sofrer Calado me pegou porque eu tava carregando coisas que pesavam faz anos e nem percebia mais. Mandei pro meu irmão sem comentar nada.',
     videoId: '43-bGX4MfGg',
     videoTitle: 'Pare de Sofrer Calado',
   },
