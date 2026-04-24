@@ -11,7 +11,7 @@ const testimonials = [
     city: 'São Paulo, SP',
     initials: 'CM',
     featured: true,
-    text: 'Assisto os vídeos todo dia no almoço. É meu momento de parar, ouvir a Palavra e organizar a cabeça antes de voltar pro trabalho. Já faz meses que não pulo um dia.',
+    text: 'Tava num momento muito difícil no trabalho, quase pedi demissão. Botei o vídeo do Ingrediente Secreto no almoço sem muita expectativa. Travei no meio, fui pro banheiro chorar. Não de tristeza — de alívio. Tipo, alguém finalmente falou o que eu precisava ouvir. Voltei pro trabalho diferente naquele dia.',
     videoId: 'PIMWrO-nw0U',
     videoTitle: 'O Ingrediente Secreto que Falta na Sua Fé',
   },
@@ -20,7 +20,7 @@ const testimonials = [
     city: 'Belo Horizonte, MG',
     initials: 'RF',
     featured: false,
-    text: 'Todo dia de manhã antes de abrir o computador eu coloco um vídeo do canal. Fé com aplicação prática, é isso que eu precisava. Já indiquei pra minha equipe inteira.',
+    text: 'Sou bem cético, não me identifico com pregador choroso. O Altomir fala diferente, parece um cara conversando com você. O vídeo Pare de Sofrer Calado me pegou porque eu tava guardando coisas que pesavam faz anos. Mandei pro meu irmão sem falar nada. Ele me ligou na mesma noite.',
     videoId: '43-bGX4MfGg',
     videoTitle: 'Pare de Sofrer Calado',
   },
@@ -29,7 +29,7 @@ const testimonials = [
     city: 'Recife, PE',
     initials: 'SC',
     featured: false,
-    text: 'Assisto o ao vivo toda semana com minha irmã. A gente comenta depois, leva pra reunião de célula. Esse sobre a mente foi o que mais gerou discussão no grupo.',
+    text: 'Minha irmã mora em Fortaleza, eu em Recife. Toda semana a gente assiste o ao vivo cada uma na sua casa e fica se mandando áudio no WhatsApp ao mesmo tempo. É o nosso momento. O vídeo sobre a mente gerou três dias de conversa entre a gente.',
     videoId: 'FVwvjO6AuNo',
     videoTitle: 'Por que Sua Mente Controla Seu Destino?',
   },
@@ -38,27 +38,9 @@ const testimonials = [
     city: 'Goiânia, GO',
     initials: 'MA',
     featured: false,
-    text: 'A gente coloca o canal no domingo à noite depois do jantar. Virou tradição em casa. Esse vídeo sobre honra gerou uma conversa que a gente precisava ter faz tempo.',
+    text: 'Meu filho de 17 anos que me indicou. Fiquei desconfiado, achei que era mais do mesmo. Mas o cara vai direto, sem enrolação. Aquele sobre honra a gente assistiu junto e ficou até meia-noite conversando. Não acontecia isso entre a gente faz tempo.',
     videoId: 'j1rYS5reC54',
     videoTitle: 'Honra que Transforma',
-  },
-  {
-    name: 'Patrícia Lima',
-    city: 'Curitiba, PR',
-    initials: 'PL',
-    featured: false,
-    text: 'Fui indicada por uma amiga e comecei a assistir no caminho do trabalho. Esse vídeo sobre sinais de pessoa falsa me fez repensar alguns relacionamentos. Bem direto, sem rodeios.',
-    videoId: 'C5Oi7Q_5nIY',
-    videoTitle: '5 Sinais de uma Pessoa Falsa',
-  },
-  {
-    name: 'André Souza',
-    city: 'Manaus, AM',
-    initials: 'AS',
-    featured: false,
-    text: 'Assisto o ao vivo toda semana, às vezes duas vezes por semana. Esse sobre milagres ficou comigo por dias. Não é o que você ouve em todo lugar. Vale cada minuto.',
-    videoId: 'MoM39WKTCyk',
-    videoTitle: 'Milagre Existe, Mas Nem Todos Conseguem',
   },
 ]
 
@@ -116,7 +98,7 @@ export default function Contribute() {
   }
 
   const featured = testimonials[0]
-  const rest = testimonials.slice(1)
+  const rest = testimonials.slice(1) // exactly 3
 
   return (
     <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0D1518]">
@@ -168,11 +150,11 @@ export default function Contribute() {
           </div>
         </div>
 
-        {/* Grid — remaining 5 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 md:mb-24">
+        {/* Grid — remaining 3 */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 md:mb-24">
           {rest.map((t, i) => (
             <div key={i}
-              className={`reveal-left flex flex-col gap-4 border border-white/6 bg-[#080E11] p-5 hover:border-[#FFC84E]/25 hover:bg-[#0d1518] transition-all duration-300 group ${i >= 2 ? 'hidden sm:flex' : ''}`}>
+              className="reveal-left flex flex-col gap-4 border border-white/6 bg-[#080E11] p-5 hover:border-[#FFC84E]/25 hover:bg-[#0d1518] transition-all duration-300 group">
 
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
