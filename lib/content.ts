@@ -9,7 +9,7 @@ export const hero = {
   headline2: '',
   headlineGold: 'O REINO SE MANIFESTA.',
   subtitle:
-    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir, movido por um chamado que não tem preço.',
+    'Pregador que fala de fé, trabalho e propósito sem separar os dois mundos. Empresário. Autor. Servo voluntário do Reino.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
