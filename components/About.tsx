@@ -18,8 +18,8 @@ export default function About() {
   }, [])
 
   return (
-    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0D1518]">
-      <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#FFC84E]/40 to-transparent" />
+    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
+      <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5973F]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-stretch">
@@ -28,27 +28,27 @@ export default function About() {
           <div className="reveal-left hidden lg:block relative min-h-[500px]">
             <Image src="/altomir-portrait.jpg" alt="Altomir Rangel" fill
               className="object-cover" style={{objectPosition: 'center top'}} sizes="50vw" />
-            <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0D1518 100%)'}} />
+            <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
           </div>
 
           {/* Texto */}
           <div className="flex flex-col gap-5 lg:gap-8">
 
             <div className="reveal flex items-center justify-center lg:justify-start gap-3">
-              <div className="hidden lg:block w-8 h-px bg-[#FFC84E]" />
+              <div className="hidden lg:block w-8 h-px bg-[#C5973F]" />
               <span className="label">{about.label}</span>
             </div>
 
             <div className="reveal text-center lg:text-left">
               <h2 className="font-bebas leading-[0.9] text-white" style={{fontSize: 'clamp(36px, 9vw, 80px)'}}>
                 {about.headline1}<br />
-                <span className="text-[#FFC84E]">{about.headlineGold}</span>
+                <span className="text-[#C5973F]">{about.headlineGold}</span>
                 {about.headline2 ? <><br />{about.headline2}</> : null}
               </h2>
             </div>
 
             <div className="reveal flex justify-center lg:hidden">
-              <div className="h-px w-12 bg-[#FFC84E]" />
+              <div className="h-px w-12 bg-[#C5973F]" />
             </div>
 
             <div className="reveal flex flex-col gap-4">
@@ -61,12 +61,12 @@ export default function About() {
             </div>
 
             {about.quote && (
-              <div className="reveal border-l-2 border-[#FFC84E] pl-5 py-1">
+              <div className="reveal border-l-2 border-[#C5973F] pl-5 py-1">
                 <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
                   {about.quote}
                 </p>
                 {about.quoteAuthor && (
-                  <span className="font-inter text-[10px] text-[#FFC84E] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
+                  <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
                 )}
               </div>
             )}

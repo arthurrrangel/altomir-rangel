@@ -9,7 +9,7 @@ export const hero = {
   headline2: '',
   headlineGold: 'O REINO SE MANIFESTA.',
   subtitle:
-    'Pregador que fala de fé, trabalho e propósito sem separar os dois mundos. Empresário. Autor. Servo voluntário do Reino.',
+    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir, movido por um chamado que não tem preço.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -21,9 +21,9 @@ export const about = {
   headlineGold: 'E PROPÓSITO.',
   headline2: '',
   bio1:
-    'Altomir Rangel é empresário, marido, pai e avô. Prega por propósito, não por profissão — e essa diferença aparece em cada mensagem.',
+    'Altomir Rangel é marido, pai de três filhos e avô. Empresário por profissão, pregador e autor de livros de fé por propósito.',
   bio2:
-    'Pelos livros, pelo YouTube e pelas pregações ao vivo, o objetivo é simples: levar a Palavra com clareza para quem está buscando mais do que religião.',
+    'Pelos livros, pelo YouTube e pelas pregações, queremos que a Palavra do Reino chegue a quem precisa ouvir. E que o impacto cause transformação para quem escolhe caminhar junto a Deus.',
   quote: '',
   quoteAuthor: '',
 }

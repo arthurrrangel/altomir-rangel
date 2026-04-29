@@ -32,7 +32,6 @@ export const navLinks = [
   { href: '#sobre', label: 'Sobre' },
   { href: '#livros', label: 'Livros' },
   { href: '#youtube', label: 'YouTube' },
-  { href: '/blog', label: 'Blog' },
   { href: '#visao', label: 'Visão' },
   { href: '#contribuir', label: 'Contribuir' },
   { href: '#contato', label: 'Contato' },

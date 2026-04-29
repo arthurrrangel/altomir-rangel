@@ -4,15 +4,15 @@ export type Video = {
   category?: string
 }
 
-// Ordenados: mais recentes primeiro — atualizados via vidiq
-export const videos: Video[] = [
-  { id: 'PIMWrO-nw0U', title: 'O Ingrediente Secreto que Falta na Sua Fé',    category: 'Novo' },
-  { id: 'C5Oi7Q_5nIY', title: '5 Sinais de uma Pessoa Falsa',                  category: 'Ao Vivo' },
-  { id: 'MoM39WKTCyk', title: 'Milagre Existe, Mas Nem Todos Conseguem: Sabe Por Quê?', category: 'Ao Vivo' },
-  { id: 'if0yejl0bMc', title: 'Manifestando Milagre: A Verdade sobre Posicionamento', category: 'Ao Vivo' },
-  { id: '43-bGX4MfGg', title: 'Pare de Sofrer Calado',                         category: 'Ministério' },
-  { id: 'JPaMe4aLQcI', title: 'Fé, Política e Crise',                          category: 'Ao Vivo' },
-  { id: 'j1rYS5reC54', title: 'Honra que Transforma',                          category: 'Ao Vivo' },
-  { id: 'kWG1mXX2GK8', title: 'Estamos Vendo o Começo do Fim?',                category: 'Profecia' },
-  { id: 'FVwvjO6AuNo', title: 'Por que Sua Mente Controla Seu Destino?',        category: 'Ensinamento' },
+// Canal: UCkusTtkV-Az8T3tGDqwhMVQ - atualizado via /api/videos (RSS)
+export const videos = [
+  { id: 'iiQRBbTZXbg', title: 'Oracao Secreta para Destravar', category: 'Novo' },
+  { id: 'Sir-A4SaagU', title: 'Nem Toda Amizade Soma', category: 'Ao Vivo' },
+  { id: 'xT6RIBD51tg', title: 'A Promessa Existe, Mas Falta Isso em Voce', category: 'Novo' },
+  { id: 'KU7vnhcT4iE', title: 'Neurociencia e Inteligencia Espiritual', category: 'Ao Vivo' },
+  { id: 'FoTNvtz73SI', title: 'Venca a Vaidade', category: 'Novo' },
+  { id: 'Y4bm3EU11wE', title: 'O Preco do Sucsso', category: 'Ensinamento' },
+  { id: 'C0b8G0GWDyg', title: 'Deus Transformou a Maldicao em Bencao', category: 'Novo' },
+  { id: 'zUWiJpeZIco', title: 'Fe, Familia e Empreendedorismo', category: 'Ao Vivo' },
+  { id: '8WP-QaVRMKk', title: 'Ele Perdeu um Negocio pra Ganhar uma Alma', category: 'Novo' },
 ]
