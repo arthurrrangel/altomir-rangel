@@ -1,14 +1,15 @@
 "use client"
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Shield, Truck, RotateCcw, Star, Clock } from 'lucide-react'
 
 const BOOKS = [
   {
-    id: 'cura',
-    title: 'Cura Interior',
-    subtitle: 'Libertando-se das Feridas da Alma',
+    id: 'prosperidade',
+    title: 'O Propósito da Prosperidade',
+    subtitle: 'Edição Revista e Ampliada',
     badge: 'MAIS VENDIDO',
-    cover: '/images/book-cura.jpg',
+    cover: '/books/proposito-da-prosperidade.jpg',
     price: 79.99,
     originalPrice: 119.99,
     discount: 33,
@@ -17,11 +18,11 @@ const BOOKS = [
     mlUrl: '#',
   },
   {
-    id: 'proposito',
-    title: 'Propósito Eterno',
-    subtitle: 'Descobrindo o Chamado de Deus para Sua Vida',
+    id: 'bemvindo',
+    title: 'Bem-vindo ao Novo Você',
+    subtitle: 'Aprenda a lidar com você, para lidar com o próximo',
     badge: 'NOVO',
-    cover: '/images/book-proposito.jpg',
+    cover: '/books/bem-vindo-ao-novo-voce.jpg',
     price: 79.99,
     originalPrice: 119.99,
     discount: 33,
@@ -108,11 +109,13 @@ export default function Books() {
                   className="w-full h-full rounded-lg overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
                   style={{ transform: 'rotateY(3deg)', transformStyle: 'preserve-3d' }}
                 >
-                  <div className="w-full h-full bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col items-center justify-center p-4">
-                    <div className="w-8 h-px bg-[#C5973F] mb-3" />
-                    <p className="text-white font-['Bebas_Neue'] text-xl text-center leading-tight">{book.title}</p>
-                    <div className="w-8 h-px bg-[#C5973F] mt-3" />
-                  </div>
+                  <Image
+                    src={book.cover}
+                    alt={book.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 160px, 192px"
+                  />
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
@@ -186,9 +189,23 @@ export default function Books() {
           <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white tracking-wide mb-2">
             KIT COMPLETO
           </h3>
-          <p className="text-white/40 text-sm mb-8">
+          <p className="text-white/40 text-sm mb-6">
             Os 2 livros juntos com desconto exclusivo
           </p>
+
+          <div className="flex items-center justify-center gap-4 mb-8">
+            {BOOKS.map((book) => (
+              <div key={book.id} className="relative rounded-md overflow-hidden shadow-lg" style={{width:'64px', height:'88px'}}>
+                <Image
+                  src={book.cover}
+                  alt={book.title}
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
+              </div>
+            ))}
+          </div>
 
           <div className="flex flex-col items-center gap-1 mb-3">
             <span className="text-white/30 text-sm line-through">R$239,98</span>
