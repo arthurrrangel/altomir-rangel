@@ -1,310 +1,236 @@
 "use client"
-import { useEffect, useRef, useState } from 'react'
-import { ShoppingBag, Zap, CheckCircle, Package, Shield, Truck, RotateCcw, Flame, ArrowRight, Star } from 'lucide-react'
-import Image from 'next/image'
-import { books } from '@/lib/books'
+import { useEffect, useState } from 'react'
+import { Shield, Truck, RotateCcw, Star, Clock } from 'lucide-react'
 
-const ML_YELLOW = '#FFE600'
-const ML_DARK   = '#111'
-
-const meta: Record<string, {
-  badge?: string
-  badgeColor?: string
-  readers: string
-  hook: string
-  highlights: string[]
-}> = {
-  'o-proposito-da-prosperidade': {
-    badge: 'EDIÇÃO REVISTA E AMPLIADA',
-    readers: '+5.000 leitores',
-    hook: 'Descubra o plano de Deus para a sua prosperidade real.',
-    highlights: [
-      'Princípios bíblicos sobre finanças e propósito',
-      'Como alinhar riqueza com a vontade de Deus',
-      'Mais de 20 anos transformando vidas',
-    ],
+const BOOKS = [
+  {
+    id: 'cura',
+    title: 'Cura Interior',
+    subtitle: 'Libertando-se das Feridas da Alma',
+    badge: 'MAIS VENDIDO',
+    cover: '/images/book-cura.jpg',
+    price: 79.99,
+    originalPrice: 119.99,
+    discount: 33,
+    stars: 5,
+    readers: '2.400+',
+    mlUrl: '#',
   },
-  'bem-vindo-ao-novo-voce': {
-    badge: 'LANÇAMENTO 2024',
-    badgeColor: '#C5973F',
-    readers: 'Disponível agora',
-    hook: 'O guia definitivo para a sua transformação interior.',
-    highlights: [
-      'Renove sua mente e quebre limitações',
-      'Identidade, propósito e nova vida em Cristo',
-      'Leitura prática e transformadora',
-    ],
+  {
+    id: 'proposito',
+    title: 'Propósito Eterno',
+    subtitle: 'Descobrindo o Chamado de Deus para Sua Vida',
+    badge: 'NOVO',
+    cover: '/images/book-proposito.jpg',
+    price: 79.99,
+    originalPrice: 119.99,
+    discount: 33,
+    stars: 5,
+    readers: '1.800+',
+    mlUrl: '#',
   },
-}
-
-const testimonials = [
-  { text: '"Mudou completamente minha visão sobre prosperidade e fé. Uma leitura que todo cristão precisa ter."', name: 'Carlos M.', city: 'São Paulo' },
-  { text: '"Li em dois dias. Impossível parar. Recomendo a todos da minha igreja e família."', name: 'Ana P.', city: 'Belo Horizonte' },
-  { text: '"O pastor Altomir tem um dom único de ensinar com clareza, profundidade e amor."', name: 'Marcos L.', city: 'Rio de Janeiro' },
-]
-
-const guaranteeItems = [
-  { icon: Shield,    title: 'Compra 100% Segura',    sub: 'Mercado Pago protege' },
-  { icon: Truck,     title: 'Entrega em Todo Brasil', sub: 'Frete calculado no ML' },
-  { icon: RotateCcw, title: '7 Dias para Troca',      sub: 'Garantia do Mercado Livre' },
-]
-
-const trustItems = [
-  { icon: Shield, label: 'Compra Segura' },
-  { icon: Truck,  label: 'Entrega Brasil' },
-  { icon: Star,   label: 'Garantia Total' },
 ]
 
 function useCountdown(hours = 3) {
-  const getInitial = () => {
-    if (typeof window === 'undefined') return hours * 3600
-    const stored = sessionStorage.getItem('book_offer_end')
-    if (stored) {
-      const remaining = Math.floor((parseInt(stored) - Date.now()) / 1000)
-      if (remaining > 0) return remaining
-    }
-    const end = Date.now() + hours * 3600 * 1000
-    sessionStorage.setItem('book_offer_end', end.toString())
-    return hours * 3600
-  }
-  const [secs, setSecs] = useState<number>(0)
+  const KEY = 'books_countdown_end'
+  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
+
   useEffect(() => {
-    setSecs(getInitial())
-    const id = setInterval(() => setSecs(s => s > 0 ? s - 1 : 0), 1000)
+    let end = Number(sessionStorage.getItem(KEY))
+    if (!end || end < Date.now()) {
+      end = Date.now() + hours * 3600 * 1000
+      sessionStorage.setItem(KEY, String(end))
+    }
+    const tick = () => {
+      const diff = Math.max(0, end - Date.now())
+      setTimeLeft({
+        h: Math.floor(diff / 3600000),
+        m: Math.floor((diff % 3600000) / 60000),
+        s: Math.floor((diff % 60000) / 1000),
+      })
+    }
+    tick()
+    const id = setInterval(tick, 1000)
     return () => clearInterval(id)
-  }, [])
-  const h = Math.floor(secs / 3600)
-  const m = Math.floor((secs % 3600) / 60)
-  const s = secs % 60
-  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`
+  }, [hours])
+
+  return timeLeft
+}
+
+function pad(n: number) {
+  return String(n).padStart(2, '0')
 }
 
 export default function Books() {
-  const ref = useRef<HTMLElement>(null)
-  const countdown = useCountdown(3)
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting)
-          e.target.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach((el, i) =>
-            setTimeout(() => el.classList.add('visible'), i * 120))
-      })
-    }, { threshold: 0.05 })
-    if (ref.current) obs.observe(ref.current)
-    return () => obs.disconnect()
-  }, [])
+  const { h, m, s } = useCountdown(3)
 
   return (
-    <section id="livros" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0A0A0F]">
-      <div className="absolute top-0 right-0 w-[700px] h-[700px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top right,rgba(197,151,63,0.07) 0%,transparent 60%)' }} />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom left,rgba(197,151,63,0.04) 0%,transparent 60%)' }} />
+    <section id="livros" className="bg-[#0A0A0F] py-20 px-4">
 
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-
-        {/* Header */}
-        <div className="text-center mb-14 md:mb-20">
-          <div className="reveal flex items-center justify-center gap-3 mb-5">
-            <div className="h-px w-8 bg-[#C5973F]/50" />
-            <span className="label">Livros do Autor</span>
-            <div className="h-px w-8 bg-[#C5973F]/50" />
-          </div>
-          <h2 className="reveal font-bebas text-[clamp(42px,8vw,96px)] leading-none text-white">
-            PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>
-          </h2>
-          <div className="reveal inline-flex flex-wrap items-center justify-center gap-3 mt-6 px-5 py-3 border border-orange-500/30 bg-orange-500/[0.07]">
-            <div className="flex items-center gap-2">
-              <Flame size={13} className="text-orange-400 flex-shrink-0" />
-              <span className="font-inter text-[11px] text-orange-300/80 tracking-[0.08em] uppercase">
-                Oferta especial termina em
-              </span>
-            </div>
-            <span className="font-mono text-[18px] font-black text-[#FFE600] tracking-[0.15em]">
-              {countdown}
+      {/* ── Countdown bar ── */}
+      <div className="max-w-xl mx-auto mb-14">
+        <div className="flex items-center justify-center gap-3 bg-[#C5973F]/10 border border-[#C5973F]/30 rounded-full px-6 py-3">
+          <Clock size={15} className="text-[#C5973F] shrink-0" />
+          <p className="text-[#C5973F] text-sm text-center">
+            Oferta especial expira em&nbsp;
+            <span className="font-mono font-semibold">
+              {pad(h)}:{pad(m)}:{pad(s)}
             </span>
-          </div>
+          </p>
         </div>
+      </div>
 
-        {/* Book cards */}
-        <div className="flex flex-col gap-5 md:gap-6">
-          {books.map((book, idx) => {
-            const m = meta[book.slug] ?? { readers: '', hook: '', highlights: [] }
-            const pct = book.price && book.originalPrice
-              ? Math.round((1 - book.price / book.originalPrice) * 100) : 0
-            const installment = book.price ? (book.price / 2).toFixed(2).replace('.', ',') : null
-            const isEven = idx % 2 === 0
-            return (
-              <div key={book.slug}
-                className={`reveal group relative flex flex-col md:flex-row ${isEven ? '' : 'md:flex-row-reverse'} bg-[#0D0D15] overflow-hidden`}
-                style={{
-                  border: '1px solid rgba(197,151,63,0.18)',
-                  borderLeft: isEven ? '3px solid rgba(197,151,63,0.55)' : '1px solid rgba(197,151,63,0.18)',
-                  borderRight: !isEven ? '3px solid rgba(197,151,63,0.55)' : '1px solid rgba(197,151,63,0.18)',
-                  transition: 'box-shadow 0.4s ease, border-color 0.4s ease',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 24px 70px rgba(197,151,63,0.13)'; e.currentTarget.style.borderColor = 'rgba(197,151,63,0.35)'; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(197,151,63,0.18)'; }}
+      {/* ── Section header ── */}
+      <div className="text-center mb-16">
+        <p className="text-[#C5973F] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Obras do Autor</p>
+        <h2 className="font-['Bebas_Neue'] text-5xl md:text-6xl text-white leading-none tracking-wide mb-4">
+          LIVROS
+        </h2>
+        <p className="text-white/40 text-sm max-w-sm mx-auto">
+          Mensagens que transformam vidas e renovam a fé
+        </p>
+      </div>
+
+      {/* ── Book cards ── */}
+      <div className="max-w-4xl mx-auto space-y-10 mb-20">
+        {BOOKS.map((book, i) => (
+          <div
+            key={book.id}
+            className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-8 md:gap-12 bg-[#0D0D15] border border-white/5 rounded-2xl p-8 md:p-10`}
+          >
+            {/* Cover */}
+            <div className="shrink-0 flex justify-center">
+              <div
+                className="relative w-40 h-56 md:w-48 md:h-64"
+                style={{ perspective: '700px' }}
               >
-                <div className="flex-shrink-0 relative flex items-center justify-center md:w-[260px] py-10 px-8 overflow-hidden"
-                  style={{ background: 'linear-gradient(135deg, #08080F 0%, #0D0D1A 100%)' }}>
-                  <div className="absolute inset-0 pointer-events-none"
-                    style={{ background: 'radial-gradient(ellipse at center, rgba(197,151,63,0.12) 0%, transparent 65%)' }} />
-                  <div className="relative w-[145px] md:w-[168px]" style={{ aspectRatio: '3/4' }}>
-                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[65%] h-4 blur-2xl rounded-full"
-                      style={{ background: 'rgba(197,151,63,0.25)' }} />
-                    <div className="relative w-full h-full overflow-hidden group-hover:scale-[1.04] transition-transform duration-500"
-                      style={{ boxShadow: '8px 16px 48px rgba(0,0,0,0.75), -3px 0 10px rgba(0,0,0,0.4)', transform: 'perspective(700px) rotateY(3deg)' }}>
-                      <Image src={book.cover} alt={book.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="200px" />
-                      <div className="absolute inset-y-0 left-0 w-[7px]" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.14), transparent)' }} />
-                    </div>
-                    {m.badge && (
-                      <div className="absolute -top-3 -left-3 z-10">
-                        <span className="font-inter text-[7px] font-bold tracking-[0.2em] uppercase px-2 py-1" style={{ background: m.badgeColor ?? '#C5973F', color: '#000' }}>{m.badge}</span>
-                      </div>
-                    )}
-                    {pct > 0 && (
-                      <div className="absolute -bottom-3 -right-3 z-10">
-                        <span className="font-inter text-[11px] font-black bg-green-500 text-black px-2.5 py-1 shadow-lg">-{pct}%</span>
-                      </div>
-                    )}
+                <div
+                  className="w-full h-full rounded-lg overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
+                  style={{ transform: 'rotateY(3deg)', transformStyle: 'preserve-3d' }}
+                >
+                  <div className="w-full h-full bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] flex flex-col items-center justify-center p-4">
+                    <div className="w-8 h-px bg-[#C5973F] mb-3" />
+                    <p className="text-white font-['Bebas_Neue'] text-xl text-center leading-tight">{book.title}</p>
+                    <div className="w-8 h-px bg-[#C5973F] mt-3" />
                   </div>
-                </div>
-                <div className="flex flex-col justify-between p-6 sm:p-8 md:p-9 flex-1">
-                  <div>
-                    <div className="flex items-center justify-center md:justify-start gap-2.5 mb-4">
-                      <div className="flex gap-0.5">{[...Array(5)].map((_, i) => <span key={i} className="text-[#C5973F] text-[12px]">★</span>)}</div>
-                      <span className="font-inter text-[11px] text-white/25">·</span>
-                      <span className="font-inter text-[11px] text-white/30 tracking-wide">{m.readers}</span>
-                    </div>
-                    <h3 className="font-bebas text-[clamp(30px,4.5vw,52px)] leading-[0.95] text-white group-hover:text-[#C5973F] transition-colors duration-300 text-center md:text-left mb-2">{book.title}</h3>
-                    <p className="font-inter text-white/40 text-[13px] italic text-center md:text-left mb-5 leading-relaxed">{m.hook}</p>
-                    <ul className="flex flex-col gap-2 mb-6">
-                      {m.highlights.map((h, i) => (
-                        <li key={i} className="flex items-center gap-2.5 font-inter text-[12px] text-white/40">
-                          <CheckCircle size={11} className="text-[#C5973F] flex-shrink-0" />{h}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="pt-5 border-t border-white/[0.07]">
-                    <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-                      <div className="flex flex-col gap-0.5">
-                        {book.originalPrice && <span className="font-inter text-[11px] text-white/20 line-through">De R$ {book.originalPrice.toFixed(2).replace('.', ',')}</span>}
-                        <div className="flex items-baseline gap-3 flex-wrap">
-                          {book.price && <span className="font-bebas text-[46px] leading-none text-[#C5973F]">R$ {book.price.toFixed(2).replace('.', ',')}</span>}
-                          {pct > 0 && <span className="inline-flex items-center gap-1 bg-green-500/15 text-green-400 font-inter text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border border-green-500/25"><Zap size={9} className="fill-green-400" />{pct}% OFF</span>}
-                        </div>
-                        {installment && <span className="font-inter text-[11px] text-white/30">ou 2× R$ {installment} sem juros</span>}
-                        
-                      <div className="flex flex-col items-stretch gap-2.5 min-w-[220px]">
-                        <a href={book.mlUrl && book.mlUrl !== '#' ? book.mlUrl : '#'} target="_blank" rel="noopener noreferrer"
-                          onClick={book.mlUrl === '#' ? (e) => e.preventDefault() : undefined}
-                          className="group/btn flex items-center justify-center gap-2 font-inter text-[11px] font-black tracking-[0.18em] uppercase px-6 py-4 transition-all duration-200 hover:brightness-110 active:scale-95"
-                          style={{ background: ML_YELLOW, color: ML_DARK, boxShadow: '0 6px 28px rgba(255,230,0,0.25)' }}>
-                          <ShoppingBag size={13} />Comprar no Mercado Livre<ArrowRight size={11} className="opacity-60 group-hover/btn:translate-x-0.5 transition-transform" />
-                        </a>
-                        <div className="flex items-center justify-center gap-4">
-                          {trustItems.map(({ icon: Icon, label }) => <div key={label} className="flex items-center gap-1"><Icon size={9} className="text-white/20" /><span className="font-inter text-[9px] text-white/20 tracking-wide">{label}</span></div>)}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(105deg, rgba(255,255,255,0.07) 0%, transparent 40%)',
+                    }}
+                  />
                 </div>
               </div>
-            )
-          })}
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="reveal mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {testimonials.map((t, i) => (
-            <div key={i} className="relative bg-[#0D0D15] p-6"
-              style={{ border: '1px solid rgba(197,151,63,0.12)', borderTop: '2px solid rgba(197,151,63,0.35)' }}>
-              <div className="flex gap-0.5 mb-3">{[...Array(5)].map((_, j) => <span key={j} className="text-[#C5973F] text-[11px]">★</span>)}</div>
-              <p className="font-inter text-[13px] text-white/45 italic leading-relaxed mb-4">{t.text}</p>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full flex items-center justify-center font-inter text-[9px] font-black text-black flex-shrink-0" style={{ background: '#C5973F' }}>{t.name[0]}</div>
-                <span className="font-inter text-[11px] text-white/30">{t.name} · {t.city}</span>
-              </div>
             </div>
-          ))}
-        </div>
 
-        {/* COMBO */}
-        <div className="reveal mt-6 relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #0D0D17 0%, #111120 100%)', border: '1px solid rgba(197,151,63,0.30)', transition: 'box-shadow 0.4s ease, border-color 0.4s ease' }}
-          onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 32px 80px rgba(197,151,63,0.16)'; e.currentTarget.style.borderColor = 'rgba(197,151,63,0.55)'; }}
-          onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = 'rgba(197,151,63,0.30)'; }}
-        >
-          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #C5973F 25%, #E8C06A 50%, #C5973F 75%, transparent)' }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 60% 40%, rgba(197,151,63,0.07) 0%, transparent 65%)' }} />
-          <div className="absolute top-4 right-4 md:top-5 md:right-5 flex flex-col items-end gap-2">
-            <span className="font-inter text-[8px] font-black tracking-[0.3em] uppercase px-3 py-1.5" style={{ background: '#C5973F', color: '#000' }}>MELHOR VALOR</span>
-            <span className="font-inter text-[8px] font-bold tracking-[0.2em] uppercase px-3 py-1" style={{ background: 'rgba(197,151,63,0.12)', color: 'rgba(197,151,63,0.7)', border: '1px solid rgba(197,151,63,0.25)' }}>MAIS VENDIDO</span>
-          </div>
-          <div className="flex flex-col md:flex-row items-center gap-8 p-8 sm:p-10 md:p-12">
-            <div className="relative flex-shrink-0 flex items-center justify-center w-[175px] h-[215px] md:w-[215px] md:h-[268px]">
-              <div className="absolute left-0 top-0 w-[138px] h-[188px] md:w-[170px] md:h-[228px] overflow-hidden rotate-[-6deg]" style={{ boxShadow: '6px 10px 36px rgba(0,0,0,0.65)' }}>
-                <Image src={books[0]?.cover ?? '/books/proposito-da-prosperidade.jpg'} alt={books[0]?.title ?? ''} fill className="object-cover" />
+            {/* Info */}
+            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+              <span className="inline-block text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1 mb-4">
+                {book.badge}
+              </span>
+
+              <div className="flex items-center gap-2 mb-4">
+                <div className="flex gap-0.5">
+                  {Array.from({ length: book.stars }).map((_, j) => (
+                    <Star key={j} size={13} className="text-[#C5973F] fill-[#C5973F]" />
+                  ))}
+                </div>
+                <span className="text-white/35 text-xs">{book.readers} leitores</span>
               </div>
-              <div className="absolute right-0 bottom-0 w-[138px] h-[188px] md:w-[170px] md:h-[228px] overflow-hidden rotate-[6deg]" style={{ boxShadow: '6px 10px 36px rgba(0,0,0,0.65)' }}>
-                <Image src={books[1]?.cover ?? '/books/bem-vindo-ao-novo-voce.jpg'} alt={books[1]?.title ?? ''} fill className="object-cover" />
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col gap-4 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Package size={13} className="text-[#C5973F]" />
-                <span className="font-inter text-[10px] font-bold tracking-[0.3em] uppercase text-[#C5973F]">Kit Completo — Os Dois Livros</span>
-              </div>
-              <h3 className="font-bebas text-[clamp(30px,5vw,56px)] leading-[0.95] text-white">OS DOIS LIVROS<br /><span className="text-[#C5973F]">POR R$ 139,99</span></h3>
-              <div className="flex items-center justify-center md:justify-start">
-                <span className="inline-flex items-center gap-1.5 text-green-400 font-inter text-[11px] font-bold px-3 py-1.5 border border-green-500/20" style={{ background: 'rgba(34,197,94,0.07)' }}>
-                  <Zap size={10} className="fill-green-400" />R$ 19,99 a menos que comprar separados
+
+              <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white leading-none tracking-wide mb-1">
+                {book.title}
+              </h3>
+              <p className="text-white/40 text-sm mb-6">{book.subtitle}</p>
+
+              <div className="flex items-baseline gap-3 mb-2">
+                <span className="text-white/30 text-sm line-through">
+                  R${book.originalPrice.toFixed(2).replace('.', ',')}
+                </span>
+                <span className="text-white text-3xl font-bold">
+                  R${book.price.toFixed(2).replace('.', ',')}
+                </span>
+                <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">
+                  {book.discount}% OFF
                 </span>
               </div>
-              <div className="pt-5 border-t border-white/[0.07] flex flex-col sm:flex-row sm:items-end gap-6">
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-inter text-[11px] text-white/20 line-through">De R$ 239,98</span>
-                  <div className="flex items-baseline gap-3 flex-wrap justify-center md:justify-start">
-                    <span className="font-bebas text-[50px] leading-none text-[#C5973F]">R$ 139,99</span>
-                    <span className="inline-flex items-center gap-1 bg-green-500/15 text-green-400 font-inter text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border border-green-500/25"><Zap size={9} className="fill-green-400" />42% OFF</span>
-                  </div>
-                  <span className="font-inter text-[11px] text-white/25">ou 3× R$ 46,66 sem juros</span>
-                  
-                <div className="flex flex-col gap-3 min-w-[240px]">
-                  <a href="#" onClick={(e) => e.preventDefault()}
-                    className="group/btn flex items-center justify-center gap-2 font-inter text-[11px] font-black tracking-[0.18em] uppercase px-6 py-4 transition-all duration-200 hover:brightness-110 active:scale-95"
-                    style={{ background: ML_YELLOW, color: ML_DARK, boxShadow: '0 6px 28px rgba(255,230,0,0.25)' }}>
-                    <ShoppingBag size={13} />Comprar Combo no Mercado Livre<ArrowRight size={11} className="opacity-60 group-hover/btn:translate-x-0.5 transition-transform" />
-                  </a>
-                  <div className="flex items-center justify-center gap-4">
-                    {trustItems.map(({ icon: Icon, label }) => <div key={label} className="flex items-center gap-1"><Icon size={9} className="text-white/20" /><span className="font-inter text-[9px] text-white/20 tracking-wide">{label}</span></div>)}
-                  </div>
-                </div>
-              </div>
+              <p className="text-white/30 text-xs mb-6">em até 12x no cartão</p>
+
+              <a
+                href={book.mlUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFE600] hover:bg-[#FFD700] text-[#111] text-sm font-bold px-8 py-3.5 rounded-full transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] w-full md:w-auto"
+              >
+                Comprar no Mercado Livre
+              </a>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* GUARANTEE STRIP */}
-        <div className="reveal mt-6 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.06]"
-          style={{ border: '1px solid rgba(197,151,63,0.15)' }}>
-          {guaranteeItems.map(({ icon: Icon, title, sub }, i) => (
-            <div key={i} className="flex items-center gap-4 px-6 py-5">
-              <div className="flex-shrink-0 w-9 h-9 flex items-center justify-center" style={{ background: 'rgba(197,151,63,0.08)', border: '1px solid rgba(197,151,63,0.18)' }}>
-                <Icon size={16} className="text-[#C5973F]" />
-              </div>
-              <div>
-                <div className="font-inter text-[12px] font-bold text-white/70 tracking-wide">{title}</div>
-                <div className="font-inter text-[11px] text-white/25 mt-0.5">{sub}</div>
-              </div>
+      {/* ── Combo card ── */}
+      <div className="max-w-2xl mx-auto mb-16">
+        <div className="relative bg-[#0D0D15] border border-[#C5973F]/25 rounded-2xl p-8 md:p-10 text-center overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F] to-transparent" />
+
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <span className="text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1">
+              MELHOR VALOR
+            </span>
+            <span className="text-[10px] font-bold tracking-widest uppercase bg-white/5 text-white/50 border border-white/10 rounded-full px-3 py-1">
+              MAIS VENDIDO
+            </span>
+          </div>
+
+          <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white tracking-wide mb-2">
+            KIT COMPLETO
+          </h3>
+          <p className="text-white/40 text-sm mb-8">
+            Os 2 livros juntos com desconto exclusivo
+          </p>
+
+          <div className="flex flex-col items-center gap-1 mb-3">
+            <span className="text-white/30 text-sm line-through">R$239,98</span>
+            <div className="flex items-baseline gap-3">
+              <span className="text-white text-4xl font-bold">R$139,99</span>
+              <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">
+                42% OFF
+              </span>
+            </div>
+          </div>
+          <p className="text-white/30 text-xs mb-8">
+            Economia de R$19,99 vs comprar separado · em até 12x no cartão
+          </p>
+
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center bg-[#FFE600] hover:bg-[#FFD700] text-[#111] text-sm font-bold px-10 py-4 rounded-full transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] w-full md:w-auto"
+          >
+            Comprar Kit no Mercado Livre
+          </a>
+        </div>
+      </div>
+
+      {/* ── Guarantee strip ── */}
+      <div className="max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { icon: Shield, label: 'Compra Segura', sub: 'Pagamento protegido' },
+            { icon: Truck, label: 'Envio Rápido', sub: 'Para todo o Brasil' },
+            { icon: RotateCcw, label: 'Devolução Fácil', sub: 'Política do ML' },
+          ].map(({ icon: Icon, label, sub }) => (
+            <div key={label} className="flex flex-col items-center gap-2 text-center py-5 px-4 bg-[#0D0D15] border border-white/5 rounded-xl">
+              <Icon size={18} className="text-[#C5973F]" />
+              <p className="text-white text-sm font-medium">{label}</p>
+              <p className="text-white/35 text-xs">{sub}</p>
             </div>
           ))}
         </div>
-
       </div>
+
     </section>
   )
 }
