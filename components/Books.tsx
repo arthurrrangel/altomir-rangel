@@ -35,7 +35,6 @@ const BOOKS = [
 function useCountdown(hours = 3) {
   const KEY = 'books_countdown_end'
   const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
-
   useEffect(() => {
     let end = Number(sessionStorage.getItem(KEY))
     if (!end || end < Date.now()) {
@@ -54,45 +53,35 @@ function useCountdown(hours = 3) {
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [hours])
-
   return timeLeft
 }
 
-function pad(n: number) {
-  return String(n).padStart(2, '0')
-}
+function pad(n: number) { return String(n).padStart(2, '0') }
 
 export default function Books() {
   const { h, m, s } = useCountdown(3)
-
   return (
     <section id="livros" className="bg-[#0A0A0F] py-20 px-4">
 
-      {/* ── Countdown bar ── */}
+      {/* Countdown */}
       <div className="max-w-xl mx-auto mb-14">
         <div className="flex items-center justify-center gap-3 bg-[#C5973F]/10 border border-[#C5973F]/30 rounded-full px-6 py-3">
           <Clock size={15} className="text-[#C5973F] shrink-0" />
           <p className="text-[#C5973F] text-sm text-center">
             Oferta especial expira em&nbsp;
-            <span className="font-mono font-semibold">
-              {pad(h)}:{pad(m)}:{pad(s)}
-            </span>
+            <span className="font-mono font-semibold">{pad(h)}:{pad(m)}:{pad(s)}</span>
           </p>
         </div>
       </div>
 
-      {/* ── Section header ── */}
+      {/* Header */}
       <div className="text-center mb-16">
         <p className="text-[#C5973F] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Obras do Autor</p>
-        <h2 className="font-['Bebas_Neue'] text-5xl md:text-6xl text-white leading-none tracking-wide mb-4">
-          LIVROS
-        </h2>
-        <p className="text-white/40 text-sm max-w-sm mx-auto">
-          Mensagens que transformam vidas e renovam a fé
-        </p>
+        <h2 className="font-['Bebas_Neue'] text-5xl md:text-6xl text-white leading-none tracking-wide mb-4">LIVROS</h2>
+        <p className="text-white/40 text-sm max-w-sm mx-auto">Mensagens que transformam vidas e renovam a fé</p>
       </div>
 
-      {/* ── Book cards ── */}
+      {/* Book cards */}
       <div className="max-w-4xl mx-auto space-y-10 mb-20">
         {BOOKS.map((book, i) => (
           <div
@@ -101,27 +90,20 @@ export default function Books() {
           >
             {/* Cover */}
             <div className="shrink-0 flex justify-center">
-              <div
-                className="relative w-40 h-56 md:w-48 md:h-64"
-                style={{ perspective: '700px' }}
-              >
+              <div className="relative w-44 md:w-52" style={{ perspective: '700px' }}>
                 <div
-                  className="w-full h-full rounded-lg overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
-                  style={{ transform: 'rotateY(3deg)', transformStyle: 'preserve-3d' }}
+                  className="relative rounded-xl overflow-hidden shadow-[0_24px_60px_rgba(0,0,0,0.8)]"
+                  style={{ transform: 'rotateY(4deg)', transformStyle: 'preserve-3d', aspectRatio: '2/3' }}
                 >
                   <Image
                     src={book.cover}
                     alt={book.title}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 160px, 192px"
+                    className="object-contain"
+                    style={{ background: '#fff' }}
+                    sizes="(max-width: 768px) 176px, 208px"
                   />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: 'linear-gradient(105deg, rgba(255,255,255,0.07) 0%, transparent 40%)',
-                    }}
-                  />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(105deg, rgba(255,255,255,0.06) 0%, transparent 40%)' }} />
                 </div>
               </div>
             </div>
@@ -131,8 +113,7 @@ export default function Books() {
               <span className="inline-block text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1 mb-4">
                 {book.badge}
               </span>
-
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-5">
                 <div className="flex gap-0.5">
                   {Array.from({ length: book.stars }).map((_, j) => (
                     <Star key={j} size={13} className="text-[#C5973F] fill-[#C5973F]" />
@@ -140,25 +121,16 @@ export default function Books() {
                 </div>
                 <span className="text-white/35 text-xs">{book.readers} leitores</span>
               </div>
-
-              <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white leading-none tracking-wide mb-1">
+              <h3 className="font-['Bebas_Neue'] uppercase text-4xl md:text-[2.6rem] text-white leading-tight tracking-wide mb-1">
                 {book.title}
               </h3>
               <p className="text-white/40 text-sm mb-6">{book.subtitle}</p>
-
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-white/30 text-sm line-through">
-                  R${book.originalPrice.toFixed(2).replace('.', ',')}
-                </span>
-                <span className="text-white text-3xl font-bold">
-                  R${book.price.toFixed(2).replace('.', ',')}
-                </span>
-                <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">
-                  {book.discount}% OFF
-                </span>
+                <span className="text-white/30 text-sm line-through">R${book.originalPrice.toFixed(2).replace('.', ',')}</span>
+                <span className="text-white text-3xl font-bold">R${book.price.toFixed(2).replace('.', ',')}</span>
+                <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">{book.discount}% OFF</span>
               </div>
               <p className="text-white/30 text-xs mb-6">em até 12x no cartão</p>
-
               <a
                 href={book.mlUrl}
                 target="_blank"
@@ -172,66 +144,38 @@ export default function Books() {
         ))}
       </div>
 
-      {/* ── Combo card ── */}
+      {/* Combo */}
       <div className="max-w-2xl mx-auto mb-16">
         <div className="relative bg-[#0D0D15] border border-[#C5973F]/25 rounded-2xl p-8 md:p-10 text-center overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F] to-transparent" />
-
           <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1">
-              MELHOR VALOR
-            </span>
-            <span className="text-[10px] font-bold tracking-widest uppercase bg-white/5 text-white/50 border border-white/10 rounded-full px-3 py-1">
-              MAIS VENDIDO
-            </span>
+            <span className="text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1">MELHOR VALOR</span>
+            <span className="text-[10px] font-bold tracking-widest uppercase bg-white/5 text-white/50 border border-white/10 rounded-full px-3 py-1">MAIS VENDIDO</span>
           </div>
-
-          <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white tracking-wide mb-2">
-            KIT COMPLETO
-          </h3>
-          <p className="text-white/40 text-sm mb-6">
-            Os 2 livros juntos com desconto exclusivo
-          </p>
-
-          <div className="flex items-center justify-center gap-4 mb-8">
+          <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white tracking-wide mb-2">KIT COMPLETO</h3>
+          <p className="text-white/40 text-sm mb-6">Os 2 livros juntos com desconto exclusivo</p>
+          <div className="flex items-end justify-center gap-3 mb-8">
             {BOOKS.map((book) => (
-              <div key={book.id} className="relative rounded-md overflow-hidden shadow-lg" style={{width:'64px', height:'88px'}}>
-                <Image
-                  src={book.cover}
-                  alt={book.title}
-                  fill
-                  className="object-cover"
-                  sizes="64px"
-                />
+              <div key={book.id} className="relative rounded-lg overflow-hidden shadow-lg" style={{ width: '60px', height: '90px' }}>
+                <Image src={book.cover} alt={book.title} fill className="object-contain" style={{ background: '#fff' }} sizes="60px" />
               </div>
             ))}
           </div>
-
           <div className="flex flex-col items-center gap-1 mb-3">
             <span className="text-white/30 text-sm line-through">R$239,98</span>
             <div className="flex items-baseline gap-3">
               <span className="text-white text-4xl font-bold">R$139,99</span>
-              <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">
-                42% OFF
-              </span>
+              <span className="text-xs font-bold bg-green-500/15 text-green-400 border border-green-500/20 rounded-full px-2 py-0.5">42% OFF</span>
             </div>
           </div>
-          <p className="text-white/30 text-xs mb-8">
-            Economia de R$19,99 vs comprar separado · em até 12x no cartão
-          </p>
-
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#FFE600] hover:bg-[#FFD700] text-[#111] text-sm font-bold px-10 py-4 rounded-full transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] w-full md:w-auto"
-          >
+          <p className="text-white/30 text-xs mb-8">Economia de R$19,99 vs comprar separado · em até 12x no cartão</p>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#FFE600] hover:bg-[#FFD700] text-[#111] text-sm font-bold px-10 py-4 rounded-full transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] w-full md:w-auto">
             Comprar Kit no Mercado Livre
           </a>
         </div>
       </div>
 
-      {/* ── Guarantee strip ── */}
+      {/* Guarantee */}
       <div className="max-w-2xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
