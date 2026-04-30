@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef } from 'react'
-import { ShoppingBag, MessageCircle, Zap, CheckCircle, Package, BookOpen } from 'lucide-react'
+import { ShoppingBag, MessageCircle, Zap, CheckCircle, Package } from 'lucide-react'
 import Image from 'next/image'
 import { books } from '@/lib/books'
 
@@ -11,20 +11,15 @@ const meta: Record<string, {
   badge?: string
   readers: string
   badgeColor?: string
-  pages?: string
-  info?: string
 }> = {
   'o-proposito-da-prosperidade': {
     badge: 'EDIÇÃO REVISTA E AMPLIADA',
     readers: '+5.000 leitores',
-    pages: '192 págs.',
-    info: 'ADHONEP · 2004',
   },
   'bem-vindo-ao-novo-voce': {
     badge: 'LANÇAMENTO',
     readers: 'Disponível agora',
     badgeColor: '#C5973F',
-    info: 'Altomir Rangel · 2024',
   },
 }
 
@@ -68,9 +63,6 @@ export default function Books() {
           <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">
             PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>
           </h2>
-          <p className="reveal font-inter text-white/35 text-[13px] mt-5 max-w-lg leading-relaxed">
-            Mais de 5.000 leitores transformados. Adquira com desconto especial direto pelo Mercado Livre.
-          </p>
         </div>
 
         {/* Book cards */}
@@ -79,8 +71,6 @@ export default function Books() {
             const m = meta[book.slug] ?? { readers: '' }
             const pct = book.price && book.originalPrice
               ? Math.round((1 - book.price / book.originalPrice) * 100) : 0
-            const savings = book.originalPrice && book.price
-              ? (book.originalPrice - book.price).toFixed(2).replace('.', ',') : null
             const isEven = idx % 2 === 0
 
             return (
@@ -95,20 +85,15 @@ export default function Books() {
                 onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 20px 60px rgba(197,151,63,0.09)')}
                 onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 0 transparent')}
               >
-
                 {/* Cover panel */}
                 <div className="flex-shrink-0 relative flex items-center justify-center md:w-[270px] py-12 px-8 overflow-hidden"
                   style={{ background: '#090910' }}>
-                  {/* Ambient glow behind book */}
                   <div className="absolute inset-0 pointer-events-none"
                     style={{ background: 'radial-gradient(ellipse at center, rgba(197,151,63,0.10) 0%, transparent 65%)' }} />
 
                   <div className="relative w-[150px] md:w-[175px]" style={{ aspectRatio: '3/4' }}>
-                    {/* Ground shadow */}
                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-5 blur-xl rounded-full"
                       style={{ background: 'rgba(197,151,63,0.20)' }} />
-
-                    {/* Book with subtle 3D perspective */}
                     <div className="relative w-full h-full overflow-hidden transition-all duration-600 group-hover:scale-[1.03]"
                       style={{
                         boxShadow: '6px 12px 40px rgba(0,0,0,0.7), -2px 0 8px rgba(0,0,0,0.4)',
@@ -117,12 +102,10 @@ export default function Books() {
                       <Image src={book.cover} alt={book.title} fill
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="200px" />
-                      {/* Spine highlight */}
                       <div className="absolute inset-y-0 left-0 w-[6px]"
                         style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.12), transparent)' }} />
                     </div>
 
-                    {/* Edition badge */}
                     {m.badge && (
                       <div className="absolute -top-3 -left-2 z-10">
                         <span className="font-inter text-[7px] font-bold tracking-[0.2em] uppercase px-2 py-1 shadow-md"
@@ -132,7 +115,6 @@ export default function Books() {
                       </div>
                     )}
 
-                    {/* Discount pill */}
                     {pct > 0 && (
                       <div className="absolute -bottom-3 -right-2 z-10">
                         <span className="font-inter text-[10px] font-black bg-green-500 text-black px-2 py-0.5 shadow-md">
@@ -146,27 +128,18 @@ export default function Books() {
                 {/* Info */}
                 <div className="relative flex flex-col justify-between gap-0 p-6 sm:p-8 md:p-10 flex-1">
 
-                  {/* Top meta row */}
-                  <div className="flex items-center justify-center md:justify-start gap-3 mb-5 flex-wrap">
+                  {/* Stars + readers */}
+                  <div className="flex items-center justify-center md:justify-start gap-3 mb-5">
                     <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
                         <span key={i} className="text-[#C5973F] text-[11px]">★</span>
                       ))}
                     </div>
-                    <div className="h-3 w-px bg-white/15 hidden sm:block" />
+                    <div className="h-3 w-px bg-white/15" />
                     <span className="font-inter text-[11px] text-white/30 tracking-wide">{m.readers}</span>
-                    {m.info && (
-                      <>
-                        <div className="h-3 w-px bg-white/15 hidden sm:block" />
-                        <span className="font-inter text-[10px] text-white/20 tracking-wider flex items-center gap-1">
-                          <BookOpen size={9} className="text-white/20" />
-                          {m.info}
-                        </span>
-                      </>
-                    )}
                   </div>
 
-                  {/* Title block */}
+                  {/* Title */}
                   <div className="mb-4">
                     <h3 className="font-bebas text-[clamp(28px,4.5vw,50px)] leading-[0.95] text-white group-hover:text-[#C5973F] transition-colors duration-300 text-center md:text-left">
                       {book.title}
@@ -178,17 +151,10 @@ export default function Books() {
                     )}
                   </div>
 
-                  {/* Synopsis */}
-                  {book.synopsis && (
-                    <p className="font-inter text-white/45 text-[13.5px] leading-relaxed text-center md:text-left mb-5 max-w-lg">
-                      {book.synopsis}
-                    </p>
-                  )}
-
-                  {/* Highlights */}
+                  {/* Highlights — max 3 */}
                   {book.highlights && book.highlights.length > 0 && (
                     <ul className="flex flex-col gap-2 mb-6">
-                      {book.highlights.map((h, i) => (
+                      {book.highlights.slice(0, 3).map((h, i) => (
                         <li key={i} className="flex items-start gap-2.5 font-inter text-[12px] text-white/40">
                           <CheckCircle size={12} className="text-[#C5973F]/70 flex-shrink-0 mt-0.5" />
                           {h}
@@ -200,12 +166,10 @@ export default function Books() {
                   {/* Price + CTA */}
                   <div className="pt-5 border-t border-white/[0.07]">
                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-
-                      {/* Price stack */}
                       <div className="flex flex-col gap-1">
                         {book.originalPrice && (
                           <span className="font-inter text-[11px] text-white/25 line-through tracking-wide">
-                            De R$ {book.originalPrice.toFixed(2).replace('.', ',')}
+                            R$ {book.originalPrice.toFixed(2).replace('.', ',')}
                           </span>
                         )}
                         <div className="flex items-baseline gap-3 flex-wrap">
@@ -216,14 +180,8 @@ export default function Books() {
                           )}
                           {pct > 0 && <DiscountBadge pct={pct} />}
                         </div>
-                        {savings && (
-                          <span className="font-inter text-[11px] text-green-400/70">
-                            Economia de R$ {savings} nesta compra
-                          </span>
-                        )}
                       </div>
 
-                      {/* CTA */}
                       <div className="flex flex-col gap-2 min-w-[210px]">
                         <a
                           href={book.mlUrl && book.mlUrl !== '#' ? book.mlUrl : '#'}
@@ -254,11 +212,9 @@ export default function Books() {
           onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(197,151,63,0.5)')}
           onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(197,151,63,0.25)')}
         >
-          {/* Gold top line */}
           <div className="absolute top-0 left-0 right-0 h-[1.5px]"
             style={{ background: 'linear-gradient(90deg, transparent, #C5973F 30%, #C5973F 70%, transparent)' }} />
 
-          {/* Best value badge */}
           <div className="absolute top-4 right-4 md:top-6 md:right-6">
             <span className="font-inter text-[9px] font-black tracking-[0.25em] uppercase px-3 py-1.5"
               style={{ background: 'rgba(197,151,63,0.15)', color: '#C5973F', border: '1px solid rgba(197,151,63,0.3)' }}>
@@ -290,21 +246,18 @@ export default function Books() {
               </div>
 
               <h3 className="font-bebas text-[clamp(28px,5vw,52px)] leading-[0.95] text-white">
-                LEVE OS DOIS LIVROS<br />
-                <span className="text-[#C5973F]">E ECONOMIZE AINDA MAIS</span>
+                OS DOIS LIVROS<br />
+                <span className="text-[#C5973F]">POR R$ 79,99</span>
               </h3>
 
-              <p className="font-inter text-white/40 text-[13px] leading-relaxed max-w-lg">
-                Cada livro separado sai por R$ 46,99. No combo, os dois juntos saem por{' '}
-                <span className="text-white font-semibold">R$ 79,99</span>{' '}
-                — R$ 13,99 a menos do que comprar separados.
+              <p className="font-inter text-white/35 text-[13px] leading-relaxed max-w-md">
+                R$ 13,99 a menos do que comprar separados.
               </p>
 
-              {/* Combo price */}
               <div className="pt-5 border-t border-white/[0.07] flex flex-col sm:flex-row sm:items-end gap-5">
                 <div className="flex flex-col gap-1">
                   <span className="font-inter text-[11px] text-white/25 line-through tracking-wide">
-                    Preço original: R$ 139,98
+                    R$ 139,98
                   </span>
                   <div className="flex items-baseline gap-3 flex-wrap justify-center md:justify-start">
                     <span className="font-bebas text-[48px] leading-none text-[#C5973F]">R$ 79,99</span>
@@ -313,9 +266,6 @@ export default function Books() {
                       43% OFF
                     </span>
                   </div>
-                  <span className="font-inter text-[11px] text-green-400/65">
-                    Economia de R$ 59,99 em relação ao preço original
-                  </span>
                 </div>
 
                 <div className="flex flex-col gap-2 min-w-[230px]">
@@ -330,9 +280,6 @@ export default function Books() {
                     <MessageCircle size={13} />
                     Pedir Combo via WhatsApp
                   </a>
-                  <p className="font-inter text-[10px] text-white/20 text-center">
-                    Entrega em todo o Brasil · Frete a combinar
-                  </p>
                 </div>
               </div>
             </div>
