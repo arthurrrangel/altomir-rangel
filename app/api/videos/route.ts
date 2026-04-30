@@ -21,7 +21,7 @@ export async function GET() {
     const res = await fetch("https://www.youtube.com/feeds/videos.xml?channel_id=" + CHANNEL_ID, { next: { revalidate: 1800 }, headers: { "User-Agent": "Mozilla/5.0" } })
     if (!res.ok) throw new Error("RSS failed")
     const xml = await res.text()
-    const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)]
+        const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g))
     const videos: VideoItem[] = entries.slice(0, 9).map(m => {
       const e = m[1]
       const id = e.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? ""
