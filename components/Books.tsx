@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef } from 'react'
-import { ShoppingBag, MessageCircle, Zap, CheckCircle, Package, Shield, Truck, Star, Flame, ArrowRight } from 'lucide-react'
+import { ShoppingBag, Zap, CheckCircle, Package, Shield, Truck, Star, Flame, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { books } from '@/lib/books'
 
@@ -302,12 +302,13 @@ export default function Books() {
 
                 <div className="flex flex-col gap-3 min-w-[240px]">
                   <a
-                    href="https://wa.me/5521999999999?text=Quero%20o%20combo%20dos%20dois%20livros%20do%20Altomir%20Rangel"
+                    href="#"
                     target="_blank" rel="noopener noreferrer"
-                    className="group/btn flex items-center justify-center gap-2 text-black font-inter text-[11px] font-black tracking-[0.18em] uppercase px-6 py-4 transition-all duration-200 hover:brightness-110 active:scale-95"
-                    style={{ background: '#C5973F', boxShadow: '0 8px 32px rgba(197,151,63,0.30)' }}>
-                    <MessageCircle size={13} />
-                    Pedir Combo via WhatsApp
+                    onClick={(e) => e.preventDefault()}
+                    className="group/btn flex items-center justify-center gap-2 font-inter text-[11px] font-black tracking-[0.18em] uppercase px-6 py-4 transition-all duration-200 hover:brightness-110 active:scale-95"
+                    style={{ background: ML_YELLOW, color: ML_DARK, boxShadow: '0 6px 28px rgba(255,230,0,0.25)' }}>
+                    <ShoppingBag size={13} />
+                    Comprar Combo no Mercado Livre
                     <ArrowRight size={11} className="opacity-60 group-hover/btn:translate-x-0.5 transition-transform" />
                   </a>
                   <div className="flex items-center justify-center gap-4">
