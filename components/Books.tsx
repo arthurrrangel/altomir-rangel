@@ -32,47 +32,64 @@ const BOOKS = [
   },
 ]
 
-function useCountdown(hours = 3) {
-  const KEY = 'books_countdown_end'
-  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
+// Data fixa de encerramento da promoção — igual para todos os visitantes
+const PROMO_DEADLINE = new Date('2026-05-07T23:59:59')
+
+function useCountdown() {
+  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0, expired: false })
   useEffect(() => {
-    let end = Number(sessionStorage.getItem(KEY))
-    if (!end || end < Date.now()) {
-      end = Date.now() + hours * 3600 * 1000
-      sessionStorage.setItem(KEY, String(end))
-    }
     const tick = () => {
-      const diff = Math.max(0, end - Date.now())
+      const diff = PROMO_DEADLINE.getTime() - Date.now()
+      if (diff <= 0) {
+        setTimeLeft({ d: 0, h: 0, m: 0, s: 0, expired: true })
+        return
+      }
       setTimeLeft({
-        h: Math.floor(diff / 3600000),
+        d: Math.floor(diff / 86400000),
+        h: Math.floor((diff % 86400000) / 3600000),
         m: Math.floor((diff % 3600000) / 60000),
         s: Math.floor((diff % 60000) / 1000),
+        expired: false,
       })
     }
     tick()
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
-  }, [hours])
+  }, [])
   return timeLeft
 }
 
 function pad(n: number) { return String(n).padStart(2, '0') }
 
 export default function Books() {
-  const { h, m, s } = useCountdown(3)
+  const { d, h, m, s, expired } = useCountdown()
   return (
     <section id="livros" className="bg-[#0A0A0F] py-20 px-4">
 
       {/* Countdown */}
-      <div className="max-w-xl mx-auto mb-14">
-        <div className="flex items-center justify-center gap-3 bg-[#C5973F]/10 border border-[#C5973F]/30 rounded-full px-6 py-3">
-          <Clock size={15} className="text-[#C5973F] shrink-0" />
-          <p className="text-[#C5973F] text-sm text-center">
-            Oferta especial expira em&nbsp;
-            <span className="font-mono font-semibold">{pad(h)}:{pad(m)}:{pad(s)}</span>
-          </p>
+      {!expired && (
+        <div className="max-w-2xl mx-auto mb-14">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-[#C5973F]/10 border border-[#C5973F]/30 rounded-2xl px-6 py-4">
+            <div className="flex items-center gap-2">
+              <Clock size={14} className="text-[#C5973F] shrink-0" />
+              <span className="text-[#C5973F] text-xs font-semibold tracking-wider uppercase">Promoção encerra em</span>
+            </div>
+            <div className="flex items-center gap-1 font-mono">
+              {d > 0 && (
+                <>
+                  <span className="text-white font-bold text-lg">{d}</span>
+                  <span className="text-white/40 text-xs mr-1">{d === 1 ? 'dia' : 'dias'}</span>
+                </>
+              )}
+              <span className="bg-[#C5973F]/20 text-[#C5973F] font-bold text-base px-2 py-0.5 rounded">{pad(h)}</span>
+              <span className="text-white/30 text-sm">:</span>
+              <span className="bg-[#C5973F]/20 text-[#C5973F] font-bold text-base px-2 py-0.5 rounded">{pad(m)}</span>
+              <span className="text-white/30 text-sm">:</span>
+              <span className="bg-[#C5973F]/20 text-[#C5973F] font-bold text-base px-2 py-0.5 rounded">{pad(s)}</span>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Header */}
       <div className="text-center mb-16">
@@ -88,7 +105,6 @@ export default function Books() {
             key={book.id}
             className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-8 md:gap-12 bg-[#0D0D15] border border-white/5 rounded-2xl p-8 md:p-10`}
           >
-            {/* Cover */}
             <div className="shrink-0 flex justify-center">
               <div className="relative w-44 md:w-52" style={{ perspective: '700px' }}>
                 <div
@@ -107,8 +123,6 @@ export default function Books() {
                 </div>
               </div>
             </div>
-
-            {/* Info */}
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
               <span className="inline-block text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1 mb-4">
                 {book.badge}
