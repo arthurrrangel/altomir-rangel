@@ -247,23 +247,23 @@ export default function Books() {
 
               <h3 className="font-bebas text-[clamp(28px,5vw,52px)] leading-[0.95] text-white">
                 OS DOIS LIVROS<br />
-                <span className="text-[#C5973F]">POR R$ 79,99</span>
+                <span className="text-[#C5973F]">POR R$ 139,99</span>
               </h3>
 
               <p className="font-inter text-white/35 text-[13px] leading-relaxed max-w-md">
-                R$ 13,99 a menos do que comprar separados.
+                R$ 19,99 a menos do que comprar separados.
               </p>
 
               <div className="pt-5 border-t border-white/[0.07] flex flex-col sm:flex-row sm:items-end gap-5">
                 <div className="flex flex-col gap-1">
                   <span className="font-inter text-[11px] text-white/25 line-through tracking-wide">
-                    R$ 139,98
+                    R$ 239,98
                   </span>
                   <div className="flex items-baseline gap-3 flex-wrap justify-center md:justify-start">
-                    <span className="font-bebas text-[48px] leading-none text-[#C5973F]">R$ 79,99</span>
+                    <span className="font-bebas text-[48px] leading-none text-[#C5973F]">R$ 139,99</span>
                     <span className="inline-flex items-center gap-1 bg-green-500/15 text-green-400 font-inter text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border border-green-500/25">
                       <Zap size={9} className="fill-green-400" />
-                      43% OFF
+                      42% OFF
                     </span>
                   </div>
                 </div>
