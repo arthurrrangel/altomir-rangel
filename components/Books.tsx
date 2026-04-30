@@ -197,13 +197,7 @@ export default function Books() {
                           {pct > 0 && <span className="inline-flex items-center gap-1 bg-green-500/15 text-green-400 font-inter text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border border-green-500/25"><Zap size={9} className="fill-green-400" />{pct}% OFF</span>}
                         </div>
                         {installment && <span className="font-inter text-[11px] text-white/30">ou 2× R$ {installment} sem juros</span>}
-                        <div className="flex items-center gap-2 mt-2">
-                          <div className="flex -space-x-1.5">
-                            {['M','J','R'].map((l,i) => <div key={i} className="w-5 h-5 rounded-full flex items-center justify-center font-inter text-[8px] font-black text-black" style={{ background: i===0?'#C5973F':i===1?'#888':'#555' }}>{l}</div>)}
-                          </div>
-                          <span className="font-inter text-[10px] text-white/30"><span className="text-white/50 font-semibold">14 pessoas</span> compraram hoje</span>
-                        </div>
-                      </div>
+                        
                       <div className="flex flex-col items-stretch gap-2.5 min-w-[220px]">
                         <a href={book.mlUrl && book.mlUrl !== '#' ? book.mlUrl : '#'} target="_blank" rel="noopener noreferrer"
                           onClick={book.mlUrl === '#' ? (e) => e.preventDefault() : undefined}
@@ -278,13 +272,7 @@ export default function Books() {
                     <span className="inline-flex items-center gap-1 bg-green-500/15 text-green-400 font-inter text-[10px] font-bold tracking-[0.15em] uppercase px-2.5 py-1 border border-green-500/25"><Zap size={9} className="fill-green-400" />42% OFF</span>
                   </div>
                   <span className="font-inter text-[11px] text-white/25">ou 3× R$ 46,66 sem juros</span>
-                  <div className="flex items-center gap-2 mt-2">
-                    <div className="flex -space-x-1.5">
-                      {['A','B','C','D'].map((l,i) => <div key={i} className="w-5 h-5 rounded-full flex items-center justify-center font-inter text-[8px] font-black text-black" style={{ background: i===0?'#C5973F':i===1?'#A07830':i===2?'#888':'#555' }}>{l}</div>)}
-                    </div>
-                    <span className="font-inter text-[10px] text-white/30"><span className="text-white/50 font-semibold">31 combos</span> vendidos este mês</span>
-                  </div>
-                </div>
+                  
                 <div className="flex flex-col gap-3 min-w-[240px]">
                   <a href="#" onClick={(e) => e.preventDefault()}
                     className="group/btn flex items-center justify-center gap-2 font-inter text-[11px] font-black tracking-[0.18em] uppercase px-6 py-4 transition-all duration-200 hover:brightness-110 active:scale-95"
