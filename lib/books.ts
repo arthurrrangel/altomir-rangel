@@ -43,8 +43,8 @@ export const books: Book[] = [
     buyUrl: 'https://www.amazon.com.br/Prop%C3%B3sito-Prosperidade-Altomir-Rangel-Cunha/dp/8574220310',
     buyOptions: [{ label: 'Amazon', url: 'https://www.amazon.com.br/Prop%C3%B3sito-Prosperidade-Altomir-Rangel-Cunha/dp/8574220310' }],
     featured: true,
-    price: 46.99,
-    originalPrice: 69.99,
+    price: 79.99,
+    originalPrice: 119.99,
     mlUrl: '#',
   },
   {
@@ -64,8 +64,8 @@ export const books: Book[] = [
     ],
     buyUrl: 'https://wa.me/5521999999999?text=Quero%20encomendar%20o%20livro%20Bem-vindo%20ao%20Novo%20Voc%C3%AA',
     featured: true,
-    price: 46.99,
-    originalPrice: 69.99,
+    price: 79.99,
+    originalPrice: 119.99,
     mlUrl: '#',
   },
 ]
