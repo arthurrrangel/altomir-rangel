@@ -94,7 +94,7 @@ export default function Books() {
       {/* Header */}
       <div className="text-center mb-16">
         <p className="text-[#C5973F] text-xs font-semibold tracking-[0.25em] uppercase mb-3">Obras do Autor</p>
-        <h2 className="font-['Bebas_Neue'] text-5xl md:text-6xl text-white leading-none tracking-wide mb-4">LIVROS</h2>
+        <h2 className="font-bebas text-5xl md:text-6xl text-white leading-none tracking-wide mb-4">LIVROS</h2>
         <p className="text-white/40 text-sm max-w-sm mx-auto">Mensagens que transformam vidas e renovam a fé</p>
       </div>
 
@@ -135,7 +135,7 @@ export default function Books() {
                 </div>
                 <span className="text-white/35 text-xs">{book.readers} leitores</span>
               </div>
-              <h3 className="font-['Bebas_Neue'] uppercase text-4xl md:text-[2.6rem] text-white leading-tight tracking-wide mb-1">
+              <h3 className="font-bebas uppercase text-4xl md:text-[2.6rem] text-white leading-tight tracking-wide mb-1">
                 {book.title}
               </h3>
               <p className="text-white/40 text-sm mb-6">{book.subtitle}</p>
@@ -166,7 +166,7 @@ export default function Books() {
             <span className="text-[10px] font-bold tracking-widest uppercase bg-[#C5973F]/15 text-[#C5973F] border border-[#C5973F]/30 rounded-full px-3 py-1">MELHOR VALOR</span>
             <span className="text-[10px] font-bold tracking-widest uppercase bg-white/5 text-white/50 border border-white/10 rounded-full px-3 py-1">MAIS VENDIDO</span>
           </div>
-          <h3 className="font-['Bebas_Neue'] text-4xl md:text-5xl text-white tracking-wide mb-2">KIT COMPLETO</h3>
+          <h3 className="font-bebas text-4xl md:text-5xl text-white tracking-wide mb-2">KIT COMPLETO</h3>
           <p className="text-white/40 text-sm mb-6">Os 2 livros juntos com desconto exclusivo</p>
           <div className="flex items-end justify-center gap-3 mb-8">
             {BOOKS.map((book) => (
