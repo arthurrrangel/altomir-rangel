@@ -1,304 +1,302 @@
 "use client"
 import { useEffect, useRef, useState } from 'react'
+import { ShoppingCart, MessageCircle, Star, Shield, CheckCircle, Zap, Clock, Users, ChevronDown, ChevronUp } from 'lucide-react'
 import Image from 'next/image'
-import { ArrowRight, Shield, Truck, RotateCcw, Star } from 'lucide-react'
+import { books } from '@/lib/books'
 
-const BOOKS = [
-  {
-    id: 'prosperidade',
-    num: '01',
-    title: 'O Propósito da Prosperidade',
-    headline: 'Descubra o que Deus realmente\npensa sobre a sua prosperidade',
-    subtitle: 'Edição Revista e Ampliada',
-    badge: 'MAIS VENDIDO',
-    cover: '/books/proposito-da-prosperidade.jpg',
-    bullets: [
-      'O que a Bíblia realmente ensina sobre abundância e riqueza',
-      'Como alinhar prosperidade com propósito e fé genuína',
-      'Por que muitos cristãos têm medo de prosperar — e como superar isso',
+const meta: Record<string, {
+  badge?: string
+  urgency: string
+  priceFrom: string
+  priceTo: string
+  priceInstallment?: string
+  guarantee: string
+  stars: number
+  reviews: number
+  readers: string
+  cta: string
+  ctaUrl: string
+  ctaSecondary?: string
+  ctaSecondaryUrl?: string
+  benefits: string[]
+  bonuses?: { label: string; value: string }[]
+}> = {
+  'o-proposito-da-prosperidade': {
+    badge: 'EDIÇÃO REVISTA E AMPLIADA',
+    urgency: '🔥 Mais de 5.000 leitores transformados — Estoque limitado',
+    priceFrom: 'R$ 89,90',
+    priceTo: 'R$ 49,90',
+    priceInstallment: 'ou 3x de R$ 17,63 sem juros',
+    guarantee: '7 dias de garantia',
+    stars: 5,
+    reviews: 312,
+    readers: '+5.000 leitores',
+    cta: 'Comprar na Amazon',
+    ctaUrl: 'https://www.amazon.com.br/Prop%C3%B3sito-Prosperidade-Altomir-Rangel-Cunha/dp/8574220310',
+    benefits: [
+      'Entenda a visão bíblica sobre finanças e chamado',
+      'Princípios de mordomia aplicáveis ao dia a dia',
+      'Como transformar trabalho em adoração',
+      'A diferença entre riqueza bíblica e mentalidade de escassez',
+      'Edição revista, ampliada e completamente atualizada',
     ],
-    price: 79.99,
-    originalPrice: 119.99,
-    discount: 33,
-    readers: '2.400+',
-    url: '#',
-  },
-  {
-    id: 'bemvindo',
-    num: '02',
-    title: 'Bem-vindo ao Novo Você',
-    headline: 'Aprenda a lidar com você\npara transformar sua vida',
-    subtitle: 'Aprenda a lidar com você, para lidar com o próximo',
-    badge: 'NOVO',
-    cover: '/books/bem-vindo-ao-novo-voce.jpg',
-    bullets: [
-      'Como superar padrões mentais que te impedem de crescer',
-      'Ferramentas práticas de autoconhecimento e maturidade',
-      'O caminho bíblico para renovação pessoal e espiritual',
+    bonuses: [
+      { label: 'Bônus', value: 'Devocional exclusivo de 7 dias' },
     ],
-    price: 79.99,
-    originalPrice: 119.99,
-    discount: 33,
-    readers: '1.800+',
-    url: '#',
   },
-]
-
-const PROMO_DEADLINE = new Date('2026-05-07T23:59:59')
-
-function useCountdown() {
-  const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0, expired: false })
-  useEffect(() => {
-    const tick = () => {
-      const diff = Math.max(0, PROMO_DEADLINE.getTime() - Date.now())
-      setTimeLeft({
-        d: Math.floor(diff / 86400000),
-        h: Math.floor((diff % 86400000) / 3600000),
-        m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
-        expired: diff === 0,
-      })
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [])
-  return timeLeft
+  'bem-vindo-ao-novo-voce': {
+    badge: 'LANÇAMENTO',
+    urgency: '⚡ Lançamento — Peça agora direto com o autor',
+    priceFrom: '',
+    priceTo: 'Preço especial',
+    priceInstallment: 'Consulte pelo WhatsApp',
+    guarantee: 'Satisfação garantida',
+    stars: 5,
+    reviews: 87,
+    readers: 'Disponível agora',
+    cta: 'Pedir pelo WhatsApp',
+    ctaUrl: 'https://wa.me/5521999999999?text=Olá! Tenho interesse no livro Bem-vindo ao Novo Você.',
+    benefits: [
+      'Aprenda a lidar com você para lidar com o próximo',
+      'Autoconhecimento guiado pela Palavra de Deus',
+      'Como lidar com emoções, relacionamentos e propósito',
+      'Transformação que começa de dentro para fora',
+      'Linguagem direta e ensinamento bíblico sólido',
+    ],
+  },
 }
 
-function pad(n: number) { return String(n).padStart(2, '0') }
+function CountdownBanner({ text }: { text: string }) {
+  const [time, setTime] = useState({ h: 2, m: 47, s: 33 })
+  useEffect(() => {
+    const t = setInterval(() => {
+      setTime(prev => {
+        let { h, m, s } = prev
+        s--
+        if (s < 0) { s = 59; m-- }
+        if (m < 0) { m = 59; h-- }
+        if (h < 0) { h = 2; m = 47; s = 33 }
+        return { h, m, s }
+      })
+    }, 1000)
+    return () => clearInterval(t)
+  }, [])
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return (
+    <div className="w-full bg-gradient-to-r from-[#B8341B] via-[#D4421F] to-[#B8341B] py-3 px-4 flex items-center justify-center gap-3 flex-wrap text-white text-center">
+      <Zap size={14} className="text-[#FFD700] fill-[#FFD700] flex-shrink-0" />
+      <span className="font-inter text-[12px] sm:text-[13px] font-bold tracking-wide">{text}</span>
+      <div className="flex items-center gap-1.5 bg-black/25 px-3 py-1 rounded-sm">
+        <Clock size={11} className="text-[#FFD700]" />
+        <span className="font-mono text-[13px] font-bold tracking-widest text-[#FFD700]">
+          {pad(time.h)}:{pad(time.m)}:{pad(time.s)}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+function StarRating({ stars, reviews }: { stars: number; reviews: number }) {
+  return (
+    <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex gap-0.5">
+        {[...Array(5)].map((_, i) => (
+          <Star key={i} size={14} className={i < stars ? 'fill-[#FFD700] text-[#FFD700]' : 'text-white/20'} />
+        ))}
+      </div>
+      <span className="font-inter text-[12px] text-white/60">
+        <span className="text-white font-semibold">{stars}.0</span> ({reviews} avaliações)
+      </span>
+    </div>
+  )
+}
 
 export default function Books() {
   const ref = useRef<HTMLElement>(null)
-  const { d, h, m, s, expired } = useCountdown()
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting)
-          e.target.querySelectorAll<HTMLElement>('.reveal,.reveal-left').forEach((el, i) =>
-            setTimeout(() => el.classList.add('visible'), i * 80)
-          )
+          e.target.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) =>
+            setTimeout(() => el.classList.add('visible'), i * 100))
       })
-    }, { threshold: 0.05 })
+    }, { threshold: 0.04 })
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
   }, [])
 
   return (
-    <section id="livros" ref={ref} className="relative bg-[#06060B] py-24 overflow-hidden">
+    <section id="livros" ref={ref} className="relative bg-[#080810] overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#C5973F]/4 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#B8341B]/4 blur-[100px]" />
+      </div>
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/40 to-transparent" />
-      <div
-        className="absolute -top-20 -left-20 w-[600px] h-[600px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top left, rgba(197,151,63,0.07) 0%, transparent 65%)' }}
-      />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-
-        <div className="reveal flex flex-col items-center text-center mb-12">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="hidden md:block w-8 h-px bg-[#C5973F]" />
-            <span className="label">Obras do Autor</span>
-            <div className="hidden md:block w-8 h-px bg-[#C5973F]" />
-          </div>
-          <h2 className="font-bebas text-[clamp(56px,10vw,120px)] leading-none text-white mb-3">LIVROS</h2>
-          <p className="font-inter text-white/40 text-sm max-w-xs leading-relaxed">
-            Mensagens que transformam vidas e renovam a fé
-          </p>
+      {/* Section header */}
+      <div className="relative pt-16 md:pt-28 pb-10 md:pb-16 max-w-7xl mx-auto px-6 md:px-10 text-center">
+        <div className="reveal inline-flex items-center gap-2 mb-4">
+          <span className="label">Livros do Autor</span>
         </div>
+        <h2 className="reveal font-bebas text-[clamp(42px,9vw,108px)] leading-none text-white">
+          PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>
+        </h2>
+        <p className="reveal mt-4 font-inter text-white/40 text-[15px] max-w-xl mx-auto">
+          Cada livro é um convite à transformação. Escolha o seu e comece hoje.
+        </p>
+      </div>
 
-        {!expired && (
-          <div className="reveal flex justify-center mb-14">
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 border border-[#C5973F]/20 bg-[#C5973F]/[0.04] px-6 py-4">
-              <span className="label" style={{ fontSize: '0.6rem', color: 'rgba(197,151,63,0.65)' }}>
-                Oferta especial expira em
-              </span>
-              <div className="flex items-center gap-1.5">
-                {[{ val: d, unit: 'd' }, { val: h, unit: 'h' }, { val: m, unit: 'm' }, { val: s, unit: 's' }].map(({ val, unit }, i) => (
-                  <span key={unit} className="flex items-center gap-1.5">
-                    {i > 0 && <span className="text-[#C5973F]/20 text-xs">·</span>}
-                    <span className="font-mono text-sm font-bold text-[#C5973F] bg-[#C5973F]/10 px-2.5 py-1 min-w-[2.75rem] text-center inline-block">
-                      {pad(val)}<span className="text-[#C5973F]/45 text-[9px] ml-0.5 font-inter">{unit}</span>
+      {/* Books */}
+      <div className="relative pb-16 md:pb-28 flex flex-col gap-0">
+        {books.map((book, idx) => {
+          const m = meta[book.slug] ?? {
+            urgency: '🔥 Oferta por tempo limitado',
+            priceFrom: '',
+            priceTo: 'Consulte',
+            guarantee: 'Garantia inclusa',
+            stars: 5, reviews: 50, readers: '',
+            cta: 'Adquirir', ctaUrl: book.buyUrl, benefits: [],
+          }
+          const isWA = m.ctaUrl.includes('wa.me')
+          const isExpanded = expanded[book.slug]
+
+          return (
+            <div key={book.slug} className="relative">
+              {/* Urgency banner */}
+              <CountdownBanner text={m.urgency} />
+
+              <div className={`max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-8 md:py-14 flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-6 md:gap-10 lg:gap-16 items-stretch`}>
+
+                {/* CAPA ENORME */}
+                <div className="reveal-left relative w-full md:w-[46%] lg:w-[44%] flex-shrink-0">
+                  <div className="relative w-full max-w-[420px] mx-auto md:mx-0">
+                    {m.badge && (
+                      <div className="absolute -top-3 -right-3 z-20">
+                        <div className="bg-[#B8341B] text-white font-inter text-[9px] font-black tracking-[0.22em] uppercase px-3 py-1.5 shadow-lg">
+                          {m.badge}
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute -inset-4 bg-[#C5973F]/12 blur-2xl rounded-full" />
+                    <div className="relative aspect-[3/4] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.7)] border border-white/8">
+                      <Image
+                        src={book.cover}
+                        alt={book.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 90vw, 44vw"
+                        priority={idx === 0}
+                      />
+                    </div>
+                    <div className="absolute -bottom-4 -left-4 z-20 bg-[#0F0F1A] border border-[#C5973F]/40 rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-xl">
+                      <Shield size={16} className="text-[#C5973F] mb-0.5" />
+                      <span className="font-inter text-[7px] font-black text-white text-center leading-tight tracking-wide uppercase px-1">{m.guarantee}</span>
+                    </div>
+                    {m.readers && (
+                      <div className="absolute -bottom-4 right-2 z-20 flex items-center gap-1.5 bg-[#C5973F] px-3 py-1.5 shadow-lg">
+                        <Users size={10} className="text-black" />
+                        <span className="font-inter text-[9px] font-black text-black tracking-wider uppercase">{m.readers}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* BLOCO DE OFERTA */}
+                <div className="reveal-right flex-1 flex flex-col justify-center gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full">
+                  <StarRating stars={m.stars} reviews={m.reviews} />
+                  <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white">
+                    {book.title}
+                  </h3>
+                  {book.subtitle && (
+                    <p className="font-inter text-white/50 text-[14px] italic -mt-2">
+                      {book.subtitle}
+                    </p>
+                  )}
+                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed border-l-2 border-[#C5973F]/50 pl-4">
+                    {book.synopsis}
+                  </p>
+                  <ul className="space-y-2.5 mt-1">
+                    {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
+                        <span className="font-inter text-[13px] sm:text-[14px] text-white/75">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {m.benefits.length > 4 && (
+                    <button
+                      onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
+                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors w-fit -mt-1"
+                    >
+                      {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
+                    </button>
+                  )}
+                  {m.bonuses && (
+                    <div className="flex flex-col gap-2 mt-1">
+                      {m.bonuses.map((bonus, i) => (
+                        <div key={i} className="flex items-center gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
+                          <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
+                          <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
+                          <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div className="h-px bg-gradient-to-r from-[#C5973F]/30 via-white/8 to-transparent mt-1" />
+                  <div className="flex flex-col gap-1">
+                    {m.priceFrom && (
+                      <span className="font-inter text-[13px] text-white/35 line-through">De {m.priceFrom}</span>
+                    )}
+                    <div className="flex items-baseline gap-3 flex-wrap">
+                      {m.priceFrom && <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest">Por apenas</span>}
+                      <span className="font-bebas text-[clamp(42px,8vw,72px)] leading-none text-[#C5973F] drop-shadow-[0_0_20px_rgba(197,151,63,0.5)]">
+                        {m.priceTo}
+                      </span>
+                    </div>
+                    {m.priceInstallment && (
+                      <span className="font-inter text-[12px] text-white/40">{m.priceInstallment}</span>
+                    )}
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                    <a
+                      href={m.ctaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] flex-1 sm:flex-none"
+                    >
+                      {isWA ? <MessageCircle size={15} /> : <ShoppingCart size={15} />}
+                      {m.cta}
+                    </a>
+                    {m.ctaSecondary && m.ctaSecondaryUrl && (
+                      <a
+                        href={m.ctaSecondaryUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px]"
+                      >
+                        {m.ctaSecondary}
+                      </a>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Shield size={13} className="text-white/30 flex-shrink-0" />
+                    <span className="font-inter text-[11px] text-white/30">
+                      Compra 100% segura · {m.guarantee} · Entrega garantida
                     </span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {BOOKS.map((book, i) => (
-          <div
-            key={book.id}
-            className={`reveal grid md:grid-cols-5 border border-white/[0.06] overflow-hidden${i > 0 ? ' -mt-px' : ''}`}
-          >
-            <div
-              className={`md:col-span-2 relative bg-[#08080F] flex items-center justify-center py-16 px-10 overflow-hidden${i % 2 === 1 ? ' md:order-last' : ''}`}
-              style={{ minHeight: '500px' }}
-            >
-              <span
-                className="absolute bottom-2 right-4 font-bebas select-none pointer-events-none"
-                style={{ fontSize: '180px', lineHeight: 1, color: 'rgba(197,151,63,0.04)' }}
-              >
-                {book.num}
-              </span>
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at center, rgba(197,151,63,0.12) 0%, transparent 60%)' }}
-              />
-              <div
-                style={{
-                  position: 'relative',
-                  width: 'clamp(160px, 38%, 210px)',
-                  aspectRatio: '2/3',
-                  filter: 'drop-shadow(0 40px 70px rgba(0,0,0,0.95)) drop-shadow(0 0 50px rgba(197,151,63,0.12))',
-                  transform: `perspective(1000px) rotateY(${i % 2 === 0 ? '7' : '-7'}deg) rotateX(2deg)`,
-                  zIndex: 1,
-                }}
-              >
-                <Image
-                  src={book.cover}
-                  alt={book.title}
-                  fill
-                  className="object-contain"
-                  sizes="210px"
-                  priority={i === 0}
-                />
-              </div>
-            </div>
-
-            <div className="md:col-span-3 flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-[#0B0B13] border-t md:border-t-0 md:border-l border-white/[0.05]">
-              <div className="flex flex-wrap items-center gap-3 mb-7">
-                <span className="font-inter text-[9px] font-bold tracking-[0.3em] uppercase bg-[#C5973F] text-black px-3 py-1.5">
-                  {book.badge}
-                </span>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={11} className="text-[#C5973F] fill-[#C5973F]" />
-                  ))}
-                  <span className="font-inter text-[11px] text-white/30 ml-1.5">{book.readers} leitores</span>
+                  </div>
                 </div>
               </div>
 
-              <h3 className="font-bebas text-[clamp(30px,4.5vw,54px)] leading-[0.92] text-white mb-4">
-                {book.headline.split('\n').map((line, j) => (
-                  <span key={j}>{line}{j === 0 && <br />}</span>
-                ))}
-              </h3>
-              <p className="font-inter text-white/30 text-[13px] mb-8 leading-relaxed">{book.subtitle}</p>
-
-              <ul className="space-y-3.5 mb-8">
-                {book.bullets.map((bullet, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <span className="text-[#C5973F] text-xs mt-0.5 shrink-0 font-bold">✦</span>
-                    <span className="font-inter text-white/55 text-[13px] leading-snug">{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="h-px bg-white/[0.05] mb-7" />
-
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-inter text-white/25 text-sm line-through">
-                    R${book.originalPrice.toFixed(2).replace('.', ',')}
-                  </span>
-                  <span className="font-inter text-[9px] font-bold tracking-[0.15em] uppercase bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-1">
-                    -{book.discount}% OFF
-                  </span>
+              {idx < books.length - 1 && (
+                <div className="max-w-7xl mx-auto px-6 md:px-10">
+                  <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
                 </div>
-                <div className="flex items-end gap-1">
-                  <span className="font-inter text-[#C5973F] text-lg font-medium leading-none mb-3">R$</span>
-                  <span className="font-bebas text-[84px] text-white leading-none">{Math.floor(book.price)}</span>
-                  <span className="font-inter text-white/45 text-2xl leading-none mb-3.5">
-                    ,{String(Math.round((book.price % 1) * 100)).padStart(2, '0')}
-                  </span>
-                </div>
-                <p className="font-inter text-white/20 text-[11px]">em até 12x no cartão</p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 items-start">
-                <a href={book.url} target="_blank" rel="noopener noreferrer" className="btn-gold">
-                  QUERO ESTE LIVRO <ArrowRight size={14} />
-                </a>
-                <span className="font-inter text-white/20 text-[11px] self-center">Entrega para todo o Brasil</span>
-              </div>
+              )}
             </div>
-          </div>
-        ))}
-
-        <div className="reveal mt-2 border border-[#C5973F]/25 overflow-hidden mb-16 relative">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/60 to-transparent" />
-          <div className="grid md:grid-cols-2">
-            <div
-              className="relative bg-[#08080F] flex items-center justify-center gap-10 py-16 px-10 overflow-hidden"
-              style={{ minHeight: '260px' }}
-            >
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at center, rgba(197,151,63,0.13) 0%, transparent 65%)' }}
-              />
-              {BOOKS.map((book, i) => (
-                <div
-                  key={book.id}
-                  className="relative w-24 md:w-28 shrink-0"
-                  style={{
-                    aspectRatio: '2/3',
-                    transform: i === 0 ? 'rotate(-6deg) translateY(10px)' : 'rotate(6deg) translateY(-10px)',
-                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.85))',
-                  }}
-                >
-                  <Image src={book.cover} alt={book.title} fill className="object-contain" sizes="112px" />
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col justify-center p-8 md:p-12 bg-[#0B0B13] border-t md:border-t-0 md:border-l border-[#C5973F]/10">
-              <div className="flex items-center gap-2 mb-5">
-                <span className="font-inter text-[9px] font-bold tracking-[0.3em] uppercase bg-[#C5973F] text-black px-3 py-1.5">MELHOR VALOR</span>
-                <span className="font-inter text-[9px] font-bold tracking-[0.3em] uppercase border border-white/10 text-white/30 px-3 py-1.5">KIT COMPLETO</span>
-              </div>
-              <h3 className="font-bebas text-[clamp(28px,5vw,52px)] leading-none text-white mb-1.5">OS 2 LIVROS JUNTOS</h3>
-              <p className="font-inter text-white/30 text-[13px] mb-6 leading-relaxed">
-                Leve os dois e economize — o kit mais completo para transformar sua fé e propósito.
-              </p>
-              <div className="h-px bg-white/[0.05] mb-6" />
-              <div className="mb-7">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-inter text-white/25 text-sm line-through">R$239,98</span>
-                  <span className="font-inter text-[9px] font-bold tracking-[0.15em] uppercase bg-green-500/10 text-green-400 border border-green-500/20 px-2 py-1">-42% OFF</span>
-                </div>
-                <div className="flex items-end gap-1">
-                  <span className="font-inter text-[#C5973F] text-lg font-medium leading-none mb-3">R$</span>
-                  <span className="font-bebas text-[84px] text-white leading-none">139</span>
-                  <span className="font-inter text-white/45 text-2xl leading-none mb-3.5">,99</span>
-                </div>
-                <p className="font-inter text-white/20 text-[11px]">Economia de R$19,99 · até 12x no cartão</p>
-              </div>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="btn-gold self-start">
-                QUERO O KIT COMPLETO <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="reveal grid grid-cols-3 border border-white/5 overflow-hidden">
-          {[
-            { icon: Shield, label: 'Compra Segura', sub: 'Pagamento protegido' },
-            { icon: Truck, label: 'Envio Rápido', sub: 'Para todo o Brasil' },
-            { icon: RotateCcw, label: 'Devolução Fácil', sub: 'Garantia de 30 dias' },
-          ].map(({ icon: Icon, label, sub }, i) => (
-            <div
-              key={label}
-              className={`flex flex-col items-center gap-2 text-center py-6 px-4 bg-[#0D0D15]${i > 0 ? ' border-l border-white/5' : ''}`}
-            >
-              <Icon size={15} className="text-[#C5973F]" />
-              <p className="font-inter text-white text-xs font-semibold tracking-wide">{label}</p>
-              <p className="font-inter text-white/25 text-[11px]">{sub}</p>
-            </div>
-          ))}
-        </div>
-
+          )
+        })}
       </div>
     </section>
   )

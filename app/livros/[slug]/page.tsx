@@ -31,7 +31,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
 export default function BookPage({ params }: Props) {
   const book = getBook(params.slug)
-  if (!book) notFound()
+  if (!book) return notFound()
 
   const others = books.filter((b) => b.slug !== book.slug).slice(0, 3)
 

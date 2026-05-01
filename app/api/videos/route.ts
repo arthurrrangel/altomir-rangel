@@ -30,7 +30,7 @@ export async function GET() {
     }).filter(v => v.id && v.title)
     if (!videos.length) throw new Error("No videos")
     return NextResponse.json({ videos, updatedAt: new Date().toISOString() }, { headers: { "Cache-Control": "s-maxage=1800" } })
-  } catch (err) {
+  } catch {
     return NextResponse.json({ videos: [] }, { status: 500 })
   }
 }
