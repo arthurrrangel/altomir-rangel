@@ -30,7 +30,7 @@ export const books: Book[] = [
     year: 2004,
     publisher: 'ADHONEP',
     isbn: '9786500740042',
-    synopsis: 'O propósito desta Palavra não é tirar algo de você, mas sim prepará-lo para receber. Descubra o que a Bíblia realmente ensina sobre prosperidade — e liberte-se da mentalidade religiosa que impede você de receber o que Deus preparou.',
+    synopsis: 'Deus nunca teve a intenção de te ver pobre. A prosperidade bíblica não é sobre acumular: é sobre ser abençoado para abençoar. Este livro vai destruir a mentalidade religiosa que te impede de receber o que o Senhor já preparou para a sua vida.',
     description: [
       'Altomir Rangel — empresário, líder da GUIA Church e pós-graduado em Finanças pelo IBMEC — compartilha décadas de experiência ministerial para ajudar o leitor a entender que a bênção de Deus é resultado de escolha, não de chances.',
       'Com base sólida na Palavra, este livro desmonta a controvérsia em torno da prosperidade e revela o verdadeiro concerto do Senhor: não se trata de religiosidade, mas de obediência movida pela fé.',
@@ -52,7 +52,7 @@ export const books: Book[] = [
     title: 'Bem-vindo ao Novo Você',
     subtitle: 'Aprenda a lidar com você, para lidar com o próximo!',
     cover: '/books/bem-vindo-ao-novo-voce.jpg',
-    synopsis: 'Há uma grande diferença entre conhecimento e sabedoria. Sabedoria não é informação — é a aplicação correta do que você sabe. Este livro vai transportar você para um novo nível onde a fé deixa de ser religião e passa a funcionar no agora.',
+    synopsis: 'Você sabe muito sobre a Bíblia. Mas saber não é o suficiente. Sabedoria é diferente: é a fé saindo do papel e entrando no seu cotidiano. Este livro vai mudar a forma como você vê a si mesmo e tudo ao seu redor.',
     description: [
       'Altomir Rangel revela que o temor do Senhor é o começo de uma sabedoria que abre portas para possibilidades aparentemente impossíveis — não como postura religiosa, mas como reconhecimento da autoridade de Deus em todos os seus caminhos.',
       'Com linguagem direta e fundamentação bíblica sólida, este livro desafia você a sair da teoria e aplicar a Palavra no cotidiano, transformando seus relacionamentos de dentro para fora.',

@@ -34,11 +34,11 @@ const meta: Record<string, {
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-proposito-da-prosperidade--altomir-rangel/up/MLBU3941859956?pdp_filters=item_id:MLB4647757361',
     benefits: [
-      'A bênção de Deus é resultado de escolha — não de sorte ou chance',
-      'Entenda por que o relacionamento errado com o dinheiro é a raiz do problema',
-      'Como ofertar com fé real, e não por obrigação religiosa',
-      'Liberte-se da mentalidade de escassez e receba o que Deus preparou',
-      'Edição revista e ampliada com ensinamentos atualizados do autor',
+      'A bênção de Deus te espera. Ela não depende de sorte nem de acaso. Depende de você.',
+      'Você não tem um problema financeiro. Você tem um problema de relacionamento com o dinheiro. Este livro te mostra a saída.',
+      'Parar de dar por medo e começar a ofertar por fé. Essa diferença muda absolutamente tudo.',
+      'Se você prender o que tem, não vai receber o que Deus reservou. É hora de soltar.',
+      'Edição revista, ampliada e completamente atualizada pelo próprio autor.',
     ],
     bonuses: [
       { label: 'Bônus', value: 'Devocional exclusivo de 7 dias' },
@@ -57,11 +57,11 @@ const meta: Record<string, {
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-bemvindo-ao-novo-voce--altomir-rangel/up/MLBU3941857680?pdp_filters=item_id:MLB4647743953',
     benefits: [
-      'Descubra a diferença entre conhecimento, entendimento e sabedoria',
-      'Como o temor do Senhor abre portas para o impossível na sua vida',
-      'Saia da postura religiosa e entre em uma fé que funciona no agora',
-      'Aprenda a lidar com você mesmo para transformar seus relacionamentos',
-      'Sabedoria bíblica aplicada — não teoria, mas realidade no cotidiano',
+      'Saber que tomate é fruta é conhecimento. Não colocá-lo na salada de frutas é sabedoria. Esse princípio vai transformar sua vida.',
+      'O temor do Senhor não é medo religioso. É reconhecer a autoridade de Deus em tudo. E isso abre portas que nenhum esforço humano consegue.',
+      'Chega de uma fé que só funciona no domingo. Aprenda a viver o que você crê todos os dias da semana.',
+      'Antes de mudar quem está ao seu redor, você precisa mudar quem está por dentro. Comece por você.',
+      'Não é mais um livro de teoria bíblica. É um guia para fazer a Palavra funcionar de verdade na sua vida.',
     ],
   },
 }
