@@ -98,7 +98,7 @@ function CountdownBanner({ text }: { text: string }) {
 
 function StarRating({ stars, reviews }: { stars: number; reviews: number }) {
   return (
-    <div className="flex items-center gap-2 flex-wrap">
+    <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
       <div className="flex gap-0.5">
         {[...Array(5)].map((_, i) => (
           <Star key={i} size={14} className={i < stars ? 'fill-[#FFD700] text-[#FFD700]' : 'text-white/20'} />
@@ -171,7 +171,7 @@ export default function Books() {
 
                 {/* CAPA ENORME */}
                 <div className="reveal-left relative w-full md:w-[46%] lg:w-[44%] flex-shrink-0">
-                  <div className="relative w-full max-w-[420px] mx-auto md:mx-0">
+                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] mx-auto md:mx-0 pb-8 md:pb-0">
                     {m.badge && (
                       <div className="absolute -top-3 -right-3 z-20">
                         <div className="bg-[#B8341B] text-white font-inter text-[9px] font-black tracking-[0.22em] uppercase px-3 py-1.5 shadow-lg">
@@ -204,7 +204,7 @@ export default function Books() {
                 </div>
 
                 {/* BLOCO DE OFERTA */}
-                <div className="reveal-right flex-1 flex flex-col justify-center gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full">
+                <div className="reveal-right flex-1 flex flex-col justify-center items-center md:items-start gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full text-center md:text-left">
                   <StarRating stars={m.stars} reviews={m.reviews} />
                   <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white">
                     {book.title}
@@ -214,12 +214,12 @@ export default function Books() {
                       {book.subtitle}
                     </p>
                   )}
-                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed border-l-2 border-[#C5973F]/50 pl-4">
+                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed md:border-l-2 border-[#C5973F]/50 md:pl-4">
                     {book.synopsis}
                   </p>
-                  <ul className="space-y-2.5 mt-1">
+                  <ul className="space-y-2.5 mt-1 w-full">
                     {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
+                      <li key={i} className="flex items-start justify-center md:justify-start gap-2.5 text-left">
                         <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
                         <span className="font-inter text-[13px] sm:text-[14px] text-white/75">{b}</span>
                       </li>
@@ -228,15 +228,15 @@ export default function Books() {
                   {m.benefits.length > 4 && (
                     <button
                       onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
-                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors w-fit -mt-1"
+                      className="flex items-center justify-center md:justify-start gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1"
                     >
                       {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
                     </button>
                   )}
                   {m.bonuses && (
-                    <div className="flex flex-col gap-2 mt-1">
+                    <div className="flex flex-col gap-2 mt-1 w-full">
                       {m.bonuses.map((bonus, i) => (
-                        <div key={i} className="flex items-center gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
+                        <div key={i} className="flex items-center justify-center md:justify-start gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
                           <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
                           <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
                           <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
@@ -244,14 +244,14 @@ export default function Books() {
                       ))}
                     </div>
                   )}
-                  <div className="h-px bg-gradient-to-r from-[#C5973F]/30 via-white/8 to-transparent mt-1" />
-                  <div className="flex flex-col gap-1">
+                  <div className="h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent md:from-[#C5973F]/30 md:via-white/8 md:to-transparent mt-1 w-full" />
+                  <div className="flex flex-col items-center md:items-start gap-1">
                     {m.priceFrom && (
                       <span className="font-inter text-[13px] text-white/35 line-through">De {m.priceFrom}</span>
                     )}
-                    <div className="flex items-baseline gap-3 flex-wrap">
+                    <div className="flex items-baseline justify-center md:justify-start gap-3 flex-wrap">
                       {m.priceFrom && <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest">Por apenas</span>}
-                      <span className="font-bebas text-[clamp(42px,8vw,72px)] leading-none text-[#C5973F] drop-shadow-[0_0_20px_rgba(197,151,63,0.5)]">
+                      <span className="font-bebas text-[clamp(48px,12vw,72px)] leading-none text-[#C5973F] drop-shadow-[0_0_20px_rgba(197,151,63,0.5)]">
                         {m.priceTo}
                       </span>
                     </div>
@@ -259,12 +259,12 @@ export default function Books() {
                       <span className="font-inter text-[12px] text-white/40">{m.priceInstallment}</span>
                     )}
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                  <div className="flex flex-col gap-3 mt-2 w-full">
                     <a
                       href={m.ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] flex-1 sm:flex-none"
+                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] w-full sm:w-auto"
                     >
                       {isWA ? <MessageCircle size={15} /> : <ShoppingCart size={15} />}
                       {m.cta}
@@ -274,13 +274,13 @@ export default function Books() {
                         href={m.ctaSecondaryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px]"
+                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px] w-full sm:w-auto"
                       >
                         {m.ctaSecondary}
                       </a>
                     )}
                   </div>
-                  <div className="flex items-center gap-2 mt-1">
+                  <div className="flex items-center justify-center md:justify-start gap-2 mt-1">
                     <Shield size={13} className="text-white/30 flex-shrink-0" />
                     <span className="font-inter text-[11px] text-white/30">
                       Compra 100% segura · {m.guarantee} · Entrega garantida
