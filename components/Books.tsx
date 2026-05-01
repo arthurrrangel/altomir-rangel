@@ -204,31 +204,31 @@ export default function Books() {
                 </div>
 
                 {/* BLOCO DE OFERTA */}
-                <div className="reveal-right flex-1 flex flex-col justify-center items-center md:items-start gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full text-center md:text-left">
+                <div className="reveal-right flex-1 flex flex-col justify-center gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full">
                   <StarRating stars={m.stars} reviews={m.reviews} />
-                  <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white">
+                  <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white text-center md:text-left">
                     {book.title}
                   </h3>
                   {book.subtitle && (
-                    <p className="font-inter text-white/50 text-[14px] italic -mt-2">
+                    <p className="font-inter text-white/50 text-[14px] italic -mt-2 text-center md:text-left">
                       {book.subtitle}
                     </p>
                   )}
-                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed md:border-l-2 border-[#C5973F]/50 md:pl-4">
+                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed text-center md:text-left md:border-l-2 border-[#C5973F]/50 md:pl-4">
                     {book.synopsis}
                   </p>
                   <ul className="space-y-2.5 mt-1 w-full">
                     {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
-                      <li key={i} className="flex items-start justify-center md:justify-start gap-2.5 text-left">
+                      <li key={i} className="flex items-start gap-2.5">
                         <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
-                        <span className="font-inter text-[13px] sm:text-[14px] text-white/75">{b}</span>
+                        <span className="font-inter text-[13px] sm:text-[14px] text-white/75 text-left">{b}</span>
                       </li>
                     ))}
                   </ul>
                   {m.benefits.length > 4 && (
                     <button
                       onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
-                      className="flex items-center justify-center md:justify-start gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1"
+                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1 mx-auto md:mx-0"
                     >
                       {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
                     </button>
@@ -264,7 +264,7 @@ export default function Books() {
                       href={m.ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] w-full sm:w-auto"
+                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] w-full"
                     >
                       {isWA ? <MessageCircle size={15} /> : <ShoppingCart size={15} />}
                       {m.cta}
@@ -274,7 +274,7 @@ export default function Books() {
                         href={m.ctaSecondaryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px] w-full sm:w-auto"
+                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px] w-full"
                       >
                         {m.ctaSecondary}
                       </a>
