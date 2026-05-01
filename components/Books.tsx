@@ -54,8 +54,8 @@ const meta: Record<string, {
     stars: 5,
     reviews: 87,
     readers: 'Disponível agora',
-    cta: 'Pedir pelo WhatsApp',
-    ctaUrl: 'https://wa.me/5521999999999?text=Olá! Tenho interesse no livro Bem-vindo ao Novo Você.',
+    cta: 'Comprar no Mercado Livre',
+    ctaUrl: 'https://www.mercadolivre.com.br/livro-bemvindo-ao-novo-voce--altomir-rangel/up/MLBU3941857680?pdp_filters=item_id:MLB4647743953',
     benefits: [
       'Aprenda a lidar com você para lidar com o próximo',
       'Autoconhecimento guiado pela Palavra de Deus',
