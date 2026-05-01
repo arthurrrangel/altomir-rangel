@@ -217,7 +217,7 @@ export default function Books() {
                   <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed text-center md:text-left md:border-l-2 border-[#C5973F]/50 md:pl-4">
                     {book.synopsis}
                   </p>
-                  <ul className="space-y-2.5 mt-1 w-full">
+                  <ul className="space-y-2.5 mt-1 w-full max-w-[340px] mx-auto md:max-w-none md:mx-0">
                     {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
