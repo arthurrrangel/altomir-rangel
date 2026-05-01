@@ -23,7 +23,7 @@ const meta: Record<string, {
 }> = {
   'o-proposito-da-prosperidade': {
     badge: 'EDIÇÃO REVISTA E AMPLIADA',
-    urgency: '🔥 Mais de 5.000 leitores transformados — Estoque limitado',
+    urgency: '🔥 Mais de 5.000 leitores transformados — Edição Revista e Ampliada',
     priceFrom: '',
     priceTo: 'R$ 69,99',
     priceInstallment: 'ou 12x de R$ 6,89 no cartão',
@@ -34,11 +34,11 @@ const meta: Record<string, {
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-proposito-da-prosperidade--altomir-rangel/up/MLBU3941859956?pdp_filters=item_id:MLB4647757361',
     benefits: [
-      'Entenda a visão bíblica sobre finanças e chamado',
-      'Princípios de mordomia aplicáveis ao dia a dia',
-      'Como transformar trabalho em adoração',
-      'A diferença entre riqueza bíblica e mentalidade de escassez',
-      'Edição revista, ampliada e completamente atualizada',
+      'A bênção de Deus é resultado de escolha — não de sorte ou chance',
+      'Entenda por que o relacionamento errado com o dinheiro é a raiz do problema',
+      'Como ofertar com fé real, e não por obrigação religiosa',
+      'Liberte-se da mentalidade de escassez e receba o que Deus preparou',
+      'Edição revista e ampliada com ensinamentos atualizados do autor',
     ],
     bonuses: [
       { label: 'Bônus', value: 'Devocional exclusivo de 7 dias' },
@@ -46,7 +46,7 @@ const meta: Record<string, {
   },
   'bem-vindo-ao-novo-voce': {
     badge: 'LANÇAMENTO',
-    urgency: '⚡ Lançamento — Peça agora direto com o autor',
+    urgency: '⚡ Lançamento — Disponível agora no Mercado Livre',
     priceFrom: '',
     priceTo: 'R$ 69,99',
     priceInstallment: 'ou 12x de R$ 6,89 no cartão',
@@ -57,11 +57,11 @@ const meta: Record<string, {
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-bemvindo-ao-novo-voce--altomir-rangel/up/MLBU3941857680?pdp_filters=item_id:MLB4647743953',
     benefits: [
-      'Aprenda a lidar com você para lidar com o próximo',
-      'Autoconhecimento guiado pela Palavra de Deus',
-      'Como lidar com emoções, relacionamentos e propósito',
-      'Transformação que começa de dentro para fora',
-      'Linguagem direta e ensinamento bíblico sólido',
+      'Descubra a diferença entre conhecimento, entendimento e sabedoria',
+      'Como o temor do Senhor abre portas para o impossível na sua vida',
+      'Saia da postura religiosa e entre em uma fé que funciona no agora',
+      'Aprenda a lidar com você mesmo para transformar seus relacionamentos',
+      'Sabedoria bíblica aplicada — não teoria, mas realidade no cotidiano',
     ],
   },
 }
