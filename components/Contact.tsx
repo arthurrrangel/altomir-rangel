@@ -46,7 +46,7 @@ export default function Contact() {
           <div className="lg:col-span-2 flex flex-col gap-6">
 
             {/* WhatsApp */}
-            <a href="https://wa.me/5521999999999?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel."
+            <a href="https://wa.me/5521994308382?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel."
               target="_blank" rel="noopener noreferrer"
               className="reveal-left flex items-center justify-center md:justify-start gap-3 bg-[#25D366]/8 border border-[#25D366]/20 px-5 py-4 text-[#25D366] font-inter text-sm font-bold hover:bg-[#25D366]/12 transition-colors min-h-[56px]">
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current flex-shrink-0">
