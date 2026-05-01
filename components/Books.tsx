@@ -31,8 +31,8 @@ const meta: Record<string, {
     stars: 5,
     reviews: 312,
     readers: '+5.000 leitores',
-    cta: 'Comprar na Amazon',
-    ctaUrl: 'https://www.amazon.com.br/Prop%C3%B3sito-Prosperidade-Altomir-Rangel-Cunha/dp/8574220310',
+    cta: 'Comprar no Mercado Livre',
+    ctaUrl: 'https://www.mercadolivre.com.br/livro-proposito-da-prosperidade--altomir-rangel/up/MLBU3941859956?pdp_filters=item_id:MLB4647757361',
     benefits: [
       'Entenda a visão bíblica sobre finanças e chamado',
       'Princípios de mordomia aplicáveis ao dia a dia',
