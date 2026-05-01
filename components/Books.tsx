@@ -96,9 +96,9 @@ function CountdownBanner({ text }: { text: string }) {
   )
 }
 
-function StarRating({ stars, reviews }: { stars: number; reviews: number }) {
+function StarRating({ stars, reviews, center }: { stars: number; reviews: number; center?: boolean }) {
   return (
-    <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
+    <div className={`flex items-center gap-2 flex-wrap ${center ? 'justify-center' : 'justify-center md:justify-start'}`}>
       <div className="flex gap-0.5">
         {[...Array(5)].map((_, i) => (
           <Star key={i} size={14} className={i < stars ? 'fill-[#FFD700] text-[#FFD700]' : 'text-white/20'} />
@@ -167,11 +167,135 @@ export default function Books() {
               {/* Urgency banner */}
               <CountdownBanner text={m.urgency} />
 
-              <div className={`max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-8 md:py-14 flex flex-col ${idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-6 md:gap-10 lg:gap-16 items-stretch`}>
+              {/* ─────────────── MOBILE LAYOUT ─────────────── */}
+              <div className="md:hidden">
+                {/* Capa full-bleed */}
+                <div className="relative w-full" style={{ aspectRatio: '3/4', maxHeight: '72vw' }}>
+                  {m.badge && (
+                    <div className="absolute top-3 right-3 z-20">
+                      <div className="bg-[#B8341B] text-white font-inter text-[8px] font-black tracking-[0.2em] uppercase px-2.5 py-1 shadow-lg">
+                        {m.badge}
+                      </div>
+                    </div>
+                  )}
+                  <Image
+                    src={book.cover}
+                    alt={book.title}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                    priority={idx === 0}
+                  />
+                  {/* Gradient fade bottom */}
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080810] to-transparent" />
+                  {/* Readers tag */}
+                  {m.readers && (
+                    <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 bg-[#C5973F] px-2.5 py-1.5 shadow-lg">
+                      <Users size={9} className="text-black" />
+                      <span className="font-inter text-[8px] font-black text-black tracking-wider uppercase">{m.readers}</span>
+                    </div>
+                  )}
+                </div>
 
-                {/* CAPA ENORME */}
-                <div className="reveal-left relative w-full md:w-[46%] lg:w-[44%] flex-shrink-0">
-                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px] mx-auto md:mx-0 pb-8 md:pb-0">
+                {/* Conteúdo mobile */}
+                <div className="px-5 pt-2 pb-10">
+                  {/* Stars */}
+                  <div className="mb-3">
+                    <StarRating stars={m.stars} reviews={m.reviews} center />
+                  </div>
+
+                  {/* Título */}
+                  <h3 className="font-bebas text-[clamp(34px,10vw,52px)] leading-tight text-white text-center mb-1">
+                    {book.title}
+                  </h3>
+
+                  {/* Subtítulo */}
+                  {book.subtitle && (
+                    <p className="font-inter text-white/50 text-[13px] italic text-center mb-4">
+                      {book.subtitle}
+                    </p>
+                  )}
+
+                  {/* Sinopse */}
+                  <p className="font-inter text-white/55 text-[14px] leading-relaxed text-center mb-5">
+                    {book.synopsis}
+                  </p>
+
+                  {/* Benefícios — cards */}
+                  <div className="flex flex-col gap-2 mb-4">
+                    {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
+                      <div key={i} className="flex items-start gap-3 bg-white/5 border border-white/8 px-4 py-3 rounded-lg">
+                        <CheckCircle size={14} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
+                        <span className="font-inter text-[13px] text-white/80 leading-snug">{b}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {m.benefits.length > 4 && (
+                    <button
+                      onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
+                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] transition-colors mx-auto mb-4"
+                    >
+                      {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
+                    </button>
+                  )}
+
+                  {/* Bônus */}
+                  {m.bonuses && (
+                    <div className="flex flex-col gap-2 mb-4">
+                      {m.bonuses.map((bonus, i) => (
+                        <div key={i} className="flex items-center justify-center gap-2 bg-[#C5973F]/10 border border-[#C5973F]/25 px-4 py-3 rounded-lg">
+                          <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
+                          <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
+                          <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Bloco de preço */}
+                  <div className="bg-white/[0.04] border border-[#C5973F]/25 rounded-2xl px-5 py-5 mb-4 text-center">
+                    {m.priceFrom && (
+                      <span className="font-inter text-[13px] text-white/35 line-through block">De {m.priceFrom}</span>
+                    )}
+                    {m.priceFrom && (
+                      <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest block mt-1">Por apenas</span>
+                    )}
+                    <span className="font-bebas text-[clamp(56px,18vw,80px)] leading-none text-[#C5973F] drop-shadow-[0_0_24px_rgba(197,151,63,0.55)] block">
+                      {m.priceTo}
+                    </span>
+                    {m.priceInstallment && (
+                      <span className="font-inter text-[12px] text-white/40 block mt-1">{m.priceInstallment}</span>
+                    )}
+                  </div>
+
+                  {/* CTA */}
+                  <a
+                    href={m.ctaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[13px] font-black tracking-[0.15em] uppercase px-6 py-4 transition-all duration-200 min-h-[58px] shadow-[0_8px_32px_rgba(197,151,63,0.4)] w-full rounded-xl mb-3"
+                  >
+                    {isWA ? <MessageCircle size={16} /> : <ShoppingCart size={16} />}
+                    {m.cta}
+                  </a>
+
+                  {/* Garantia + segurança */}
+                  <div className="flex items-center justify-center gap-2">
+                    <Shield size={12} className="text-white/30 flex-shrink-0" />
+                    <span className="font-inter text-[11px] text-white/30 text-center">
+                      Compra 100% segura · {m.guarantee} · Entrega garantida
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* ─────────────── DESKTOP LAYOUT ─────────────── */}
+              <div className={`hidden md:flex max-w-7xl mx-auto px-10 py-14 ${idx % 2 === 1 ? 'flex-row-reverse' : 'flex-row'} gap-10 lg:gap-16 items-stretch`}>
+
+                {/* CAPA */}
+                <div className="reveal-left relative w-[46%] lg:w-[44%] flex-shrink-0">
+                  <div className="relative w-full max-w-[420px] mx-0 pb-0">
                     {m.badge && (
                       <div className="absolute -top-3 -right-3 z-20">
                         <div className="bg-[#B8341B] text-white font-inter text-[9px] font-black tracking-[0.22em] uppercase px-3 py-1.5 shadow-lg">
@@ -186,7 +310,7 @@ export default function Books() {
                         alt={book.title}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 90vw, 44vw"
+                        sizes="44vw"
                         priority={idx === 0}
                       />
                     </div>
@@ -204,31 +328,31 @@ export default function Books() {
                 </div>
 
                 {/* BLOCO DE OFERTA */}
-                <div className="reveal-right flex-1 flex flex-col justify-center gap-4 md:gap-5 max-w-xl mx-auto md:mx-0 w-full">
+                <div className="reveal-right flex-1 flex flex-col justify-center gap-5 max-w-xl mx-0 w-full">
                   <StarRating stars={m.stars} reviews={m.reviews} />
-                  <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white text-center md:text-left">
+                  <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white">
                     {book.title}
                   </h3>
                   {book.subtitle && (
-                    <p className="font-inter text-white/50 text-[14px] italic -mt-2 text-center md:text-left">
+                    <p className="font-inter text-white/50 text-[14px] italic -mt-2">
                       {book.subtitle}
                     </p>
                   )}
-                  <p className="font-inter text-white/55 text-[14px] sm:text-[15px] leading-relaxed text-center md:text-left md:border-l-2 border-[#C5973F]/50 md:pl-4">
+                  <p className="font-inter text-white/55 text-[15px] leading-relaxed border-l-2 border-[#C5973F]/50 pl-4">
                     {book.synopsis}
                   </p>
-                  <ul className="space-y-2.5 mt-1 w-full max-w-[340px] mx-auto md:max-w-none md:mx-0">
+                  <ul className="space-y-2.5 mt-1 w-full">
                     {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
-                        <span className="font-inter text-[13px] sm:text-[14px] text-white/75 text-left">{b}</span>
+                        <span className="font-inter text-[14px] text-white/75">{b}</span>
                       </li>
                     ))}
                   </ul>
                   {m.benefits.length > 4 && (
                     <button
                       onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
-                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1 mx-auto md:mx-0"
+                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1"
                     >
                       {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
                     </button>
@@ -236,7 +360,7 @@ export default function Books() {
                   {m.bonuses && (
                     <div className="flex flex-col gap-2 mt-1 w-full">
                       {m.bonuses.map((bonus, i) => (
-                        <div key={i} className="flex items-center justify-center md:justify-start gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
+                        <div key={i} className="flex items-center gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
                           <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
                           <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
                           <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
@@ -244,12 +368,12 @@ export default function Books() {
                       ))}
                     </div>
                   )}
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent md:from-[#C5973F]/30 md:via-white/8 md:to-transparent mt-1 w-full" />
-                  <div className="flex flex-col items-center md:items-start gap-1">
+                  <div className="h-px bg-gradient-to-r from-[#C5973F]/30 via-white/8 to-transparent mt-1 w-full" />
+                  <div className="flex flex-col items-start gap-1">
                     {m.priceFrom && (
                       <span className="font-inter text-[13px] text-white/35 line-through">De {m.priceFrom}</span>
                     )}
-                    <div className="flex items-baseline justify-center md:justify-start gap-3 flex-wrap">
+                    <div className="flex items-baseline gap-3 flex-wrap">
                       {m.priceFrom && <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest">Por apenas</span>}
                       <span className="font-bebas text-[clamp(48px,12vw,72px)] leading-none text-[#C5973F] drop-shadow-[0_0_20px_rgba(197,151,63,0.5)]">
                         {m.priceTo}
@@ -280,7 +404,7 @@ export default function Books() {
                       </a>
                     )}
                   </div>
-                  <div className="flex items-center justify-center md:justify-start gap-2 mt-1">
+                  <div className="flex items-center gap-2 mt-1">
                     <Shield size={13} className="text-white/30 flex-shrink-0" />
                     <span className="font-inter text-[11px] text-white/30">
                       Compra 100% segura · {m.guarantee} · Entrega garantida
