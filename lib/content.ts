@@ -9,7 +9,7 @@ export const hero = {
   headline2: '',
   headlineGold: 'O REINO SE MANIFESTA.',
   subtitle:
-    'Pregador e autor de livros cristãos. Percorre o Brasil levando a Palavra de Deus a quem precisa ouvir, movido por um chamado que não tem preço.',
+    'Empresário e autor. Dedicado à obra de Deus, seu maior propósito de vida.',
   ctaPrimary: 'Conhecer o Ministério',
   ctaSecondary: 'Ver os Livros',
 }
@@ -38,7 +38,7 @@ export const booksSection = {
   orderTitle: 'QUER ENCOMENDAR UM LIVRO?',
   orderSubtitle: 'Entre em contato direto com nossa equipe.',
   orderCta: 'Pedir pelo WhatsApp',
-  orderUrl: 'https://wa.me/5521999999999?text=Ola! Tenho interesse nos livros do Altomir Rangel.',
+  orderUrl: 'https://wa.me/5521994308382?text=Ola! Tenho interesse nos livros do Altomir Rangel.',
 }
 
 // ── YOUTUBE ──────────────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ export const contactSection = {
   headline1: 'ENTRE EM',
   headlineGold: 'CONTATO',
   whatsappCta: 'Falar pelo WhatsApp',
-  whatsappUrl: 'https://wa.me/5521999999999?text=Ola Altomir!',
+  whatsappUrl: 'https://wa.me/5521994308382?text=Ola Altomir!',
   formNameLabel: 'Nome',
   formEmailLabel: 'E-mail',
   formMessageLabel: 'Mensagem',
@@ -85,7 +85,7 @@ export const navbar = {
   brandBottom: 'RANGEL',
   links: ['Visão', 'Livros', 'YouTube', 'Contato'],
   ctaLabel: 'Falar Conosco',
-  ctaUrl: 'https://wa.me/5521999999999',
+  ctaUrl: 'https://wa.me/5521994308382',
 }
 
 // ── FOOTER ───────────────────────────────────────────────────────────────────
