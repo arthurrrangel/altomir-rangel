@@ -19,6 +19,7 @@ const meta: Record<string, {
   ctaSecondary?: string
   ctaSecondaryUrl?: string
   benefits: string[]
+  mobileBenefits?: string[]
   bonuses?: { label: string; value: string }[]
 }> = {
   'o-proposito-da-prosperidade': {
@@ -39,6 +40,13 @@ const meta: Record<string, {
       'Parar de dar por medo e começar a ofertar por fé. Essa diferença muda absolutamente tudo.',
       'Se você prender o que tem, não vai receber o que Deus reservou. É hora de soltar.',
       'Edição revista, ampliada e completamente atualizada pelo próprio autor.',
+    ],
+    mobileBenefits: [
+      'Você vai entender por que ora, trabalha e ainda assim não prospera — e o que fazer agora.',
+      'Mais de 5.000 vidas transformadas: quando essa revelação chega, tudo muda — finanças, fé e propósito.',
+      'Aprenda a diferença entre bênção e sorte, ofertar com fé e dar por medo. Um entendimento que liberta.',
+      'Princípios aplicáveis hoje — não teoria, mas prática bíblica que funciona na vida real.',
+      'Edição revista e ampliada: mais ensino, mais profundidade e mais transformação do que nunca.',
     ],
     bonuses: [
       { label: 'Bônus', value: 'Devocional exclusivo de 7 dias' },
@@ -62,6 +70,13 @@ const meta: Record<string, {
       'Chega de uma fé que só funciona no domingo. Aprenda a viver o que você crê todos os dias da semana.',
       'Antes de mudar quem está ao seu redor, você precisa mudar quem está por dentro. Comece por você.',
       'Não é mais um livro de teoria bíblica. É um guia para fazer a Palavra funcionar de verdade na sua vida.',
+    ],
+    mobileBenefits: [
+      'Antes de tentar mudar o mundo, aprenda a mudar a si mesmo — e tudo começa nesta leitura.',
+      'Chega de uma fé só de domingo. Descubra como viver o que você crê de forma prática e real todos os dias.',
+      'O temor do Senhor abre portas que nenhum currículo, networking ou esforço humano consegue abrir.',
+      'Uma leitura impossível de parar: direta, profunda e que vai incomodar você da melhor forma possível.',
+      'Ao fechar o livro, você terá ferramentas reais para emoções, relacionamentos e propósito de vida.',
     ],
   },
 }
@@ -209,21 +224,12 @@ export default function Books() {
                     {book.title}
                   </h3>
 
-                  {/* Subtítulo */}
-                  {book.subtitle && (
-                    <p className="font-inter text-white/50 text-[13px] italic text-center mb-4">
-                      {book.subtitle}
-                    </p>
-                  )}
+                  {/* Subtítulo — oculto no mobile */}
+                  {/* Sinopse — oculta no mobile */}
 
-                  {/* Sinopse */}
-                  <p className="font-inter text-white/55 text-[14px] leading-relaxed text-center mb-5">
-                    {book.synopsis}
-                  </p>
-
-                  {/* Benefícios — cards */}
+                  {/* Benefícios — cards (mobile usa mobileBenefits para textos mais convidativos) */}
                   <div className="flex flex-col gap-2 mb-4">
-                    {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
+                    {(m.mobileBenefits ?? m.benefits).slice(0, isExpanded ? (m.mobileBenefits ?? m.benefits).length : 4).map((b, i) => (
                       <div key={i} className="flex items-start gap-3 bg-white/5 border border-white/8 px-4 py-3 rounded-lg">
                         <CheckCircle size={14} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
                         <span className="font-inter text-[13px] text-white/80 leading-snug">{b}</span>
@@ -231,7 +237,7 @@ export default function Books() {
                     ))}
                   </div>
 
-                  {m.benefits.length > 4 && (
+                  {(m.mobileBenefits ?? m.benefits).length > 4 && (
                     <button
                       onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
                       className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] transition-colors mx-auto mb-4"
