@@ -199,73 +199,100 @@ export default function Contribute() {
           ))}
         </div>
 
-        {/* Contribution block */}
-        <div className="reveal relative overflow-hidden border border-[#C5973F]/25">
-          <div className="absolute inset-0 pointer-events-none"
-            style={{background:'radial-gradient(ellipse at top left,rgba(197,151,63,0.10) 0%,transparent 55%)'}} />
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C5973F]/60 via-[#C5973F] to-[#C5973F]/60" />
+        {/* ── CONTRIBUTION BLOCK ── */}
+        <div className="reveal relative overflow-hidden rounded-2xl" style={{background:'linear-gradient(135deg,#0a0a10 0%,#0f0d08 50%,#0a0a10 100%)'}}>
+          {/* Glow center */}
+          <div className="absolute inset-0 pointer-events-none" style={{background:'radial-gradient(ellipse at 50% 40%,rgba(197,151,63,0.18) 0%,transparent 65%)'}} />
+          {/* Top border shine */}
+          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{background:'linear-gradient(90deg,transparent,#C5973F,#FFD700,#C5973F,transparent)'}} />
+          {/* Bottom border */}
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent" />
 
-          <div className="relative grid md:grid-cols-2 gap-0">
+          <div className="relative px-6 sm:px-10 md:px-16 py-12 md:py-20 flex flex-col items-center gap-8 md:gap-10 text-center">
 
-            {/* Left — mission narrative */}
-            <div className="flex flex-col justify-center gap-5 px-8 py-10 md:px-12 md:py-14 border-b md:border-b-0 md:border-r border-white/6">
-              <span className="font-inter text-[10px] font-bold tracking-[0.35em] text-[#C5973F] uppercase text-center md:text-left">
-                Faça Parte
-              </span>
-              <h3 className="font-bebas text-[clamp(26px,4vw,44px)] leading-tight text-white text-center md:text-left">
-                SEJA PARTE DO QUE<br />
-                <span className="text-[#C5973F]">DEUS ESTÁ FAZENDO</span><br />
-                ATRAVÉS DESSAS MENSAGENS.
-              </h3>
-              <p className="font-inter text-white/50 text-[14px] leading-relaxed text-center md:text-left">
-                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé. Pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
-              </p>
-              <blockquote className="border-l-2 border-[#C5973F]/50 pl-4 hidden md:block">
-                <p className="font-playfair text-[13px] italic text-white/35 leading-relaxed">
-                  "Aquele que semeia com generosidade, com generosidade também colherá."
-                </p>
-                <cite className="font-inter text-[10px] text-white/20 tracking-widest mt-1 block not-italic">
-                  2 CORÍNTIOS 9:6
-                </cite>
-              </blockquote>
+            {/* Impact stats */}
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
+              {[
+                { num: '100+', label: 'Vídeos publicados' },
+                { num: '∞', label: 'Conteúdo gratuito' },
+                { num: '24/7', label: 'Palavra disponível' },
+              ].map(({ num, label }) => (
+                <div key={label} className="flex flex-col items-center gap-1">
+                  <span className="font-bebas text-[clamp(28px,6vw,48px)] leading-none text-[#C5973F] drop-shadow-[0_0_16px_rgba(197,151,63,0.5)]">{num}</span>
+                  <span className="font-inter text-[10px] tracking-[0.2em] text-white/30 uppercase">{label}</span>
+                </div>
+              ))}
             </div>
 
-            {/* Right — PIX action */}
-            <div className="flex flex-col justify-center items-center gap-5 px-8 py-10 md:px-12 md:py-14">
-              <p className="font-inter text-white/35 text-[13px] text-center leading-relaxed">
-                Se as mensagens te alcançaram, você pode fazer o mesmo por outras pessoas. Qualquer valor tem impacto.
-              </p>
+            {/* Divider */}
+            <div className="w-16 h-px bg-[#C5973F]/40" />
 
+            {/* Headline */}
+            <div className="max-w-2xl">
+              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Apoie o Canal</span>
+              <h3 className="font-bebas text-[clamp(32px,7vw,72px)] leading-tight text-white mb-4">
+                A PALAVRA É GRATUITA.<br />
+                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>PUBLICAR NÃO É.</span>
+              </h3>
+              <p className="font-inter text-white/45 text-[14px] sm:text-[15px] leading-relaxed max-w-lg mx-auto">
+                Cada vídeo chega a pessoas que estão buscando respostas, direção e fé. Quando você contribui, seu nome está nessa história.
+              </p>
+            </div>
+
+            {/* PIX card */}
+            <div className="w-full max-w-md flex flex-col gap-4">
+              {/* Suggested amounts */}
               <div className="flex gap-2 flex-wrap justify-center">
                 {['R$ 10', 'R$ 25', 'R$ 50', 'R$ 100'].map(v => (
-                  <span key={v}
-                    className="font-inter text-[10px] font-bold tracking-[0.15em] text-white/30 border border-white/10 px-3 py-1.5">
+                  <span key={v} className="font-inter text-[11px] font-bold tracking-[0.12em] text-[#C5973F]/70 border border-[#C5973F]/25 hover:border-[#C5973F]/60 hover:text-[#C5973F] px-4 py-2 transition-colors cursor-default">
                     {v}
                   </span>
                 ))}
               </div>
 
-              <div className="w-full border border-[#C5973F]/20 bg-black/50 px-5 py-4 flex flex-col gap-1 text-center">
-                <span className="font-inter text-[9px] font-bold tracking-[0.35em] text-[#C5973F]/60 uppercase">
-                  Chave PIX (E-mail)
-                </span>
-                <span className="font-inter text-[13px] sm:text-[14px] text-white/70 tracking-wide break-all">
-                  {PIX_KEY}
-                </span>
+              {/* PIX key box */}
+              <div className="relative border border-[#C5973F]/35 rounded-xl overflow-hidden"
+                style={{background:'linear-gradient(135deg,rgba(197,151,63,0.08),rgba(197,151,63,0.03))'}}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/50 to-transparent" />
+                <div className="px-6 py-5 flex flex-col gap-1 items-center">
+                  <span className="font-inter text-[9px] font-black tracking-[0.4em] text-[#C5973F]/50 uppercase">Chave PIX · E-mail</span>
+                  <span className="font-inter text-[15px] sm:text-[17px] font-semibold text-white/85 tracking-wide break-all mt-1">{PIX_KEY}</span>
+                </div>
               </div>
 
+              {/* CTA button */}
               <button
                 onClick={copyPix}
-                className="flex items-center justify-center gap-2 w-full bg-[#C5973F] hover:bg-[#d4a84a] active:scale-95 text-black font-inter text-[11px] font-bold tracking-[0.25em] uppercase py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_40px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_50px_rgba(197,151,63,0.50)]">
+                className="relative flex items-center justify-center gap-3 w-full text-black font-inter text-[12px] font-black tracking-[0.25em] uppercase py-5 transition-all duration-300 min-h-[60px] active:scale-95 rounded-xl overflow-hidden"
+                style={{
+                  background: copied
+                    ? 'linear-gradient(135deg,#4ADE80,#22c55e)'
+                    : 'linear-gradient(135deg,#D4A84A,#C5973F,#B8860B)',
+                  boxShadow: copied
+                    ? '0 8px 40px rgba(74,222,128,0.4)'
+                    : '0 8px_40px rgba(197,151,63,0.5),0 0 80px rgba(197,151,63,0.15)'
+                }}
+              >
+                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                  style={{background:'linear-gradient(135deg,rgba(255,255,255,0.15),transparent)'}} />
                 {copied
-                  ? <><Check size={14} /> CHAVE COPIADA!</>
-                  : <><Copy size={14} /> CONTRIBUIR VIA PIX</>}
+                  ? <><Check size={16} strokeWidth={3} /> CHAVE COPIADA!</>
+                  : <><Copy size={15} /> COPIAR CHAVE PIX</>}
               </button>
 
-              <p className="font-inter text-[11px] text-white/25 text-center leading-relaxed">
-                Abra seu banco → PIX → Chave → Cole o e-mail acima
+              <p className="font-inter text-[11px] text-white/20 text-center">
+                Banco → PIX → Pagar → Chave → Cole o e-mail
               </p>
             </div>
+
+            {/* Bible verse */}
+            <div className="max-w-sm">
+              <p className="font-playfair text-[13px] italic text-white/25 leading-relaxed">
+                "Aquele que semeia com generosidade, com generosidade também colherá."
+              </p>
+              <span className="font-inter text-[9px] text-white/15 tracking-[0.3em] uppercase mt-2 block">2 Coríntios 9.6</span>
+            </div>
+
           </div>
         </div>
 
