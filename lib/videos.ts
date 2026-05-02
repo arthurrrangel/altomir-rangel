@@ -4,15 +4,15 @@ export type Video = {
   category?: string
 }
 
-// Canal: UCkusTtkV-Az8T3tGDqwhMVQ - atualizado via /api/videos (RSS)
+// Canal: UCkusTtkV-Az8T3tGDqwhMVQ - atualizado via /api/videos (RSS, sem Shorts)
 export const videos = [
-  { id: 'iiQRBbTZXbg', title: 'Oracao Secreta para Destravar', category: 'Novo' },
-  { id: 'Sir-A4SaagU', title: 'Nem Toda Amizade Soma', category: 'Ao Vivo' },
-  { id: 'xT6RIBD51tg', title: 'A Promessa Existe, Mas Falta Isso em Voce', category: 'Novo' },
-  { id: 'KU7vnhcT4iE', title: 'Neurociencia e Inteligencia Espiritual', category: 'Ao Vivo' },
-  { id: 'FoTNvtz73SI', title: 'Venca a Vaidade', category: 'Novo' },
-  { id: 'Y4bm3EU11wE', title: 'O Preco do Sucsso', category: 'Ensinamento' },
-  { id: 'C0b8G0GWDyg', title: 'Deus Transformou a Maldicao em Bencao', category: 'Novo' },
-  { id: 'zUWiJpeZIco', title: 'Fe, Familia e Empreendedorismo', category: 'Ao Vivo' },
-  { id: '8WP-QaVRMKk', title: 'Ele Perdeu um Negocio pra Ganhar uma Alma', category: 'Novo' },
+  { id: 'JJCRJaN5oy8', title: 'A CORAGEM DE DIZER NÃO', category: 'Novo' },
+  { id: 'JUyAwsI9rc4', title: 'CUIDADO: NEM TODA ORAÇÃO É DE VERDADE', category: 'Novo' },
+  { id: 'qiougvwdS5Y', title: 'A VERDADE SOBRE FÉ, MEDO E SEU DESTINO', category: 'Ao Vivo' },
+  { id: 'kK4Alf7-iC4', title: 'NUNCA CONTE SEUS PLANOS SEM FAZER ESSAS 3 PERGUNTAS', category: 'Ensinamento' },
+  { id: 'U58SgUgdbnw', title: 'A DIFERENÇA ENTRE IDENTIDADE E HÁBITO', category: 'Ensinamento' },
+  { id: 'QVCbf-7mIMs', title: 'SEU REFLEXO AUTOMÁTICO REVELA A VERDADE', category: 'Novo' },
+  { id: 'y0yfYSw64DE', title: 'APENAS LER A BÍBLIA NÃO É O SUFICIENTE', category: 'Ao Vivo' },
+  { id: 't_J3LLCeBN4', title: 'COMO IDENTIFICAR A VOZ DE DEUS NAS MUDANÇAS?', category: 'Ensinamento' },
+  { id: 'aXStY7af4dM', title: 'A ARTE DE RECOMEÇAR SEM ÓDIO', category: 'Novo' },
 ]

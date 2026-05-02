@@ -22,12 +22,13 @@ export async function GET() {
     if (!res.ok) throw new Error("RSS failed")
     const xml = await res.text()
         const entries = Array.from(xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g))
-    const videos: VideoItem[] = entries.slice(0, 9).map(m => {
+    const isShort = (title: string) => /#[a-zA-ZÀ-ÿ]/.test(title)
+    const videos: VideoItem[] = entries.map(m => {
       const e = m[1]
       const id = e.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] ?? ""
       const title = dec(e.match(/<title>([^<]+)<\/title>/)?.[1] ?? "")
       return { id, title, category: classifyCategory(title) }
-    }).filter(v => v.id && v.title)
+    }).filter(v => v.id && v.title && !isShort(v.title)).slice(0, 9)
     if (!videos.length) throw new Error("No videos")
     return NextResponse.json({ videos, updatedAt: new Date().toISOString() }, { headers: { "Cache-Control": "s-maxage=1800" } })
   } catch {
