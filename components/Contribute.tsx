@@ -116,7 +116,7 @@ export default function Contribute() {
   }
 
   const featured = testimonials[0]
-  const rest = testimonials.slice(1)
+  const rest = testimonials.slice(1, 3)
 
   return (
     <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
@@ -169,10 +169,10 @@ export default function Contribute() {
         </div>
 
         {/* Grid — remaining 5 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 md:mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16 md:mb-24">
           {rest.map((t, i) => (
             <div key={i}
-              className={`reveal-left flex flex-col gap-4 border border-white/6 bg-[#0A0A0F] p-5 hover:border-[#C5973F]/25 hover:bg-[#0d0d14] transition-all duration-300 group ${i >= 2 ? 'hidden sm:flex' : ''}`}>
+              className="reveal-left flex flex-col gap-4 border border-white/6 bg-[#0A0A0F] p-5 hover:border-[#C5973F]/25 hover:bg-[#0d0d14] transition-all duration-300 group">
 
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
