@@ -30,6 +30,10 @@ export default function YouTubeSection() {
 
   return (
     <section id="youtube" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0D1518]">
+      {/* Fade-in from previous section */}
+      <div className="absolute top-0 inset-x-0 h-24 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(8,8,16,0.6) 0%, transparent 100%)'}} />
+      {/* Fade-out to next section */}
+      <div className="absolute bottom-0 inset-x-0 h-24 pointer-events-none" style={{background:'linear-gradient(to top, rgba(15,15,23,0.6) 0%, transparent 100%)'}} />
       <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none" style={{background:'radial-gradient(ellipse at top left,rgba(220,38,38,0.05) 0%,transparent 65%)'}} />
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 md:mb-14">

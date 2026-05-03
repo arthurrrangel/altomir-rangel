@@ -68,10 +68,10 @@ export default function Hero() {
 
           <div className="h-reveal flex flex-col sm:flex-row gap-3 items-center md:items-start"
             style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
-            <a href="#visao" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
+            <a href="#visao" className="btn-gold w-full sm:w-auto sm:min-w-[220px] justify-center min-h-[50px]">
               {hero.ctaPrimary} <ArrowRight size={14} />
             </a>
-            <a href="#livros" className="btn-outline w-full sm:w-auto justify-center min-h-[50px]">
+            <a href="#livros" className="btn-outline w-full sm:w-auto sm:min-w-[220px] justify-center min-h-[50px]">
               {hero.ctaSecondary}
             </a>
           </div>

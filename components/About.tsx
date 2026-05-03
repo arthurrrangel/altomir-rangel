@@ -19,6 +19,8 @@ export default function About() {
 
   return (
     <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
+      {/* Top fade from Hero */}
+      <div className="absolute top-0 inset-x-0 h-20 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(10,10,15,0.5) 0%, transparent 100%)'}} />
       <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5973F]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -72,7 +74,7 @@ export default function About() {
             )}
 
             <div className="reveal flex justify-center lg:justify-start">
-              <a href="#contato" className="btn-gold w-full sm:w-auto justify-center min-h-[50px]">
+              <a href="#contato" className="btn-gold w-full sm:w-auto sm:min-w-[220px] justify-center min-h-[50px]">
                 Entre em Contato &rarr;
               </a>
             </div>
