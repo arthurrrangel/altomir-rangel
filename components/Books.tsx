@@ -123,7 +123,7 @@ export default function Books() {
         <div className="reveal inline-flex items-center gap-2 mb-4">
           <span className="label">Livros do Autor</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(42px,9vw,108px)] leading-none text-white">
+        <h2 className="reveal font-bebas text-[clamp(32px,4.5vw,62px)] leading-none text-white">
           PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>
         </h2>
         <p className="reveal mt-4 font-inter text-white/40 text-[15px] max-w-xl mx-auto">

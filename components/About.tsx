@@ -42,7 +42,7 @@ export default function About() {
             </div>
 
             <div className="reveal text-center lg:text-left">
-              <h2 className="font-bebas leading-[0.9] text-white" style={{fontSize: 'clamp(36px, 9vw, 80px)'}}>
+              <h2 className="font-bebas leading-[0.9] text-white" style={{fontSize: 'clamp(32px, 4.5vw, 62px)'}}>
                 {about.headline1}<br />
                 <span className="text-[#C5973F]">{about.headlineGold}</span>
                 {about.headline2 ? <><br />{about.headline2}</> : null}

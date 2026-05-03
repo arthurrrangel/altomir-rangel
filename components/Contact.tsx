@@ -54,7 +54,7 @@ export default function Contact() {
         <div className="reveal flex items-center justify-center md:justify-start mb-3">
           <span className="label">Contato</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(36px,8vw,90px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
+        <h2 className="reveal font-bebas text-[clamp(32px,4.5vw,62px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
           COMO PODEMOS<br /><span className="text-[#C5973F]">SERVIR A VOCÊ?</span>
         </h2>
 

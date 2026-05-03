@@ -129,7 +129,7 @@ export default function Contribute() {
         <div className="reveal flex items-center justify-center md:justify-start mb-3">
           <span className="label">Depoimentos</span>
         </div>
-        <h2 className="reveal font-bebas text-[clamp(38px,8vw,90px)] leading-none text-white text-center md:text-left mb-10 md:mb-14">
+        <h2 className="reveal font-bebas text-[clamp(32px,4.5vw,62px)] leading-none text-white text-center md:text-left mb-10 md:mb-14">
           VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
         </h2>
 

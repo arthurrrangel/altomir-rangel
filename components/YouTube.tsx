@@ -42,7 +42,7 @@ export default function YouTubeSection() {
               <Youtube size={12} className="text-red-500" />
               <span className="font-inter text-[11px] font-bold tracking-[0.3em] text-red-400 uppercase">Canal no YouTube</span>
             </div>
-            <h2 className="reveal font-bebas text-[clamp(38px,8vw,96px)] leading-none text-white">VIDEOS QUE<br /><span className="text-[#FFC84E]">EDIFICAM</span></h2>
+            <h2 className="reveal font-bebas text-[clamp(32px,4.5vw,62px)] leading-none text-white">VIDEOS QUE<br /><span className="text-[#FFC84E]">EDIFICAM</span></h2>
           </div>
           <a href="https://www.youtube.com/@altomirrangel?sub_confirmation=1" target="_blank" rel="noopener noreferrer" className="reveal flex-shrink-0 self-center md:self-end flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 active:scale-95 text-white font-inter text-[11px] font-bold tracking-[0.15em] uppercase px-6 py-3.5 transition-all duration-200 min-h-[48px] shadow-[0_6px_24px_rgba(220,38,38,0.30)] hover:shadow-[0_8px_32px_rgba(220,38,38,0.45)]"><Youtube size={14} /> SE INSCREVER</a>
         </div>
