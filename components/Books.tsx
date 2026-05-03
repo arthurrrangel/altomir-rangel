@@ -1,6 +1,6 @@
 "use client"
-import { useEffect, useRef, useState } from 'react'
-import { ShoppingCart, MessageCircle, Star, Shield, CheckCircle, Zap, Users, ChevronDown, ChevronUp } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { ShoppingCart, MessageCircle, Star, Shield, CheckCircle, Zap, Users } from 'lucide-react'
 import Image from 'next/image'
 import { books } from '@/lib/books'
 
@@ -98,8 +98,6 @@ function StarRating({ stars, center }: { stars: number; center?: boolean }) {
 
 export default function Books() {
   const ref = useRef<HTMLElement>(null)
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
-
   useEffect(() => {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -145,7 +143,6 @@ export default function Books() {
             cta: 'Adquirir', ctaUrl: book.buyUrl, benefits: [],
           }
           const isWA = m.ctaUrl.includes('wa.me')
-          const isExpanded = expanded[book.slug]
 
           return (
             <div key={book.slug} className="relative">
@@ -155,7 +152,7 @@ export default function Books() {
               {/* ─────────────── MOBILE LAYOUT ─────────────── */}
               <div className="md:hidden">
                 {/* Capa full-bleed */}
-                <div className="relative w-full" style={{ aspectRatio: '3/4', maxHeight: '72vw' }}>
+                <div className="relative w-full" style={{ aspectRatio: '3/4' }}>
                   {m.badge && (
                     <div className="absolute top-3 right-3 z-20">
                       <div className="bg-[#B8341B] text-white font-inter text-[8px] font-black tracking-[0.2em] uppercase px-2.5 py-1 shadow-lg">
@@ -197,24 +194,15 @@ export default function Books() {
                   {/* Subtítulo — oculto no mobile */}
                   {/* Sinopse — oculta no mobile */}
 
-                  {/* Benefícios — cards (mobile usa mobileBenefits para textos mais convidativos) */}
+                  {/* Benefícios — todos visíveis */}
                   <div className="flex flex-col gap-2 mb-4">
-                    {(m.mobileBenefits ?? m.benefits).slice(0, isExpanded ? (m.mobileBenefits ?? m.benefits).length : 4).map((b, i) => (
+                    {(m.mobileBenefits ?? m.benefits).map((b, i) => (
                       <div key={i} className="flex items-start gap-3 bg-white/5 border border-white/8 px-4 py-3 rounded-lg">
                         <CheckCircle size={14} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
                         <span className="font-inter text-[13px] text-white/80 leading-snug">{b}</span>
                       </div>
                     ))}
                   </div>
-
-                  {(m.mobileBenefits ?? m.benefits).length > 4 && (
-                    <button
-                      onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
-                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] transition-colors mx-auto mb-4"
-                    >
-                      {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
-                    </button>
-                  )}
 
                   {/* Bônus */}
                   {m.bonuses && (
@@ -318,21 +306,13 @@ export default function Books() {
                     {book.synopsis}
                   </p>
                   <ul className="space-y-2.5 mt-1 w-full">
-                    {m.benefits.slice(0, isExpanded ? m.benefits.length : 4).map((b, i) => (
+                    {m.benefits.map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <CheckCircle size={15} className="text-[#4ADE80] flex-shrink-0 mt-0.5" />
                         <span className="font-inter text-[14px] text-white/75">{b}</span>
                       </li>
                     ))}
                   </ul>
-                  {m.benefits.length > 4 && (
-                    <button
-                      onClick={() => setExpanded(e => ({ ...e, [book.slug]: !e[book.slug] }))}
-                      className="flex items-center gap-1 font-inter text-[12px] text-[#C5973F] hover:text-[#d4a84a] transition-colors -mt-1"
-                    >
-                      {isExpanded ? <><ChevronUp size={13} /> Ver menos</> : <><ChevronDown size={13} /> Ver mais benefícios</>}
-                    </button>
-                  )}
                   {m.bonuses && (
                     <div className="flex flex-col gap-2 mt-1 w-full">
                       {m.bonuses.map((bonus, i) => (
@@ -344,7 +324,10 @@ export default function Books() {
                       ))}
                     </div>
                   )}
-                  <div className="h-px bg-gradient-to-r from-[#C5973F]/30 via-white/8 to-transparent mt-1 w-full" />
+                  <div className="mt-4 w-full">
+                    <div className="h-px bg-gradient-to-r from-[#C5973F]/40 via-[#C5973F]/10 to-transparent mb-4" />
+                    <span className="font-inter text-[9px] font-black tracking-[0.35em] text-[#C5973F]/50 uppercase">Investimento</span>
+                  </div>
                   <div className="flex flex-col items-start gap-1">
                     {m.priceFrom && (
                       <span className="font-inter text-[13px] text-white/35 line-through">De {m.priceFrom}</span>
