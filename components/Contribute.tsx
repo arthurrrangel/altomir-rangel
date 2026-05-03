@@ -210,32 +210,16 @@ export default function Contribute() {
 
           <div className="relative px-6 sm:px-10 md:px-16 py-12 md:py-20 flex flex-col items-center gap-8 md:gap-10 text-center">
 
-            {/* Impact stats */}
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-              {[
-                { num: '100+', label: 'Vídeos publicados' },
-                { num: '∞', label: 'Conteúdo gratuito' },
-                { num: '24/7', label: 'Palavra disponível' },
-              ].map(({ num, label }) => (
-                <div key={label} className="flex flex-col items-center gap-1">
-                  <span className="font-bebas text-[clamp(28px,6vw,48px)] leading-none text-[#C5973F] drop-shadow-[0_0_16px_rgba(197,151,63,0.5)]">{num}</span>
-                  <span className="font-inter text-[10px] tracking-[0.2em] text-white/30 uppercase">{label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Divider */}
-            <div className="w-16 h-px bg-[#C5973F]/40" />
-
             {/* Headline */}
             <div className="max-w-2xl">
-              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Apoie o Canal</span>
+              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Faça Parte</span>
               <h3 className="font-bebas text-[clamp(32px,7vw,72px)] leading-tight text-white mb-4">
-                A PALAVRA É GRATUITA.<br />
-                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>PUBLICAR NÃO É.</span>
+                SEJA PARTE DO QUE<br />
+                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>DEUS ESTÁ FAZENDO</span><br />
+                ATRAVÉS DESSAS MENSAGENS.
               </h3>
               <p className="font-inter text-white/45 text-[14px] sm:text-[15px] leading-relaxed max-w-lg mx-auto">
-                Cada vídeo chega a pessoas que estão buscando respostas, direção e fé. Quando você contribui, seu nome está nessa história.
+                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé. Pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
               </p>
             </div>
 
