@@ -1,4 +1,4 @@
-import { Youtube, Mail, MessageCircle, ArrowUpRight } from 'lucide-react'
+import { Mail, MessageCircle, Youtube, ArrowUpRight } from 'lucide-react'
 
 const contacts = [
   {
@@ -54,28 +54,6 @@ export default function Footer() {
       {/* Glow de fundo sutil */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at bottom, rgba(197,151,63,0.05) 0%, transparent 70%)' }} />
-
-      {/* CTA strip */}
-      <div className="relative border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <span className="label block mb-2">Canal no YouTube</span>
-            <h3 className="font-bebas text-[clamp(26px,4vw,42px)] text-white leading-none">
-              NOVO VÍDEO TODO DIA
-            </h3>
-            <p className="font-inter text-white/30 text-[13px] mt-2">
-              Mensagens, ensinamentos e lives para edificar sua fé.
-            </p>
-          </div>
-          <a
-            href="https://www.youtube.com/@altomirrangel?sub_confirmation=1"
-            target="_blank" rel="noopener noreferrer"
-            className="btn-gold flex-shrink-0 flex items-center gap-2 !bg-red-600 !border-red-600 hover:!bg-transparent hover:!text-red-500 hover:!border-red-500"
-          >
-            <Youtube size={14} /> SE INSCREVER
-          </a>
-        </div>
-      </div>
 
       {/* Grid */}
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 pt-14 md:pt-16 pb-8 md:pb-10">
