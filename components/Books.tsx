@@ -48,9 +48,6 @@ const meta: Record<string, {
       'Princípios aplicáveis hoje — não teoria, mas prática bíblica que funciona na vida real.',
       'Edição revista e ampliada: mais ensino, mais profundidade e mais transformação do que nunca.',
     ],
-    bonuses: [
-      { label: 'Bônus', value: 'Devocional exclusivo de 7 dias' },
-    ],
   },
   'bem-vindo-ao-novo-voce': {
     badge: 'LANÇAMENTO',
