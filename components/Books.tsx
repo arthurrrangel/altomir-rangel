@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from 'react'
-import { ShoppingCart, MessageCircle, Star, Shield, CheckCircle, Zap, Clock, Users, ChevronDown, ChevronUp } from 'lucide-react'
+import { ShoppingCart, MessageCircle, Star, Shield, CheckCircle, Zap, Users, ChevronDown, ChevronUp } from 'lucide-react'
 import Image from 'next/image'
 import { books } from '@/lib/books'
 
@@ -12,7 +12,6 @@ const meta: Record<string, {
   priceInstallment?: string
   guarantee: string
   stars: number
-  reviews: number
   readers: string
   cta: string
   ctaUrl: string
@@ -30,7 +29,6 @@ const meta: Record<string, {
     priceInstallment: 'ou 12x de R$ 6,89 no cartão',
     guarantee: '7 dias de garantia',
     stars: 5,
-    reviews: 312,
     readers: '+5.000 leitores',
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-proposito-da-prosperidade--altomir-rangel/up/MLBU3941859956?pdp_filters=item_id:MLB4647757361',
@@ -57,7 +55,6 @@ const meta: Record<string, {
     priceInstallment: 'ou 12x de R$ 6,89 no cartão',
     guarantee: 'Satisfação garantida',
     stars: 5,
-    reviews: 87,
     readers: 'Disponível agora',
     cta: 'Comprar no Mercado Livre',
     ctaUrl: 'https://www.mercadolivre.com.br/livro-bemvindo-ao-novo-voce--altomir-rangel/up/MLBU3941857680?pdp_filters=item_id:MLB4647743953',
@@ -78,37 +75,16 @@ const meta: Record<string, {
   },
 }
 
-function CountdownBanner({ text }: { text: string }) {
-  const [time, setTime] = useState({ h: 2, m: 47, s: 33 })
-  useEffect(() => {
-    const t = setInterval(() => {
-      setTime(prev => {
-        let { h, m, s } = prev
-        s--
-        if (s < 0) { s = 59; m-- }
-        if (m < 0) { m = 59; h-- }
-        if (h < 0) { h = 2; m = 47; s = 33 }
-        return { h, m, s }
-      })
-    }, 1000)
-    return () => clearInterval(t)
-  }, [])
-  const pad = (n: number) => String(n).padStart(2, '0')
+function UrgencyBanner({ text }: { text: string }) {
   return (
-    <div className="w-full bg-gradient-to-r from-[#B8341B] via-[#D4421F] to-[#B8341B] py-3 px-4 flex items-center justify-center gap-3 flex-wrap text-white text-center">
-      <Zap size={14} className="text-[#FFD700] fill-[#FFD700] flex-shrink-0" />
+    <div className="w-full bg-gradient-to-r from-[#B8341B] via-[#D4421F] to-[#B8341B] py-3 px-4 flex items-center justify-center gap-2.5 flex-wrap text-white text-center">
+      <Zap size={13} className="text-[#FFD700] fill-[#FFD700] flex-shrink-0" />
       <span className="font-inter text-[12px] sm:text-[13px] font-bold tracking-wide">{text}</span>
-      <div className="flex items-center gap-1.5 bg-black/25 px-3 py-1 rounded-sm">
-        <Clock size={11} className="text-[#FFD700]" />
-        <span className="font-mono text-[13px] font-bold tracking-widest text-[#FFD700]">
-          {pad(time.h)}:{pad(time.m)}:{pad(time.s)}
-        </span>
-      </div>
     </div>
   )
 }
 
-function StarRating({ stars, reviews, center }: { stars: number; reviews: number; center?: boolean }) {
+function StarRating({ stars, center }: { stars: number; center?: boolean }) {
   return (
     <div className={`flex items-center gap-2 flex-wrap ${center ? 'justify-center' : 'justify-center md:justify-start'}`}>
       <div className="flex gap-0.5">
@@ -116,9 +92,6 @@ function StarRating({ stars, reviews, center }: { stars: number; reviews: number
           <Star key={i} size={14} className={i < stars ? 'fill-[#FFD700] text-[#FFD700]' : 'text-white/20'} />
         ))}
       </div>
-      <span className="font-inter text-[12px] text-white/60">
-        <span className="text-white font-semibold">{stars}.0</span> ({reviews} avaliações)
-      </span>
     </div>
   )
 }
@@ -177,7 +150,7 @@ export default function Books() {
           return (
             <div key={book.slug} className="relative">
               {/* Urgency banner */}
-              <CountdownBanner text={m.urgency} />
+              <UrgencyBanner text={m.urgency} />
 
               {/* ─────────────── MOBILE LAYOUT ─────────────── */}
               <div className="md:hidden">
@@ -213,7 +186,7 @@ export default function Books() {
                 <div className="px-5 pt-2 pb-10">
                   {/* Stars */}
                   <div className="mb-3">
-                    <StarRating stars={m.stars} reviews={m.reviews} center />
+                    <StarRating stars={m.stars} center />
                   </div>
 
                   {/* Título */}
@@ -332,7 +305,7 @@ export default function Books() {
 
                 {/* BLOCO DE OFERTA */}
                 <div className="reveal-right flex-1 flex flex-col justify-center gap-5 max-w-xl mx-0 w-full">
-                  <StarRating stars={m.stars} reviews={m.reviews} />
+                  <StarRating stars={m.stars} />
                   <h3 className="font-bebas text-[clamp(32px,6vw,64px)] leading-tight text-white">
                     {book.title}
                   </h3>
