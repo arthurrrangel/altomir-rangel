@@ -1,10 +1,12 @@
 "use client"
 import { useEffect, useRef, useState, FormEvent } from 'react'
-import { Send } from 'lucide-react'
+import { Send, CheckCircle } from 'lucide-react'
+
+const FORMSPREE_ID = 'xrejpgqp'
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null)
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [subject, setSubject] = useState('')
 
   useEffect(() => {
@@ -19,10 +21,26 @@ export default function Contact() {
     return () => obs.disconnect()
   }, [])
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
+    setStatus('sending')
+    const data = new FormData(e.currentTarget)
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      })
+      if (res.ok) {
+        setStatus('sent')
+        ;(e.target as HTMLFormElement).reset()
+        setSubject('')
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -57,48 +75,72 @@ export default function Contact() {
 
             {/* Invite card */}
             <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
-              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Entre em Contato</h4>
+              <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Ministrar</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
-                Pregações, conferências e retiros cristãos. Informe a data e cidade no formulário.
+                Pregações, conferências e retiros cristãos. Informe a data, cidade e evento no formulário ao lado.
               </p>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-3 flex flex-col gap-4 sm:gap-5">
-            <div className="reveal-right grid sm:grid-cols-2 gap-4 sm:gap-5">
-              <div className="flex flex-col gap-2">
-                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Nome</label>
-                <input type="text" required placeholder="Seu nome completo" className="input-dark min-h-[48px]" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">E-mail</label>
-                <input type="email" required placeholder="seu@email.com" className="input-dark min-h-[48px]" />
-              </div>
-            </div>
-            <div className="reveal-right flex flex-col gap-2">
-              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Assunto</label>
-              <select value={subject} onChange={e => setSubject(e.target.value)}
-                className="input-dark appearance-none cursor-pointer text-white/50 min-h-[48px]">
-                <option value="">Selecione o assunto</option>
-                <option value="livro">Quero adquirir um livro</option>
-                <option value="convite">Convite para Pregação</option>
-                <option value="parceria">Parceria</option>
-                <option value="testemunho">Compartilhar Testemunho</option>
-                <option value="outro">Outro</option>
-              </select>
-            </div>
-            <div className="reveal-right flex flex-col gap-2">
-              <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Mensagem</label>
-              <textarea required rows={4} placeholder="Escreva sua mensagem..."
-                className="input-dark resize-none" />
-            </div>
-            <div className="reveal-right">
-              <button type="submit" className="btn-gold w-full justify-center gap-2 text-[11px] min-h-[52px]">
-                {sent ? '✓ MENSAGEM ENVIADA!' : <><Send size={13} /> ENVIAR MENSAGEM</>}
+          {status === 'sent' ? (
+            <div className="lg:col-span-3 flex flex-col items-center justify-center gap-4 py-16 text-center">
+              <CheckCircle size={48} className="text-[#4ADE80]" />
+              <h3 className="font-bebas text-3xl text-white">Mensagem Enviada!</h3>
+              <p className="font-inter text-white/40 text-sm max-w-sm">
+                Recebemos sua mensagem e responderemos em breve no e-mail informado.
+              </p>
+              <button
+                onClick={() => setStatus('idle')}
+                className="mt-2 font-inter text-[11px] text-[#C5973F] hover:text-[#d4a84a] transition-colors tracking-widest uppercase"
+              >
+                Enviar outra mensagem
               </button>
             </div>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="lg:col-span-3 flex flex-col gap-4 sm:gap-5">
+              <div className="reveal-right grid sm:grid-cols-2 gap-4 sm:gap-5">
+                <div className="flex flex-col gap-2">
+                  <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Nome</label>
+                  <input type="text" name="nome" required placeholder="Seu nome completo" className="input-dark min-h-[48px]" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">E-mail</label>
+                  <input type="email" name="email" required placeholder="seu@email.com" className="input-dark min-h-[48px]" />
+                </div>
+              </div>
+              <div className="reveal-right flex flex-col gap-2">
+                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Assunto</label>
+                <select name="assunto" value={subject} onChange={e => setSubject(e.target.value)}
+                  className="input-dark appearance-none cursor-pointer text-white/50 min-h-[48px]">
+                  <option value="">Selecione o assunto</option>
+                  <option value="convite">Convite para Pregação</option>
+                  <option value="livro">Quero adquirir um livro</option>
+                  <option value="parceria">Parceria</option>
+                  <option value="testemunho">Compartilhar Testemunho</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+              <div className="reveal-right flex flex-col gap-2">
+                <label className="font-inter text-[10px] font-bold tracking-[0.25em] text-white/30 uppercase text-center md:text-left">Mensagem</label>
+                <textarea required name="mensagem" rows={4} placeholder="Escreva sua mensagem..."
+                  className="input-dark resize-none" />
+              </div>
+              {status === 'error' && (
+                <p className="font-inter text-[12px] text-red-400 text-center">
+                  Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.
+                </p>
+              )}
+              <div className="reveal-right">
+                <button type="submit" disabled={status === 'sending'}
+                  className="btn-gold w-full justify-center gap-2 text-[11px] min-h-[52px] disabled:opacity-60 disabled:cursor-not-allowed">
+                  {status === 'sending'
+                    ? 'ENVIANDO...'
+                    : <><Send size={13} /> ENVIAR MENSAGEM</>}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>
