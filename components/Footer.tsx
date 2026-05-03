@@ -1,9 +1,12 @@
-import { Youtube, Mail } from 'lucide-react'
+import { Youtube, Mail, MessageCircle } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="relative bg-black border-t border-white/6">
+    <footer className="relative bg-black">
+      {/* Linha dourada separando do conteúdo acima */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[#C5973F]/50 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
 
         <div className="grid md:grid-cols-3 gap-8 md:gap-8 mb-10 md:mb-12">
@@ -17,6 +20,25 @@ export default function Footer() {
             <p className="font-inter text-white/30 text-xs leading-relaxed max-w-[260px]">
               Pregador e autor de livros cristãos. Empresário por profissão, servindo ao Reino por propósito.
             </p>
+
+            {/* Ícones sociais */}
+            <div className="flex items-center gap-3 mt-1">
+              <a href="https://www.youtube.com/@altomirrangel" target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-red-500/40 hover:bg-red-500/10 text-white/35 hover:text-red-400 transition-all duration-200"
+                aria-label="YouTube">
+                <Youtube size={14} />
+              </a>
+              <a href="mailto:contato@altomirrangel.com.br"
+                className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-[#C5973F]/40 hover:bg-[#C5973F]/10 text-white/35 hover:text-[#C5973F] transition-all duration-200"
+                aria-label="E-mail">
+                <Mail size={14} />
+              </a>
+              <a href="https://wa.me/5521994308382?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel." target="_blank" rel="noopener noreferrer"
+                className="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-green-500/40 hover:bg-green-500/10 text-white/35 hover:text-green-400 transition-all duration-200"
+                aria-label="WhatsApp">
+                <MessageCircle size={14} />
+              </a>
+            </div>
           </div>
 
           {/* Links */}
@@ -49,14 +71,15 @@ export default function Footer() {
               <span className="font-inter text-xs">@altomirrangel</span>
             </a>
             <a href="https://wa.me/5521994308382?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel." target="_blank" rel="noopener noreferrer"
-              className="mt-1 btn-gold text-[10px] py-3 px-4 self-center md:self-start min-h-[44px]">
-              Falar no WhatsApp
+              className="flex items-center justify-center md:justify-start gap-3 text-white/35 hover:text-green-400 transition-colors min-h-[36px]">
+              <MessageCircle size={13} className="text-green-400 flex-shrink-0" />
+              <span className="font-inter text-xs">+55 21 99430-8382</span>
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-2 text-center sm:text-left">
+        <div className="pt-6 border-t border-[#C5973F]/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <span className="font-inter text-[10px] text-white/20 tracking-wide">
             &copy; {year} Altomir Rangel. Todos os direitos reservados.
           </span>
