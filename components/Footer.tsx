@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Youtube, ArrowUpRight } from 'lucide-react'
+import { Mail, MessageCircle, Youtube } from 'lucide-react'
 
 const contacts = [
   {
@@ -110,7 +110,7 @@ export default function Footer() {
           {/* Contato — 4 cols */}
           <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
             <span className="label block mb-6">Contato</span>
-            <div className="flex flex-col gap-2 w-full">
+            <div className="flex items-center gap-3">
               {contacts.map(c => {
                 const Icon = c.icon
                 return (
@@ -119,24 +119,12 @@ export default function Footer() {
                     href={c.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group relative flex items-center gap-3 px-3.5 py-3 border border-white/5 ${c.borderHover} transition-all duration-250 overflow-hidden`}
+                    aria-label={c.label}
+                    className={`group relative w-11 h-11 flex items-center justify-center border border-white/8 ${c.borderHover} transition-all duration-200 overflow-hidden`}
                   >
-                    {/* Glow hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                      style={{ background: `radial-gradient(ellipse at 20% 50%, ${c.glow} 0%, transparent 70%)` }} />
-
-                    {/* Ícone */}
-                    <div className="relative w-8 h-8 flex items-center justify-center bg-white/3 border border-white/6 group-hover:border-white/12 flex-shrink-0 transition-all duration-200">
-                      <Icon size={14} className={`${c.iconColor} opacity-70 group-hover:opacity-100 transition-opacity`} />
-                    </div>
-
-                    {/* Texto */}
-                    <div className="relative flex-1 min-w-0">
-                      <p className="font-inter text-[12px] font-semibold text-white/50 group-hover:text-white/85 transition-colors leading-none">{c.label}</p>
-                      <p className="font-inter text-[10px] text-white/20 group-hover:text-white/35 transition-colors mt-1 truncate">{c.desc}</p>
-                    </div>
-
-                    <ArrowUpRight size={12} className="relative text-white/10 group-hover:text-white/45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 flex-shrink-0" />
+                      style={{ background: `radial-gradient(ellipse at center, ${c.glow} 0%, transparent 80%)` }} />
+                    <Icon size={16} className={`relative ${c.iconColor} opacity-50 group-hover:opacity-100 transition-opacity duration-200`} />
                   </a>
                 )
               })}
