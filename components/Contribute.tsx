@@ -212,17 +212,14 @@ export default function Contribute() {
 
             {/* Headline */}
             <div className="max-w-2xl">
-              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Semeie no Reino</span>
-              <h3 className="font-bebas text-[clamp(32px,7vw,68px)] leading-tight text-white mb-5">
-                DEUS TOCOU VOCÊ HOJE<br />
-                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>PARA TOCAR ALGUÉM</span><br />
-                AMANHÃ.
+              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Faça Parte</span>
+              <h3 className="font-bebas text-[clamp(32px,7vw,72px)] leading-tight text-white mb-4">
+                SEJA PARTE DO QUE<br />
+                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>DEUS ESTÁ FAZENDO</span><br />
+                ATRAVÉS DESSAS MENSAGENS.
               </h3>
-              <p className="font-inter text-white/55 text-[15px] leading-relaxed max-w-lg mx-auto mb-3">
-                Enquanto você lê isso, alguém está no limite. Sem saber pra onde ir. Precisando ouvir exatamente o que Deus tem falado por este canal.
-              </p>
-              <p className="font-inter text-white/35 text-[13px] leading-relaxed max-w-md mx-auto">
-                Sua semente hoje chega onde suas mãos não alcançam. Não é doação — é parceria com o que Deus está fazendo.
+              <p className="font-inter text-white/45 text-[14px] sm:text-[15px] leading-relaxed max-w-lg mx-auto">
+                Cada vídeo publicado chega a pessoas buscando respostas, direção e fé. Pessoas que Deus está alcançando através dessas mensagens. Quando você contribui, seu nome está nessa história.
               </p>
             </div>
 
@@ -242,7 +239,7 @@ export default function Contribute() {
                 style={{background:'linear-gradient(135deg,rgba(197,151,63,0.08),rgba(197,151,63,0.03))'}}>
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/50 to-transparent" />
                 <div className="px-6 py-5 flex flex-col gap-1 items-center">
-                  <span className="font-inter text-[9px] font-black tracking-[0.4em] text-[#C5973F]/50 uppercase">Plante sua semente · PIX E-mail</span>
+                  <span className="font-inter text-[9px] font-black tracking-[0.4em] text-[#C5973F]/50 uppercase">Chave PIX · E-mail</span>
                   <span className="font-inter text-[15px] sm:text-[17px] font-semibold text-white/85 tracking-wide break-all mt-1">{PIX_KEY}</span>
                 </div>
               </div>
@@ -264,11 +261,11 @@ export default function Contribute() {
                   style={{background:'linear-gradient(135deg,rgba(255,255,255,0.15),transparent)'}} />
                 {copied
                   ? <><Check size={16} strokeWidth={3} /> CHAVE COPIADA!</>
-                  : <><Copy size={15} /> SEMEAR AGORA VIA PIX</>}
+                  : <><Copy size={15} /> COPIAR CHAVE PIX</>}
               </button>
 
               <p className="font-inter text-[11px] text-white/20 text-center">
-                Abra seu banco → PIX → Chave → Cole o e-mail acima
+                Banco → PIX → Pagar → Chave → Cole o e-mail
               </p>
             </div>
 
