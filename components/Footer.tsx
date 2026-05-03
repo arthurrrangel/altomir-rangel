@@ -74,15 +74,6 @@ export default function Footer() {
               Pregador, autor e empresário. Servindo ao Reino através da Palavra que transforma vidas.
             </p>
 
-            {/* Versículo */}
-            <div className="border-l-2 border-[#C5973F]/40 pl-4 text-left max-w-[240px]">
-              <p className="font-inter text-white/25 text-[11px] leading-relaxed italic">
-                "Tudo posso naquele que me fortalece."
-              </p>
-              <span className="font-inter text-[9px] text-[#C5973F]/50 tracking-widest uppercase mt-1 block">
-                Filipenses 4:13
-              </span>
-            </div>
           </div>
 
           {/* Spacer col */}
