@@ -21,6 +21,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <SectionDivider />
         <About />
         <SectionDivider />
         <Books />
