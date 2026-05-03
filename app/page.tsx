@@ -9,8 +9,8 @@ import Footer from '@/components/Footer'
 
 function SectionDivider() {
   return (
-    <div className="relative h-px">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C5973F]/25 to-transparent" />
+    <div className="px-6 md:px-10 max-w-7xl mx-auto">
+      <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
     </div>
   )
 }
