@@ -48,7 +48,7 @@ export default function Footer() {
               <Youtube size={13} className="text-red-400 flex-shrink-0" />
               <span className="font-inter text-xs">@altomirrangel</span>
             </a>
-            <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/5521994308382?text=Olá! Gostaria de entrar em contato com a equipe do Pr. Altomir Rangel." target="_blank" rel="noopener noreferrer"
               className="mt-1 btn-gold text-[10px] py-3 px-4 self-center md:self-start min-h-[44px]">
               Falar no WhatsApp
             </a>
