@@ -89,10 +89,7 @@ export default function Footer() {
                   <div className={`w-8 h-8 flex items-center justify-center border border-white/10 flex-shrink-0 ${c.bgHover} transition-all duration-200`}>
                     <Icon size={14} className={c.iconColor} />
                   </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-inter text-[9px] font-bold tracking-[0.2em] text-white/25 uppercase">{c.label}</span>
-                    <span className={`font-inter text-[11px] text-white/45 ${c.textHover} transition-colors truncate`}>{c.value}</span>
-                  </div>
+                  <span className="font-inter text-[11px] font-semibold text-white/45 group-hover:text-white/70 transition-colors tracking-wide">{c.label}</span>
                 </a>
               )
             })}
