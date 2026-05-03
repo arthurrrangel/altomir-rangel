@@ -2,7 +2,7 @@ import { Youtube, Mail, MessageCircle, ArrowUpRight } from 'lucide-react'
 
 const contacts = [
   {
-    href: 'mailto:contato@ministerioarc.com',
+    href: 'https://mail.google.com/mail/?view=cm&to=contato@ministerioarc.com',
     icon: Mail,
     label: 'E-mail',
     desc: 'Enviar mensagem',
@@ -10,6 +10,7 @@ const contacts = [
     borderHover: 'hover:border-[#C5973F]/40',
     bgHover: 'hover:bg-[#C5973F]/5',
     glow: 'rgba(197,151,63,0.06)',
+    external: true,
   },
   {
     href: 'https://www.youtube.com/@altomirrangel',
@@ -97,7 +98,7 @@ export default function Footer() {
             <nav className="flex flex-col w-full">
               {navLinks.map((l, i) => (
                 <a key={l.href} href={l.href}
-                  className="group relative flex items-center justify-center md:justify-start gap-3 font-inter text-[13px] text-white/35 hover:text-white/85 transition-colors py-3 border-b border-white/5 last:border-0">
+                  className="group relative flex items-center justify-center md:justify-start gap-3 font-inter text-[13px] text-white/35 hover:text-white/85 transition-colors py-3 last:border-0">
                   <span className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[2px] bg-[#C5973F] transition-all duration-200" />
                   <span className="font-inter text-[10px] text-white/12 group-hover:text-[#C5973F]/50 transition-colors w-5 text-right flex-shrink-0 hidden md:block tabular-nums">
                     0{i + 1}
@@ -141,7 +142,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-5 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span className="font-inter text-[10px] text-white/15 tracking-wide">
             &copy; {year} Altomir Rangel. Todos os direitos reservados.
           </span>
