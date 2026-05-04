@@ -120,8 +120,10 @@ export default function Books() {
 
       {/* Section header */}
       <div className="relative pt-16 md:pt-28 pb-10 md:pb-16 max-w-7xl mx-auto px-6 md:px-10 text-center">
-        <div className="reveal inline-flex items-center gap-2 mb-4">
+        <div className="reveal inline-flex items-center gap-3 mb-4">
+          <div className="h-px w-8 bg-[#C5973F]/45" />
           <span className="label">Livros do Autor</span>
+          <div className="h-px w-8 bg-[#C5973F]/45" />
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,6vw,78px)] leading-none text-white">
           PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>

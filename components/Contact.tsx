@@ -51,7 +51,8 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
-        <div className="reveal flex items-center justify-center md:justify-start mb-3">
+        <div className="reveal flex items-center justify-center md:justify-start gap-3 mb-3">
+          <div className="h-px w-8 bg-[#C5973F]/45 hidden md:block" />
           <span className="label">Contato</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,6vw,78px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">

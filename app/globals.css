@@ -38,9 +38,9 @@ body::before {
   opacity: 0.35;
 }
 
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: rgba(197,151,63,0.3); }
+::-webkit-scrollbar-thumb { background: rgba(197,151,63,0.35); border-radius: 2px; }
 ::selection { background: var(--gold); color: #000; }
 
 /* ── Reveal ── */
@@ -76,10 +76,14 @@ body::before {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   border: 2px solid var(--gold);
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
-.btn-gold:hover { background: transparent; color: var(--gold); }
+.btn-gold:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(197,151,63,0.15);
+}
 
 .btn-outline {
   display: inline-flex;
@@ -93,11 +97,15 @@ body::before {
   font-size: 0.72rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  border: 2px solid rgba(255,255,255,0.25);
-  transition: border-color 0.3s, color 0.3s;
+  border: 2px solid rgba(255,255,255,0.18);
+  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
   cursor: pointer;
 }
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(197,151,63,0.08);
+}
 
 /* ── Eyebrow label ── */
 .label {
@@ -107,6 +115,22 @@ body::before {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--gold);
+}
+
+/* Label com linhas flanqueando (uso em headers de seção centralizados) */
+.label-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.label-line::before,
+.label-line::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 2rem;
+  background: rgba(197,151,63,0.45);
+  flex-shrink: 0;
 }
 
 /* ── Section divider ── */
@@ -122,14 +146,25 @@ body::before {
 /* ── Form inputs ── */
 .input-dark {
   width: 100%;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 0.9rem 1.1rem;
   color: white;
   font-family: var(--font-inter), sans-serif;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
-.input-dark:focus { border-color: var(--gold); }
-.input-dark::placeholder { color: rgba(255,255,255,0.25); }
+.input-dark:focus {
+  border-color: rgba(197,151,63,0.6);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 0 3px rgba(197,151,63,0.06);
+}
+.input-dark::placeholder { color: rgba(255,255,255,0.2); }
+
+/* ── Scroll indicator bounce ── */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(6px); opacity: 0.8; }
+}
+.scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }

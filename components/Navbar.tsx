@@ -28,8 +28,9 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center gap-8">
           {links.map(l => (
             <a key={l.href} href={l.href}
-              className="font-inter text-[11px] font-semibold tracking-[0.25em] uppercase text-white/50 hover:text-[#C5973F] transition-colors">
+              className="relative font-inter text-[11px] font-semibold tracking-[0.25em] uppercase text-white/50 hover:text-[#C5973F] transition-colors duration-200 pb-0.5 group">
               {l.label}
+              <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-[#C5973F]/60 transition-all duration-300" />
             </a>
           ))}
         </nav>

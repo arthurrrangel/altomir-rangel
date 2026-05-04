@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { hero } from '@/lib/content'
 
@@ -39,8 +39,8 @@ export default function Hero() {
         <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
       </div>
 
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none hidden md:block"
-        style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.06) 0%, transparent 70%)'}} />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none hidden md:block"
+        style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.07) 0%, transparent 65%)'}} />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
@@ -78,6 +78,12 @@ export default function Hero() {
 
         </div>
       </div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 pointer-events-none scroll-indicator">
+        <span className="font-inter text-[8px] text-white/20 tracking-[0.4em] uppercase">Scroll</span>
+        <ChevronDown size={14} className="text-white/25" />
+      </div>
+
     </section>
   )
 }
