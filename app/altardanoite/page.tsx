@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import LeadForm from './LeadForm'
 
 export const metadata: Metadata = {
-  title: 'Altar da Noite — Oração ao vivo às 21h | Altomir Rangel',
+  title: 'Altar de Oração | Altomir Rangel',
   description:
-    'Um encontro com Deus toda noite. Entre para a comunidade de oração do Altar da Noite e ore ao vivo, todos os dias às 21h, no YouTube do Altomir Rangel.',
+    'Entre para a comunidade de oração do Pr. Altomir Rangel. Juntos, todos os dias, buscando a presença de Deus.',
   openGraph: {
-    title: 'Altar da Noite — Oração ao vivo às 21h',
-    description: 'Um encontro com Deus toda noite. Ore ao vivo às 21h. Entre para a comunidade.',
+    title: 'Altar de Oração | Altomir Rangel',
+    description: 'Entre para a nossa comunidade de oração e ore com a gente.',
     type: 'website',
     locale: 'pt_BR',
   },
@@ -17,52 +17,49 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
-      <div className="min-h-screen flex flex-col-reverse lg:grid lg:grid-cols-[1.06fr_0.94fr]">
+      {/* brilho dourado suave atrás */}
+      <div
+        className="absolute left-1/2 top-[6%] -translate-x-1/2 w-[680px] max-w-[120vw] h-[520px] pointer-events-none z-0"
+        style={{ background: 'radial-gradient(closest-side, rgba(216,169,58,0.12) 0%, transparent 72%)' }}
+      />
 
-        {/* ===== CONTEÚDO ===== */}
-        <div className="flex items-center px-6 sm:px-10 lg:px-14 xl:px-20 pt-8 pb-14 sm:pt-12 lg:py-12">
-          <div className="w-full max-w-[480px] mx-auto lg:mx-0">
-            <a href="/" className="inline-flex flex-col leading-none mb-9 sm:mb-11">
-              <span className="font-bebas text-xl text-white tracking-[0.2em]">ALTOMIR</span>
-              <span className="font-inter text-[8px] text-[#D8A93A] tracking-[0.45em] uppercase mt-1">Rangel</span>
-            </a>
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-start lg:justify-center text-center px-6 pt-6 pb-14 lg:py-12">
+        <div className="w-full max-w-[700px] mx-auto flex flex-col items-center">
 
-            <h1 className="font-bebas text-white leading-[0.82] text-[clamp(58px,8.5vw,108px)]">
-              Altar da<br /><span className="text-[#D8A93A]">Noite</span>
-            </h1>
+          {/* ===== FOTO (com overlay que funde no navy) ===== */}
+          <div className="relative w-full flex justify-center">
+            <img
+              src="/altomir-recorte.webp"
+              alt="Pr. Altomir Rangel"
+              className="h-[30vh] sm:h-[36vh] lg:h-[40vh] w-auto object-contain object-bottom select-none pointer-events-none"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
+              style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(22,36,59,0.65) 55%, #16243B 100%)' }}
+            />
+          </div>
 
-            {/* horário (acento, não eyebrow) */}
-            <div className="mt-5 flex items-center gap-3">
-              <span className="h-px w-7 bg-[#D8A93A]/70 flex-shrink-0" />
-              <span className="font-inter text-[11px] sm:text-[12px] font-bold tracking-[0.22em] text-[#D8A93A] uppercase">
-                Ao vivo · Toda noite às 21h
-              </span>
-            </div>
+          {/* ===== MARCA ===== */}
+          <span className="font-bebas text-lg sm:text-xl text-white/90 tracking-[0.32em] -mt-1 mb-4">
+            ALTOMIR&nbsp;RANGEL
+          </span>
 
-            <p className="mt-5 font-inter text-white/70 text-[15px] sm:text-[16px] leading-relaxed max-w-[420px]">
-              Um encontro com Deus toda noite. Entre para a nossa comunidade de oração e ore ao vivo
-              com o Pr. Altomir, todos os dias às 21h no YouTube.
-            </p>
+          {/* ===== TÍTULO ===== */}
+          <h1 className="font-bebas text-white leading-[0.84] text-[clamp(66px,13vw,150px)]">
+            Altar de<br /><span className="text-[#D8A93A]">Oração</span>
+          </h1>
 
-            <div className="mt-7">
-              <LeadForm />
-            </div>
+          {/* ===== SUBTÍTULO ===== */}
+          <p className="mt-6 font-inter text-white/75 text-[18px] sm:text-[21px] lg:text-[23px] leading-relaxed max-w-[560px]">
+            Entre para a nossa comunidade de oração e ore com o Pr. Altomir. Juntos, todos os dias,
+            buscando a presença de Deus.
+          </p>
+
+          {/* ===== FORMULÁRIO ===== */}
+          <div className="mt-9 w-full max-w-md text-left">
+            <LeadForm />
           </div>
         </div>
-
-        {/* ===== FOTO ===== */}
-        <div className="relative flex items-end justify-center h-[42vh] sm:h-[48vh] lg:h-auto overflow-hidden">
-          <div
-            className="absolute bottom-[2%] left-1/2 -translate-x-1/2 w-[92%] h-[80%] pointer-events-none"
-            style={{ background: 'radial-gradient(closest-side at 50% 62%, rgba(36,56,96,0.9) 0%, transparent 76%)' }}
-          />
-          <img
-            src="/altomir-recorte.webp"
-            alt="Pastor Altomir Rangel"
-            className="relative h-full lg:h-[84%] w-auto max-w-none object-contain object-bottom select-none pointer-events-none"
-          />
-        </div>
-
       </div>
     </main>
   )
