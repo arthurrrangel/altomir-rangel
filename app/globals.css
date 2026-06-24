@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --gold: #C5973F;
-  --gold-dim: rgba(197,151,63,0.15);
-  --dark: #0A0A0F;
-  --dark-2: #0F0F17;
-  --dark-3: #141420;
+  --gold: #D8A93A;
+  --gold-dim: rgba(216,169,58,0.15);
+  --navy: #1B2A44;
+  --navy-deep: #16243B;
+  --navy-deepest: #101B2C;
+  --navy-raise: #22344F;
+  --steel: #4A4F54;
+  --dark: #16243B;
+  --dark-2: #1B2A44;
+  --dark-3: #22344F;
   --white: #FFFFFF;
   --white-60: rgba(255,255,255,0.6);
   --white-30: rgba(255,255,255,0.3);
@@ -19,12 +24,16 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--dark);
+  background: radial-gradient(ellipse 115% 85% at 50% 26%, #21345A 0%, #1B2A44 50%, #16243B 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--navy-deep);
   color: var(--white);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Grain overlay */
@@ -35,13 +44,13 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.35;
+  opacity: 0.30;
 }
 
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: rgba(197,151,63,0.35); border-radius: 2px; }
-::selection { background: var(--gold); color: #000; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: rgba(216,169,58,0.35); border-radius: 2px; }
+::selection { background: var(--gold); color: #16243B; }
 
 /* ── Reveal ── */
 .reveal {
@@ -69,7 +78,7 @@ body::before {
   gap: 0.5rem;
   padding: 1rem 2rem;
   background: var(--gold);
-  color: #000;
+  color: #16243B;
   font-family: var(--font-inter), sans-serif;
   font-weight: 700;
   font-size: 0.72rem;
@@ -82,7 +91,7 @@ body::before {
 .btn-gold:hover {
   background: transparent;
   color: var(--gold);
-  box-shadow: 0 0 20px rgba(197,151,63,0.15);
+  box-shadow: 0 0 20px rgba(216,169,58,0.18);
 }
 
 .btn-outline {
@@ -104,7 +113,7 @@ body::before {
 .btn-outline:hover {
   border-color: var(--gold);
   color: var(--gold);
-  box-shadow: 0 0 20px rgba(197,151,63,0.08);
+  box-shadow: 0 0 20px rgba(216,169,58,0.10);
 }
 
 /* ── Eyebrow label ── */
@@ -129,12 +138,12 @@ body::before {
   display: block;
   height: 1px;
   width: 2rem;
-  background: rgba(197,151,63,0.45);
+  background: rgba(216,169,58,0.45);
   flex-shrink: 0;
 }
 
 /* ── Section divider ── */
-.divider { height: 1px; background: rgba(197,151,63,0.2); }
+.divider { height: 1px; background: rgba(216,169,58,0.2); }
 
 /* ── Mobile: reduz animações pesadas ── */
 @media (max-width: 768px) {
@@ -147,7 +156,7 @@ body::before {
 .input-dark {
   width: 100%;
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(74,79,84,0.55);
   padding: 0.9rem 1.1rem;
   color: white;
   font-family: var(--font-inter), sans-serif;
@@ -156,11 +165,11 @@ body::before {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 .input-dark:focus {
-  border-color: rgba(197,151,63,0.6);
+  border-color: rgba(216,169,58,0.6);
   background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 0 3px rgba(197,151,63,0.06);
+  box-shadow: 0 0 0 3px rgba(216,169,58,0.06);
 }
-.input-dark::placeholder { color: rgba(255,255,255,0.2); }
+.input-dark::placeholder { color: rgba(255,255,255,0.25); }
 
 /* ── Scroll indicator bounce ── */
 @keyframes scroll-bounce {
