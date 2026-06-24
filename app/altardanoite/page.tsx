@@ -17,10 +17,15 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
-      {/* luz divina do alto */}
+      {/* brilho dourado vindo do alto */}
       <div
-        className="pointer-events-none absolute left-1/2 -top-[8%] z-0 h-[640px] w-[1100px] max-w-[170vw] -translate-x-1/2 lg:left-[60%]"
-        style={{ background: 'radial-gradient(ellipse 46% 60% at 50% 0%, rgba(216,169,58,0.16) 0%, transparent 68%)' }}
+        className="pointer-events-none absolute left-1/2 -top-[10%] z-0 h-[600px] w-[1100px] max-w-[175vw] -translate-x-1/2 lg:left-[62%]"
+        style={{ background: 'radial-gradient(ellipse 46% 60% at 50% 0%, rgba(216,169,58,0.15) 0%, transparent 68%)' }}
+      />
+      {/* brilho que aterra o Altomir (tira o efeito flutuante) */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-[44vh] w-[150vw] -translate-x-1/2 lg:left-auto lg:right-[3%] lg:w-[58vw] lg:translate-x-0"
+        style={{ background: 'radial-gradient(ellipse 58% 72% at 50% 100%, rgba(216,169,58,0.13) 0%, transparent 60%)' }}
       />
 
       {/* ===== FOTO — full-bleed no mobile, grande na lateral no desktop ===== */}
@@ -28,24 +33,24 @@ export default function Page() {
         <img
           src="/altomir-recorte.webp"
           alt="Pr. Altomir Rangel"
-          className="h-[80vh] w-auto max-w-none select-none object-contain object-bottom sm:h-[86vh] lg:h-[100vh] xl:h-[106vh] lg:translate-x-[4%]"
+          className="h-[78vh] w-auto max-w-none select-none object-contain object-bottom drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)] sm:h-[84vh] lg:h-[100vh] xl:h-[106vh] lg:translate-x-[4%]"
         />
       </div>
 
-      {/* ===== OVERLAY mobile (fade pra baixo) ===== */}
+      {/* ===== OVERLAY mobile (clareia o rosto, escurece só embaixo p/ o form) ===== */}
       <div
         className="pointer-events-none absolute inset-0 z-0 lg:hidden"
-        style={{ background: 'linear-gradient(to bottom, rgba(16,27,44,0.5) 0%, rgba(16,27,44,0.06) 20%, rgba(16,27,44,0.34) 42%, rgba(16,27,44,0.8) 62%, #16243B 80%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(16,27,44,0.34) 0%, rgba(16,27,44,0.10) 20%, rgba(16,27,44,0.28) 40%, rgba(16,27,44,0.72) 57%, #16243B 76%)' }}
       />
       {/* ===== OVERLAY desktop (navy à esquerda, foto limpa à direita) ===== */}
       <div
         className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-        style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 28%, rgba(22,36,59,0.80) 44%, rgba(22,36,59,0.16) 60%, transparent 70%)' }}
+        style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 26%, rgba(22,36,59,0.78) 44%, rgba(22,36,59,0.14) 60%, transparent 70%)' }}
       />
-      {/* vinheta suave (ambos) */}
+      {/* vinheta suave */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
-        style={{ background: 'radial-gradient(120% 80% at 50% 22%, transparent 44%, rgba(16,27,44,0.48) 100%)' }}
+        style={{ background: 'radial-gradient(120% 85% at 50% 16%, transparent 48%, rgba(16,27,44,0.46) 100%)' }}
       />
 
       {/* ===== MARCA (topo) ===== */}
@@ -54,13 +59,13 @@ export default function Page() {
       </div>
 
       {/* ===== CONTEÚDO ===== */}
-      <div className="relative z-10 col-start-1 row-start-1 flex min-h-screen flex-col items-center px-6 pt-[40vh] pb-12 text-center sm:pt-[44vh] lg:items-start lg:justify-center lg:pt-0 lg:pl-[8%] lg:pr-8 lg:text-left">
-        <div className="flex w-full max-w-[600px] flex-col items-center lg:items-start">
-          <h1 className="font-bebas leading-[0.83] text-white text-[clamp(54px,9vw,112px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.95)]">
+      <div className="relative z-10 col-start-1 row-start-1 flex min-h-screen flex-col items-center px-6 pt-[37vh] pb-10 text-center sm:pt-[39vh] lg:items-start lg:justify-start lg:pt-[14vh] lg:pb-14 lg:pl-[8%] lg:pr-8 lg:text-left">
+        <div className="flex w-full max-w-[560px] flex-col items-center lg:items-start">
+          <h1 className="font-bebas leading-[0.82] text-white text-[clamp(50px,8vw,100px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.92)]">
             Altar de<br /><span className="text-[#D8A93A]">Oração</span>
           </h1>
 
-          <p className="font-inter mt-4 max-w-[480px] text-[16px] leading-relaxed text-white/85 drop-shadow-[0_2px_18px_rgba(8,14,26,0.95)] sm:text-[19px]">
+          <p className="font-inter mt-4 max-w-[440px] text-[15.5px] leading-relaxed text-white/85 drop-shadow-[0_2px_18px_rgba(8,14,26,0.95)] sm:text-[18px]">
             Entre para a nossa comunidade e ore todos os dias com o Pr. Altomir. Deixe seu nome — a gente te leva pra dentro do grupo.
           </p>
 
@@ -70,7 +75,7 @@ export default function Page() {
             <span className="h-px w-8 bg-[#D8A93A]/40" />
           </div>
 
-          <div className="mt-6 w-full max-w-md text-left">
+          <div className="mt-5 w-full max-w-md text-left">
             <LeadForm />
           </div>
         </div>
