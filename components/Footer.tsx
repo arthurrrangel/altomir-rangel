@@ -6,9 +6,9 @@ const contacts = [
     icon: Mail,
     label: 'E-mail',
     desc: 'contato@ministerioarc.com',
-    iconColor: 'text-[#C5973F]',
-    borderHover: 'hover:border-[#C5973F]/35',
-    glow: 'rgba(197,151,63,0.08)',
+    iconColor: 'text-[#D8A93A]',
+    borderHover: 'hover:border-[#D8A93A]/35',
+    glow: 'rgba(216,169,58,0.08)',
   },
   {
     href: 'https://www.youtube.com/@altomirrangel',
@@ -40,16 +40,16 @@ const navLinks = [
 export default function Footer() {
   const year = new Date().getFullYear()
   return (
-    <footer className="relative bg-[#07070D] overflow-hidden">
+    <footer className="relative bg-[#101B2C] overflow-hidden">
 
       {/* Linha dourada topo */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#C5973F]/50 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-[#D8A93A]/50 to-transparent" />
 
       {/* Glows de ambiente */}
       <div className="absolute top-0 left-0 w-[500px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top left, rgba(197,151,63,0.04) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse at top left, rgba(216,169,58,0.04) 0%, transparent 65%)' }} />
       <div className="absolute bottom-0 right-0 w-[400px] h-[250px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.03) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(216,169,58,0.03) 0%, transparent 65%)' }} />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10">
 
@@ -63,9 +63,9 @@ export default function Footer() {
             <div className="flex flex-col">
               <span className="font-bebas text-[38px] text-white tracking-[0.2em] leading-none">ALTOMIR</span>
               <div className="flex items-center gap-2 justify-center lg:justify-start mt-0.5">
-                <div className="h-px w-6 bg-[#C5973F]" />
-                <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.55em] uppercase">RANGEL</span>
-                <div className="h-px w-6 bg-[#C5973F]" />
+                <div className="h-px w-6 bg-[#D8A93A]" />
+                <span className="font-inter text-[9px] text-[#D8A93A] tracking-[0.55em] uppercase">RANGEL</span>
+                <div className="h-px w-6 bg-[#D8A93A]" />
               </div>
             </div>
 
@@ -86,8 +86,8 @@ export default function Footer() {
               {navLinks.map((l, i) => (
                 <a key={l.href} href={l.href}
                   className="group relative flex items-center justify-center lg:justify-start gap-3 py-2.5 pl-0 lg:pl-3">
-                  <span className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[2px] bg-[#C5973F] transition-all duration-200 rounded-r" />
-                  <span className="font-inter text-[10px] text-white/15 group-hover:text-[#C5973F]/60 transition-colors tabular-nums hidden lg:block w-4 flex-shrink-0">
+                  <span className="absolute left-0 top-0 bottom-0 w-0 group-hover:w-[2px] bg-[#D8A93A] transition-all duration-200 rounded-r" />
+                  <span className="font-inter text-[10px] text-white/15 group-hover:text-[#D8A93A]/60 transition-colors tabular-nums hidden lg:block w-4 flex-shrink-0">
                     0{i + 1}
                   </span>
                   <span className="font-inter text-[12px] tracking-wide text-white/40 group-hover:text-white/80 transition-colors duration-200">
