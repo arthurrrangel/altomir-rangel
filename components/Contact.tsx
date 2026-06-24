@@ -44,19 +44,19 @@ export default function Contact() {
   }
 
   return (
-    <section id="contato" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0A0A0F]">
+    <section id="contato" ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#16243B]">
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{background: 'radial-gradient(ellipse at bottom right, rgba(197,151,63,0.05) 0%, transparent 65%)'}}>
+        style={{background: 'radial-gradient(ellipse at bottom right, rgba(216,169,58,0.05) 0%, transparent 65%)'}}>
       </div>
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
         <div className="reveal flex items-center justify-center md:justify-start gap-3 mb-3">
-          <div className="h-px w-8 bg-[#C5973F]/45 hidden md:block" />
+          <div className="h-px w-8 bg-[#D8A93A]/45 hidden md:block" />
           <span className="label">Contato</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,6vw,78px)] leading-none text-white mb-10 md:mb-14 text-center md:text-left">
-          COMO PODEMOS<br /><span className="text-[#C5973F]">SERVIR A VOCÊ?</span>
+          COMO PODEMOS<br /><span className="text-[#D8A93A]">SERVIR A VOCÊ?</span>
         </h2>
 
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-14">
@@ -75,7 +75,7 @@ export default function Contact() {
             </a>
 
             {/* Invite card */}
-            <div className="reveal-left border-l-2 border-[#C5973F] bg-white/3 p-4 sm:p-5">
+            <div className="reveal-left border-l-2 border-[#D8A93A] bg-white/3 p-4 sm:p-5">
               <h4 className="font-bebas text-lg sm:text-xl text-white mb-1.5 text-center md:text-left">Convite para Ministrar</h4>
               <p className="font-inter text-white/35 text-xs leading-relaxed text-center md:text-left">
                 Pregações, conferências e retiros cristãos. Informe a data, cidade e evento no formulário ao lado.
@@ -93,7 +93,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={() => setStatus('idle')}
-                className="mt-2 font-inter text-[11px] text-[#C5973F] hover:text-[#d4a84a] transition-colors tracking-widest uppercase"
+                className="mt-2 font-inter text-[11px] text-[#D8A93A] hover:text-[#E2B652] transition-colors tracking-widest uppercase"
               >
                 Enviar outra mensagem
               </button>

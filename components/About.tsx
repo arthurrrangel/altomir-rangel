@@ -18,10 +18,10 @@ export default function About() {
   }, [])
 
   return (
-    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-[#0F0F17]">
+    <section id="visao" ref={ref} className="relative py-14 md:py-40 overflow-hidden bg-transparent">
       {/* Top fade from Hero */}
-      <div className="absolute top-0 inset-x-0 h-20 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(10,10,15,0.5) 0%, transparent 100%)'}} />
-      <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C5973F]/40 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-20 pointer-events-none" style={{background:'linear-gradient(to bottom, rgba(27,42,68,0.5) 0%, transparent 100%)'}} />
+      <div className="lg:hidden absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#D8A93A]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-24 items-stretch">
@@ -30,27 +30,27 @@ export default function About() {
           <div className="reveal-left hidden lg:block relative min-h-[500px]">
             <Image src="/altomir-portrait.jpg" alt="Altomir Rangel" fill
               className="object-cover" style={{objectPosition: 'center top'}} sizes="50vw" />
-            <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #0F0F17 100%)'}} />
+            <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, transparent 60%, #1B2A44 100%)'}} />
           </div>
 
           {/* Texto */}
           <div className="flex flex-col gap-5 lg:gap-8">
 
             <div className="reveal flex items-center justify-center lg:justify-start gap-3">
-              <div className="hidden lg:block w-8 h-px bg-[#C5973F]" />
+              <div className="hidden lg:block w-8 h-px bg-[#D8A93A]" />
               <span className="label">{about.label}</span>
             </div>
 
             <div className="reveal text-center lg:text-left">
               <h2 className="font-bebas leading-[0.9] text-white" style={{fontSize: 'clamp(36px, 6vw, 78px)'}}>
                 {about.headline1}<br />
-                <span className="text-[#C5973F]">{about.headlineGold}</span>
+                <span className="text-[#D8A93A]">{about.headlineGold}</span>
                 {about.headline2 ? <><br />{about.headline2}</> : null}
               </h2>
             </div>
 
             <div className="reveal flex justify-center lg:hidden">
-              <div className="h-px w-12 bg-[#C5973F]" />
+              <div className="h-px w-12 bg-[#D8A93A]" />
             </div>
 
             <div className="reveal flex flex-col gap-4">
@@ -63,12 +63,12 @@ export default function About() {
             </div>
 
             {about.quote && (
-              <div className="reveal border-l-2 border-[#C5973F] pl-5 py-1">
+              <div className="reveal border-l-2 border-[#D8A93A] pl-5 py-1">
                 <p className="font-playfair italic text-xl text-white/70 leading-relaxed text-center lg:text-left">
                   {about.quote}
                 </p>
                 {about.quoteAuthor && (
-                  <span className="font-inter text-[10px] text-[#C5973F] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
+                  <span className="font-inter text-[10px] text-[#D8A93A] tracking-[0.25em] uppercase mt-2 block text-center lg:text-left">{about.quoteAuthor}</span>
                 )}
               </div>
             )}

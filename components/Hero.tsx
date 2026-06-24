@@ -19,14 +19,14 @@ export default function Hero() {
   }, [])
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-[#0A0A0F] md:min-h-screen md:flex md:items-center">
+    <section ref={ref} className="relative overflow-hidden bg-transparent md:min-h-screen md:flex md:items-center">
 
       {/* MOBILE: foto no topo */}
       <div className="relative md:hidden w-full" style={{height: '56vh', minHeight: '280px'}}>
         <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
           style={{objectPosition: '37% 8%'}} sizes="100vw" />
         <div className="absolute inset-0" style={{
-          background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 12%, transparent 40%, #0A0A0F 100%)'
+          background: 'linear-gradient(to bottom, #1B2A44 0%, transparent 12%, transparent 40%, #1B2A44 100%)'
         }} />
       </div>
 
@@ -34,13 +34,13 @@ export default function Hero() {
       <div className="hidden md:block absolute right-0 top-0 w-[55%] h-full z-0">
         <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
           style={{objectPosition: '50% 10%'}} sizes="55vw" />
-        <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #0A0A0F 0%, #0A0A0F 15%, rgba(10,10,15,0.7) 45%, rgba(10,10,15,0.1) 100%)'}} />
-        <div className="absolute inset-0" style={{background: 'linear-gradient(to top, #0A0A0F 0%, transparent 30%)'}} />
-        <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #0A0A0F 0%, transparent 15%)'}} />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #1B2A44 0%, #1B2A44 15%, rgba(27,42,68,0.7) 45%, rgba(27,42,68,0.1) 100%)'}} />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to top, #1B2A44 0%, transparent 30%)'}} />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #1B2A44 0%, transparent 15%)'}} />
       </div>
 
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none hidden md:block"
-        style={{background: 'radial-gradient(ellipse, rgba(197,151,63,0.07) 0%, transparent 65%)'}} />
+        style={{background: 'radial-gradient(ellipse, rgba(216,169,58,0.07) 0%, transparent 65%)'}} />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
@@ -58,7 +58,7 @@ export default function Hero() {
               transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
             {hero.headline1}
             {hero.headline2 && <><br />{hero.headline2}</>}
-            <br /><span className="text-[#C5973F]">{hero.headlineGold}</span>
+            <br /><span className="text-[#D8A93A]">{hero.headlineGold}</span>
           </h1>
 
           <p className="h-reveal font-inter text-white/50 text-[13px] md:text-[15px] leading-relaxed mb-6 md:mb-8 text-center md:text-left md:max-w-sm"

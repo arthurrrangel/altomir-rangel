@@ -77,8 +77,8 @@ const meta: Record<string, {
 
 function UrgencyBanner({ text }: { text: string }) {
   return (
-    <div className="w-full bg-gradient-to-r from-[#B8341B] via-[#D4421F] to-[#B8341B] py-3 px-4 flex items-center justify-center gap-2.5 flex-wrap text-white text-center">
-      <Zap size={13} className="text-[#FFD700] fill-[#FFD700] flex-shrink-0" />
+    <div className="w-full bg-gradient-to-r from-[#D8A93A] via-[#E2B652] to-[#D8A93A] py-3 px-4 flex items-center justify-center gap-2.5 flex-wrap text-[#16243B] font-semibold text-center">
+      <Zap size={13} className="text-[#16243B] fill-[#16243B] flex-shrink-0" />
       <span className="font-inter text-[12px] sm:text-[13px] font-bold tracking-wide">{text}</span>
     </div>
   )
@@ -89,7 +89,7 @@ function StarRating({ stars, center }: { stars: number; center?: boolean }) {
     <div className={`flex items-center gap-2 flex-wrap ${center ? 'justify-center' : 'justify-center md:justify-start'}`}>
       <div className="flex gap-0.5">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} size={14} className={i < stars ? 'fill-[#FFD700] text-[#FFD700]' : 'text-white/20'} />
+          <Star key={i} size={14} className={i < stars ? 'fill-[#F2CD63] text-[#F2CD63]' : 'text-white/20'} />
         ))}
       </div>
     </div>
@@ -111,22 +111,22 @@ export default function Books() {
   }, [])
 
   return (
-    <section id="livros" ref={ref} className="relative bg-[#080810] overflow-hidden">
+    <section id="livros" ref={ref} className="relative bg-[#101D30] overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#C5973F]/4 blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#B8341B]/4 blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[#D8A93A]/4 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#D8A93A]/5 blur-[100px]" />
       </div>
 
       {/* Section header */}
       <div className="relative pt-16 md:pt-28 pb-10 md:pb-16 max-w-7xl mx-auto px-6 md:px-10 text-center">
         <div className="reveal inline-flex items-center gap-3 mb-4">
-          <div className="h-px w-8 bg-[#C5973F]/45" />
+          <div className="h-px w-8 bg-[#D8A93A]/45" />
           <span className="label">Livros do Autor</span>
-          <div className="h-px w-8 bg-[#C5973F]/45" />
+          <div className="h-px w-8 bg-[#D8A93A]/45" />
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,6vw,78px)] leading-none text-white">
-          PALAVRAS QUE<br /><span className="text-[#C5973F]">MUDAM VIDAS</span>
+          PALAVRAS QUE<br /><span className="text-[#D8A93A]">MUDAM VIDAS</span>
         </h2>
         <p className="reveal mt-4 font-inter text-white/40 text-[15px] max-w-xl mx-auto">
           Cada livro é um convite à transformação. Escolha o seu e comece hoje.
@@ -157,7 +157,7 @@ export default function Books() {
                 <div className="relative w-full" style={{ aspectRatio: '3/4' }}>
                   {m.badge && (
                     <div className="absolute top-3 right-3 z-20">
-                      <div className="bg-[#B8341B] text-white font-inter text-[8px] font-black tracking-[0.2em] uppercase px-2.5 py-1 shadow-lg">
+                      <div className="bg-[#D8A93A] text-[#16243B] font-inter text-[8px] font-black tracking-[0.2em] uppercase px-2.5 py-1 shadow-lg">
                         {m.badge}
                       </div>
                     </div>
@@ -171,10 +171,10 @@ export default function Books() {
                     priority={idx === 0}
                   />
                   {/* Gradient fade bottom */}
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080810] to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#101D30] to-transparent" />
                   {/* Readers tag */}
                   {m.readers && (
-                    <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 bg-[#C5973F] px-2.5 py-1.5 shadow-lg">
+                    <div className="absolute bottom-4 right-4 z-20 flex items-center gap-1.5 bg-[#D8A93A] px-2.5 py-1.5 shadow-lg">
                       <Users size={9} className="text-black" />
                       <span className="font-inter text-[8px] font-black text-black tracking-wider uppercase">{m.readers}</span>
                     </div>
@@ -210,9 +210,9 @@ export default function Books() {
                   {m.bonuses && (
                     <div className="flex flex-col gap-2 mb-4">
                       {m.bonuses.map((bonus, i) => (
-                        <div key={i} className="flex items-center justify-center gap-2 bg-[#C5973F]/10 border border-[#C5973F]/25 px-4 py-3 rounded-lg">
-                          <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
-                          <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
+                        <div key={i} className="flex items-center justify-center gap-2 bg-[#D8A93A]/10 border border-[#D8A93A]/25 px-4 py-3 rounded-lg">
+                          <Zap size={13} className="text-[#D8A93A] flex-shrink-0" />
+                          <span className="font-inter text-[12px] text-[#D8A93A] font-semibold">{bonus.label}:</span>
                           <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
                         </div>
                       ))}
@@ -220,14 +220,14 @@ export default function Books() {
                   )}
 
                   {/* Bloco de preço */}
-                  <div className="bg-white/[0.04] border border-[#C5973F]/25 rounded-2xl px-5 py-5 mb-4 text-center">
+                  <div className="bg-white/[0.04] border border-[#D8A93A]/25 rounded-2xl px-5 py-5 mb-4 text-center">
                     {m.priceFrom && (
                       <span className="font-inter text-[13px] text-white/35 line-through block">De {m.priceFrom}</span>
                     )}
                     {m.priceFrom && (
                       <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest block mt-1">Por apenas</span>
                     )}
-                    <span className="font-bebas text-[clamp(56px,18vw,80px)] leading-none text-[#C5973F] drop-shadow-[0_0_24px_rgba(197,151,63,0.55)] block">
+                    <span className="font-bebas text-[clamp(56px,18vw,80px)] leading-none text-[#D8A93A] drop-shadow-[0_0_24px_rgba(216,169,58,0.55)] block">
                       {m.priceTo}
                     </span>
                     {m.priceInstallment && (
@@ -240,7 +240,7 @@ export default function Books() {
                     href={m.ctaUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[13px] font-black tracking-[0.15em] uppercase px-6 py-4 transition-all duration-200 min-h-[58px] shadow-[0_8px_32px_rgba(197,151,63,0.4)] w-full rounded-xl mb-3"
+                    className="flex items-center justify-center gap-2 bg-[#D8A93A] hover:bg-[#E2B652] active:scale-[0.98] text-black font-inter text-[13px] font-black tracking-[0.15em] uppercase px-6 py-4 transition-all duration-200 min-h-[58px] shadow-[0_8px_32px_rgba(216,169,58,0.4)] w-full rounded-xl mb-3"
                   >
                     {isWA ? <MessageCircle size={16} /> : <ShoppingCart size={16} />}
                     {m.cta}
@@ -264,12 +264,12 @@ export default function Books() {
                   <div className="relative w-full max-w-[420px] mx-0 pb-0">
                     {m.badge && (
                       <div className="absolute -top-3 -right-3 z-20">
-                        <div className="bg-[#B8341B] text-white font-inter text-[9px] font-black tracking-[0.22em] uppercase px-3 py-1.5 shadow-lg">
+                        <div className="bg-[#D8A93A] text-[#16243B] font-inter text-[9px] font-black tracking-[0.22em] uppercase px-3 py-1.5 shadow-lg">
                           {m.badge}
                         </div>
                       </div>
                     )}
-                    <div className="absolute -inset-4 bg-[#C5973F]/12 blur-2xl rounded-full" />
+                    <div className="absolute -inset-4 bg-[#D8A93A]/12 blur-2xl rounded-full" />
                     <div className="relative aspect-[3/4] overflow-hidden shadow-[0_32px_80px_rgba(0,0,0,0.7)] border border-white/8">
                       <Image
                         src={book.cover}
@@ -280,12 +280,12 @@ export default function Books() {
                         priority={idx === 0}
                       />
                     </div>
-                    <div className="absolute -bottom-4 -left-4 z-20 bg-[#0F0F1A] border border-[#C5973F]/40 rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-xl">
-                      <Shield size={16} className="text-[#C5973F] mb-0.5" />
+                    <div className="absolute -bottom-4 -left-4 z-20 bg-[#1B2A44] border border-[#D8A93A]/40 rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-xl">
+                      <Shield size={16} className="text-[#D8A93A] mb-0.5" />
                       <span className="font-inter text-[7px] font-black text-white text-center leading-tight tracking-wide uppercase px-1">{m.guarantee}</span>
                     </div>
                     {m.readers && (
-                      <div className="absolute -bottom-4 right-2 z-20 flex items-center gap-1.5 bg-[#C5973F] px-3 py-1.5 shadow-lg">
+                      <div className="absolute -bottom-4 right-2 z-20 flex items-center gap-1.5 bg-[#D8A93A] px-3 py-1.5 shadow-lg">
                         <Users size={10} className="text-black" />
                         <span className="font-inter text-[9px] font-black text-black tracking-wider uppercase">{m.readers}</span>
                       </div>
@@ -304,7 +304,7 @@ export default function Books() {
                       {book.subtitle}
                     </p>
                   )}
-                  <p className="font-inter text-white/55 text-[15px] leading-relaxed border-l-2 border-[#C5973F]/50 pl-4">
+                  <p className="font-inter text-white/55 text-[15px] leading-relaxed border-l-2 border-[#D8A93A]/50 pl-4">
                     {book.synopsis}
                   </p>
                   <ul className="space-y-2.5 mt-1 w-full">
@@ -318,17 +318,17 @@ export default function Books() {
                   {m.bonuses && (
                     <div className="flex flex-col gap-2 mt-1 w-full">
                       {m.bonuses.map((bonus, i) => (
-                        <div key={i} className="flex items-center gap-2.5 bg-[#C5973F]/8 border border-[#C5973F]/20 px-3.5 py-2.5">
-                          <Zap size={13} className="text-[#C5973F] flex-shrink-0" />
-                          <span className="font-inter text-[12px] text-[#C5973F] font-semibold">{bonus.label}:</span>
+                        <div key={i} className="flex items-center gap-2.5 bg-[#D8A93A]/8 border border-[#D8A93A]/20 px-3.5 py-2.5">
+                          <Zap size={13} className="text-[#D8A93A] flex-shrink-0" />
+                          <span className="font-inter text-[12px] text-[#D8A93A] font-semibold">{bonus.label}:</span>
                           <span className="font-inter text-[12px] text-white/70">{bonus.value}</span>
                         </div>
                       ))}
                     </div>
                   )}
                   <div className="mt-4 w-full">
-                    <div className="h-px bg-gradient-to-r from-[#C5973F]/40 via-[#C5973F]/10 to-transparent mb-4" />
-                    <span className="font-inter text-[9px] font-black tracking-[0.35em] text-[#C5973F]/50 uppercase">Investimento</span>
+                    <div className="h-px bg-gradient-to-r from-[#D8A93A]/40 via-[#D8A93A]/10 to-transparent mb-4" />
+                    <span className="font-inter text-[9px] font-black tracking-[0.35em] text-[#D8A93A]/50 uppercase">Investimento</span>
                   </div>
                   <div className="flex flex-col items-start gap-1">
                     {m.priceFrom && (
@@ -336,7 +336,7 @@ export default function Books() {
                     )}
                     <div className="flex items-baseline gap-3 flex-wrap">
                       {m.priceFrom && <span className="font-inter text-[10px] font-black text-white/40 uppercase tracking-widest">Por apenas</span>}
-                      <span className="font-bebas text-[clamp(48px,12vw,72px)] leading-none text-[#C5973F] drop-shadow-[0_0_20px_rgba(197,151,63,0.5)]">
+                      <span className="font-bebas text-[clamp(48px,12vw,72px)] leading-none text-[#D8A93A] drop-shadow-[0_0_20px_rgba(216,169,58,0.5)]">
                         {m.priceTo}
                       </span>
                     </div>
@@ -349,7 +349,7 @@ export default function Books() {
                       href={m.ctaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-[#C5973F] hover:bg-[#d4a84a] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(197,151,63,0.35)] hover:shadow-[0_12px_48px_rgba(197,151,63,0.55)] w-full"
+                      className="flex items-center justify-center gap-2 bg-[#D8A93A] hover:bg-[#E2B652] active:scale-[0.98] text-black font-inter text-[12px] font-black tracking-[0.18em] uppercase px-8 py-4 transition-all duration-200 min-h-[56px] shadow-[0_8px_32px_rgba(216,169,58,0.35)] hover:shadow-[0_12px_48px_rgba(216,169,58,0.55)] w-full"
                     >
                       {isWA ? <MessageCircle size={15} /> : <ShoppingCart size={15} />}
                       {m.cta}
@@ -359,7 +359,7 @@ export default function Books() {
                         href={m.ctaSecondaryUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#C5973F]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px] w-full"
+                        className="flex items-center justify-center gap-2 border border-white/15 hover:border-[#D8A93A]/40 text-white/60 hover:text-white font-inter text-[12px] font-semibold tracking-wide uppercase px-6 py-4 transition-all duration-200 min-h-[56px] w-full"
                       >
                         {m.ctaSecondary}
                       </a>

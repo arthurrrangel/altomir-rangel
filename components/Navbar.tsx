@@ -19,18 +19,18 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#0A0A0F]/95 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#16243B]/95 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 md:h-20 flex items-center justify-between">
         <a href="#" className="flex flex-col leading-none">
           <span className="font-bebas text-2xl text-white tracking-widest">ALTOMIR</span>
-          <span className="font-inter text-[9px] text-[#C5973F] tracking-[0.4em] uppercase">RANGEL</span>
+          <span className="font-inter text-[9px] text-[#D8A93A] tracking-[0.4em] uppercase">RANGEL</span>
         </a>
         <nav className="hidden md:flex items-center gap-8">
           {links.map(l => (
             <a key={l.href} href={l.href}
-              className="relative font-inter text-[11px] font-semibold tracking-[0.25em] uppercase text-white/50 hover:text-[#C5973F] transition-colors duration-200 pb-0.5 group">
+              className="relative font-inter text-[11px] font-semibold tracking-[0.25em] uppercase text-white/50 hover:text-[#D8A93A] transition-colors duration-200 pb-0.5 group">
               {l.label}
-              <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-[#C5973F]/60 transition-all duration-300" />
+              <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-px bg-[#D8A93A]/60 transition-all duration-300" />
             </a>
           ))}
         </nav>
@@ -49,10 +49,10 @@ export default function Navbar() {
 
       {/* Mobile menu — animated */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-[#0A0A0F]/98 backdrop-blur-md border-t border-white/5 px-6 py-6 flex flex-col gap-1">
+        <div className="bg-[#16243B]/98 backdrop-blur-md border-t border-white/5 px-6 py-6 flex flex-col gap-1">
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className="font-inter text-[13px] font-semibold tracking-[0.25em] uppercase text-white/60 hover:text-[#C5973F] transition-colors py-3 border-b border-white/5 last:border-0 text-center">
+              className="font-inter text-[13px] font-semibold tracking-[0.25em] uppercase text-white/60 hover:text-[#D8A93A] transition-colors py-3 border-b border-white/5 last:border-0 text-center">
               {l.label}
             </a>
           ))}

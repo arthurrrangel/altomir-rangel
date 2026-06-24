@@ -10,8 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold: { DEFAULT: '#C5973F', dim: 'rgba(197,151,63,0.15)' },
-        dark: { DEFAULT: '#0A0A0F', 2: '#0F0F17', 3: '#141420' },
+        gold: { DEFAULT: '#D8A93A', dim: 'rgba(216,169,58,0.15)' },
+        navy: { DEFAULT: '#1B2A44', deep: '#16243B', deepest: '#101B2C', raise: '#22344F' },
+        steel: { DEFAULT: '#4A4F54' },
+        dark: { DEFAULT: '#16243B', 2: '#1B2A44', 3: '#22344F' },
       },
       fontFamily: {
         bebas: ['var(--font-bebas)', 'Bebas Neue', 'sans-serif'],

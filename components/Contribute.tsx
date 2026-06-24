@@ -119,42 +119,42 @@ export default function Contribute() {
   const rest = testimonials.slice(1, 3)
 
   return (
-    <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#0F0F17]">
+    <section ref={ref} className="relative py-16 md:py-36 overflow-hidden bg-[#1B2A44]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] pointer-events-none"
-        style={{background:'radial-gradient(ellipse,rgba(197,151,63,0.06) 0%,transparent 70%)'}} />
+        style={{background:'radial-gradient(ellipse,rgba(216,169,58,0.06) 0%,transparent 70%)'}} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
 
         {/* Header */}
         <div className="reveal flex items-center justify-center md:justify-start gap-3 mb-3">
-          <div className="h-px w-8 bg-[#C5973F]/45 hidden md:block" />
+          <div className="h-px w-8 bg-[#D8A93A]/45 hidden md:block" />
           <span className="label">Depoimentos</span>
         </div>
         <h2 className="reveal font-bebas text-[clamp(36px,6vw,78px)] leading-none text-white text-center md:text-left mb-10 md:mb-14">
-          VIDAS EDIFICADAS<br /><span className="text-[#C5973F]">E RENOVADAS</span>
+          VIDAS EDIFICADAS<br /><span className="text-[#D8A93A]">E RENOVADAS</span>
         </h2>
 
         {/* Featured testimonial — full width */}
-        <div className="reveal relative border border-[#C5973F]/20 bg-[#0A0A0F] overflow-hidden mb-4 group hover:border-[#C5973F]/40 transition-colors duration-300">
+        <div className="reveal relative border border-[#D8A93A]/20 bg-[#16243B] overflow-hidden mb-4 group hover:border-[#D8A93A]/40 transition-colors duration-300">
           {/* Gold accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#C5973F]/80 via-[#C5973F] to-[#C5973F]/80" />
+          <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-[#D8A93A]/80 via-[#D8A93A] to-[#D8A93A]/80" />
           <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{background:'radial-gradient(ellipse at left,rgba(197,151,63,0.05) 0%,transparent 60%)'}} />
+            style={{background:'radial-gradient(ellipse at left,rgba(216,169,58,0.05) 0%,transparent 60%)'}} />
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 p-6 sm:p-8 pl-8 sm:pl-10">
             {/* Left: quote */}
             <div className="flex-1 flex flex-col gap-4">
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
-                  <Star key={s} size={12} className="fill-[#C5973F] text-[#C5973F]" />
+                  <Star key={s} size={12} className="fill-[#D8A93A] text-[#D8A93A]" />
                 ))}
               </div>
               <p className="font-playfair text-[17px] sm:text-[20px] italic text-white/75 leading-relaxed">
                 "{featured.text}"
               </p>
               <div className="flex items-center gap-3 mt-auto pt-4 border-t border-white/5">
-                <div className="w-9 h-9 rounded-full bg-[#C5973F]/15 border border-[#C5973F]/25 flex items-center justify-center flex-shrink-0">
-                  <span className="font-inter text-[11px] font-bold text-[#C5973F]/80">{featured.initials}</span>
+                <div className="w-9 h-9 rounded-full bg-[#D8A93A]/15 border border-[#D8A93A]/25 flex items-center justify-center flex-shrink-0">
+                  <span className="font-inter text-[11px] font-bold text-[#D8A93A]/80">{featured.initials}</span>
                 </div>
                 <div>
                   <p className="font-inter text-[13px] font-semibold text-white">{featured.name}</p>
@@ -173,11 +173,11 @@ export default function Contribute() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16 md:mb-24">
           {rest.map((t, i) => (
             <div key={i}
-              className="reveal-left flex flex-col gap-4 border border-white/6 bg-[#0A0A0F] p-5 hover:border-[#C5973F]/25 hover:bg-[#0d0d14] transition-all duration-300 group">
+              className="reveal-left flex flex-col gap-4 border border-white/6 bg-[#16243B] p-5 hover:border-[#D8A93A]/25 hover:bg-[#192A45] transition-all duration-300 group">
 
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_,s) => (
-                  <Star key={s} size={10} className="fill-[#C5973F] text-[#C5973F]" />
+                  <Star key={s} size={10} className="fill-[#D8A93A] text-[#D8A93A]" />
                 ))}
               </div>
 
@@ -188,8 +188,8 @@ export default function Contribute() {
               <VideoRef videoId={t.videoId} videoTitle={t.videoTitle} />
 
               <div className="flex items-center gap-3 pt-1 border-t border-white/5">
-                <div className="w-8 h-8 rounded-full bg-[#C5973F]/10 border border-[#C5973F]/15 flex items-center justify-center flex-shrink-0">
-                  <span className="font-inter text-[10px] font-bold text-[#C5973F]/60">{t.initials}</span>
+                <div className="w-8 h-8 rounded-full bg-[#D8A93A]/10 border border-[#D8A93A]/15 flex items-center justify-center flex-shrink-0">
+                  <span className="font-inter text-[10px] font-bold text-[#D8A93A]/60">{t.initials}</span>
                 </div>
                 <div>
                   <p className="font-inter text-[12px] font-semibold text-white">{t.name}</p>
@@ -201,22 +201,22 @@ export default function Contribute() {
         </div>
 
         {/* ── CONTRIBUTION BLOCK ── */}
-        <div className="reveal relative overflow-hidden rounded-2xl" style={{background:'linear-gradient(135deg,#0a0a10 0%,#0f0d08 50%,#0a0a10 100%)'}}>
+        <div className="reveal relative overflow-hidden rounded-2xl" style={{background:'linear-gradient(135deg,#142239 0%,#16243B 50%,#142239 100%)'}}>
           {/* Glow center */}
-          <div className="absolute inset-0 pointer-events-none" style={{background:'radial-gradient(ellipse at 50% 40%,rgba(197,151,63,0.18) 0%,transparent 65%)'}} />
+          <div className="absolute inset-0 pointer-events-none" style={{background:'radial-gradient(ellipse at 50% 40%,rgba(216,169,58,0.18) 0%,transparent 65%)'}} />
           {/* Top border shine */}
-          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{background:'linear-gradient(90deg,transparent,#C5973F,#FFD700,#C5973F,transparent)'}} />
+          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{background:'linear-gradient(90deg,transparent,#D8A93A,#F2CD63,#D8A93A,transparent)'}} />
           {/* Bottom border */}
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/30 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D8A93A]/30 to-transparent" />
 
           <div className="relative px-6 sm:px-10 md:px-16 py-12 md:py-20 flex flex-col items-center gap-8 md:gap-10 text-center">
 
             {/* Headline */}
             <div className="max-w-2xl">
-              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#C5973F] uppercase block mb-4">Faça Parte</span>
+              <span className="font-inter text-[10px] font-bold tracking-[0.4em] text-[#D8A93A] uppercase block mb-4">Faça Parte</span>
               <h3 className="font-bebas text-[clamp(32px,7vw,72px)] leading-tight text-white mb-4">
                 SEJA PARTE DO QUE<br />
-                <span className="text-[#C5973F]" style={{textShadow:'0 0 40px rgba(197,151,63,0.4)'}}>DEUS ESTÁ FAZENDO</span><br />
+                <span className="text-[#D8A93A]" style={{textShadow:'0 0 40px rgba(216,169,58,0.4)'}}>DEUS ESTÁ FAZENDO</span><br />
                 ATRAVÉS DESSAS MENSAGENS.
               </h3>
               <p className="font-inter text-white/45 text-[14px] sm:text-[15px] leading-relaxed max-w-lg mx-auto">
@@ -229,18 +229,18 @@ export default function Contribute() {
               {/* Suggested amounts */}
               <div className="flex gap-2 flex-wrap justify-center">
                 {['R$ 10', 'R$ 25', 'R$ 50', 'R$ 100'].map(v => (
-                  <span key={v} className="font-inter text-[11px] font-bold tracking-[0.12em] text-[#C5973F]/70 border border-[#C5973F]/25 hover:border-[#C5973F]/60 hover:text-[#C5973F] px-4 py-2 transition-colors cursor-default">
+                  <span key={v} className="font-inter text-[11px] font-bold tracking-[0.12em] text-[#D8A93A]/70 border border-[#D8A93A]/25 hover:border-[#D8A93A]/60 hover:text-[#D8A93A] px-4 py-2 transition-colors cursor-default">
                     {v}
                   </span>
                 ))}
               </div>
 
               {/* PIX key box */}
-              <div className="relative border border-[#C5973F]/35 rounded-xl overflow-hidden"
-                style={{background:'linear-gradient(135deg,rgba(197,151,63,0.08),rgba(197,151,63,0.03))'}}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C5973F]/50 to-transparent" />
+              <div className="relative border border-[#D8A93A]/35 rounded-xl overflow-hidden"
+                style={{background:'linear-gradient(135deg,rgba(216,169,58,0.08),rgba(216,169,58,0.03))'}}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D8A93A]/50 to-transparent" />
                 <div className="px-6 py-5 flex flex-col gap-1 items-center">
-                  <span className="font-inter text-[9px] font-black tracking-[0.4em] text-[#C5973F]/50 uppercase">Chave PIX · E-mail</span>
+                  <span className="font-inter text-[9px] font-black tracking-[0.4em] text-[#D8A93A]/50 uppercase">Chave PIX · E-mail</span>
                   <span className="font-inter text-[15px] sm:text-[17px] font-semibold text-white/85 tracking-wide break-all mt-1">{PIX_KEY}</span>
                 </div>
               </div>
@@ -252,10 +252,10 @@ export default function Contribute() {
                 style={{
                   background: copied
                     ? 'linear-gradient(135deg,#4ADE80,#22c55e)'
-                    : 'linear-gradient(135deg,#D4A84A,#C5973F,#B8860B)',
+                    : 'linear-gradient(135deg,#E2B652,#D8A93A,#A8801C)',
                   boxShadow: copied
                     ? '0 8px 40px rgba(74,222,128,0.4)'
-                    : '0 8px_40px rgba(197,151,63,0.5),0 0 80px rgba(197,151,63,0.15)'
+                    : '0 8px_40px rgba(216,169,58,0.5),0 0 80px rgba(216,169,58,0.15)'
                 }}
               >
                 <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300"
