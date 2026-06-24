@@ -16,52 +16,57 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden">
+    <main className="relative min-h-screen w-full overflow-hidden lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
       {/* luz divina do alto */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 -top-[6%] w-[1000px] max-w-[165vw] h-[620px] pointer-events-none z-0"
-        style={{ background: 'radial-gradient(ellipse 44% 60% at 50% 0%, rgba(216,169,58,0.18) 0%, transparent 66%)' }}
+        className="pointer-events-none absolute left-1/2 -top-[8%] z-0 h-[640px] w-[1100px] max-w-[170vw] -translate-x-1/2 lg:left-[60%]"
+        style={{ background: 'radial-gradient(ellipse 46% 60% at 50% 0%, rgba(216,169,58,0.16) 0%, transparent 68%)' }}
       />
 
-      {/* ===== FOTO GRANDE (fundo) ===== */}
-      <div className="absolute inset-x-0 bottom-0 z-0 flex items-end justify-center pointer-events-none">
+      {/* ===== FOTO — full-bleed no mobile, grande na lateral no desktop ===== */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex items-end justify-center lg:static lg:col-start-2 lg:row-start-1 lg:items-end lg:justify-end lg:self-end">
         <img
           src="/altomir-recorte.webp"
           alt="Pr. Altomir Rangel"
-          className="h-[80vh] sm:h-[86vh] lg:h-[94vh] w-auto max-w-none object-contain object-bottom select-none"
+          className="h-[80vh] w-auto max-w-none select-none object-contain object-bottom sm:h-[86vh] lg:h-[100vh] xl:h-[106vh] lg:translate-x-[4%]"
         />
       </div>
 
-      {/* ===== OVERLAY (legibilidade + funde no navy) ===== */}
+      {/* ===== OVERLAY mobile (fade pra baixo) ===== */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="pointer-events-none absolute inset-0 z-0 lg:hidden"
         style={{ background: 'linear-gradient(to bottom, rgba(16,27,44,0.5) 0%, rgba(16,27,44,0.06) 20%, rgba(16,27,44,0.34) 42%, rgba(16,27,44,0.8) 62%, #16243B 80%)' }}
       />
+      {/* ===== OVERLAY desktop (navy à esquerda, foto limpa à direita) ===== */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{ background: 'radial-gradient(118% 72% at 50% 26%, transparent 40%, rgba(16,27,44,0.55) 100%)' }}
+        className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
+        style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 28%, rgba(22,36,59,0.80) 44%, rgba(22,36,59,0.16) 60%, transparent 70%)' }}
+      />
+      {/* vinheta suave (ambos) */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ background: 'radial-gradient(120% 80% at 50% 22%, transparent 44%, rgba(16,27,44,0.48) 100%)' }}
       />
 
       {/* ===== MARCA (topo) ===== */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20">
-        <span className="font-bebas text-base sm:text-lg text-white/90 tracking-[0.34em]">ALTOMIR&nbsp;RANGEL</span>
+      <div className="absolute top-6 left-1/2 z-20 -translate-x-1/2 lg:left-[8%] lg:translate-x-0">
+        <span className="font-bebas text-base tracking-[0.34em] text-white/90 sm:text-lg">ALTOMIR&nbsp;RANGEL</span>
       </div>
 
-      {/* ===== CONTEÚDO sobreposto ===== */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center text-center px-6 pt-[40vh] sm:pt-[44vh] lg:pt-[42vh] pb-12">
-        <div className="w-full max-w-[680px] mx-auto flex flex-col items-center">
-
-          <h1 className="font-bebas text-white leading-[0.83] text-[clamp(56px,10vw,116px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.95)]">
+      {/* ===== CONTEÚDO ===== */}
+      <div className="relative z-10 col-start-1 row-start-1 flex min-h-screen flex-col items-center px-6 pt-[40vh] pb-12 text-center sm:pt-[44vh] lg:items-start lg:justify-center lg:pt-0 lg:pl-[8%] lg:pr-8 lg:text-left">
+        <div className="flex w-full max-w-[600px] flex-col items-center lg:items-start">
+          <h1 className="font-bebas leading-[0.83] text-white text-[clamp(54px,9vw,112px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.95)]">
             Altar de<br /><span className="text-[#D8A93A]">Oração</span>
           </h1>
 
-          <p className="mt-4 font-inter text-white/85 text-[16px] sm:text-[19px] leading-relaxed max-w-[500px] drop-shadow-[0_2px_18px_rgba(8,14,26,0.95)]">
-            Entre para a nossa comunidade de oração e ore com o Pr. Altomir. Juntos, todos os dias.
+          <p className="font-inter mt-4 max-w-[480px] text-[16px] leading-relaxed text-white/85 drop-shadow-[0_2px_18px_rgba(8,14,26,0.95)] sm:text-[19px]">
+            Entre para a nossa comunidade e ore todos os dias com o Pr. Altomir. Deixe seu nome — a gente te leva pra dentro do grupo.
           </p>
 
-          <div className="mt-6 flex items-center justify-center gap-3">
+          <div className="mt-6 flex items-center gap-3">
             <span className="h-px w-8 bg-[#D8A93A]/40" />
-            <span className="w-1.5 h-1.5 rotate-45 bg-[#D8A93A]/80" />
+            <span className="h-1.5 w-1.5 rotate-45 bg-[#D8A93A]/80" />
             <span className="h-px w-8 bg-[#D8A93A]/40" />
           </div>
 
