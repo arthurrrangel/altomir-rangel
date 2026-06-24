@@ -38,15 +38,15 @@ export default function Page() {
         </div>
       </div>
 
-      <section className="relative min-h-screen w-full overflow-hidden lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-stretch">
+      <section className="relative min-h-screen w-full overflow-hidden lg:grid lg:grid-cols-[1fr_1fr] lg:items-stretch">
         {/* brilho dourado do alto */}
         <div
-          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[440px] w-[760px] max-w-[155vw] -translate-x-1/2 lg:left-[62%] lg:h-[600px] lg:w-[1100px]"
+          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[440px] w-[760px] max-w-[155vw] -translate-x-1/2 lg:left-[52%] lg:h-[600px] lg:w-[1100px]"
           style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(216,169,58,0.16) 0%, transparent 66%)' }}
         />
-        {/* calor atrás do Altomir (tira o efeito flutuante) */}
+        {/* calor atrás do Altomir */}
         <div
-          className="pointer-events-none absolute left-1/2 top-[8vh] z-0 h-[58vh] w-[82vw] max-w-[640px] -translate-x-1/2 lg:left-auto lg:right-[1%] lg:top-[14vh] lg:h-[72vh] lg:w-[44vw] lg:translate-x-0"
+          className="pointer-events-none absolute left-1/2 top-[8vh] z-0 h-[58vh] w-[82vw] max-w-[640px] -translate-x-1/2 lg:left-[40%] lg:right-auto lg:top-[12vh] lg:h-[74vh] lg:w-[48vw] lg:translate-x-0"
           style={{ background: 'radial-gradient(ellipse 52% 56% at 50% 46%, rgba(214,158,70,0.22) 0%, transparent 66%)' }}
         />
 
@@ -63,18 +63,23 @@ export default function Page() {
           />
         </div>
 
-        {/* ===== FOTO DESKTOP — grande na lateral ===== */}
-        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:items-end lg:justify-end lg:self-end">
+        {/* ===== FOTO DESKTOP — grande e mais ao centro/esquerda ===== */}
+        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:items-end lg:justify-start lg:self-end">
           <img
             src="/altomir-recorte.webp"
             alt="Pr. Altomir Rangel"
-            className="h-[100vh] w-auto max-w-none translate-x-[4%] object-contain object-bottom drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)] xl:h-[106vh]"
+            className="h-[108vh] w-auto max-w-none -translate-x-[7%] object-contain object-bottom drop-shadow-[0_28px_55px_rgba(0,0,0,0.5)] xl:h-[116vh]"
           />
         </div>
-        {/* overlay desktop (navy à esquerda, foto limpa à direita) */}
+        {/* overlay desktop (navy à esquerda, foto limpa no meio) */}
         <div
           className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 25%, rgba(22,36,59,0.80) 43%, rgba(22,36,59,0.16) 60%, transparent 71%)' }}
+          style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 22%, rgba(22,36,59,0.78) 38%, rgba(22,36,59,0.12) 55%, transparent 66%)' }}
+        />
+        {/* vinheta na borda direita (some o vão) */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[26%] lg:block"
+          style={{ background: 'linear-gradient(to left, #16243B 0%, rgba(22,36,59,0.55) 42%, transparent 100%)' }}
         />
 
         {/* ===== MARCA ===== */}
@@ -83,17 +88,17 @@ export default function Page() {
         </div>
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-screen flex-col items-center px-6 pt-[44vh] pb-10 text-center sm:pt-[47vh] lg:items-start lg:justify-center lg:pt-0 lg:pb-0 lg:pl-[8%] lg:pr-8 lg:text-left">
-          <div className="flex w-full max-w-[460px] flex-col items-center lg:max-w-[520px] lg:items-start">
-            <h1 className="font-bebas leading-[0.82] text-white text-[clamp(48px,7vw,82px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.92)]">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-screen flex-col items-center px-6 pt-[44vh] pb-10 text-center sm:pt-[47vh] lg:items-start lg:justify-center lg:pt-0 lg:pb-0 lg:pl-[8%] lg:pr-6 lg:text-left">
+          <div className="flex w-full max-w-[480px] flex-col items-center lg:max-w-[600px] lg:items-start">
+            <h1 className="font-bebas leading-[0.8] text-white text-[clamp(54px,8.2vw,98px)] drop-shadow-[0_4px_30px_rgba(8,14,26,0.92)]">
               Altar de<br /><span className="text-[#D8A93A]">Oração</span>
             </h1>
 
-            <p className="font-inter mt-3.5 max-w-[420px] text-[15px] leading-relaxed text-white/85 drop-shadow-[0_2px_18px_rgba(8,14,26,0.9)] sm:text-[17px]">
+            <p className="font-inter mt-4 max-w-[440px] text-[15px] leading-relaxed text-white/85 drop-shadow-[0_2px_18px_rgba(8,14,26,0.9)] sm:text-[17px]">
               Entre para a nossa comunidade e ore todos os dias com o Pr. Altomir. Deixe seu nome — a gente te leva pra dentro do grupo.
             </p>
 
-            <div className="mt-6 w-full max-w-md text-left">
+            <div className="mt-6 w-full max-w-[500px] text-left">
               <LeadForm />
             </div>
           </div>
