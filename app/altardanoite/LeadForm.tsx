@@ -1,10 +1,14 @@
 'use client'
 import { useState, FormEvent } from 'react'
-import { Send, Loader2 } from 'lucide-react'
+import { User, Phone, Mail, ArrowRight, Loader2, CalendarClock } from 'lucide-react'
 
 const FORMSPREE = 'https://formspree.io/f/xrejpgqp'
 // Link de convite do grupo de WhatsApp (Comunidade de Oração)
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/REPLACE_INVITE_CODE'
+
+const INPUT =
+  'w-full rounded-full border border-[#D9C9A4] bg-white/75 pl-12 pr-4 min-h-[54px] font-inter text-[15px] text-[#16243B] placeholder:text-[#9C8E6C] outline-none transition focus:border-[#C8922E] focus:bg-white focus:ring-2 focus:ring-[#D8A93A]/30'
+const ICON = 'pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#B79A63]'
 
 export default function LeadForm() {
   const [status, setStatus] = useState<'idle' | 'sending'>('idle')
@@ -28,48 +32,47 @@ export default function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative flex flex-col gap-3.5 rounded-2xl border border-[#D8A93A]/30 bg-gradient-to-b from-[#243A5E] to-[#18283F] p-5 shadow-[0_30px_80px_-22px_rgba(0,0,0,0.75)] sm:p-6"
+      className="relative flex flex-col gap-3.5 rounded-[26px] border border-white/50 bg-[#F4EDDF] p-5 shadow-[0_30px_80px_-22px_rgba(0,0,0,0.7)] sm:p-6"
     >
-      <div className="pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-[#D8A93A]/70 to-transparent" />
-
-      <div className="mb-0.5">
-        <p className="font-bebas text-[23px] leading-none tracking-wide text-white">Receba o convite</p>
-        <p className="font-inter mt-1 text-[12.5px] text-white/55">Preencha e a gente te coloca no grupo de oração.</p>
-      </div>
-
       <input type="hidden" name="_subject" value="Novo lead — Altar de Oração (Comunidade de Oração)" />
       <input type="hidden" name="origem" value="Altar de Oração" />
 
-      <div className="flex flex-col gap-1.5">
-        <label className="font-inter text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">Nome completo</label>
-        <input name="nome" type="text" required placeholder="Insira seu nome completo" className="input-dark min-h-[48px]" />
+      <div className="relative">
+        <User size={18} className={ICON} />
+        <input name="nome" type="text" required placeholder="Nome completo" className={INPUT} />
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="font-inter text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">WhatsApp</label>
-        <input name="whatsapp" type="tel" required placeholder="(DDD) 90000-0000" className="input-dark min-h-[48px]" />
+      <div className="relative">
+        <Phone size={18} className={ICON} />
+        <input name="whatsapp" type="tel" required placeholder="WhatsApp com DDD" className={INPUT} />
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label className="font-inter text-[10px] font-bold uppercase tracking-[0.25em] text-white/40">E-mail</label>
-        <input name="email" type="email" required placeholder="seu@email.com" className="input-dark min-h-[48px]" />
+      <div className="relative">
+        <Mail size={18} className={ICON} />
+        <input name="email" type="email" required placeholder="Seu melhor e-mail" className={INPUT} />
       </div>
 
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="btn-gold mt-1 min-h-[54px] w-full justify-center gap-2 text-[12px] disabled:cursor-not-allowed disabled:opacity-60"
+        className="group relative mt-1 flex min-h-[56px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#E7BC5E] to-[#C6902C] font-bebas text-[19px] tracking-[0.12em] text-[#16243B] shadow-[0_12px_26px_-8px_rgba(198,144,44,0.7)] transition hover:brightness-[1.04] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'sending' ? (
-          <><Loader2 size={16} className="animate-spin" /> ENTRANDO...</>
+          <><Loader2 size={18} className="animate-spin" /> ENTRANDO...</>
         ) : (
-          <>QUERO PARTICIPAR <Send size={15} /></>
+          <>QUERO PARTICIPAR</>
         )}
+        <span className="absolute right-1.5 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#16243B] text-[#E7BC5E] transition-transform group-hover:translate-x-0.5">
+          <ArrowRight size={18} />
+        </span>
       </button>
 
-      <p className="font-inter text-center text-[11.5px] leading-relaxed text-white/35">
-        Vagas abertas · 100% gratuito — é só entrar e orar com a gente.
-      </p>
+      <div className="mt-0.5 flex items-center justify-center gap-2 text-[#6E6047]">
+        <CalendarClock size={15} />
+        <span className="font-inter text-[12.5px]">
+          Ore com a gente <strong className="font-semibold text-[#3A2E14]">todos os dias</strong> · 100% gratuito.
+        </span>
+      </div>
     </form>
   )
 }
