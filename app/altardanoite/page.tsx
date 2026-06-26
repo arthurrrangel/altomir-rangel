@@ -57,15 +57,15 @@ export default function Page() {
         </div>
       </div>
 
-      <section className="relative min-h-[100svh] w-full overflow-hidden text-center lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:text-left">
+      <section className="relative min-h-[100svh] w-full overflow-hidden text-center lg:grid lg:grid-cols-2 lg:items-stretch lg:text-left">
         {/* glows */}
         <div
-          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[440px] w-[820px] max-w-[170vw] -translate-x-1/2 lg:left-[58%] lg:h-[620px] lg:w-[1100px]"
+          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[440px] w-[820px] max-w-[170vw] -translate-x-1/2 lg:left-[62%] lg:h-[640px] lg:w-[1080px]"
           style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(216,169,58,0.16) 0%, transparent 64%)' }}
         />
         <div
-          className="pointer-events-none absolute left-[8%] top-[34%] z-0 hidden h-[440px] w-[640px] lg:block"
-          style={{ background: 'radial-gradient(ellipse 52% 52% at 28% 50%, rgba(216,169,58,0.14) 0%, transparent 70%)' }}
+          className="pointer-events-none absolute left-[9%] top-1/2 z-0 hidden h-[460px] w-[620px] -translate-y-1/2 lg:block"
+          style={{ background: 'radial-gradient(ellipse 52% 52% at 26% 50%, rgba(216,169,58,0.14) 0%, transparent 70%)' }}
         />
 
         {/* ===== FOTO MOBILE / TABLET (topo, centralizada) ===== */}
@@ -86,22 +86,22 @@ export default function Page() {
           style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 42%, rgba(216,169,58,0.18) 0%, transparent 70%)' }}
         />
 
-        {/* ===== FOTO DESKTOP (lateral direita) ===== */}
-        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:h-full lg:items-end lg:justify-center lg:self-stretch">
+        {/* ===== FOTO DESKTOP (lateral direita, preenchendo) ===== */}
+        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:h-full lg:items-end lg:justify-end lg:self-stretch lg:overflow-hidden">
           <img
             src="/altomir-recorte.webp"
             alt="Pr. Altomir Rangel"
-            className="h-[100vh] w-auto max-w-none object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.55)]"
+            className="h-[112vh] w-auto max-w-none translate-x-[3%] object-contain object-bottom drop-shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
           />
         </div>
         {/* blend desktop entre conteúdo e foto */}
         <div
           className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 36%, rgba(22,36,59,0.82) 46%, rgba(22,36,59,0) 64%)' }}
+          style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 33%, rgba(22,36,59,0.72) 44%, rgba(22,36,59,0) 60%)' }}
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[22%] lg:block"
-          style={{ background: 'linear-gradient(to left, #16243B 0%, rgba(22,36,59,0.45) 45%, transparent 100%)' }}
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[16%] lg:block"
+          style={{ background: 'linear-gradient(to left, #16243B 0%, transparent 100%)' }}
         />
 
         {/* ===== MARCA (mobile, sobre a foto) ===== */}
@@ -110,14 +110,14 @@ export default function Page() {
         </div>
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-5 pt-[40svh] pb-12 sm:px-6 lg:min-h-0 lg:items-start lg:justify-center lg:pt-0 lg:pb-0 lg:pl-[8%] lg:pr-6">
-          <div className="flex w-full max-w-[540px] flex-col items-center lg:max-w-[640px] lg:items-start">
-            <span className="mb-4 hidden font-bebas text-[15px] tracking-[0.36em] text-[#D8A93A] lg:block">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-5 pt-[40svh] pb-12 sm:px-6 lg:min-h-0 lg:items-start lg:justify-center lg:pt-0 lg:pb-0 lg:pl-[10%] lg:pr-[5%]">
+          <div className="flex w-full max-w-[540px] flex-col items-center lg:max-w-[600px] lg:items-start">
+            <span className="mb-5 hidden font-bebas text-[15px] tracking-[0.38em] text-[#D8A93A] lg:block">
               PR.&nbsp;ALTOMIR&nbsp;RANGEL
             </span>
 
             {/* BADGE 21h / YouTube */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D8A93A]/45 bg-[#0e1830]/55 px-4 py-1.5 backdrop-blur-sm">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D8A93A]/45 bg-[#0e1830]/55 px-4 py-1.5 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-[#ff3b3b] motion-safe:animate-[pulsedot_1.6s_ease-in-out_infinite]" />
               <span className="font-inter text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white/90 sm:text-[12.5px]">
                 Toda noite às 21h
@@ -130,7 +130,7 @@ export default function Page() {
 
             {/* TÍTULO */}
             <h1
-              className="font-bebas leading-[0.85] text-white text-[clamp(70px,13vw,142px)]"
+              className="font-bebas leading-[0.83] text-white text-[clamp(72px,12vw,150px)]"
               style={{ textShadow: '0 6px 34px rgba(8,14,26,0.92), 0 2px 8px rgba(8,14,26,0.7)' }}
             >
               Altar de<br />
@@ -138,11 +138,11 @@ export default function Page() {
             </h1>
 
             {/* SUBHEAD */}
-            <p className="mt-5 max-w-[440px] font-inter text-[16px] leading-relaxed text-white/85 sm:text-[18px]">
+            <p className="mt-6 max-w-[460px] font-inter text-[16.5px] leading-relaxed text-white/85 sm:text-[18px] lg:text-[19px]">
               Todo dia às 21h, 10 minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube.
             </p>
 
-            <div className="mt-7 w-full max-w-[460px] text-left">
+            <div className="mt-8 w-full max-w-[480px] text-left">
               <LeadForm />
             </div>
           </div>
