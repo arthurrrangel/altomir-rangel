@@ -1,13 +1,13 @@
 'use client'
 import { useState, FormEvent } from 'react'
-import { User, Phone, Mail, ArrowRight, Loader2, CalendarClock } from 'lucide-react'
+import { User, Phone, Mail, ArrowRight, Loader2, Check } from 'lucide-react'
 
 const FORMSPREE = 'https://formspree.io/f/xrejpgqp'
 // Link de convite do grupo de WhatsApp (Comunidade de Oração)
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/REPLACE_INVITE_CODE'
 
 const INPUT =
-  'w-full rounded-full border border-[#D9C9A4] bg-white/75 pl-[52px] pr-4 min-h-[58px] font-inter text-[16px] text-[#16243B] placeholder:text-[#9C8E6C] outline-none transition focus:border-[#C8922E] focus:bg-white focus:ring-2 focus:ring-[#D8A93A]/30'
+  'w-full rounded-full border border-[#D9C9A4] bg-white/80 pl-[52px] pr-4 min-h-[56px] font-inter text-[16px] text-[#16243B] placeholder:text-[#9C8E6C] outline-none transition focus:border-[#C8922E] focus:bg-white focus:ring-2 focus:ring-[#D8A93A]/30'
 const ICON = 'pointer-events-none absolute left-[18px] top-1/2 -translate-y-1/2 text-[#B79A63]'
 
 export default function LeadForm() {
@@ -32,10 +32,16 @@ export default function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative flex flex-col gap-4 rounded-[28px] border border-white/50 bg-[#F4EDDF] p-6 shadow-[0_34px_90px_-22px_rgba(0,0,0,0.72)] sm:p-7"
+      className="relative flex flex-col gap-3.5 rounded-[26px] border border-white/15 bg-[#F4EDDF] p-5 shadow-[0_40px_90px_-24px_rgba(0,0,0,0.8)] sm:p-6"
     >
-      <input type="hidden" name="_subject" value="Novo lead — Altar de Oração (Comunidade de Oração)" />
+      <input type="hidden" name="_subject" value="Novo lead: Altar de Oração (Comunidade de Oração)" />
       <input type="hidden" name="origem" value="Altar de Oração" />
+
+      {/* Cabeçalho do card */}
+      <div className="mb-0.5 text-center">
+        <div className="font-bebas text-[21px] tracking-[0.04em] text-[#16243B]">Entre para a comunidade</div>
+        <div className="font-inter text-[12.5px] text-[#6E6047]">Receba o Altar da Noite todo dia às 21h.</div>
+      </div>
 
       <div className="relative">
         <User size={19} className={ICON} />
@@ -55,7 +61,7 @@ export default function LeadForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="group relative mt-1 flex min-h-[62px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#E7BC5E] to-[#C6902C] font-bebas text-[21px] tracking-[0.12em] text-[#16243B] shadow-[0_14px_30px_-8px_rgba(198,144,44,0.72)] transition hover:brightness-[1.04] disabled:cursor-not-allowed disabled:opacity-70"
+        className="group relative mt-1 flex min-h-[60px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#E7BC5E] to-[#C6902C] font-bebas text-[22px] tracking-[0.12em] text-[#16243B] shadow-[0_14px_30px_-8px_rgba(198,144,44,0.72)] transition hover:brightness-[1.04] disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'sending' ? (
           <><Loader2 size={19} className="animate-spin" /> ENTRANDO...</>
@@ -68,9 +74,9 @@ export default function LeadForm() {
       </button>
 
       <div className="mt-0.5 flex items-center justify-center gap-2 text-[#6E6047]">
-        <CalendarClock size={15} />
-        <span className="font-inter text-[13px]">
-          Ore com a gente <strong className="font-semibold text-[#3A2E14]">todos os dias</strong> · 100% gratuito.
+        <Check size={15} className="text-[#3A2E14]" />
+        <span className="font-inter text-[12.5px]">
+          Comunidade <strong className="font-semibold text-[#3A2E14]">100% gratuita</strong> · centenas de irmãos orando.
         </span>
       </div>
     </form>
