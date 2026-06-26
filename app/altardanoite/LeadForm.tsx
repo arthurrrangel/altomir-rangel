@@ -76,7 +76,7 @@ export default function LeadForm() {
       <div className="mt-0.5 flex items-center justify-center gap-2 text-[#6E6047]">
         <Check size={15} className="text-[#3A2E14]" />
         <span className="font-inter text-[12.5px]">
-          Comunidade <strong className="font-semibold text-[#3A2E14]">100% gratuita</strong> · centenas de irmãos orando.
+          Comunidade <strong className="font-semibold text-[#3A2E14]">100% gratuita</strong>.
         </span>
       </div>
     </form>
