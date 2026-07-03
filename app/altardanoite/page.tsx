@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Altar de Oração | Altomir Rangel',
   description:
-    'Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.',
+    'Quero orar por você! Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
+    description: 'Quero orar por você! Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção e ensino.',
     url: '/altardanoite',
     siteName: 'Ministério Altomir Rangel',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
+    description: 'Quero orar por você! Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção e ensino.',
     images: ['/altomir-og.jpg'],
   },
   robots: { index: true, follow: true },
@@ -47,7 +47,7 @@ export default function Page() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(15,24,40,0) 40%, rgba(15,24,40,0.7) 76%, #0f1828 96%)' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(15,24,40,0) 44%, rgba(15,24,40,0.55) 72%, #0f1828 97%)' }}
           />
         </div>
 
@@ -66,7 +66,7 @@ export default function Page() {
         />
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-end px-6 pb-16 pt-[40svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-14 pt-[36svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
           <div className="mx-auto flex w-full max-w-[520px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-[#D8A93A]/70" />
@@ -74,13 +74,16 @@ export default function Page() {
               <span className="h-px w-8 bg-[#D8A93A]/70" />
             </div>
 
-            <h1 className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] font-bebas leading-[0.86] text-[#F3F1EA] text-[clamp(66px,10.5vw,132px)]">
+            <h1
+              className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] font-bebas leading-[0.86] text-[#F3F1EA] text-[clamp(66px,10.5vw,132px)]"
+              style={{ textShadow: '0 4px 24px rgba(8,14,26,0.55)' }}
+            >
               Altar de<br />
               <span className="text-[#D8A93A]">Oração</span>
             </h1>
 
-            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-6 max-w-[430px] font-inter text-[16px] leading-[1.7] text-white/70 sm:text-[17px]">
-              Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
+            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-6 max-w-[440px] font-inter text-[16px] leading-[1.7] text-white/70 sm:text-[17px]">
+              <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
             </p>
 
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-9 w-full max-w-[420px]">
