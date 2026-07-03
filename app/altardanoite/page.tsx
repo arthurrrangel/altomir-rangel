@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import LeadForm from './LeadForm'
 
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Altar de Oração | Altomir Rangel',
   description:
-    'Todo dia às 21h, 10 minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para a comunidade de oração do Pr. Altomir Rangel.',
+    'Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para a comunidade de oração do Pr. Altomir Rangel.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Altar de Oração | Altomir Rangel',
@@ -25,131 +28,67 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-function MarqueeGroup({ hidden = false }: { hidden?: boolean }) {
-  return (
-    <div aria-hidden={hidden} className="flex shrink-0 items-center whitespace-nowrap py-[8px]">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <span key={i} className="mx-5 font-bebas text-[13px] tracking-[0.3em] text-[#16243B]">
-          ALTAR DA NOITE • TODA NOITE ÀS 21H NO YOUTUBE
-          <span className="mx-5 align-middle text-[#16243B]/40">●</span>
-        </span>
-      ))}
-    </div>
-  )
-}
-
-function YouTubeMark() {
-  return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="#FF2D2D" aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.5-6.3 3.5z" />
-    </svg>
-  )
-}
-
 export default function Page() {
   return (
-    <main className="relative w-full overflow-hidden bg-[#16243B] text-white antialiased">
-      {/* ===== FAIXA ROLANDO ===== */}
-      <div className="relative z-30 flex overflow-hidden bg-[#D8A93A]">
-        <div className="flex w-max animate-[arcmarquee_34s_linear_infinite]">
-          <MarqueeGroup />
-          <MarqueeGroup hidden />
-        </div>
-      </div>
+    <main className="relative w-full overflow-hidden bg-[#0f1828] text-white antialiased">
+      {/* ===== BARRA DE TOPO ===== */}
+      <header className="relative z-30 flex items-center justify-between px-6 py-5 sm:px-10">
+        <span className="font-bebas text-[15px] tracking-[0.34em] text-white/80">ALTOMIR&nbsp;RANGEL</span>
+        <span className="hidden font-inter text-[11px] uppercase tracking-[0.22em] text-white/50 sm:block">
+          Toda noite · 21h · YouTube
+        </span>
+      </header>
 
-      <section className="relative min-h-[100svh] w-full overflow-hidden text-center lg:grid lg:grid-cols-2 lg:items-stretch lg:text-left">
-        {/* glows */}
+      <section
+        className="relative -mt-[62px] min-h-[100svh] w-full overflow-hidden"
+        style={{ background: 'radial-gradient(ellipse at 72% 38%, #18273f 0%, #0f1828 68%)' }}
+      >
+        {/* FOTO DE FUNDO (public/altomir-fundo.jpg) */}
         <div
-          className="pointer-events-none absolute left-1/2 top-0 z-0 h-[440px] w-[820px] max-w-[170vw] -translate-x-1/2 lg:left-[62%] lg:h-[640px] lg:w-[1080px]"
-          style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 0%, rgba(216,169,58,0.16) 0%, transparent 64%)' }}
-        />
-        <div
-          className="pointer-events-none absolute left-[9%] top-1/2 z-0 hidden h-[460px] w-[620px] -translate-y-1/2 lg:block"
-          style={{ background: 'radial-gradient(ellipse 52% 52% at 26% 50%, rgba(216,169,58,0.14) 0%, transparent 70%)' }}
-        />
-
-        {/* ===== FOTO MOBILE / TABLET (topo, centralizada) ===== */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[44svh] items-end justify-center overflow-hidden lg:hidden">
-          <img
-            src="/altomir-recorte.webp"
-            alt="Pr. Altomir Rangel"
-            className="h-[46svh] w-auto max-w-none object-contain object-bottom"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(16,27,44,0.05) 0%, rgba(16,27,44,0) 30%, rgba(16,27,44,0.2) 56%, rgba(16,27,44,0.84) 82%, #16243B 96%)' }}
-          />
-        </div>
-        {/* glow do título (mobile) */}
-        <div
-          className="pointer-events-none absolute left-1/2 top-[39svh] z-0 h-[320px] w-[440px] max-w-[92vw] -translate-x-1/2 lg:hidden"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 42%, rgba(216,169,58,0.18) 0%, transparent 70%)' }}
+          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0"
+          style={{ backgroundImage: 'url(/altomir-fundo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center right' }}
         />
 
-        {/* ===== FOTO DESKTOP (lateral direita, preenchendo) ===== */}
-        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:h-full lg:items-end lg:justify-end lg:self-stretch lg:overflow-hidden">
-          <img
-            src="/altomir-recorte.webp"
-            alt="Pr. Altomir Rangel"
-            className="h-[112vh] w-auto max-w-none translate-x-[3%] object-contain object-bottom drop-shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
-          />
-        </div>
-        {/* blend desktop entre conteúdo e foto */}
+        {/* degradês de legibilidade */}
         <div
-          className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #16243B 0%, #16243B 33%, rgba(22,36,59,0.72) 44%, rgba(22,36,59,0) 60%)' }}
+          className="absolute inset-0 z-[1] hidden lg:block"
+          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.94) 0%, rgba(15,24,40,0.8) 30%, rgba(15,24,40,0.35) 58%, rgba(15,24,40,0.1) 100%)' }}
         />
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[16%] lg:block"
-          style={{ background: 'linear-gradient(to left, #16243B 0%, transparent 100%)' }}
+          className="absolute inset-0 z-[1] lg:hidden"
+          style={{ background: 'linear-gradient(to top, #0f1828 2%, rgba(15,24,40,0.6) 42%, rgba(15,24,40,0.25) 72%, rgba(15,24,40,0.35) 100%)' }}
         />
-
-        {/* ===== MARCA (mobile, sobre a foto) ===== */}
-        <div className="absolute top-4 left-1/2 z-20 -translate-x-1/2 lg:hidden">
-          <span className="font-bebas text-[15px] tracking-[0.36em] text-white/85">ALTOMIR&nbsp;RANGEL</span>
-        </div>
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.6) 0%, transparent 32%)' }}
+        />
+        <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] opacity-[0.05] mix-blend-soft-light" style={{ backgroundImage: GRAIN }} />
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-5 pt-[40svh] pb-12 sm:px-6 lg:min-h-0 lg:items-start lg:justify-center lg:pt-0 lg:pb-0 lg:pl-[10%] lg:pr-[5%]">
-          <div className="flex w-full max-w-[540px] flex-col items-center lg:max-w-[600px] lg:items-start">
-            <span className="mb-5 hidden font-bebas text-[15px] tracking-[0.38em] text-[#D8A93A] lg:block">
-              PR.&nbsp;ALTOMIR&nbsp;RANGEL
-            </span>
-
-            {/* BADGE 21h / YouTube */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#D8A93A]/45 bg-[#0e1830]/55 px-4 py-1.5 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-[#ff3b3b] motion-safe:animate-[pulsedot_1.6s_ease-in-out_infinite]" />
-              <span className="font-inter text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white/90 sm:text-[12.5px]">
-                Toda noite às 21h
-              </span>
-              <YouTubeMark />
-              <span className="font-inter text-[11.5px] font-semibold uppercase tracking-[0.18em] text-white/70 sm:text-[12.5px]">
-                no YouTube
-              </span>
+        <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-16 pt-[64px] text-center sm:px-10 lg:justify-center lg:pb-0 lg:pl-[9%] lg:pr-6 lg:text-left">
+          <div className="mx-auto flex w-full max-w-[520px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
+            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-7 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#D8A93A]/70" />
+              <span className="font-inter text-[11px] uppercase tracking-[0.28em] text-[#D8A93A]/90">Comunidade de oração</span>
             </div>
 
-            {/* TÍTULO */}
-            <h1
-              className="font-bebas leading-[0.83] text-white text-[clamp(72px,12vw,150px)]"
-              style={{ textShadow: '0 6px 34px rgba(8,14,26,0.92), 0 2px 8px rgba(8,14,26,0.7)' }}
-            >
+            <h1 className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] font-bebas leading-[0.86] text-[#F3F1EA] text-[clamp(66px,10.5vw,134px)]">
               Altar de<br />
               <span className="text-[#D8A93A]">Oração</span>
             </h1>
 
-            {/* SUBHEAD */}
-            <p className="mt-6 max-w-[460px] font-inter text-[16.5px] leading-relaxed text-white/85 sm:text-[18px] lg:text-[19px]">
-              Todo dia às 21h, 10 minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube.
+            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-7 max-w-[420px] font-inter text-[16px] leading-[1.7] text-white/65 sm:text-[17px]">
+              Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube.
             </p>
 
-            <div className="mt-8 w-full max-w-[480px] text-left">
+            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-10 w-full max-w-[420px]">
               <LeadForm />
             </div>
           </div>
         </div>
       </section>
 
-      <style>{`@keyframes arcmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@keyframes pulsedot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}`}</style>
+      <style>{`@keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes photoIn{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:scale(1)}}`}</style>
     </main>
   )
 }
