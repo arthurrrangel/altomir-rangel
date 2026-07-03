@@ -42,7 +42,7 @@ export default function Page() {
       >
         {/* FOTO DE FUNDO — enquadramento por breakpoint */}
         <div
-          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:66%_50%] lg:bg-[position:50%_34%]"
+          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:50%_50%] lg:bg-[position:50%_30%]"
           style={{ backgroundImage: 'url(/altomir-fundo.jpg)', filter: 'contrast(1.04) saturate(1.06)' }}
         />
 
