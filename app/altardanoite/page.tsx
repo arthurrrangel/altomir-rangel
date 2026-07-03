@@ -40,24 +40,24 @@ export default function Page() {
         className="relative -mt-[62px] min-h-[100svh] w-full overflow-hidden"
         style={{ background: 'radial-gradient(ellipse at 72% 38%, #18273f 0%, #0f1828 68%)' }}
       >
-        {/* FOTO DE FUNDO — enquadramento por breakpoint + realce de nitidez */}
+        {/* FOTO DE FUNDO — enquadramento por breakpoint */}
         <div
-          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:62%_30%] lg:bg-[position:82%_40%]"
-          style={{ backgroundImage: 'url(/altomir.png)', filter: 'contrast(1.08) saturate(1.1) brightness(1.03)' }}
+          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:66%_50%] lg:bg-[position:50%_34%]"
+          style={{ backgroundImage: 'url(/altomir-fundo.jpg)', filter: 'contrast(1.04) saturate(1.06)' }}
         />
 
         {/* degradês de legibilidade */}
         <div
           className="absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.94) 0%, rgba(15,24,40,0.78) 30%, rgba(15,24,40,0.28) 56%, rgba(15,24,40,0.04) 100%)' }}
+          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.95) 0%, rgba(15,24,40,0.8) 30%, rgba(15,24,40,0.32) 56%, rgba(15,24,40,0.05) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1] lg:hidden"
-          style={{ background: 'linear-gradient(to top, #0f1828 0%, rgba(15,24,40,0.84) 34%, rgba(15,24,40,0.5) 60%, rgba(15,24,40,0.18) 100%)' }}
+          style={{ background: 'linear-gradient(to top, #0f1828 0%, rgba(15,24,40,0.86) 36%, rgba(15,24,40,0.5) 62%, rgba(15,24,40,0.18) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1]"
-          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.5) 0%, transparent 30%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.5) 0%, transparent 32%)' }}
         />
 
         {/* ===== CONTEÚDO ===== */}
