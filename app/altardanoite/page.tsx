@@ -43,24 +43,24 @@ export default function Page() {
         className="relative -mt-[62px] min-h-[100svh] w-full overflow-hidden"
         style={{ background: 'radial-gradient(ellipse at 72% 38%, #18273f 0%, #0f1828 68%)' }}
       >
-        {/* FOTO DE FUNDO (public/altomir-fundo.jpg) */}
+        {/* FOTO DE FUNDO — enquadramento por breakpoint */}
         <div
-          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0"
-          style={{ backgroundImage: 'url(/altomir-fundo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center right' }}
+          className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:62%_30%] lg:bg-[position:82%_40%]"
+          style={{ backgroundImage: 'url(/altomir.png)' }}
         />
 
         {/* degradês de legibilidade */}
         <div
           className="absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.94) 0%, rgba(15,24,40,0.8) 30%, rgba(15,24,40,0.35) 58%, rgba(15,24,40,0.1) 100%)' }}
+          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.95) 0%, rgba(15,24,40,0.82) 30%, rgba(15,24,40,0.35) 58%, rgba(15,24,40,0.08) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1] lg:hidden"
-          style={{ background: 'linear-gradient(to top, #0f1828 2%, rgba(15,24,40,0.6) 42%, rgba(15,24,40,0.25) 72%, rgba(15,24,40,0.35) 100%)' }}
+          style={{ background: 'linear-gradient(to top, #0f1828 0%, rgba(15,24,40,0.86) 34%, rgba(15,24,40,0.55) 60%, rgba(15,24,40,0.3) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1]"
-          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.6) 0%, transparent 32%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.55) 0%, transparent 30%)' }}
         />
         <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] opacity-[0.05] mix-blend-soft-light" style={{ backgroundImage: GRAIN }} />
 
@@ -77,7 +77,7 @@ export default function Page() {
               <span className="text-[#D8A93A]">Oração</span>
             </h1>
 
-            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-7 max-w-[420px] font-inter text-[16px] leading-[1.7] text-white/65 sm:text-[17px]">
+            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-7 max-w-[420px] font-inter text-[16px] leading-[1.7] text-white/70 sm:text-[17px]">
               Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube.
             </p>
 
