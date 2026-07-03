@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
 import LeadForm from './LeadForm'
 
-const GRAIN =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Altar de Oração | Altomir Rangel',
@@ -43,26 +40,25 @@ export default function Page() {
         className="relative -mt-[62px] min-h-[100svh] w-full overflow-hidden"
         style={{ background: 'radial-gradient(ellipse at 72% 38%, #18273f 0%, #0f1828 68%)' }}
       >
-        {/* FOTO DE FUNDO — enquadramento por breakpoint */}
+        {/* FOTO DE FUNDO — enquadramento por breakpoint + realce de nitidez */}
         <div
           className="motion-safe:animate-[photoIn_1.8s_cubic-bezier(0.22,1,0.36,1)_forwards] absolute inset-0 z-0 bg-cover bg-no-repeat bg-[position:62%_30%] lg:bg-[position:82%_40%]"
-          style={{ backgroundImage: 'url(/altomir.png)' }}
+          style={{ backgroundImage: 'url(/altomir.png)', filter: 'contrast(1.08) saturate(1.1) brightness(1.03)' }}
         />
 
         {/* degradês de legibilidade */}
         <div
           className="absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.95) 0%, rgba(15,24,40,0.82) 30%, rgba(15,24,40,0.35) 58%, rgba(15,24,40,0.08) 100%)' }}
+          style={{ background: 'linear-gradient(to right, rgba(15,24,40,0.94) 0%, rgba(15,24,40,0.78) 30%, rgba(15,24,40,0.28) 56%, rgba(15,24,40,0.04) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1] lg:hidden"
-          style={{ background: 'linear-gradient(to top, #0f1828 0%, rgba(15,24,40,0.86) 34%, rgba(15,24,40,0.55) 60%, rgba(15,24,40,0.3) 100%)' }}
+          style={{ background: 'linear-gradient(to top, #0f1828 0%, rgba(15,24,40,0.84) 34%, rgba(15,24,40,0.5) 60%, rgba(15,24,40,0.18) 100%)' }}
         />
         <div
           className="absolute inset-0 z-[1]"
-          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.55) 0%, transparent 30%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(15,24,40,0.5) 0%, transparent 30%)' }}
         />
-        <div aria-hidden className="pointer-events-none absolute inset-0 z-[2] opacity-[0.05] mix-blend-soft-light" style={{ backgroundImage: GRAIN }} />
 
         {/* ===== CONTEÚDO ===== */}
         <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-16 pt-[64px] text-center sm:px-10 lg:justify-center lg:pb-0 lg:pl-[9%] lg:pr-6 lg:text-left">
