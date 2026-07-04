@@ -90,11 +90,10 @@ export default function Page() {
             </div>
 
             <h1
-              className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] whitespace-nowrap font-bebas leading-[0.9] text-[#F3F1EA] text-[clamp(34px,12vw,58px)] lg:whitespace-normal lg:leading-[0.86] lg:text-[clamp(66px,7.5vw,132px)]"
+              className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] whitespace-nowrap font-bebas leading-[1] text-[#F3F1EA] text-[clamp(34px,12vw,58px)] lg:text-[clamp(46px,5.6vw,96px)]"
               style={{ textShadow: '0 4px 24px rgba(8,14,26,0.55)' }}
             >
-              Altar de<br className="hidden lg:block" />{' '}
-              <span className="text-[#D8A93A]">Oração</span>
+              Altar de <span className="text-[#D8A93A]">Oração</span>
             </h1>
 
             <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-4 max-w-[440px] font-inter text-[15px] leading-[1.6] text-white/70 sm:mt-6 sm:text-[17px] sm:leading-[1.7]">
