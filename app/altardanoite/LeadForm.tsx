@@ -1,7 +1,9 @@
 'use client'
 import { useState, FormEvent } from 'react'
 
-const FORMSPREE = 'https://formspree.io/f/xrejpgqp'
+// Endpoint Google Apps Script -> grava na planilha "Leads - Altar de Oração" + envia e-mail
+const SHEETS_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbzAX5BOQACwBTyy18hoJRLO7uQN0cJiYtT3L8LEp0AdwfK0wMTDWLWmViHLtrq8A0PI/exec'
 // Grupo de WhatsApp (Comunidade de Oração)
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
 
@@ -14,12 +16,20 @@ export default function LeadForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus('sending')
-    const data = new FormData(e.currentTarget)
+
+    const form = e.currentTarget
+    const body = new URLSearchParams({
+      nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
+      whatsapp: (form.elements.namedItem('whatsapp') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      origem: 'Altar de Oração',
+    })
+
     try {
-      await fetch(FORMSPREE, {
+      await fetch(SHEETS_ENDPOINT, {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        mode: 'no-cors',
+        body,
       })
     } catch {
       // segue para o grupo mesmo se o envio falhar
@@ -29,9 +39,6 @@ export default function LeadForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
-      <input type="hidden" name="_subject" value="Novo lead: Altar de Oração (Comunidade de Oração)" />
-      <input type="hidden" name="origem" value="Altar de Oração" />
-
       <input name="nome" type="text" required placeholder="Nome completo" className={INPUT} />
       <input name="whatsapp" type="tel" required placeholder="WhatsApp com DDD" className={INPUT} />
       <input name="email" type="email" required placeholder="E-mail" className={INPUT} />
