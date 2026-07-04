@@ -70,8 +70,8 @@ export default function Page() {
         />
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-10 pt-[40svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
-          <div className="mx-auto flex w-full max-w-[520px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-start justify-start px-6 pb-9 pt-[38svh] text-left sm:px-10 lg:min-h-0 lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
+          <div className="mx-auto flex w-full max-w-[440px] flex-col items-start lg:mx-0 lg:max-w-[560px]">
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-4 flex items-center gap-3 sm:mb-6">
               <span className="h-px w-8 bg-[#D8A93A]/70" />
               <span className="font-inter text-[11px] uppercase tracking-[0.28em] text-[#D8A93A]/90">Comunidade de oração</span>
@@ -90,7 +90,7 @@ export default function Page() {
               <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
             </p>
 
-            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-6 w-full max-w-[420px] sm:mt-9">
+            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-6 w-full max-w-[440px] sm:mt-8">
               <LeadForm />
             </div>
           </div>
