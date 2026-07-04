@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Quero orar por você! Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção e ensino.',
+    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
     url: '/altardanoite',
     siteName: 'Ministério Altomir Rangel',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Quero orar por você! Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção e ensino.',
+    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
     images: ['/altomir-og.jpg'],
   },
   robots: { index: true, follow: true },
@@ -29,7 +29,7 @@ export default function Page() {
   return (
     <main className="relative w-full overflow-hidden bg-[#0f1828] text-white antialiased">
       <section
-        className="relative min-h-[100svh] w-full overflow-hidden text-center lg:grid lg:grid-cols-[1fr_1fr] lg:items-stretch lg:text-left"
+        className="relative min-h-[100svh] w-full overflow-hidden text-center lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch lg:text-left"
         style={{ background: 'radial-gradient(ellipse at 72% 42%, #17263f 0%, #0f1828 66%)' }}
       >
         {/* brilho atrás do título (desktop) */}
@@ -51,18 +51,18 @@ export default function Page() {
           />
         </div>
 
-        {/* ===== FIGURA DESKTOP (lateral direita, maior e mais ao centro) ===== */}
+        {/* ===== FIGURA DESKTOP (lateral direita) ===== */}
         <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:h-full lg:items-end lg:justify-start lg:self-stretch lg:overflow-hidden">
           <img
             src="/altomir-recorte.webp"
             alt="Pr. Altomir Rangel"
-            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[110vh] w-auto max-w-none -translate-x-[10%] object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[90vh] w-auto max-w-none -translate-x-[2%] object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
           />
         </div>
         {/* blend desktop */}
         <div
           className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #0f1828 0%, #0f1828 30%, rgba(15,24,40,0.6) 44%, rgba(15,24,40,0) 62%)' }}
+          style={{ background: 'linear-gradient(to right, #0f1828 0%, #0f1828 32%, rgba(15,24,40,0.62) 45%, rgba(15,24,40,0) 63%)' }}
         />
 
         {/* ===== CONTEÚDO ===== */}
