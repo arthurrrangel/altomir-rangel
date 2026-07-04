@@ -39,11 +39,11 @@ export default function Page() {
         />
 
         {/* ===== FIGURA MOBILE / TABLET (topo) ===== */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[44svh] items-end justify-center overflow-hidden lg:hidden">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[37svh] items-end justify-center overflow-hidden lg:hidden">
           <img
             src="/altomir-recorte.webp"
             alt="Pr. Altomir Rangel"
-            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[46svh] w-auto max-w-none object-contain object-bottom"
+            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[40svh] w-auto max-w-none object-contain object-bottom"
           />
           <div
             className="absolute inset-0"
@@ -66,27 +66,27 @@ export default function Page() {
         />
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-14 pt-[36svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-10 pt-[28svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
           <div className="mx-auto flex w-full max-w-[520px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
-            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-6 flex items-center gap-3">
+            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-4 flex items-center gap-3 sm:mb-6">
               <span className="h-px w-8 bg-[#D8A93A]/70" />
               <span className="font-inter text-[11px] uppercase tracking-[0.28em] text-[#D8A93A]/90">Comunidade de oração</span>
               <span className="h-px w-8 bg-[#D8A93A]/70" />
             </div>
 
             <h1
-              className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] font-bebas leading-[0.86] text-[#F3F1EA] text-[clamp(66px,10.5vw,132px)]"
+              className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] font-bebas leading-[0.86] text-[#F3F1EA] text-[clamp(56px,9.5vw,132px)]"
               style={{ textShadow: '0 4px 24px rgba(8,14,26,0.55)' }}
             >
               Altar de<br />
               <span className="text-[#D8A93A]">Oração</span>
             </h1>
 
-            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-6 max-w-[440px] font-inter text-[16px] leading-[1.7] text-white/70 sm:text-[17px]">
+            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-4 max-w-[440px] font-inter text-[15px] leading-[1.6] text-white/70 sm:mt-6 sm:text-[17px] sm:leading-[1.7]">
               <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
             </p>
 
-            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-9 w-full max-w-[420px]">
+            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-6 w-full max-w-[420px] sm:mt-9">
               <LeadForm />
             </div>
           </div>
