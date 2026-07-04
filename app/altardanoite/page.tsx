@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Altar de Oração | Altomir Rangel',
   description:
-    'Quero orar por você! Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.',
+    'Quero orar por você! Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
+    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de edificação e ensino.',
     url: '/altardanoite',
     siteName: 'Ministério Altomir Rangel',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de bênção sobre a sua vida e ensino.',
+    description: 'Todo dia às 21h no YouTube e no grupo do WhatsApp: oração, palavras de edificação e ensino.',
     images: ['/altomir-og.jpg'],
   },
   robots: { index: true, follow: true },
@@ -83,7 +83,7 @@ export default function Page() {
             </h1>
 
             <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-6 max-w-[440px] font-inter text-[16px] leading-[1.7] text-white/70 sm:text-[17px]">
-              <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de bênção sobre a sua vida e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
+              <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
             </p>
 
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-9 w-full max-w-[420px]">
