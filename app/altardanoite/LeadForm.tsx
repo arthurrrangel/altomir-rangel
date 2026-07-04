@@ -8,7 +8,7 @@ const SHEETS_ENDPOINT =
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
 
 const INPUT =
-  'w-full border-b border-white/25 bg-transparent py-3 font-inter text-[16px] text-white placeholder:text-white/45 outline-none transition-colors duration-300 focus:border-[#D8A93A]'
+  'w-full border-b border-white/25 bg-transparent py-2.5 font-inter text-[16px] text-white placeholder:text-white/45 outline-none transition-colors duration-300 focus:border-[#D8A93A] sm:py-3'
 
 export default function LeadForm() {
   const [status, setStatus] = useState<'idle' | 'sending'>('idle')
@@ -38,7 +38,7 @@ export default function LeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4 sm:gap-5">
       <input name="nome" type="text" required placeholder="Nome completo" className={INPUT} />
       <input name="whatsapp" type="tel" required placeholder="WhatsApp com DDD" className={INPUT} />
       <input name="email" type="email" required placeholder="E-mail" className={INPUT} />
@@ -46,7 +46,7 @@ export default function LeadForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="mt-4 w-full rounded-full bg-[#D8A93A] py-[18px] font-bebas text-[19px] tracking-[0.16em] text-[#0f1828] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2b954] hover:shadow-[0_18px_40px_-12px_rgba(216,169,58,0.55)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70"
+        className="mt-3 w-full rounded-full bg-[#D8A93A] py-[16px] font-bebas text-[19px] tracking-[0.16em] text-[#0f1828] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2b954] hover:shadow-[0_18px_40px_-12px_rgba(216,169,58,0.55)] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70 sm:mt-4 sm:py-[18px]"
       >
         {status === 'sending' ? 'Entrando...' : 'Quero participar'}
       </button>
