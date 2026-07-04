@@ -27,14 +27,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="relative w-full overflow-hidden bg-[#0f1828] text-white antialiased">
+    <main className="relative w-full overflow-hidden bg-[#182A46] text-white antialiased">
       <section
-        className="relative min-h-[100svh] w-full overflow-hidden bg-[#0f1828] text-center lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch lg:text-left"
+        className="relative min-h-[100svh] w-full overflow-hidden bg-[#182A46] text-center lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch lg:text-left"
       >
         {/* fundo radial só no desktop (mobile fica navy uniforme) */}
         <div
           className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-          style={{ background: 'radial-gradient(ellipse at 72% 42%, #17263f 0%, #0f1828 66%)' }}
+          style={{ background: 'radial-gradient(ellipse at 72% 42%, #21365A 0%, #182A46 66%)' }}
         />
         {/* brilho atrás do título (desktop) */}
         <div
@@ -62,7 +62,7 @@ export default function Page() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(15,24,40,0) 70%, #0f1828 94%)' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(24,42,70,0) 70%, #182A46 94%)' }}
           />
         </div>
 
@@ -77,7 +77,7 @@ export default function Page() {
         {/* blend desktop */}
         <div
           className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #0f1828 0%, #0f1828 32%, rgba(15,24,40,0.62) 45%, rgba(15,24,40,0) 63%)' }}
+          style={{ background: 'linear-gradient(to right, #182A46 0%, #182A46 32%, rgba(24,42,70,0.62) 45%, rgba(24,42,70,0) 63%)' }}
         />
 
         {/* ===== CONTEÚDO ===== */}
