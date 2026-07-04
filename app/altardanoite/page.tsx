@@ -42,6 +42,17 @@ export default function Page() {
           style={{ background: 'radial-gradient(ellipse 52% 52% at 30% 50%, rgba(216,169,58,0.12) 0%, transparent 70%)' }}
         />
 
+        {/* brilho quente atrás do Altomir (mobile) */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[52svh] lg:hidden"
+          style={{ background: 'radial-gradient(62% 48% at 50% 29%, rgba(228,152,54,0.34) 0%, rgba(214,138,48,0.12) 42%, transparent 70%)' }}
+        />
+        {/* brilho quente atrás do Altomir (desktop) */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[58%] lg:block"
+          style={{ background: 'radial-gradient(52% 54% at 60% 42%, rgba(228,152,54,0.22) 0%, transparent 66%)' }}
+        />
+
         {/* ===== FIGURA MOBILE / TABLET (topo) ===== */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[48svh] items-start justify-center overflow-hidden lg:hidden">
           <img
@@ -70,8 +81,8 @@ export default function Page() {
         />
 
         {/* ===== CONTEÚDO ===== */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-start justify-start px-6 pb-9 pt-[38svh] text-left sm:px-10 lg:min-h-0 lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
-          <div className="mx-auto flex w-full max-w-[440px] flex-col items-start lg:mx-0 lg:max-w-[560px]">
+        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-9 pt-[38svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
+          <div className="mx-auto flex w-full max-w-[440px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-4 flex items-center gap-3 sm:mb-6">
               <span className="h-px w-8 bg-[#D8A93A]/70" />
               <span className="font-inter text-[11px] uppercase tracking-[0.28em] text-[#D8A93A]/90">Comunidade de oração</span>
