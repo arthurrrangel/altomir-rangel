@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Altar de Oração | Altomir Rangel',
   description:
-    'Quero orar por você! Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.',
+    'Quero orar por você! Todo dia às 21h, receba uma oração e uma palavra de edificação, e faça parte de uma comunidade que caminha junta na presença de Deus.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Altar de Oração | Altomir Rangel',
@@ -83,12 +83,6 @@ export default function Page() {
         {/* ===== CONTEÚDO ===== */}
         <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-9 pt-[38svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
           <div className="mx-auto flex w-full max-w-[440px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
-            <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-4 flex items-center gap-3 sm:mb-6">
-              <span className="h-px w-8 bg-[#D8A93A]/70" />
-              <span className="font-inter text-[11px] uppercase tracking-[0.28em] text-[#D8A93A]/90">Comunidade de oração</span>
-              <span className="h-px w-8 bg-[#D8A93A]/70" />
-            </div>
-
             <h1
               className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] whitespace-nowrap font-bebas leading-[1] text-[#F3F1EA] text-[clamp(34px,12vw,58px)] lg:text-[clamp(46px,5.6vw,96px)]"
               style={{ textShadow: '0 4px 24px rgba(8,14,26,0.55)' }}
@@ -97,7 +91,7 @@ export default function Page() {
             </h1>
 
             <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.48s_both] mt-4 max-w-[440px] font-inter text-[15px] leading-[1.6] text-white/70 sm:mt-6 sm:text-[17px] sm:leading-[1.7]">
-              <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, dez minutos de oração, palavras de edificação e ensino, no YouTube. Entre para o grupo da comunidade no WhatsApp.
+              <strong className="font-semibold text-white">Quero orar por você!</strong> Todo dia às 21h, receba uma oração e uma palavra de edificação, e faça parte de uma comunidade que caminha junta na presença de Deus.
             </p>
 
             <div className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.66s_both] mt-6 w-full max-w-[440px] sm:mt-8">
