@@ -7,8 +7,8 @@ const SHEETS_ENDPOINT =
 // Grupo de WhatsApp (Comunidade de Oração)
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
 
-// >>> COLE AQUI O ID DO PIXEL DO META (só os números). Enquanto estiver vazio, nada é carregado. <<<
-const META_PIXEL_ID = ''
+// ID do Pixel do Meta (dataset "PostFlow" da conta de anúncios do Altomir)
+const META_PIXEL_ID = '1662365458350431'
 
 declare global {
   interface Window {
