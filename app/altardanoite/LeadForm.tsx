@@ -1,11 +1,21 @@
 'use client'
-import { useState, FormEvent, ReactNode } from 'react'
+import { useState, useEffect, FormEvent, ReactNode } from 'react'
 
 // Endpoint Google Apps Script -> grava na planilha "Leads - Altar de Oração" + envia e-mail
 const SHEETS_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbzAX5BOQACwBTyy18hoJRLO7uQN0cJiYtT3L8LEp0AdwfK0wMTDWLWmViHLtrq8A0PI/exec'
 // Grupo de WhatsApp (Comunidade de Oração)
 const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
+
+// >>> COLE AQUI O ID DO PIXEL DO META (só os números). Enquanto estiver vazio, nada é carregado. <<<
+const META_PIXEL_ID = ''
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void
+    _fbq?: unknown
+  }
+}
 
 const FIELD =
   'flex items-center gap-3 rounded-2xl border border-black/[0.07] bg-white px-4 py-3.5 shadow-sm transition-all duration-200 focus-within:border-[#D8A93A] focus-within:shadow-[0_0_0_3px_rgba(216,169,58,0.18)]'
@@ -24,16 +34,42 @@ function Field({ icon, children }: { icon: ReactNode; children: ReactNode }) {
 export default function LeadForm() {
   const [status, setStatus] = useState<'idle' | 'sending'>('idle')
 
+  // Carrega o Pixel do Meta (só se o ID estiver preenchido) e registra PageView
+  useEffect(() => {
+    if (!META_PIXEL_ID || document.getElementById('meta-pixel')) return
+    const s = document.createElement('script')
+    s.id = 'meta-pixel'
+    s.innerHTML =
+      "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','" +
+      META_PIXEL_ID +
+      "');fbq('track','PageView');"
+    document.head.appendChild(s)
+  }, [])
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus('sending')
     const form = e.currentTarget
+
+    // Origem do lead a partir dos UTMs do anúncio (aparece na coluna "Origem" da planilha)
+    const q = new URLSearchParams(window.location.search)
+    const origem =
+      [q.get('utm_source'), q.get('utm_campaign'), q.get('utm_content')]
+        .filter(Boolean)
+        .join(' / ') || 'Altar de Oração (direto)'
+
     const body = new URLSearchParams({
       nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
       whatsapp: (form.elements.namedItem('whatsapp') as HTMLInputElement).value,
       email: (form.elements.namedItem('email') as HTMLInputElement).value,
-      origem: 'Altar de Oração',
+      origem,
     })
+
+    // Evento de conversão pro Meta (otimização + custo por lead)
+    try {
+      window.fbq && window.fbq('track', 'Lead')
+    } catch {}
+
     try {
       await fetch(SHEETS_ENDPOINT, { method: 'POST', mode: 'no-cors', body })
     } catch {
