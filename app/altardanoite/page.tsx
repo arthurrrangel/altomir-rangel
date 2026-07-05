@@ -83,6 +83,9 @@ export default function Page() {
         {/* ===== CONTEÚDO ===== */}
         <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-9 pt-[38svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
           <div className="mx-auto flex w-full max-w-[440px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
+            <p className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] mb-3 font-inter text-[12px] uppercase tracking-[0.22em] text-[#D8A93A]/90 sm:mb-4 sm:text-[13px]">
+              Onde há oração, o impossível recua
+            </p>
             <h1
               className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.3s_both] whitespace-nowrap font-bebas leading-[1] text-[#F3F1EA] text-[clamp(34px,12vw,58px)] lg:text-[clamp(46px,5.6vw,96px)]"
               style={{ textShadow: '0 4px 24px rgba(8,14,26,0.55)' }}
