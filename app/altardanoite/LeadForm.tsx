@@ -1,21 +1,7 @@
 'use client'
 import { useState, useEffect, FormEvent, ReactNode } from 'react'
-
-// Endpoint Google Apps Script -> grava na planilha "Leads - Altar de Oração" + envia e-mail
-const SHEETS_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbzAX5BOQACwBTyy18hoJRLO7uQN0cJiYtT3L8LEp0AdwfK0wMTDWLWmViHLtrq8A0PI/exec'
-// Grupo de WhatsApp (Comunidade de Oração)
-const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
-
-// ID do Pixel do Meta — "Pixel de Altomir Rangel" (conta de anúncios 350563210122209)
-const META_PIXEL_ID = '278191857159060'
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void
-    _fbq?: unknown
-  }
-}
+import { useRouter } from 'next/navigation'
+import { SHEETS_ENDPOINT, LEAD_FLAG, loadMetaPixel } from './config'
 
 const FIELD =
   'flex items-center gap-3 rounded-2xl border border-black/[0.07] bg-white px-4 py-3.5 shadow-sm transition-all duration-200 focus-within:border-[#D8A93A] focus-within:shadow-[0_0_0_3px_rgba(216,169,58,0.18)]'
@@ -31,72 +17,153 @@ function Field({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   )
 }
 
-export default function LeadForm() {
-  const [status, setStatus] = useState<'idle' | 'sending'>('idle')
+/** Formata "21999998888" -> "(21) 99999-8888" enquanto a pessoa digita. */
+function maskWhatsApp(v: string) {
+  const d = v.replace(/\D/g, '').slice(0, 11)
+  if (d.length === 0) return ''
+  if (d.length <= 2) return `(${d}`
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`
+}
 
-  // Carrega o Pixel do Meta (só se o ID estiver preenchido) e registra PageView
+/** Aceita fixo (10 dígitos) e celular (11), DDD válido entre 11 e 99. */
+function whatsAppValido(v: string) {
+  const d = v.replace(/\D/g, '')
+  if (d.length < 10 || d.length > 11) return false
+  const ddd = Number(d.slice(0, 2))
+  return ddd >= 11 && ddd <= 99
+}
+
+export default function LeadForm() {
+  const router = useRouter()
+  const [status, setStatus] = useState<'idle' | 'sending'>('idle')
+  const [whats, setWhats] = useState('')
+  const [erro, setErro] = useState<string | null>(null)
+
+  // Carrega o Pixel do Meta e registra o PageView da landing
   useEffect(() => {
-    if (!META_PIXEL_ID || document.getElementById('meta-pixel')) return
-    const s = document.createElement('script')
-    s.id = 'meta-pixel'
-    s.innerHTML =
-      "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','" +
-      META_PIXEL_ID +
-      "');fbq('track','PageView');"
-    document.head.appendChild(s)
+    loadMetaPixel()
   }, [])
+
+  // Pré-carrega a rota de confirmação pra transição pós-submit ser instantânea
+  useEffect(() => {
+    router.prefetch('/altardanoite/obrigado')
+  }, [router])
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus('sending')
     const form = e.currentTarget
 
-    // Origem do lead a partir dos UTMs do anúncio (aparece na coluna "Origem" da planilha)
-    const q = new URLSearchParams(window.location.search)
-    const origem =
-      [q.get('utm_source'), q.get('utm_campaign'), q.get('utm_content')]
-        .filter(Boolean)
-        .join(' / ') || 'Altar de Oração (direto)'
+    const nome = (form.elements.namedItem('nome') as HTMLInputElement).value.trim()
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim()
+    const honeypot = (form.elements.namedItem('site') as HTMLInputElement).value
+    const pedido = (form.elements.namedItem('pedido') as HTMLTextAreaElement).value.trim().slice(0, 500)
 
-    const body = new URLSearchParams({
-      nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
-      whatsapp: (form.elements.namedItem('whatsapp') as HTMLInputElement).value,
-      email: (form.elements.namedItem('email') as HTMLInputElement).value,
-      origem,
-    })
-
-    // Evento de conversão pro Meta (otimização + custo por lead)
-    try {
-      window.fbq && window.fbq('track', 'Lead')
-    } catch {}
-
-    try {
-      await fetch(SHEETS_ENDPOINT, { method: 'POST', mode: 'no-cors', body })
-    } catch {
-      /* segue para o grupo mesmo se o envio falhar */
+    if (!whatsAppValido(whats)) {
+      setErro('Confira o WhatsApp: DDD + número. Ex.: (21) 99999-8888')
+      return
     }
-    window.location.href = GRUPO_WHATSAPP
+    setErro(null)
+    setStatus('sending')
+
+    // Origem do lead a partir dos UTMs do anúncio (coluna "Origem" da planilha)
+    const q = new URLSearchParams(window.location.search)
+    const utms = [q.get('utm_source'), q.get('utm_campaign'), q.get('utm_content')]
+      .filter(Boolean)
+      .join(' / ')
+    const origem = utms || (q.get('fbclid') ? 'Meta Ads (fbclid)' : 'Altar de Oração (direto)')
+
+    // PONTE TEMPORÁRIA: o Apps Script ainda não tem coluna "pedido"; anexar ao
+    // campo "origem" garante que nenhum pedido se perca. Quando a coluna existir
+    // no script, remover o sufixo abaixo e manter só o parâmetro dedicado.
+    const origemComPedido = pedido ? `${origem} · Pedido: ${pedido}` : origem
+    const body = new URLSearchParams({ nome, whatsapp: whats, email, pedido, origem: origemComPedido })
+
+    // Honeypot preenchido = bot: não grava na planilha, mas segue o fluxo
+    // normalmente pra não denunciar o filtro.
+    if (!honeypot) {
+      try {
+        // keepalive: a requisição sobrevive mesmo se a página descarregar antes
+        await fetch(SHEETS_ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body })
+      } catch {
+        /* segue para a confirmação mesmo se o envio falhar */
+      }
+    }
+
+    // Marca a sessão: o evento "Lead" do Pixel dispara em /obrigado, onde não
+    // existe risco de a navegação externa cancelar o envio ao Meta.
+    try {
+      sessionStorage.setItem(LEAD_FLAG, '1')
+    } catch {
+      /* noop */
+    }
+    router.push('/altardanoite/obrigado')
   }
 
   return (
     <div className="rounded-[26px] bg-[#F2ECDE] p-4 shadow-[0_28px_60px_-22px_rgba(0,0,0,0.65)] ring-1 ring-black/5 sm:p-5">
+      <p className="mb-3 mt-1 text-center font-bebas text-[19px] leading-none tracking-[0.1em] text-[#14243B]">
+        Deixe seu pedido de oração
+      </p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         <Field icon={<UserIcon />}>
-          <input name="nome" type="text" required placeholder="Nome completo" className={INPUT} />
+          <input name="nome" type="text" required autoComplete="name" placeholder="Nome completo" className={INPUT} />
         </Field>
         <Field icon={<WhatsIcon />}>
-          <input name="whatsapp" type="tel" required placeholder="WhatsApp com DDD" className={INPUT} />
+          <input
+            name="whatsapp"
+            type="tel"
+            required
+            inputMode="tel"
+            autoComplete="tel-national"
+            placeholder="WhatsApp com DDD"
+            value={whats}
+            onChange={(ev) => {
+              setWhats(maskWhatsApp(ev.target.value))
+              if (erro) setErro(null)
+            }}
+            aria-invalid={erro ? true : undefined}
+            className={INPUT}
+          />
         </Field>
         <Field icon={<MailIcon />}>
-          <input name="email" type="email" required placeholder="E-mail" className={INPUT} />
+          <input name="email" type="email" required autoComplete="email" placeholder="E-mail" className={INPUT} />
         </Field>
+        <label className="flex items-start gap-3 rounded-2xl border border-black/[0.07] bg-white px-4 py-3.5 shadow-sm transition-all duration-200 focus-within:border-[#D8A93A] focus-within:shadow-[0_0_0_3px_rgba(216,169,58,0.18)]">
+          <span className="mt-0.5 shrink-0 text-[#D8A93A]"><BookIcon /></span>
+          <textarea
+            name="pedido"
+            rows={3}
+            maxLength={500}
+            placeholder="Pelo que devemos orar por você? (opcional)"
+            className="w-full resize-none bg-transparent font-inter text-[16px] leading-[1.5] text-[#14243B] placeholder:text-[#14243B]/40 outline-none"
+          />
+        </label>
+
+        {/* Honeypot anti-bot: invisível pra pessoas, irresistível pra robôs */}
+        <input
+          name="site"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          defaultValue=""
+          className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
+        />
+
+        {erro && (
+          <p role="alert" className="font-inter text-[13px] font-medium leading-snug text-[#A43D2A]">
+            {erro}
+          </p>
+        )}
 
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="mt-1 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D8A93A] py-[15px] font-bebas text-[20px] tracking-[0.14em] text-[#14243B] shadow-[0_12px_28px_-10px_rgba(216,169,58,0.7)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2b954] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-1 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D8A93A] py-[15px] font-bebas text-[19px] tracking-[0.1em] text-[#14243B] shadow-[0_12px_28px_-10px_rgba(216,169,58,0.7)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2b954] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#14243B]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2ECDE] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === 'sending' ? 'Entrando...' : 'Quero participar'}
+          {status === 'sending' ? 'Enviando…' : 'Enviar pedido de oração'}
           <span className="grid h-8 w-8 place-items-center rounded-full bg-[#14243B] text-white">
             <ArrowIcon />
           </span>
@@ -106,12 +173,23 @@ export default function LeadForm() {
           <ClockIcon />
           <span>Todo dia às 21h · YouTube + grupo no WhatsApp</span>
         </div>
+        <p className="text-center font-inter text-[11.5px] leading-snug text-[#14243B]/55">
+          Seus dados ficam com o ministério e servem só para o Altar de Oração.
+        </p>
       </form>
     </div>
   )
 }
 
 /* ---- ícones (SVG inline, sem dependências) ---- */
+function BookIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5v-2Z" />
+      <path d="M6.5 19H19" />
+    </svg>
+  )
+}
 function UserIcon() {
   return (
     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -146,7 +224,7 @@ function ClockIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
       <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
+      <path d="M12 7v5l3 2"/>
     </svg>
   )
 }
