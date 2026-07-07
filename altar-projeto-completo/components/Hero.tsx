@@ -1,0 +1,89 @@
+"use client"
+import { useEffect, useRef } from 'react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+import { hero } from '@/lib/content'
+
+export default function Hero() {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      ref.current?.querySelectorAll<HTMLElement>('.h-reveal').forEach((el, i) =>
+        setTimeout(() => {
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+        }, i * 130))
+    }, 100)
+    return () => clearTimeout(t)
+  }, [])
+
+  return (
+    <section ref={ref} className="relative overflow-hidden bg-transparent md:min-h-screen md:flex md:items-center">
+
+      {/* MOBILE: foto no topo */}
+      <div className="relative md:hidden w-full" style={{height: '56vh', minHeight: '280px'}}>
+        <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
+          style={{objectPosition: '37% 8%'}} sizes="100vw" />
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, #1B2A44 0%, transparent 12%, transparent 40%, #1B2A44 100%)'
+        }} />
+      </div>
+
+      {/* DESKTOP: foto direita */}
+      <div className="hidden md:block absolute right-0 top-0 w-[55%] h-full z-0">
+        <Image src="/altomir.png" alt="Altomir Rangel" fill priority className="object-cover"
+          style={{objectPosition: '50% 10%'}} sizes="55vw" />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to right, #1B2A44 0%, #1B2A44 15%, rgba(27,42,68,0.7) 45%, rgba(27,42,68,0.1) 100%)'}} />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to top, #1B2A44 0%, transparent 30%)'}} />
+        <div className="absolute inset-0" style={{background: 'linear-gradient(to bottom, #1B2A44 0%, transparent 15%)'}} />
+      </div>
+
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none hidden md:block"
+        style={{background: 'radial-gradient(ellipse, rgba(216,169,58,0.07) 0%, transparent 65%)'}} />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
+        <div className="pt-2 pb-10 md:pt-24 md:pb-16 md:max-w-2xl md:mx-0">
+
+          {hero.label && (
+            <div className="h-reveal opacity-0 flex items-center justify-center md:justify-start mb-4 md:mb-6"
+              style={{transform: 'translateY(20px)', transition: 'opacity 0.7s ease, transform 0.7s ease'}}>
+              <span className="label">{hero.label}</span>
+            </div>
+          )}
+
+          <h1 className="h-reveal font-bebas leading-[0.88] text-white mb-4 md:mb-6 text-center md:text-left"
+            style={{fontSize: 'clamp(36px, 10vw, 128px)', opacity: 0, transform: 'translateY(24px)',
+              transition: 'opacity 0.8s ease 0.13s, transform 0.8s ease 0.13s'}}>
+            {hero.headline1}
+            {hero.headline2 && <><br />{hero.headline2}</>}
+            <br /><span className="text-[#D8A93A]">{hero.headlineGold}</span>
+          </h1>
+
+          <p className="h-reveal font-inter text-white/50 text-[13px] md:text-[15px] leading-relaxed mb-6 md:mb-8 text-center md:text-left md:max-w-sm"
+            style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.26s, transform 0.7s ease 0.26s'}}>
+            {hero.subtitle}
+          </p>
+
+          <div className="h-reveal flex flex-col sm:flex-row gap-3 items-center md:items-start"
+            style={{opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.7s ease 0.39s, transform 0.7s ease 0.39s'}}>
+            <a href="#visao" className="btn-gold w-full sm:w-auto sm:min-w-[220px] justify-center min-h-[50px]">
+              {hero.ctaPrimary} <ArrowRight size={14} />
+            </a>
+            <a href="#livros" className="btn-outline w-full sm:w-auto sm:min-w-[220px] justify-center min-h-[50px]">
+              {hero.ctaSecondary}
+            </a>
+          </div>
+
+        </div>
+      </div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 pointer-events-none scroll-indicator">
+        <span className="font-inter text-[8px] text-white/20 tracking-[0.4em] uppercase">Scroll</span>
+        <ChevronDown size={14} className="text-white/25" />
+      </div>
+
+    </section>
+  )
+}
