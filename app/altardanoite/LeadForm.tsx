@@ -4,14 +4,14 @@ import { useRouter } from 'next/navigation'
 import { SHEETS_ENDPOINT, LEAD_FLAG, loadMetaPixel } from './config'
 
 const FIELD =
-  'flex items-center gap-3 rounded-2xl border border-black/[0.07] bg-white px-4 py-3.5 shadow-sm transition-all duration-200 focus-within:border-[#D8A93A] focus-within:shadow-[0_0_0_3px_rgba(216,169,58,0.18)]'
+  'flex items-center gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3.5 transition-all duration-200 focus-within:border-[#E2B063] focus-within:bg-white/[0.07] focus-within:shadow-[0_0_0_3px_rgba(226,176,99,0.15)]'
 const INPUT =
-  'w-full bg-transparent font-inter text-[16px] text-[#14243B] placeholder:text-[#14243B]/40 outline-none'
+  'w-full bg-transparent font-inter text-[16px] text-[#FBFBFC] placeholder:text-[#FBFBFC]/45 outline-none'
 
 function Field({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   return (
     <label className={FIELD}>
-      <span className="shrink-0 text-[#D8A93A]">{icon}</span>
+      <span className="shrink-0 text-[#E2B063]">{icon}</span>
       {children}
     </label>
   )
@@ -56,7 +56,6 @@ export default function LeadForm() {
     const form = e.currentTarget
 
     const nome = (form.elements.namedItem('nome') as HTMLInputElement).value.trim()
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim()
     const honeypot = (form.elements.namedItem('site') as HTMLInputElement).value
     const pedido = (form.elements.namedItem('pedido') as HTMLTextAreaElement).value.trim().slice(0, 500)
 
@@ -78,7 +77,7 @@ export default function LeadForm() {
     // campo "origem" garante que nenhum pedido se perca. Quando a coluna existir
     // no script, remover o sufixo abaixo e manter só o parâmetro dedicado.
     const origemComPedido = pedido ? `${origem} · Pedido: ${pedido}` : origem
-    const body = new URLSearchParams({ nome, whatsapp: whats, email, pedido, origem: origemComPedido })
+    const body = new URLSearchParams({ nome, whatsapp: whats, pedido, origem: origemComPedido })
 
     // Honeypot preenchido = bot: não grava na planilha, mas segue o fluxo
     // normalmente pra não denunciar o filtro.
@@ -102,11 +101,8 @@ export default function LeadForm() {
   }
 
   return (
-    <div className="rounded-[26px] bg-[#F2ECDE] p-4 shadow-[0_28px_60px_-22px_rgba(0,0,0,0.65)] ring-1 ring-black/5 sm:p-5">
-      <p className="mb-3 mt-1 text-center font-bebas text-[19px] leading-none tracking-[0.1em] text-[#14243B]">
-        Deixe seu pedido de oração
-      </p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+    <div className="w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <Field icon={<UserIcon />}>
           <input name="nome" type="text" required autoComplete="name" placeholder="Nome completo" className={INPUT} />
         </Field>
@@ -127,17 +123,14 @@ export default function LeadForm() {
             className={INPUT}
           />
         </Field>
-        <Field icon={<MailIcon />}>
-          <input name="email" type="email" required autoComplete="email" placeholder="E-mail" className={INPUT} />
-        </Field>
-        <label className="flex items-start gap-3 rounded-2xl border border-black/[0.07] bg-white px-4 py-3.5 shadow-sm transition-all duration-200 focus-within:border-[#D8A93A] focus-within:shadow-[0_0_0_3px_rgba(216,169,58,0.18)]">
-          <span className="mt-0.5 shrink-0 text-[#D8A93A]"><BookIcon /></span>
+        <label className="flex items-start gap-3 rounded-xl border border-white/12 bg-white/[0.04] px-4 py-3.5 transition-all duration-200 focus-within:border-[#E2B063] focus-within:bg-white/[0.07] focus-within:shadow-[0_0_0_3px_rgba(226,176,99,0.15)]">
+          <span className="mt-0.5 shrink-0 text-[#E2B063]"><BookIcon /></span>
           <textarea
             name="pedido"
             rows={3}
             maxLength={500}
             placeholder="Pelo que devemos orar por você? (opcional)"
-            className="w-full resize-none bg-transparent font-inter text-[16px] leading-[1.5] text-[#14243B] placeholder:text-[#14243B]/40 outline-none"
+            className="w-full resize-none bg-transparent font-inter text-[16px] leading-[1.5] text-[#FBFBFC] placeholder:text-[#FBFBFC]/45 outline-none"
           />
         </label>
 
@@ -153,78 +146,6 @@ export default function LeadForm() {
         />
 
         {erro && (
-          <p role="alert" className="font-inter text-[13px] font-medium leading-snug text-[#A43D2A]">
+          <p role="alert" className="font-inter text-[13px] font-medium leading-snug text-[#F0A090]">
             {erro}
-          </p>
-        )}
-
-        <button
-          type="submit"
-          disabled={status === 'sending'}
-          className="mt-1 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#D8A93A] py-[15px] font-bebas text-[19px] tracking-[0.1em] text-[#14243B] shadow-[0_12px_28px_-10px_rgba(216,169,58,0.7)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e2b954] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#14243B]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F2ECDE] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {status === 'sending' ? 'Enviando…' : 'Enviar pedido de oração'}
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-[#14243B] text-white">
-            <ArrowIcon />
-          </span>
-        </button>
-
-        <div className="mt-1.5 flex items-center justify-center gap-2 font-inter text-[12.5px] leading-tight text-[#14243B]/70">
-          <ClockIcon />
-          <span>Todo dia às 21h · YouTube + grupo no WhatsApp</span>
-        </div>
-        <p className="text-center font-inter text-[11.5px] leading-snug text-[#14243B]/55">
-          Seus dados ficam com o ministério e servem só para o Altar de Oração.
-        </p>
-      </form>
-    </div>
-  )
-}
-
-/* ---- ícones (SVG inline, sem dependências) ---- */
-function BookIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5v-2Z" />
-      <path d="M6.5 19H19" />
-    </svg>
-  )
-}
-function UserIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 20c0-3.5 3.6-6 8-6s8 2.5 8 6" />
-    </svg>
-  )
-}
-function WhatsIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.2.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4.1.2.1.9-.1 1.4Z" />
-    </svg>
-  )
-}
-function MailIcon() {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m3 7 9 6 9-6" />
-    </svg>
-  )
-}
-function ArrowIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  )
-}
-function ClockIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2"/>
-    </svg>
-  )
-}
+          <
