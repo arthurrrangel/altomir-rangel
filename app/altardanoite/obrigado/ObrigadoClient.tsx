@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { GRUPO_WHATSAPP, LEAD_FLAG, loadMetaPixel, fbqTrack } from '../config'
 
-const SEGUNDOS_REDIRECT = 4
+const SEGUNDOS_REDIRECT = 1
 
 export default function ObrigadoClient() {
   const [auto, setAuto] = useState(false)
