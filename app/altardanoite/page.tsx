@@ -1,94 +1,77 @@
 import type { Metadata } from 'next'
 import LeadForm from './LeadForm'
 
-
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
-  title: 'Altar de Oração | Altomir Rangel',
+  title: 'Posso orar por você? | Altomir Rangel',
   description:
-    'Todos os dias às 21h, o Pr. Altomir Rangel levanta o Altar de Oração ao vivo. Deixe seu pedido — hoje à noite, a oração também é por você.',
+    'Toda noite, uma oração por uma causa no grupo. Todo domingo, ao vivo, oro por cinco pedidos escolhidos. Deixe o seu.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
-    title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todos os dias às 21h, ao vivo: oração pelos pedidos, palavra de edificação e comunhão.',
+    title: 'Posso orar por você? | Altomir Rangel',
+    description: 'Toda noite uma oração no grupo. Todo domingo, ao vivo, pelos pedidos escolhidos. Deixe o seu.',
     url: '/altardanoite',
-    siteName: 'Ministério Altomir Rangel',
+    siteName: 'Altomir Rangel',
     type: 'website',
     locale: 'pt_BR',
-    images: [{ url: '/altomir-og.jpg', width: 1200, height: 630, alt: 'Altar de Oração, Pr. Altomir Rangel' }],
+    images: [{ url: '/altomir-og.jpg', width: 1200, height: 630, alt: 'Altomir Rangel' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Altar de Oração | Altomir Rangel',
-    description: 'Todos os dias às 21h, ao vivo: oração pelos pedidos, palavra de edificação e comunhão.',
+    title: 'Posso orar por você? | Altomir Rangel',
+    description: 'Toda noite uma oração no grupo. Todo domingo, ao vivo, pelos pedidos escolhidos.',
     images: ['/altomir-og.jpg'],
   },
   robots: { index: true, follow: true },
 }
 
-
 export default function Page() {
   return (
-    <main className="relative w-full overflow-hidden bg-[#182A46] text-white antialiased selection:bg-[#D8A93A] selection:text-[#14243B]">
-      {/* ============================ HERO ============================ */}
-      <section className="relative min-h-[100svh] w-full overflow-hidden bg-[#182A46] text-center lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch lg:text-left">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 hidden lg:block"
-          style={{ background: 'radial-gradient(ellipse at 72% 42%, #21365A 0%, #182A46 66%)' }}
-        />
-        <div
-          className="pointer-events-none absolute left-[8%] top-1/2 z-0 hidden h-[440px] w-[600px] -translate-y-1/2 lg:block"
-          style={{ background: 'radial-gradient(ellipse 52% 52% at 30% 50%, rgba(216,169,58,0.12) 0%, transparent 70%)' }}
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[46svh] lg:hidden"
-          style={{ background: 'radial-gradient(62% 48% at 50% 27%, rgba(228,152,54,0.34) 0%, rgba(214,138,48,0.12) 42%, transparent 70%)' }}
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[58%] lg:block"
-          style={{ background: 'radial-gradient(52% 54% at 60% 42%, rgba(228,152,54,0.22) 0%, transparent 66%)' }}
-        />
+    <main className="relative min-h-[100svh] w-full overflow-hidden bg-[#101F40] text-[#FBFBFC] antialiased selection:bg-[#E2B063] selection:text-[#101F40]">
+      {/* halo dourado no alto */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[65svh]"
+        style={{ background: 'radial-gradient(75% 52% at 50% 0%, rgba(226,176,99,0.16) 0%, transparent 62%)' }}
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[30svh]"
+        style={{ background: 'linear-gradient(to top, rgba(9,17,36,0.6) 0%, transparent 100%)' }}
+      />
 
-        {/* figura mobile */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-0 flex h-[44svh] items-start justify-center overflow-hidden lg:hidden">
-          <img
-            src="/altomir-recorte.webp"
-            alt="Pr. Altomir Rangel"
-            decoding="async"
-            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[44svh] w-auto max-w-none object-contain object-top"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(24,42,70,0) 55%, #182A46 86%)' }}
-          />
-        </div>
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[560px] flex-col items-center px-6 pb-14 pt-10 text-center sm:px-8">
+        <p className="mb-6 flex items-center gap-2.5 font-inter text-[12px] font-semibold uppercase tracking-[0.3em] text-[#E2B063]">
+          <span className="h-px w-6 bg-[#E2B063]/50" />
+          Altar de Oração
+          <span className="h-px w-6 bg-[#E2B063]/50" />
+        </p>
 
-        {/* figura desktop */}
-        <div className="pointer-events-none z-0 hidden lg:col-start-2 lg:row-start-1 lg:flex lg:h-full lg:items-end lg:justify-start lg:self-stretch lg:overflow-hidden">
-          <img
-            src="/altomir-recorte.webp"
-            alt="Pr. Altomir Rangel"
-            decoding="async"
-            className="motion-safe:animate-[figin_1.4s_cubic-bezier(0.22,1,0.36,1)_forwards] h-[90vh] w-auto max-w-none -translate-x-[2%] object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
-          />
-        </div>
-        <div
-          className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-          style={{ background: 'linear-gradient(to right, #182A46 0%, #182A46 32%, rgba(24,42,70,0.62) 45%, rgba(24,42,70,0) 63%)' }}
-        />
-
-        {/* conteúdo */}
-        <div className="relative z-10 col-start-1 row-start-1 flex min-h-[100svh] flex-col items-center justify-start px-6 pb-8 pt-[36svh] sm:px-10 lg:min-h-0 lg:items-start lg:justify-center lg:pb-0 lg:pt-0 lg:pl-[9%] lg:pr-6">
-          <div className="mx-auto flex w-full max-w-[440px] flex-col items-center lg:mx-0 lg:max-w-[560px] lg:items-start">
-
-            <div id="pedido" className="motion-safe:animate-[reveal_1s_cubic-bezier(0.22,1,0.36,1)_0.15s_both] w-full max-w-[440px] scroll-mt-6">
-              <LeadForm />
-            </div>
+        <div className="w-full max-w-[430px] overflow-hidden rounded-[18px] shadow-[0_30px_70px_-28px_rgba(0,0,0,0.7)] ring-1 ring-[#E2B063]/20">
+          <div className="relative aspect-[4/5] w-full">
+            <img
+              src="/altomir-portrait.jpg"
+              alt="Pr. Altomir Rangel"
+              className="absolute inset-0 h-full w-full object-cover object-top"
+              decoding="async"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{ background: 'linear-gradient(to top, rgba(16,31,64,0.5) 0%, transparent 40%)' }}
+            />
           </div>
         </div>
-      </section>
 
-      <style>{`@keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes figin{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}@keyframes flick{0%,100%{transform:scale(1)}50%{transform:scale(1.07) translateY(-1px)}}`}</style>
+        <h1 className="mt-9 font-bebas text-[clamp(48px,15vw,78px)] leading-[0.92] tracking-[0.01em] text-[#FBFBFC]">
+          Posso orar <span className="text-[#E2B063]">por você?</span>
+        </h1>
+
+        <p className="mt-5 max-w-[430px] font-inter text-[15px] leading-[1.7] text-[#FBFBFC]/70 sm:text-[16px]">
+          Deixe seu pedido no Altar de Oração do Altomir Rangel. Oração diária no grupo. Todo domingo, ao vivo, oro por cinco pedidos escolhidos.
+        </p>
+
+        <div className="mt-9 w-full max-w-[430px]">
+          <LeadForm />
+        </div>
+      </div>
     </main>
   )
 }
