@@ -5,7 +5,7 @@ export const SHEETS_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbzAX5BOQACwBTyy18hoJRLO7uQN0cJiYtT3L8LEp0AdwfK0wMTDWLWmViHLtrq8A0PI/exec'
 
 // Grupo de WhatsApp (Comunidade de Oração)
-export const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/J1Ub3EcSuYLJbM2KphrTii'
+export const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/Gkk3Oak64uwISQ9TBO6F2B'
 
 // ID do Pixel do Meta — "Pixel de Altomir Rangel" (conta de anúncios 350563210122209)
 export const META_PIXEL_ID = '278191857159060'
