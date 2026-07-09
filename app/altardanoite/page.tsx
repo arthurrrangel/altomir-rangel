@@ -47,10 +47,10 @@ export default function Page() {
         <div className="w-full max-w-[520px] overflow-hidden rounded-[18px] shadow-[0_30px_70px_-28px_rgba(0,0,0,0.7)] ring-1 ring-[#E2B063]/20">
           <div className="relative aspect-video w-full">
             <iframe
-              className="pointer-events-none absolute inset-0 h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/gJVo-Al43vA?autoplay=1&mute=1&loop=1&playlist=gJVo-Al43vA&controls=0&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+              className="absolute inset-0 h-full w-full"
+              src="https://www.youtube-nocookie.com/embed/gJVo-Al43vA?autoplay=1&mute=1&loop=1&playlist=gJVo-Al43vA&controls=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
               title="Chamada do Altar de Oração"
-              allow="autoplay; encrypted-media"
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
               loading="eager"
             />
             <div
