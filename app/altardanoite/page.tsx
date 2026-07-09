@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.ministerioarc.com'),
   title: 'Posso orar por você? | Altomir Rangel',
   description:
-    'Toda noite, uma oração por uma causa no grupo. Todo domingo, ao vivo, oro por cinco pedidos escolhidos. Deixe o seu.',
+    'Deixe seu pedido de oração. Eu oro por você, e todo domingo tem oração ao vivo. Altar de Oração do Altomir Rangel.',
   alternates: { canonical: '/altardanoite' },
   openGraph: {
     title: 'Posso orar por você? | Altomir Rangel',
-    description: 'Toda noite uma oração no grupo. Todo domingo, ao vivo, pelos pedidos escolhidos. Deixe o seu.',
+    description: 'Deixe seu pedido de oração. Eu oro por você, e todo domingo tem oração ao vivo.',
     url: '/altardanoite',
     siteName: 'Altomir Rangel',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Posso orar por você? | Altomir Rangel',
-    description: 'Toda noite uma oração no grupo. Todo domingo, ao vivo, pelos pedidos escolhidos.',
+    description: 'Deixe seu pedido de oração. Eu oro por você, e todo domingo tem oração ao vivo.',
     images: ['/altomir-og.jpg'],
   },
   robots: { index: true, follow: true },
@@ -65,7 +65,7 @@ export default function Page() {
         </h1>
 
         <p className="mt-5 max-w-[430px] font-inter text-[15px] leading-[1.7] text-[#FBFBFC]/70 sm:text-[16px]">
-          Deixe seu pedido no Altar de Oração do Altomir Rangel. Oração diária no grupo. Todo domingo, ao vivo, oro por cinco pedidos escolhidos.
+          Deixe seu pedido no Altar de Oração do Altomir Rangel. Eu oro por você, e todo domingo tem oração ao vivo.
         </p>
 
         <div className="mt-9 w-full max-w-[430px]">
