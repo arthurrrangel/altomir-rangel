@@ -8,7 +8,7 @@ export const SHEETS_ENDPOINT =
 export const GRUPO_WHATSAPP = 'https://chat.whatsapp.com/Gkk3Oak64uwISQ9TBO6F2B'
 
 // ID do Pixel do Meta — "Pixel de Altomir Rangel" (conta de anúncios 350563210122209)
-export const META_PIXEL_ID = '278191857159060'
+export const META_PIXEL_ID = '439772437479654'
 
 // Flag de sessão: marca que o lead veio do formulário. Evita disparo de "Lead"
 // no Pixel para quem acessa /obrigado direto (robô, curioso, refresh).
