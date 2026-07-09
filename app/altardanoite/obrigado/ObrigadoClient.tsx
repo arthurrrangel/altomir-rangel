@@ -16,7 +16,7 @@ export default function ObrigadoClient() {
 
     // "Lead" dispara só pra quem veio do formulário (flag de sessão), nunca
     // pra acesso direto, refresh ou robô. Evita conversão falsa no Meta.
-    let veioDoorm = false
+    let veioDoForm = false
     try {
       veioDoForm = sessionStorage.getItem(LEAD_FLAG) === '1'
       if (veioDoForm) sessionStorage.removeItem(LEAD_FLAG)
