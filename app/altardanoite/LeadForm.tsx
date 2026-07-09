@@ -148,4 +148,74 @@ export default function LeadForm() {
         {erro && (
           <p role="alert" className="font-inter text-[13px] font-medium leading-snug text-[#F0A090]">
             {erro}
-          <
+          </p>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="mt-3 flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#E2B063] py-4 font-bebas text-[22px] tracking-[0.06em] text-[#101F40] shadow-[0_14px_30px_-12px_rgba(226,176,99,0.55)] transition duration-300 hover:bg-[#e8bd77] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E2B063] focus-visible:ring-offset-2 focus-visible:ring-offset-[#101F40] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === 'sending' ? 'Enviando…' : 'Quero receber oração'}
+          <ArrowIcon />
+        </button>
+
+        <div className="mt-1.5 flex items-center justify-center gap-2 font-inter text-[12.5px] leading-tight text-[#FBFBFC]/55">
+          <ClockIcon />
+          <span>Oração diária no grupo · ao vivo aos domingos</span>
+        </div>
+        <p className="text-center font-inter text-[11.5px] leading-snug text-[#FBFBFC]/55">
+          Seu contato fica só com o ministério, para o Altar de Oração.
+        </p>
+      </form>
+    </div>
+  )
+}
+
+/* ---- ícones (SVG inline, sem dependências) ---- */
+function BookIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5v-2Z" />
+      <path d="M6.5 19H19" />
+    </svg>
+  )
+}
+function UserIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-3.5 3.6-6 8-6s8 2.5 8 6" />
+    </svg>
+  )
+}
+function WhatsIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.2.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4.1.2.1.9-.1 1.4Z" />
+    </svg>
+  )
+}
+function MailIcon() {
+  return (
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  )
+}
+function ArrowIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  )
+}
+function ClockIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2"/>
+    </svg>
+  )
+}
