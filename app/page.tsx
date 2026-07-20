@@ -9,7 +9,7 @@ import Footer from '@/components/Footer'
 
 function SectionDivider() {
   return (
-    <div className="px-6 md:px-10 max-w-7xl mx-auto">
+    <div className="px-6 md:px-10 max-w-7xl mx-auto" aria-hidden="true">
       <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
     </div>
   )
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="conteudo">
         <Hero />
         <SectionDivider />
         <About />

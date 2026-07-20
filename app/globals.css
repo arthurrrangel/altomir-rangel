@@ -4,19 +4,15 @@
 
 :root {
   --gold: #D8A93A;
-  --gold-dim: rgba(216,169,58,0.15);
+  --gold-bright: #E2B652;
+  --gold-dim: rgba(216, 169, 58, 0.15);
   --navy: #1B2A44;
   --navy-deep: #16243B;
   --navy-deepest: #101B2C;
   --navy-raise: #22344F;
   --steel: #4A4F54;
-  --dark: #16243B;
-  --dark-2: #1B2A44;
-  --dark-3: #22344F;
   --white: #FFFFFF;
-  --white-60: rgba(255,255,255,0.6);
-  --white-30: rgba(255,255,255,0.3);
-  --white-10: rgba(255,255,255,0.08);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,7 +21,6 @@ html { scroll-behavior: smooth; }
 
 body {
   background: radial-gradient(ellipse 115% 85% at 50% 26%, #21345A 0%, #1B2A44 50%, #16243B 100%);
-  background-attachment: fixed;
   background-repeat: no-repeat;
   background-color: var(--navy-deep);
   color: var(--white);
@@ -34,6 +29,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+@media (min-width: 769px) {
+  body { background-attachment: fixed; }
 }
 
 /* Grain overlay */
@@ -49,19 +48,40 @@ body::before {
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--navy-deep); }
-::-webkit-scrollbar-thumb { background: rgba(216,169,58,0.35); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(216, 169, 58, 0.35); border-radius: 2px; }
 ::selection { background: var(--gold); color: #16243B; }
+
+/* ── Acessibilidade ── */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 10000;
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  transition: top 0.2s ease;
+}
+.skip-link:focus-visible { top: 1rem; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
 
 /* ── Reveal ── */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-left, .reveal-right {
   opacity: 0;
-  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
 }
 .reveal-left { transform: translateX(-30px); }
 .reveal-right { transform: translateX(30px); }
@@ -69,7 +89,6 @@ body::before {
 
 /* Hero Reveal */
 .h-reveal.h-visible { opacity: 1 !important; transform: translateY(0) !important; }
-
 
 /* ── Buttons ── */
 .btn-gold {
@@ -85,14 +104,16 @@ body::before {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   border: 2px solid var(--gold);
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease-out);
   cursor: pointer;
 }
 .btn-gold:hover {
   background: transparent;
   color: var(--gold);
-  box-shadow: 0 0 20px rgba(216,169,58,0.18);
+  box-shadow: 0 0 20px rgba(216, 169, 58, 0.18);
+  transform: translateY(-1px);
 }
+.btn-gold:active { transform: translateY(0) scale(0.99); }
 
 .btn-outline {
   display: inline-flex;
@@ -106,15 +127,17 @@ body::before {
   font-size: 0.72rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  border: 2px solid rgba(255,255,255,0.18);
-  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease-out);
   cursor: pointer;
 }
 .btn-outline:hover {
   border-color: var(--gold);
   color: var(--gold);
-  box-shadow: 0 0 20px rgba(216,169,58,0.10);
+  box-shadow: 0 0 20px rgba(216, 169, 58, 0.10);
+  transform: translateY(-1px);
 }
+.btn-outline:active { transform: translateY(0) scale(0.99); }
 
 /* ── Eyebrow label ── */
 .label {
@@ -126,7 +149,6 @@ body::before {
   color: var(--gold);
 }
 
-/* Label com linhas flanqueando (uso em headers de seção centralizados) */
 .label-line {
   display: flex;
   align-items: center;
@@ -138,12 +160,12 @@ body::before {
   display: block;
   height: 1px;
   width: 2rem;
-  background: rgba(216,169,58,0.45);
+  background: rgba(216, 169, 58, 0.45);
   flex-shrink: 0;
 }
 
 /* ── Section divider ── */
-.divider { height: 1px; background: rgba(216,169,58,0.2); }
+.divider { height: 1px; background: rgba(216, 169, 58, 0.2); }
 
 /* ── Mobile: reduz animações pesadas ── */
 @media (max-width: 768px) {
@@ -155,8 +177,8 @@ body::before {
 /* ── Form inputs ── */
 .input-dark {
   width: 100%;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(74,79,84,0.55);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 0.9rem 1.1rem;
   color: white;
   font-family: var(--font-inter), sans-serif;
@@ -165,11 +187,11 @@ body::before {
   transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 .input-dark:focus {
-  border-color: rgba(216,169,58,0.6);
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 0 3px rgba(216,169,58,0.06);
+  border-color: rgba(216, 169, 58, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(216, 169, 58, 0.08);
 }
-.input-dark::placeholder { color: rgba(255,255,255,0.25); }
+.input-dark::placeholder { color: rgba(255, 255, 255, 0.35); }
 
 /* ── Scroll indicator bounce ── */
 @keyframes scroll-bounce {
@@ -177,3 +199,24 @@ body::before {
   50% { transform: translateY(6px); opacity: 0.8; }
 }
 .scroll-indicator { animation: scroll-bounce 2s ease-in-out infinite; }
+
+/* ── Movimento reduzido ── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .h-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-indicator { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
