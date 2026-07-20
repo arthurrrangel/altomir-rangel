@@ -35,6 +35,11 @@ function whatsAppValido(v: string) {
   return ddd >= 11 && ddd <= 99
 }
 
+/** Validação simples de e-mail: um "@" com texto antes e um domínio com ponto depois. */
+function emailValido(v: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())
+}
+
 export default function LeadForm() {
   const router = useRouter()
   const [status, setStatus] = useState<'idle' | 'sending'>('idle')
@@ -56,11 +61,16 @@ export default function LeadForm() {
     const form = e.currentTarget
 
     const nome = (form.elements.namedItem('nome') as HTMLInputElement).value.trim()
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim()
     const honeypot = (form.elements.namedItem('site') as HTMLInputElement).value
     const pedido = (form.elements.namedItem('pedido') as HTMLTextAreaElement).value.trim().slice(0, 500)
 
     if (!whatsAppValido(whats)) {
       setErro('Confira o WhatsApp: DDD + número. Ex.: (21) 99999-8888')
+      return
+    }
+    if (!emailValido(email)) {
+      setErro('Confira o e-mail: digite um endereço válido. Ex.: nome@email.com')
       return
     }
     setErro(null)
@@ -77,7 +87,7 @@ export default function LeadForm() {
     // campo "origem" garante que nenhum pedido se perca. Quando a coluna existir
     // no script, remover o sufixo abaixo e manter só o parâmetro dedicado.
     const origemComPedido = pedido ? `${origem} · Pedido: ${pedido}` : origem
-    const body = new URLSearchParams({ nome, whatsapp: whats, pedido, origem: origemComPedido })
+    const body = new URLSearchParams({ nome, whatsapp: whats, email, pedido, origem: origemComPedido })
 
     // Honeypot preenchido = bot: não grava na planilha, mas segue o fluxo
     // normalmente pra não denunciar o filtro.
@@ -120,6 +130,18 @@ export default function LeadForm() {
               if (erro) setErro(null)
             }}
             aria-invalid={erro ? true : undefined}
+            className={INPUT}
+          />
+        </Field>
+        <Field icon={<MailIcon />}>
+          <input
+            name="email"
+            type="email"
+            required
+            inputMode="email"
+            autoComplete="email"
+            placeholder="Seu melhor e-mail"
+            onChange={() => { if (erro) setErro(null) }}
             className={INPUT}
           />
         </Field>
