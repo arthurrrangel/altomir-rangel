@@ -6,7 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
   const staticUrls: MetadataRoute.Sitemap = [
-    { url: site.url, lastModified, changeFrequency: 'monthly', priority: 1 },
+    { url: site.url, lastModified, changeFrequency: 'weekly', priority: 1 },
+    { url: `${site.url}/altardanoite`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
   ]
 
   const bookUrls: MetadataRoute.Sitemap = books.map((b) => ({
